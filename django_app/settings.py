@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-# directory app added
+# reuse_directory app added
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'directory',
+    'reuse_directory',
 )
 
 MIDDLEWARE_CLASSES = (
