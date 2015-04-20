@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'reuse_directory',
+    'corvallis_reuse',
 )
 
 MIDDLEWARE_CLASSES = (
