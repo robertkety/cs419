@@ -1,0 +1,2570 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>mysql.data.entity.EF6.6.8.3.0.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.QualityTools.Testing.Fakes.Delegates.MySqlDataEntityEF6Delegates">
+            <summary>Contains custom delegates used for the stubs and shims of MySql.Data.Entity.EF6</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm">
+            <summary>Shim type of MySql.Data.Entity.BackoffAlgorithm</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm.#ctor(MySql.Data.Entity.BackoffAlgorithm)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm.Constructor">
+            <summary>Sets the shim of BackoffAlgorithm.BackoffAlgorithm()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm.ConstructorInt32TimeSpan">
+            <summary>Sets the shim of BackoffAlgorithm.BackoffAlgorithm(Int32 maxRetries, TimeSpan maxDelay)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm.GetNextDelay">
+            <summary>Sets the shim of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm.Reset">
+            <summary>Sets the shim of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm.StaticConstructor">
+            <summary>Sets the shim of BackoffAlgorithm.BackoffAlgorithm()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm.AllInstances.GetNextDelay">
+            <summary>Sets the shim of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithm.AllInstances.Reset">
+            <summary>Sets the shim of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1040">
+            <summary>Shim type of MySql.Data.Entity.BackoffAlgorithmErr1040</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1040.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1040.#ctor(MySql.Data.Entity.BackoffAlgorithmErr1040)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1040.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1040.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1040.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1040.Constructor">
+            <summary>Sets the shim of BackoffAlgorithmErr1040.BackoffAlgorithmErr1040()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1040.GetNextDelay">
+            <summary>Sets the shim of BackoffAlgorithmErr1040.GetNextDelay()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1040.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1040.AllInstances.GetNextDelay">
+            <summary>Sets the shim of BackoffAlgorithmErr1040.GetNextDelay()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1205">
+            <summary>Shim type of MySql.Data.Entity.BackoffAlgorithmErr1205</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1205.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1205.#ctor(MySql.Data.Entity.BackoffAlgorithmErr1205)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1205.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1205.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1205.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1205.Constructor">
+            <summary>Sets the shim of BackoffAlgorithmErr1205.BackoffAlgorithmErr1205()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1205.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1213">
+            <summary>Shim type of MySql.Data.Entity.BackoffAlgorithmErr1213</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1213.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1213.#ctor(MySql.Data.Entity.BackoffAlgorithmErr1213)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1213.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1213.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1213.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1213.Constructor">
+            <summary>Sets the shim of BackoffAlgorithmErr1213.BackoffAlgorithmErr1213()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1213.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1614">
+            <summary>Shim type of MySql.Data.Entity.BackoffAlgorithmErr1614</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1614.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1614.#ctor(MySql.Data.Entity.BackoffAlgorithmErr1614)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1614.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1614.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1614.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1614.Constructor">
+            <summary>Sets the shim of BackoffAlgorithmErr1614.BackoffAlgorithmErr1614()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr1614.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2006">
+            <summary>Shim type of MySql.Data.Entity.BackoffAlgorithmErr2006</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2006.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2006.#ctor(MySql.Data.Entity.BackoffAlgorithmErr2006)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2006.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2006.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2006.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2006.Constructor">
+            <summary>Sets the shim of BackoffAlgorithmErr2006.BackoffAlgorithmErr2006()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2006.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2013">
+            <summary>Shim type of MySql.Data.Entity.BackoffAlgorithmErr2013</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2013.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2013.#ctor(MySql.Data.Entity.BackoffAlgorithmErr2013)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2013.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2013.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2013.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2013.Constructor">
+            <summary>Sets the shim of BackoffAlgorithmErr2013.BackoffAlgorithmErr2013()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2013.GetNextDelay">
+            <summary>Sets the shim of BackoffAlgorithmErr2013.GetNextDelay()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2013.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmErr2013.AllInstances.GetNextDelay">
+            <summary>Sets the shim of BackoffAlgorithmErr2013.GetNextDelay()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmNdb">
+            <summary>Shim type of MySql.Data.Entity.BackoffAlgorithmNdb</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmNdb.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmNdb.#ctor(MySql.Data.Entity.BackoffAlgorithmNdb)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmNdb.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmNdb.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmNdb.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmNdb.Constructor">
+            <summary>Sets the shim of BackoffAlgorithmNdb.BackoffAlgorithmNdb()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimBackoffAlgorithmNdb.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlConnectionFactory">
+            <summary>Shim type of MySql.Data.Entity.MySqlConnectionFactory</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlConnectionFactory.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlConnectionFactory.#ctor(MySql.Data.Entity.MySqlConnectionFactory)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlConnectionFactory.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlConnectionFactory.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlConnectionFactory.Bind(System.Data.Entity.Infrastructure.IDbConnectionFactory)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlConnectionFactory.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlConnectionFactory.Constructor">
+            <summary>Sets the shim of MySqlConnectionFactory.MySqlConnectionFactory()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlConnectionFactory.CreateConnectionString">
+            <summary>Sets the shim of MySqlConnectionFactory.CreateConnection(String connectionString)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlConnectionFactory.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlConnectionFactory.AllInstances.CreateConnectionString">
+            <summary>Sets the shim of MySqlConnectionFactory.CreateConnection(String connectionString)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver">
+            <summary>Shim type of MySql.Data.Entity.MySqlDependencyResolver</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver.#ctor(MySql.Data.Entity.MySqlDependencyResolver)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver.Bind(System.Data.Entity.Infrastructure.DependencyResolution.IDbDependencyResolver)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver.Constructor">
+            <summary>Sets the shim of MySqlDependencyResolver.MySqlDependencyResolver()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver.GetServiceTypeObject">
+            <summary>Sets the shim of MySqlDependencyResolver.GetService(Type type, Object key)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver.GetServicesTypeObject">
+            <summary>Sets the shim of MySqlDependencyResolver.GetServices(Type type, Object key)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver.AllInstances.GetServiceTypeObject">
+            <summary>Sets the shim of MySqlDependencyResolver.GetService(Type type, Object key)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlDependencyResolver.AllInstances.GetServicesTypeObject">
+            <summary>Sets the shim of MySqlDependencyResolver.GetServices(Type type, Object key)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlEFConfiguration">
+            <summary>Shim type of MySql.Data.Entity.MySqlEFConfiguration</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlEFConfiguration.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlEFConfiguration.#ctor(MySql.Data.Entity.MySqlEFConfiguration)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlEFConfiguration.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlEFConfiguration.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlEFConfiguration.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlEFConfiguration.Constructor">
+            <summary>Sets the shim of MySqlEFConfiguration.MySqlEFConfiguration()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlEFConfiguration._ctorb__0">
+            <summary>Sets the shim of MySqlEFConfiguration.&lt;.ctor&gt;b__0()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlEFConfiguration._ctorb__1DbConnectionString">
+            <summary>Sets the shim of MySqlEFConfiguration.&lt;.ctor&gt;b__1(DbConnection existingConnection, String defaultSchema)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlEFConfiguration.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy">
+            <summary>Shim type of MySql.Data.Entity.MySqlExecutionStrategy</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.#ctor(MySql.Data.Entity.MySqlExecutionStrategy)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.Bind(System.Data.Entity.Infrastructure.IDbExecutionStrategy)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.Constructor">
+            <summary>Sets the shim of MySqlExecutionStrategy.MySqlExecutionStrategy()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.GetNextDelayException">
+            <summary>Sets the shim of MySqlExecutionStrategy.GetNextDelay(Exception lastException)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.ShouldRetryOnException">
+            <summary>Sets the shim of MySqlExecutionStrategy.ShouldRetryOn(Exception exception)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.StaticConstructor">
+            <summary>Sets the shim of MySqlExecutionStrategy.MySqlExecutionStrategy()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.AllInstances.GetNextDelayException">
+            <summary>Sets the shim of MySqlExecutionStrategy.GetNextDelay(Exception lastException)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlExecutionStrategy.AllInstances.ShouldRetryOnException">
+            <summary>Sets the shim of MySqlExecutionStrategy.ShouldRetryOn(Exception exception)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext">
+            <summary>Shim type of MySql.Data.Entity.MySqlHistoryContext</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext.#ctor(MySql.Data.Entity.MySqlHistoryContext)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext.Bind(System.Data.Entity.Infrastructure.IDbModelCacheKeyProvider)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext.Bind(System.Data.Entity.Infrastructure.IObjectContextAdapter)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext.Bind(System.IDisposable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext.ConstructorDbConnectionString">
+            <summary>Sets the shim of MySqlHistoryContext.MySqlHistoryContext(DbConnection existingConnection, String defaultSchema)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext.OnModelCreatingDbModelBuilder">
+            <summary>Sets the shim of MySqlHistoryContext.OnModelCreating(DbModelBuilder modelBuilder)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlHistoryContext.AllInstances.OnModelCreatingDbModelBuilder">
+            <summary>Sets the shim of MySqlHistoryContext.OnModelCreating(DbModelBuilder modelBuilder)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlLogger">
+            <summary>Shim type of MySql.Data.Entity.MySqlLogger</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlLogger.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlLogger.#ctor(MySql.Data.Entity.MySqlLogger)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlLogger.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlLogger.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlLogger.Bind(System.IDisposable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlLogger.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlLogger.ConstructorActionOfString">
+            <summary>Sets the shim of MySqlLogger.MySqlLogger(Action`1&lt;String&gt; action)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlLogger.EncodingGet">
+            <summary>Sets the shim of MySqlLogger.get_Encoding()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlLogger.LoggerStringBoolean">
+            <summary>Sets the shim of MySqlLogger.Logger(String logPath, Boolean append)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlLogger.WriteCharArrayInt32Int32">
+            <summary>Sets the shim of MySqlLogger.Write(Char[] buffer, Int32 index, Int32 count)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlLogger.WriteString">
+            <summary>Sets the shim of MySqlLogger.Write(String value)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlLogger.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlLogger.AllInstances.EncodingGet">
+            <summary>Sets the shim of MySqlLogger.get_Encoding()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlLogger.AllInstances.WriteCharArrayInt32Int32">
+            <summary>Sets the shim of MySqlLogger.Write(Char[] buffer, Int32 index, Int32 count)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlLogger.AllInstances.WriteString">
+            <summary>Sets the shim of MySqlLogger.Write(String value)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlManifestTokenResolver">
+            <summary>Shim type of MySql.Data.Entity.MySqlManifestTokenResolver</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlManifestTokenResolver.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlManifestTokenResolver.#ctor(MySql.Data.Entity.MySqlManifestTokenResolver)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlManifestTokenResolver.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlManifestTokenResolver.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlManifestTokenResolver.Bind(System.Data.Entity.Infrastructure.IManifestTokenResolver)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlManifestTokenResolver.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlManifestTokenResolver.Constructor">
+            <summary>Sets the shim of MySqlManifestTokenResolver.MySqlManifestTokenResolver()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlManifestTokenResolver.ResolveManifestTokenDbConnection">
+            <summary>Sets the shim of MySqlManifestTokenResolver.ResolveManifestToken(DbConnection connection)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlManifestTokenResolver.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlManifestTokenResolver.AllInstances.ResolveManifestTokenDbConnection">
+            <summary>Sets the shim of MySqlManifestTokenResolver.ResolveManifestToken(DbConnection connection)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator">
+            <summary>Shim type of MySql.Data.Entity.MySqlMigrationCodeGenerator</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.#ctor(MySql.Data.Entity.MySqlMigrationCodeGenerator)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.Constructor">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.MySqlMigrationCodeGenerator()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateAddColumnOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(AddColumnOperation addColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateAddForeignKeyOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(AddForeignKeyOperation addForeignKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateAddPrimaryKeyOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(AddPrimaryKeyOperation addPrimaryKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateAlterColumnOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(AlterColumnOperation alterColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateCreateIndexOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(CreateIndexOperation createIndexOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateCreateTableOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(CreateTableOperation createTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateDropColumnOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(DropColumnOperation dropColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateDropForeignKeyOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(DropForeignKeyOperation dropForeignKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateDropIndexOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(DropIndexOperation dropIndexOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateDropPrimaryKeyOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(DropPrimaryKeyOperation dropPrimaryKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateDropTableOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(DropTableOperation dropTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateMoveTableOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(MoveTableOperation moveTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateRenameColumnOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(RenameColumnOperation renameColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.GenerateRenameTableOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(RenameTableOperation renameTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.TrimSchemaPrefixString">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.TrimSchemaPrefix(String table)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateAddColumnOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(AddColumnOperation addColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateAddForeignKeyOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(AddForeignKeyOperation addForeignKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateAddPrimaryKeyOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(AddPrimaryKeyOperation addPrimaryKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateAlterColumnOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(AlterColumnOperation alterColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateCreateIndexOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(CreateIndexOperation createIndexOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateCreateTableOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(CreateTableOperation createTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateDropColumnOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(DropColumnOperation dropColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateDropForeignKeyOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(DropForeignKeyOperation dropForeignKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateDropIndexOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(DropIndexOperation dropIndexOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateDropPrimaryKeyOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(DropPrimaryKeyOperation dropPrimaryKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateDropTableOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(DropTableOperation dropTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateMoveTableOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(MoveTableOperation moveTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateRenameColumnOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(RenameColumnOperation renameColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.GenerateRenameTableOperationIndentedTextWriter">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.Generate(RenameTableOperation renameTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationCodeGenerator.AllInstances.TrimSchemaPrefixString">
+            <summary>Sets the shim of MySqlMigrationCodeGenerator.TrimSchemaPrefix(String table)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator">
+            <summary>Shim type of MySql.Data.Entity.MySqlMigrationSqlGenerator</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.#ctor(MySql.Data.Entity.MySqlMigrationSqlGenerator)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.BuildParamTypeParameterModel">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.BuildParamType(ParameterModel param)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.Constructor">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.MySqlMigrationSqlGenerator()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateAddColumnOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(AddColumnOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateAddForeignKeyOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(AddForeignKeyOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateAddPrimaryKeyOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(AddPrimaryKeyOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateAlterColumnOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(AlterColumnOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateColumnModel">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(ColumnModel op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateCreateIndexOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(CreateIndexOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateCreateProcedureOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(CreateProcedureOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateCreateTableOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(CreateTableOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateDropColumnOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(DropColumnOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateDropForeignKeyOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(DropForeignKeyOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateDropIndexOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(DropIndexOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateDropPrimaryKeyOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(DropPrimaryKeyOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateDropTableOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(DropTableOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateHistoryOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(HistoryOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateIEnumerableOfMigrationOperationString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(IEnumerable`1&lt;MigrationOperation&gt; migrationOperations, String providerManifestToken)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateMoveTableOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(MoveTableOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateParamSentenceIListOfParameterModel">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.GenerateParamSentence(IList`1&lt;ParameterModel&gt; Parameters)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateProcedureBodyICollectionOfDbModificationCommandTreeStringString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.GenerateProcedureBody(ICollection`1&lt;DbModificationCommandTree&gt; commandTrees, String rowsAffectedParameter, String providerManifestToken)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateProcedureCmdCreateProcedureOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.GenerateProcedureCmd(CreateProcedureOperation po)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateRenameColumnOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(RenameColumnOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateRenameTableOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(RenameTableOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateSqlOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(SqlOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.GenerateUpdateDatabaseOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(UpdateDatabaseOperation updateDatabaseOperation)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.TrimSchemaPrefixString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.TrimSchemaPrefix(String table)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._Generateb__27String">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;Generate&gt;b__27(String c)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._Generateb__28String">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;Generate&gt;b__28(String c)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._Generateb__32String">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;Generate&gt;b__32(String col)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._Generateb__33ColumnModel">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;Generate&gt;b__33(ColumnModel c)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._Generateb__34String">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;Generate&gt;b__34(String c)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._Generateb__3cString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;Generate&gt;b__3c(String c)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__0MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__0(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__10MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__10(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__11MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__11(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__1MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__1(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__2MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__2(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__3MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__3(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__4MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__4(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__5MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__5(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__6MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__6(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__7MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__7(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__8MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__8(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__9MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__9(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__aMigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__a(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__bMigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__b(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__cMigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__c(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__dMigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__d(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__eMigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__e(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._ctorb__fMigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__f(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._generatedTablesGet">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.get__generatedTables()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._generatedTablesSetListOfString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.set__generatedTables(List`1&lt;String&gt; value)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._tableNameGet">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.get__tableName()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator._tableNameSetString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.set__tableName(String value)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.autoIncrementColsGet">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.get_autoIncrementCols()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.autoIncrementColsSetListOfString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.set_autoIncrementCols(List`1&lt;String&gt; value)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.primaryKeyColsGet">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.get_primaryKeyCols()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.primaryKeyColsSetListOfString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.set_primaryKeyCols(List`1&lt;String&gt; value)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.BuildParamTypeParameterModel">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.BuildParamType(ParameterModel param)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateAddColumnOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(AddColumnOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateAddForeignKeyOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(AddForeignKeyOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateAddPrimaryKeyOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(AddPrimaryKeyOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateAlterColumnOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(AlterColumnOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateColumnModel">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(ColumnModel op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateCreateIndexOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(CreateIndexOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateCreateProcedureOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(CreateProcedureOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateCreateTableOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(CreateTableOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateDropColumnOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(DropColumnOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateDropForeignKeyOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(DropForeignKeyOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateDropIndexOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(DropIndexOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateDropPrimaryKeyOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(DropPrimaryKeyOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateDropTableOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(DropTableOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateHistoryOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(HistoryOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateIEnumerableOfMigrationOperationString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(IEnumerable`1&lt;MigrationOperation&gt; migrationOperations, String providerManifestToken)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateMoveTableOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(MoveTableOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateParamSentenceIListOfParameterModel">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.GenerateParamSentence(IList`1&lt;ParameterModel&gt; Parameters)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateProcedureBodyICollectionOfDbModificationCommandTreeStringString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.GenerateProcedureBody(ICollection`1&lt;DbModificationCommandTree&gt; commandTrees, String rowsAffectedParameter, String providerManifestToken)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateProcedureCmdCreateProcedureOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.GenerateProcedureCmd(CreateProcedureOperation po)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateRenameColumnOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(RenameColumnOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateRenameTableOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(RenameTableOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateSqlOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(SqlOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.GenerateUpdateDatabaseOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.Generate(UpdateDatabaseOperation updateDatabaseOperation)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.ReplaceParemetersStringRefIListOfMySqlParameter">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.ReplaceParemeters(String&amp; sql, IList`1&lt;MySqlParameter&gt; parameters)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.TrimSchemaPrefixString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.TrimSchemaPrefix(String table)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._Generateb__32String">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;Generate&gt;b__32(String col)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._Generateb__33ColumnModel">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;Generate&gt;b__33(ColumnModel c)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__0MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__0(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__10MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__10(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__11MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__11(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__1MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__1(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__2MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__2(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__3MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__3(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__4MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__4(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__5MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__5(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__6MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__6(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__7MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__7(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__8MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__8(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__9MigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__9(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__aMigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__a(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__bMigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__b(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__cMigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__c(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__dMigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__d(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__eMigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__e(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._ctorb__fMigrationOperation">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.&lt;.ctor&gt;b__f(MigrationOperation op)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._generatedTablesGet">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.get__generatedTables()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._generatedTablesSetListOfString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.set__generatedTables(List`1&lt;String&gt; value)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._tableNameGet">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.get__tableName()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances._tableNameSetString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.set__tableName(String value)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.autoIncrementColsGet">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.get_autoIncrementCols()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.autoIncrementColsSetListOfString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.set_autoIncrementCols(List`1&lt;String&gt; value)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.primaryKeyColsGet">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.get_primaryKeyCols()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlMigrationSqlGenerator.AllInstances.primaryKeyColsSetListOfString">
+            <summary>Sets the shim of MySqlMigrationSqlGenerator.set_primaryKeyCols(List`1&lt;String&gt; value)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey">
+            <summary>Shim type of MySql.Data.Entity.MySqlModelCacheKey</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.#ctor(MySql.Data.Entity.MySqlModelCacheKey)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.Bind(System.Data.Entity.Infrastructure.IDbModelCacheKey)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.ConstructorTypeStringTypeString">
+            <summary>Sets the shim of MySqlModelCacheKey.MySqlModelCacheKey(Type contextType, String providerName, Type providerType, String customKey)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.EqualsMySqlModelCacheKey">
+            <summary>Sets the shim of MySqlModelCacheKey.Equals(MySqlModelCacheKey other)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.EqualsObject">
+            <summary>Sets the shim of MySqlModelCacheKey.Equals(Object other)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.GetHashCode">
+            <summary>Sets the shim of MySqlModelCacheKey.GetHashCode()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.AllInstances.EqualsMySqlModelCacheKey">
+            <summary>Sets the shim of MySqlModelCacheKey.Equals(MySqlModelCacheKey other)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.AllInstances.EqualsObject">
+            <summary>Sets the shim of MySqlModelCacheKey.Equals(Object other)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlModelCacheKey.AllInstances.GetHashCode01">
+            <summary>Sets the shim of MySqlModelCacheKey.GetHashCode()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlProviderFactoryResolver">
+            <summary>Shim type of MySql.Data.Entity.MySqlProviderFactoryResolver</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlProviderFactoryResolver.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlProviderFactoryResolver.#ctor(MySql.Data.Entity.MySqlProviderFactoryResolver)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlProviderFactoryResolver.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlProviderFactoryResolver.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlProviderFactoryResolver.Bind(System.Data.Entity.Infrastructure.IDbProviderFactoryResolver)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlProviderFactoryResolver.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlProviderFactoryResolver.Constructor">
+            <summary>Sets the shim of MySqlProviderFactoryResolver.MySqlProviderFactoryResolver()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlProviderFactoryResolver.ResolveProviderFactoryDbConnection">
+            <summary>Sets the shim of MySqlProviderFactoryResolver.ResolveProviderFactory(DbConnection connection)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlProviderFactoryResolver.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlProviderFactoryResolver.AllInstances.ResolveProviderFactoryDbConnection">
+            <summary>Sets the shim of MySqlProviderFactoryResolver.ResolveProviderFactory(DbConnection connection)</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlProviderInvariantName">
+            <summary>Shim type of MySql.Data.Entity.MySqlProviderInvariantName</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlProviderInvariantName.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlProviderInvariantName.#ctor(MySql.Data.Entity.MySqlProviderInvariantName)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlProviderInvariantName.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlProviderInvariantName.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.ShimMySqlProviderInvariantName.Bind(System.Data.Entity.Infrastructure.IProviderInvariantName)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlProviderInvariantName.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlProviderInvariantName.Constructor">
+            <summary>Sets the shim of MySqlProviderInvariantName.MySqlProviderInvariantName()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlProviderInvariantName.NameGet">
+            <summary>Sets the shim of MySqlProviderInvariantName.get_Name()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlProviderInvariantName.ProviderNameGet">
+            <summary>Sets the shim of MySqlProviderInvariantName.get_ProviderName()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.ShimMySqlProviderInvariantName.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.ShimMySqlProviderInvariantName.AllInstances.NameGet">
+            <summary>Sets the shim of MySqlProviderInvariantName.get_Name()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubBackoffAlgorithm">
+            <summary>Stub type of MySql.Data.Entity.BackoffAlgorithm</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithm.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithm.#ctor(System.Int32,System.TimeSpan)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithm.GetNextDelay">
+            <summary>Sets the stub of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithm.GetNextDelay01">
+            <summary>Sets the stub of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithm.InitializeStub">
+            <summary>Initializes a new instance of type StubBackoffAlgorithm</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithm.Reset">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithm.Reset01">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithm.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithm.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithm.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1040">
+            <summary>Stub type of MySql.Data.Entity.BackoffAlgorithmErr1040</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1040.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1040.GetNextDelay">
+            <summary>Sets the stub of BackoffAlgorithmErr1040.GetNextDelay()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1040.GetNextDelay01">
+            <summary>Sets the stub of BackoffAlgorithmErr1040.GetNextDelay()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1040.InitializeStub">
+            <summary>Initializes a new instance of type StubBackoffAlgorithmErr1040</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1040.Reset">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1040.Reset01">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1040.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1040.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1040.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1205">
+            <summary>Stub type of MySql.Data.Entity.BackoffAlgorithmErr1205</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1205.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1205.GetNextDelay">
+            <summary>Sets the stub of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1205.GetNextDelay01">
+            <summary>Sets the stub of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1205.InitializeStub">
+            <summary>Initializes a new instance of type StubBackoffAlgorithmErr1205</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1205.Reset">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1205.Reset01">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1205.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1205.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1205.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1213">
+            <summary>Stub type of MySql.Data.Entity.BackoffAlgorithmErr1213</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1213.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1213.GetNextDelay">
+            <summary>Sets the stub of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1213.GetNextDelay01">
+            <summary>Sets the stub of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1213.InitializeStub">
+            <summary>Initializes a new instance of type StubBackoffAlgorithmErr1213</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1213.Reset">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1213.Reset01">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1213.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1213.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1213.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1614">
+            <summary>Stub type of MySql.Data.Entity.BackoffAlgorithmErr1614</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1614.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1614.GetNextDelay">
+            <summary>Sets the stub of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1614.GetNextDelay01">
+            <summary>Sets the stub of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1614.InitializeStub">
+            <summary>Initializes a new instance of type StubBackoffAlgorithmErr1614</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1614.Reset">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1614.Reset01">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1614.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1614.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr1614.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2006">
+            <summary>Stub type of MySql.Data.Entity.BackoffAlgorithmErr2006</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2006.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2006.GetNextDelay">
+            <summary>Sets the stub of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2006.GetNextDelay01">
+            <summary>Sets the stub of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2006.InitializeStub">
+            <summary>Initializes a new instance of type StubBackoffAlgorithmErr2006</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2006.Reset">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2006.Reset01">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2006.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2006.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2006.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2013">
+            <summary>Stub type of MySql.Data.Entity.BackoffAlgorithmErr2013</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2013.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2013.GetNextDelay">
+            <summary>Sets the stub of BackoffAlgorithmErr2013.GetNextDelay()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2013.GetNextDelay01">
+            <summary>Sets the stub of BackoffAlgorithmErr2013.GetNextDelay()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2013.InitializeStub">
+            <summary>Initializes a new instance of type StubBackoffAlgorithmErr2013</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2013.Reset">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2013.Reset01">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2013.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2013.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmErr2013.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubBackoffAlgorithmNdb">
+            <summary>Stub type of MySql.Data.Entity.BackoffAlgorithmNdb</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmNdb.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmNdb.GetNextDelay">
+            <summary>Sets the stub of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmNdb.GetNextDelay01">
+            <summary>Sets the stub of BackoffAlgorithm.GetNextDelay()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmNdb.InitializeStub">
+            <summary>Initializes a new instance of type StubBackoffAlgorithmNdb</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubBackoffAlgorithmNdb.Reset">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubBackoffAlgorithmNdb.Reset01">
+            <summary>Sets the stub of BackoffAlgorithm.Reset()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmNdb.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmNdb.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubBackoffAlgorithmNdb.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubMySqlConnectionFactory">
+            <summary>Stub type of MySql.Data.Entity.MySqlConnectionFactory</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlConnectionFactory.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlConnectionFactory.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlConnectionFactory</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlConnectionFactory.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlConnectionFactory.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlConnectionFactory.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubMySqlDependencyResolver">
+            <summary>Stub type of MySql.Data.Entity.MySqlDependencyResolver</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlDependencyResolver.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlDependencyResolver.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlDependencyResolver</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlDependencyResolver.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlDependencyResolver.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlDependencyResolver.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubMySqlEFConfiguration">
+            <summary>Stub type of MySql.Data.Entity.MySqlEFConfiguration</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlEFConfiguration.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlEFConfiguration.Equals(System.Object)">
+            <summary>Sets the stub of DbConfiguration.Equals(Object obj)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlEFConfiguration.EqualsObject">
+            <summary>Sets the stub of DbConfiguration.Equals(Object obj)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlEFConfiguration.GetHashCode">
+            <summary>Sets the stub of DbConfiguration.GetHashCode()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlEFConfiguration.GetHashCode01">
+            <summary>Sets the stub of DbConfiguration.GetHashCode()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlEFConfiguration.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlEFConfiguration</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlEFConfiguration.ToString">
+            <summary>Sets the stub of DbConfiguration.ToString()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlEFConfiguration.ToString01">
+            <summary>Sets the stub of DbConfiguration.ToString()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlEFConfiguration.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlEFConfiguration.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlEFConfiguration.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubMySqlExecutionStrategy">
+            <summary>Stub type of MySql.Data.Entity.MySqlExecutionStrategy</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlExecutionStrategy.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlExecutionStrategy.GetNextDelay(System.Exception)">
+            <summary>Sets the stub of MySqlExecutionStrategy.GetNextDelay(Exception lastException)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlExecutionStrategy.GetNextDelayException">
+            <summary>Sets the stub of MySqlExecutionStrategy.GetNextDelay(Exception lastException)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlExecutionStrategy.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlExecutionStrategy</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlExecutionStrategy.ShouldRetryOn(System.Exception)">
+            <summary>Sets the stub of MySqlExecutionStrategy.ShouldRetryOn(Exception exception)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlExecutionStrategy.ShouldRetryOnException">
+            <summary>Sets the stub of MySqlExecutionStrategy.ShouldRetryOn(Exception exception)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlExecutionStrategy.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlExecutionStrategy.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlExecutionStrategy.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubMySqlHistoryContext">
+            <summary>Stub type of MySql.Data.Entity.MySqlHistoryContext</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.#ctor(System.Data.Common.DbConnection,System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.AttachBackingFieldToHistory">
+            <summary>Attaches delegates to emulate StubMySqlHistoryContext.History as a property with a backing field.</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.CacheKeyGet">
+            <summary>Sets the stub of HistoryContext.get_CacheKey()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.Dispose(System.Boolean)">
+            <summary>Sets the stub of DbContext.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.DisposeBoolean">
+            <summary>Sets the stub of DbContext.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.Equals(System.Object)">
+            <summary>Sets the stub of DbContext.Equals(Object obj)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.EqualsObject">
+            <summary>Sets the stub of DbContext.Equals(Object obj)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.GetHashCode">
+            <summary>Sets the stub of DbContext.GetHashCode()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.GetHashCode01">
+            <summary>Sets the stub of DbContext.GetHashCode()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.HistoryGet">
+            <summary>Sets the stub of HistoryContext.get_History()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.HistorySetIDbSetOfHistoryRow">
+            <summary>Sets the stub of HistoryContext.set_History(IDbSet`1&lt;HistoryRow&gt; value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlHistoryContext</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>Sets the stub of MySqlHistoryContext.OnModelCreating(DbModelBuilder modelBuilder)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.OnModelCreatingDbModelBuilder">
+            <summary>Sets the stub of MySqlHistoryContext.OnModelCreating(DbModelBuilder modelBuilder)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.SaveChanges">
+            <summary>Sets the stub of DbContext.SaveChanges()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.SaveChanges01">
+            <summary>Sets the stub of DbContext.SaveChanges()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.SaveChangesAsync">
+            <summary>Sets the stub of DbContext.SaveChangesAsync()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>Sets the stub of DbContext.SaveChangesAsync(CancellationToken cancellationToken)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.SaveChangesAsync01">
+            <summary>Sets the stub of DbContext.SaveChangesAsync()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.SaveChangesAsyncCancellationToken">
+            <summary>Sets the stub of DbContext.SaveChangesAsync(CancellationToken cancellationToken)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.ShouldValidateEntity(System.Data.Entity.Infrastructure.DbEntityEntry)">
+            <summary>Sets the stub of DbContext.ShouldValidateEntity(DbEntityEntry entityEntry)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.ShouldValidateEntityDbEntityEntry">
+            <summary>Sets the stub of DbContext.ShouldValidateEntity(DbEntityEntry entityEntry)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.ToString">
+            <summary>Sets the stub of DbContext.ToString()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.ToString01">
+            <summary>Sets the stub of DbContext.ToString()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.ValidateEntity(System.Data.Entity.Infrastructure.DbEntityEntry,System.Collections.Generic.IDictionary{System.Object,System.Object})">
+            <summary>Sets the stub of DbContext.ValidateEntity(DbEntityEntry entityEntry, IDictionary`2&lt;Object,Object&gt; items)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.ValidateEntityDbEntityEntryIDictionaryOfObjectObject">
+            <summary>Sets the stub of DbContext.ValidateEntity(DbEntityEntry entityEntry, IDictionary`2&lt;Object,Object&gt; items)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.CacheKey">
+            <summary>Sets the stub of HistoryContext.get_CacheKey()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.History">
+            <summary>Sets the stub of HistoryContext.get_History()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlHistoryContext.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubMySqlLogger">
+            <summary>Stub type of MySql.Data.Entity.MySqlLogger</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.#ctor(System.Action{System.String})">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.AttachBackingFieldToNewLine">
+            <summary>Attaches delegates to emulate StubMySqlLogger.NewLine as a property with a backing field.</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Close">
+            <summary>Sets the stub of TextWriter.Close()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.Close01">
+            <summary>Sets the stub of TextWriter.Close()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Dispose(System.Boolean)">
+            <summary>Sets the stub of TextWriter.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.DisposeBoolean">
+            <summary>Sets the stub of TextWriter.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.EncodingGet">
+            <summary>Sets the stub of MySqlLogger.get_Encoding()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Flush">
+            <summary>Sets the stub of TextWriter.Flush()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.Flush01">
+            <summary>Sets the stub of TextWriter.Flush()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.FlushAsync">
+            <summary>Sets the stub of TextWriter.FlushAsync()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.FlushAsync01">
+            <summary>Sets the stub of TextWriter.FlushAsync()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.FormatProviderGet">
+            <summary>Sets the stub of TextWriter.get_FormatProvider()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlLogger</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.NewLineGet">
+            <summary>Sets the stub of TextWriter.get_NewLine()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.NewLineSetString">
+            <summary>Sets the stub of TextWriter.set_NewLine(String value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.Boolean)">
+            <summary>Sets the stub of TextWriter.Write(Boolean value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.Char)">
+            <summary>Sets the stub of TextWriter.Write(Char value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.Decimal)">
+            <summary>Sets the stub of TextWriter.Write(Decimal value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.Double)">
+            <summary>Sets the stub of TextWriter.Write(Double value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.String)">
+            <summary>Sets the stub of MySqlLogger.Write(String value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.Object)">
+            <summary>Sets the stub of TextWriter.Write(Object value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.Char[])">
+            <summary>Sets the stub of TextWriter.Write(Char[] buffer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.Int32)">
+            <summary>Sets the stub of TextWriter.Write(Int32 value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.Int64)">
+            <summary>Sets the stub of TextWriter.Write(Int64 value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.Single)">
+            <summary>Sets the stub of TextWriter.Write(Single value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.UInt32)">
+            <summary>Sets the stub of TextWriter.Write(UInt32 value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.UInt64)">
+            <summary>Sets the stub of TextWriter.Write(UInt64 value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.String,System.Object[])">
+            <summary>Sets the stub of TextWriter.Write(String format, Object[] arg)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.String,System.Object)">
+            <summary>Sets the stub of TextWriter.Write(String format, Object arg0)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.String,System.Object,System.Object)">
+            <summary>Sets the stub of TextWriter.Write(String format, Object arg0, Object arg1)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.Char[],System.Int32,System.Int32)">
+            <summary>Sets the stub of MySqlLogger.Write(Char[] buffer, Int32 index, Int32 count)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.Write(System.String,System.Object,System.Object,System.Object)">
+            <summary>Sets the stub of TextWriter.Write(String format, Object arg0, Object arg1, Object arg2)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteAsync(System.Char)">
+            <summary>Sets the stub of TextWriter.WriteAsync(Char value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteAsync(System.String)">
+            <summary>Sets the stub of TextWriter.WriteAsync(String value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteAsync(System.Char[],System.Int32,System.Int32)">
+            <summary>Sets the stub of TextWriter.WriteAsync(Char[] buffer, Int32 index, Int32 count)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteAsyncChar">
+            <summary>Sets the stub of TextWriter.WriteAsync(Char value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteAsyncCharArrayInt32Int32">
+            <summary>Sets the stub of TextWriter.WriteAsync(Char[] buffer, Int32 index, Int32 count)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteAsyncString">
+            <summary>Sets the stub of TextWriter.WriteAsync(String value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteBoolean">
+            <summary>Sets the stub of TextWriter.Write(Boolean value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteChar">
+            <summary>Sets the stub of TextWriter.Write(Char value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteCharArray">
+            <summary>Sets the stub of TextWriter.Write(Char[] buffer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteCharArrayInt32Int32">
+            <summary>Sets the stub of MySqlLogger.Write(Char[] buffer, Int32 index, Int32 count)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteDecimal">
+            <summary>Sets the stub of TextWriter.Write(Decimal value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteDouble">
+            <summary>Sets the stub of TextWriter.Write(Double value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteInt32">
+            <summary>Sets the stub of TextWriter.Write(Int32 value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteInt64">
+            <summary>Sets the stub of TextWriter.Write(Int64 value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine">
+            <summary>Sets the stub of TextWriter.WriteLine()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.Object)">
+            <summary>Sets the stub of TextWriter.WriteLine(Object value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.String)">
+            <summary>Sets the stub of TextWriter.WriteLine(String value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.Boolean)">
+            <summary>Sets the stub of TextWriter.WriteLine(Boolean value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.Char)">
+            <summary>Sets the stub of TextWriter.WriteLine(Char value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.Decimal)">
+            <summary>Sets the stub of TextWriter.WriteLine(Decimal value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.Double)">
+            <summary>Sets the stub of TextWriter.WriteLine(Double value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.Int32)">
+            <summary>Sets the stub of TextWriter.WriteLine(Int32 value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.Int64)">
+            <summary>Sets the stub of TextWriter.WriteLine(Int64 value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.Single)">
+            <summary>Sets the stub of TextWriter.WriteLine(Single value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.UInt32)">
+            <summary>Sets the stub of TextWriter.WriteLine(UInt32 value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.Char[])">
+            <summary>Sets the stub of TextWriter.WriteLine(Char[] buffer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.UInt64)">
+            <summary>Sets the stub of TextWriter.WriteLine(UInt64 value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.String,System.Object[])">
+            <summary>Sets the stub of TextWriter.WriteLine(String format, Object[] arg)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.String,System.Object)">
+            <summary>Sets the stub of TextWriter.WriteLine(String format, Object arg0)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.Char[],System.Int32,System.Int32)">
+            <summary>Sets the stub of TextWriter.WriteLine(Char[] buffer, Int32 index, Int32 count)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.String,System.Object,System.Object)">
+            <summary>Sets the stub of TextWriter.WriteLine(String format, Object arg0, Object arg1)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine(System.String,System.Object,System.Object,System.Object)">
+            <summary>Sets the stub of TextWriter.WriteLine(String format, Object arg0, Object arg1, Object arg2)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLine01">
+            <summary>Sets the stub of TextWriter.WriteLine()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineAsync">
+            <summary>Sets the stub of TextWriter.WriteLineAsync()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineAsync(System.Char)">
+            <summary>Sets the stub of TextWriter.WriteLineAsync(Char value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineAsync(System.String)">
+            <summary>Sets the stub of TextWriter.WriteLineAsync(String value)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineAsync(System.Char[],System.Int32,System.Int32)">
+            <summary>Sets the stub of TextWriter.WriteLineAsync(Char[] buffer, Int32 index, Int32 count)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineAsync01">
+            <summary>Sets the stub of TextWriter.WriteLineAsync()</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineAsyncChar">
+            <summary>Sets the stub of TextWriter.WriteLineAsync(Char value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineAsyncCharArrayInt32Int32">
+            <summary>Sets the stub of TextWriter.WriteLineAsync(Char[] buffer, Int32 index, Int32 count)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineAsyncString">
+            <summary>Sets the stub of TextWriter.WriteLineAsync(String value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineBoolean">
+            <summary>Sets the stub of TextWriter.WriteLine(Boolean value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineChar">
+            <summary>Sets the stub of TextWriter.WriteLine(Char value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineCharArray">
+            <summary>Sets the stub of TextWriter.WriteLine(Char[] buffer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineCharArrayInt32Int32">
+            <summary>Sets the stub of TextWriter.WriteLine(Char[] buffer, Int32 index, Int32 count)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineDecimal">
+            <summary>Sets the stub of TextWriter.WriteLine(Decimal value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineDouble">
+            <summary>Sets the stub of TextWriter.WriteLine(Double value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineInt32">
+            <summary>Sets the stub of TextWriter.WriteLine(Int32 value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineInt64">
+            <summary>Sets the stub of TextWriter.WriteLine(Int64 value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineObject">
+            <summary>Sets the stub of TextWriter.WriteLine(Object value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineSingle">
+            <summary>Sets the stub of TextWriter.WriteLine(Single value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineString">
+            <summary>Sets the stub of TextWriter.WriteLine(String value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineStringObject">
+            <summary>Sets the stub of TextWriter.WriteLine(String format, Object arg0)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineStringObjectArray">
+            <summary>Sets the stub of TextWriter.WriteLine(String format, Object[] arg)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineStringObjectObject">
+            <summary>Sets the stub of TextWriter.WriteLine(String format, Object arg0, Object arg1)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineStringObjectObjectObject">
+            <summary>Sets the stub of TextWriter.WriteLine(String format, Object arg0, Object arg1, Object arg2)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineUInt32">
+            <summary>Sets the stub of TextWriter.WriteLine(UInt32 value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteLineUInt64">
+            <summary>Sets the stub of TextWriter.WriteLine(UInt64 value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteObject">
+            <summary>Sets the stub of TextWriter.Write(Object value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteSingle">
+            <summary>Sets the stub of TextWriter.Write(Single value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteString">
+            <summary>Sets the stub of MySqlLogger.Write(String value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteStringObject">
+            <summary>Sets the stub of TextWriter.Write(String format, Object arg0)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteStringObjectArray">
+            <summary>Sets the stub of TextWriter.Write(String format, Object[] arg)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteStringObjectObject">
+            <summary>Sets the stub of TextWriter.Write(String format, Object arg0, Object arg1)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteStringObjectObjectObject">
+            <summary>Sets the stub of TextWriter.Write(String format, Object arg0, Object arg1, Object arg2)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteUInt32">
+            <summary>Sets the stub of TextWriter.Write(UInt32 value)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlLogger.WriteUInt64">
+            <summary>Sets the stub of TextWriter.Write(UInt64 value)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlLogger.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlLogger.Encoding">
+            <summary>Sets the stub of MySqlLogger.get_Encoding()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlLogger.FormatProvider">
+            <summary>Sets the stub of TextWriter.get_FormatProvider()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlLogger.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlLogger.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlLogger.NewLine">
+            <summary>Sets the stub of TextWriter.get_NewLine()</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubMySqlManifestTokenResolver">
+            <summary>Stub type of MySql.Data.Entity.MySqlManifestTokenResolver</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlManifestTokenResolver.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlManifestTokenResolver.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlManifestTokenResolver</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlManifestTokenResolver.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlManifestTokenResolver.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlManifestTokenResolver.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator">
+            <summary>Stub type of MySql.Data.Entity.MySqlMigrationCodeGenerator</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.AnnotationGeneratorsGet">
+            <summary>Sets the stub of MigrationCodeGenerator.get_AnnotationGenerators()</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.AlterColumnOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(AlterColumnOperation alterColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.DropColumnOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(DropColumnOperation dropColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.TimeSpan)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(TimeSpan defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.AlterProcedureOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(AlterProcedureOperation alterProcedureOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.DropForeignKeyOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(DropForeignKeyOperation dropForeignKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.DropIndexOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(DropIndexOperation dropIndexOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.String,System.Collections.Generic.IEnumerable{System.Data.Entity.Migrations.Model.MigrationOperation},System.String,System.String,System.String,System.String)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(String migrationId, IEnumerable`1&lt;MigrationOperation&gt; operations, String sourceModel, String targetModel, String namespace, String className)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.DateTimeOffset)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(DateTimeOffset defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Single)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(Single defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.DropTableOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(DropTableOperation dropTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.DropPrimaryKeyOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(DropPrimaryKeyOperation dropPrimaryKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Spatial.DbGeography)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(DbGeography defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Spatial.DbGeometry)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(DbGeometry defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Object)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(Object defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.AlterTableOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(AlterTableOperation alterTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.CreateProcedureOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(CreateProcedureOperation createProcedureOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.DropProcedureOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(DropProcedureOperation dropProcedureOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Byte[])">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(Byte[] defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.DateTime)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(DateTime defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.CreateIndexOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(CreateIndexOperation createIndexOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.AddColumnOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(AddColumnOperation addColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Decimal)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(Decimal defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Int64)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(Int64 defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Collections.Generic.IEnumerable{System.Data.Entity.Migrations.Model.MigrationOperation},System.String,System.String)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(IEnumerable`1&lt;MigrationOperation&gt; operations, String namespace, String className)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.String,System.String,System.String,System.String,System.String)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(String migrationId, String sourceModel, String targetModel, String namespace, String className)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.AddForeignKeyOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(AddForeignKeyOperation addForeignKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.CreateTableOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(CreateTableOperation createTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.String)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(String defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Guid)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(Guid defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.AddPrimaryKeyOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(AddPrimaryKeyOperation addPrimaryKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.MoveProcedureOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(MoveProcedureOperation moveProcedureOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.MoveTableOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(MoveTableOperation moveTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.RenameColumnOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(RenameColumnOperation renameColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.RenameIndexOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(RenameIndexOperation renameIndexOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.RenameProcedureOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(RenameProcedureOperation renameProcedureOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.RenameTableOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(RenameTableOperation renameTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.SqlOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(SqlOperation sqlOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Collections.Generic.IEnumerable{System.String},System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(IEnumerable`1&lt;String&gt; columns, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.ColumnModel,System.Data.Entity.Migrations.Utilities.IndentedTextWriter,System.Boolean)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(ColumnModel column, IndentedTextWriter writer, Boolean emitName)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Generate(System.Data.Entity.Migrations.Model.ParameterModel,System.Data.Entity.Migrations.Utilities.IndentedTextWriter,System.Boolean)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(ParameterModel parameterModel, IndentedTextWriter writer, Boolean emitName)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateAddColumnOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(AddColumnOperation addColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateAddForeignKeyOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(AddForeignKeyOperation addForeignKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateAddPrimaryKeyOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(AddPrimaryKeyOperation addPrimaryKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateAlterColumnOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(AlterColumnOperation alterColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateAlterProcedureOperationIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(AlterProcedureOperation alterProcedureOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateAlterTableOperationIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(AlterTableOperation alterTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateAnnotation(System.String,System.Object,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.GenerateAnnotation(String name, Object annotation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateAnnotationStringObjectIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.GenerateAnnotation(String name, Object annotation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateAnnotations(System.Collections.Generic.IDictionary{System.String,System.Data.Entity.Infrastructure.Annotations.AnnotationValues},System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.GenerateAnnotations(IDictionary`2&lt;String,AnnotationValues&gt; annotations, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateAnnotations(System.Collections.Generic.IDictionary{System.String,System.Object},System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.GenerateAnnotations(IDictionary`2&lt;String,Object&gt; annotations, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateAnnotationsIDictionaryOfStringAnnotationValuesIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.GenerateAnnotations(IDictionary`2&lt;String,AnnotationValues&gt; annotations, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateAnnotationsIDictionaryOfStringObjectIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.GenerateAnnotations(IDictionary`2&lt;String,Object&gt; annotations, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateByteArray">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(Byte[] defaultValue)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateColumnModelIndentedTextWriterBoolean">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(ColumnModel column, IndentedTextWriter writer, Boolean emitName)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateCreateIndexOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(CreateIndexOperation createIndexOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateCreateProcedureOperationIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(CreateProcedureOperation createProcedureOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateCreateTableOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(CreateTableOperation createTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateDateTime">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(DateTime defaultValue)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateDateTimeOffset">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(DateTimeOffset defaultValue)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateDbGeography">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(DbGeography defaultValue)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateDbGeometry">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(DbGeometry defaultValue)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateDecimal">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(Decimal defaultValue)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateDropColumnOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(DropColumnOperation dropColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateDropForeignKeyOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(DropForeignKeyOperation dropForeignKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateDropIndexOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(DropIndexOperation dropIndexOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateDropPrimaryKeyOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(DropPrimaryKeyOperation dropPrimaryKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateDropProcedureOperationIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(DropProcedureOperation dropProcedureOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateDropTableOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(DropTableOperation dropTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateGuid">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(Guid defaultValue)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateIEnumerableOfMigrationOperationStringString">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(IEnumerable`1&lt;MigrationOperation&gt; operations, String namespace, String className)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateIEnumerableOfStringIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(IEnumerable`1&lt;String&gt; columns, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateInline(System.Data.Entity.Migrations.Model.AddForeignKeyOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.GenerateInline(AddForeignKeyOperation addForeignKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateInline(System.Data.Entity.Migrations.Model.AddPrimaryKeyOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.GenerateInline(AddPrimaryKeyOperation addPrimaryKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateInline(System.Data.Entity.Migrations.Model.CreateIndexOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.GenerateInline(CreateIndexOperation createIndexOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateInlineAddForeignKeyOperationIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.GenerateInline(AddForeignKeyOperation addForeignKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateInlineAddPrimaryKeyOperationIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.GenerateInline(AddPrimaryKeyOperation addPrimaryKeyOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateInlineCreateIndexOperationIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.GenerateInline(CreateIndexOperation createIndexOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateInt64">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(Int64 defaultValue)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateMoveProcedureOperationIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(MoveProcedureOperation moveProcedureOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateMoveTableOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(MoveTableOperation moveTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateObject">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(Object defaultValue)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateParameterModelIndentedTextWriterBoolean">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(ParameterModel parameterModel, IndentedTextWriter writer, Boolean emitName)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateRenameColumnOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(RenameColumnOperation renameColumnOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateRenameIndexOperationIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(RenameIndexOperation renameIndexOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateRenameProcedureOperationIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(RenameProcedureOperation renameProcedureOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateRenameTableOperationIndentedTextWriter">
+            <summary>Sets the stub of MySqlMigrationCodeGenerator.Generate(RenameTableOperation renameTableOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateSingle">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(Single defaultValue)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateSqlOperationIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(SqlOperation sqlOperation, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateString">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(String defaultValue)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateStringIEnumerableOfMigrationOperationStringStringStringString">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(String migrationId, IEnumerable`1&lt;MigrationOperation&gt; operations, String sourceModel, String targetModel, String namespace, String className)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateStringStringStringStringString">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(String migrationId, String sourceModel, String targetModel, String namespace, String className)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GenerateTimeSpan">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Generate(TimeSpan defaultValue)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GetDefaultNamespaces(System.Boolean)">
+            <summary>Sets the stub of MigrationCodeGenerator.GetDefaultNamespaces(Boolean designer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GetDefaultNamespacesBoolean">
+            <summary>Sets the stub of MigrationCodeGenerator.GetDefaultNamespaces(Boolean designer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GetNamespaces(System.Collections.Generic.IEnumerable{System.Data.Entity.Migrations.Model.MigrationOperation})">
+            <summary>Sets the stub of MigrationCodeGenerator.GetNamespaces(IEnumerable`1&lt;MigrationOperation&gt; operations)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.GetNamespacesIEnumerableOfMigrationOperation">
+            <summary>Sets the stub of MigrationCodeGenerator.GetNamespaces(IEnumerable`1&lt;MigrationOperation&gt; operations)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlMigrationCodeGenerator</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.Quote(System.String)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Quote(String identifier)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.QuoteString">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.Quote(String identifier)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.ScrubName(System.String)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.ScrubName(String name)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.ScrubNameString">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.ScrubName(String name)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.TranslateColumnType(System.Data.Entity.Core.Metadata.Edm.PrimitiveTypeKind)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.TranslateColumnType(PrimitiveTypeKind primitiveTypeKind)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.TranslateColumnTypePrimitiveTypeKind">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.TranslateColumnType(PrimitiveTypeKind primitiveTypeKind)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.WriteClassEnd(System.String,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.WriteClassEnd(String namespace, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.WriteClassEndStringIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.WriteClassEnd(String namespace, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.WriteClassStart(System.String,System.String,System.Data.Entity.Migrations.Utilities.IndentedTextWriter,System.String,System.Boolean,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.WriteClassStart(String namespace, String className, IndentedTextWriter writer, String base, Boolean designer, IEnumerable`1&lt;String&gt; namespaces)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.WriteClassStartStringStringIndentedTextWriterStringBooleanIEnumerableOfString">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.WriteClassStart(String namespace, String className, IndentedTextWriter writer, String base, Boolean designer, IEnumerable`1&lt;String&gt; namespaces)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.WriteProperty(System.String,System.String,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.WriteProperty(String name, String value, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.WritePropertyStringStringIndentedTextWriter">
+            <summary>Sets the stub of CSharpMigrationCodeGenerator.WriteProperty(String name, String value, IndentedTextWriter writer)</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.AnnotationGenerators">
+            <summary>Sets the stub of MigrationCodeGenerator.get_AnnotationGenerators()</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlMigrationCodeGenerator.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator">
+            <summary>Stub type of MySql.Data.Entity.MySqlMigrationSqlGenerator</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.BuildStoreTypeUsage(System.String,System.Data.Entity.Migrations.Model.PropertyModel)">
+            <summary>Sets the stub of MigrationSqlGenerator.BuildStoreTypeUsage(String storeTypeName, PropertyModel propertyModel)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.BuildStoreTypeUsageStringPropertyModel">
+            <summary>Sets the stub of MigrationSqlGenerator.BuildStoreTypeUsage(String storeTypeName, PropertyModel propertyModel)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.AddColumnOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(AddColumnOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.AddForeignKeyOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(AddForeignKeyOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.AddPrimaryKeyOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(AddPrimaryKeyOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.AlterColumnOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(AlterColumnOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.CreateIndexOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(CreateIndexOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.CreateProcedureOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(CreateProcedureOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.CreateTableOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(CreateTableOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.DropColumnOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(DropColumnOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.DropForeignKeyOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(DropForeignKeyOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.DropIndexOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(DropIndexOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.DropPrimaryKeyOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(DropPrimaryKeyOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.DropTableOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(DropTableOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.HistoryOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(HistoryOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.MoveTableOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(MoveTableOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.RenameColumnOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(RenameColumnOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.RenameTableOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(RenameTableOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.SqlOperation)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(SqlOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.ColumnModel)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(ColumnModel op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.Generate(System.Collections.Generic.IEnumerable{System.Data.Entity.Migrations.Model.MigrationOperation},System.String)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(IEnumerable`1&lt;MigrationOperation&gt; migrationOperations, String providerManifestToken)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateAddColumnOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(AddColumnOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateAddForeignKeyOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(AddForeignKeyOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateAddPrimaryKeyOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(AddPrimaryKeyOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateAlterColumnOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(AlterColumnOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateColumnModel">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(ColumnModel op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateCreateIndexOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(CreateIndexOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateCreateProcedureOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(CreateProcedureOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateCreateTableOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(CreateTableOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateDropColumnOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(DropColumnOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateDropForeignKeyOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(DropForeignKeyOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateDropIndexOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(DropIndexOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateDropPrimaryKeyOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(DropPrimaryKeyOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateDropTableOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(DropTableOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateHistoryOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(HistoryOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateIEnumerableOfMigrationOperationString">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(IEnumerable`1&lt;MigrationOperation&gt; migrationOperations, String providerManifestToken)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateMoveTableOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(MoveTableOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateProcedureBody(System.Collections.Generic.ICollection{System.Data.Entity.Core.Common.CommandTrees.DbModificationCommandTree},System.String,System.String)">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.GenerateProcedureBody(ICollection`1&lt;DbModificationCommandTree&gt; commandTrees, String rowsAffectedParameter, String providerManifestToken)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateProcedureBodyICollectionOfDbModificationCommandTreeStringString">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.GenerateProcedureBody(ICollection`1&lt;DbModificationCommandTree&gt; commandTrees, String rowsAffectedParameter, String providerManifestToken)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateRenameColumnOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(RenameColumnOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateRenameTableOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(RenameTableOperation op)</summary>
+        </member>
+        <member name="F:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.GenerateSqlOperation">
+            <summary>Sets the stub of MySqlMigrationSqlGenerator.Generate(SqlOperation op)</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlMigrationSqlGenerator</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlMigrationSqlGenerator.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubMySqlModelCacheKey">
+            <summary>Stub type of MySql.Data.Entity.MySqlModelCacheKey</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlModelCacheKey.#ctor(System.Type,System.String,System.Type,System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlModelCacheKey.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlModelCacheKey</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlModelCacheKey.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlModelCacheKey.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlModelCacheKey.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubMySqlProviderFactoryResolver">
+            <summary>Stub type of MySql.Data.Entity.MySqlProviderFactoryResolver</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlProviderFactoryResolver.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlProviderFactoryResolver.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlProviderFactoryResolver</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlProviderFactoryResolver.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlProviderFactoryResolver.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlProviderFactoryResolver.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.Entity.Fakes.StubMySqlProviderInvariantName">
+            <summary>Stub type of MySql.Data.Entity.MySqlProviderInvariantName</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlProviderInvariantName.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.Entity.Fakes.StubMySqlProviderInvariantName.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlProviderInvariantName</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlProviderInvariantName.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlProviderInvariantName.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.Entity.Fakes.StubMySqlProviderInvariantName.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices">
+            <summary>Shim type of MySql.Data.MySqlClient.MySqlProviderServices</summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.#ctor(MySql.Data.MySqlClient.MySqlProviderServices)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.Bind(System.Data.Entity.Infrastructure.DependencyResolution.IDbDependencyResolver)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.Constructor">
+            <summary>Sets the shim of MySqlProviderServices.MySqlProviderServices()</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.CreateDbCommandDefinitionDbProviderManifestDbCommandTree">
+            <summary>Sets the shim of MySqlProviderServices.CreateDbCommandDefinition(DbProviderManifest providerManifest, DbCommandTree commandTree)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.DbCreateDatabaseDbConnectionNullableOfInt32StoreItemCollection">
+            <summary>Sets the shim of MySqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1&lt;Int32&gt; commandTimeout, StoreItemCollection storeItemCollection)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.DbCreateDatabaseScriptStringStoreItemCollection">
+            <summary>Sets the shim of MySqlProviderServices.DbCreateDatabaseScript(String providerManifestToken, StoreItemCollection storeItemCollection)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.DbDatabaseExistsDbConnectionNullableOfInt32StoreItemCollection">
+            <summary>Sets the shim of MySqlProviderServices.DbDatabaseExists(DbConnection connection, Nullable`1&lt;Int32&gt; commandTimeout, StoreItemCollection storeItemCollection)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.DbDeleteDatabaseDbConnectionNullableOfInt32StoreItemCollection">
+            <summary>Sets the shim of MySqlProviderServices.DbDeleteDatabase(DbConnection connection, Nullable`1&lt;Int32&gt; commandTimeout, StoreItemCollection storeItemCollection)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.GetAssociationCreateScriptAssociationType">
+            <summary>Sets the shim of MySqlProviderServices.GetAssociationCreateScript(AssociationType a)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.GetColumnTypeTypeUsage">
+            <summary>Sets the shim of MySqlProviderServices.GetColumnType(TypeUsage type)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.GetDbProviderManifestString">
+            <summary>Sets the shim of MySqlProviderServices.GetDbProviderManifest(String manifestToken)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.GetDbProviderManifestTokenDbConnection">
+            <summary>Sets the shim of MySqlProviderServices.GetDbProviderManifestToken(DbConnection connection)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.GetDbSpatialDataReaderDbDataReaderString">
+            <summary>Sets the shim of MySqlProviderServices.GetDbSpatialDataReader(DbDataReader fromReader, String manifestToken)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.GetFacetStringEdmPropertyBoolean">
+            <summary>Sets the shim of MySqlProviderServices.GetFacetString(EdmProperty column, Boolean IsKeyMember)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.GetTableCreateScriptEntitySet">
+            <summary>Sets the shim of MySqlProviderServices.GetTableCreateScript(EntitySet entitySet)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.IsStringTypeTypeUsage">
+            <summary>Sets the shim of MySqlProviderServices.IsStringType(TypeUsage type)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.StaticConstructor">
+            <summary>Sets the shim of MySqlProviderServices.MySqlProviderServices()</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.serverVersionGet">
+            <summary>Sets the shim of MySqlProviderServices.get_serverVersion()</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.serverVersionSetVersion">
+            <summary>Sets the shim of MySqlProviderServices.set_serverVersion(Version value)</summary>
+        </member>
+        <member name="T:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.CreateDbCommandDefinitionDbProviderManifestDbCommandTree">
+            <summary>Sets the shim of MySqlProviderServices.CreateDbCommandDefinition(DbProviderManifest providerManifest, DbCommandTree commandTree)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.DbCreateDatabaseDbConnectionNullableOfInt32StoreItemCollection">
+            <summary>Sets the shim of MySqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1&lt;Int32&gt; commandTimeout, StoreItemCollection storeItemCollection)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.DbCreateDatabaseScriptStringStoreItemCollection">
+            <summary>Sets the shim of MySqlProviderServices.DbCreateDatabaseScript(String providerManifestToken, StoreItemCollection storeItemCollection)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.DbDatabaseExistsDbConnectionNullableOfInt32StoreItemCollection">
+            <summary>Sets the shim of MySqlProviderServices.DbDatabaseExists(DbConnection connection, Nullable`1&lt;Int32&gt; commandTimeout, StoreItemCollection storeItemCollection)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.DbDeleteDatabaseDbConnectionNullableOfInt32StoreItemCollection">
+            <summary>Sets the shim of MySqlProviderServices.DbDeleteDatabase(DbConnection connection, Nullable`1&lt;Int32&gt; commandTimeout, StoreItemCollection storeItemCollection)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.GetAssociationCreateScriptAssociationType">
+            <summary>Sets the shim of MySqlProviderServices.GetAssociationCreateScript(AssociationType a)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.GetColumnTypeTypeUsage">
+            <summary>Sets the shim of MySqlProviderServices.GetColumnType(TypeUsage type)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.GetDbProviderManifestString">
+            <summary>Sets the shim of MySqlProviderServices.GetDbProviderManifest(String manifestToken)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.GetDbProviderManifestTokenDbConnection">
+            <summary>Sets the shim of MySqlProviderServices.GetDbProviderManifestToken(DbConnection connection)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.GetDbSpatialDataReaderDbDataReaderString">
+            <summary>Sets the shim of MySqlProviderServices.GetDbSpatialDataReader(DbDataReader fromReader, String manifestToken)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.GetFacetStringEdmPropertyBoolean">
+            <summary>Sets the shim of MySqlProviderServices.GetFacetString(EdmProperty column, Boolean IsKeyMember)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.GetTableCreateScriptEntitySet">
+            <summary>Sets the shim of MySqlProviderServices.GetTableCreateScript(EntitySet entitySet)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.IsStringTypeTypeUsage">
+            <summary>Sets the shim of MySqlProviderServices.IsStringType(TypeUsage type)</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.serverVersionGet">
+            <summary>Sets the shim of MySqlProviderServices.get_serverVersion()</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlProviderServices.AllInstances.serverVersionSetVersion">
+            <summary>Sets the shim of MySqlProviderServices.set_serverVersion(Version value)</summary>
+        </member>
+        <member name="T:MySql.Data.MySqlClient.Fakes.ShimMySqlScriptServices">
+            <summary>Shim type of MySql.Data.MySqlClient.MySqlScriptServices</summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.Fakes.ShimMySqlScriptServices.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.Fakes.ShimMySqlScriptServices.#ctor(MySql.Data.MySqlClient.MySqlScriptServices)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.Fakes.ShimMySqlScriptServices.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.Fakes.ShimMySqlScriptServices.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlScriptServices.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlScriptServices.Constructor">
+            <summary>Sets the shim of MySqlScriptServices.MySqlScriptServices()</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlScriptServices.GetTableCreateScriptEntitySetStringString">
+            <summary>Sets the shim of MySqlScriptServices.GetTableCreateScript(EntitySet entitySet, String connectionString, String version)</summary>
+        </member>
+        <member name="T:MySql.Data.MySqlClient.Fakes.ShimMySqlScriptServices.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.ShimMySqlScriptServices.AllInstances.GetTableCreateScriptEntitySetStringString">
+            <summary>Sets the shim of MySqlScriptServices.GetTableCreateScript(EntitySet entitySet, String connectionString, String version)</summary>
+        </member>
+        <member name="T:MySql.Data.MySqlClient.Fakes.StubMySqlScriptServices">
+            <summary>Stub type of MySql.Data.MySqlClient.MySqlScriptServices</summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.Fakes.StubMySqlScriptServices.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.Fakes.StubMySqlScriptServices.InitializeStub">
+            <summary>Initializes a new instance of type StubMySqlScriptServices</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.StubMySqlScriptServices.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.StubMySqlScriptServices.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.Fakes.StubMySqlScriptServices.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+    </members>
+</doc>

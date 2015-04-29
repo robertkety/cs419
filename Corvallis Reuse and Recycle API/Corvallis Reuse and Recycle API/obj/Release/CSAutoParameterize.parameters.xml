@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\v11.0;AttachDbFilename=&quot;|DataDirectory|\aspnet-Corvallis Reuse and Recycle API-20150428105749.mdf&quot;;Initial Catalog=&quot;aspnet-Corvallis Reuse and Recycle API-20150428105749&quot;;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Robert\\Desktop\\GitHub\\cs419\\Corvallis\ Reuse\ and\ Recycle\ API\\Corvallis\ Reuse\ and\ Recycle\ API\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="MySQLDBConnection-Web.config Connection String" description="MySQLDBConnection Connection String used in web.config by the application to access the database." defaultValue="Server=mysql.eecs.oregonstate.edu;Port=3306;Database=cs419-g2;Uid=cs419-g2;Pwd=GtjpTvRTeqUE429E;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Robert\\Desktop\\GitHub\\cs419\\Corvallis\ Reuse\ and\ Recycle\ API\\Corvallis\ Reuse\ and\ Recycle\ API\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MySQLDBConnection']/@connectionString" />
+  </parameter>
+  <parameter name="LocalMySqlServer-Web.config Connection String" description="LocalMySqlServer Connection String used in web.config by the application to access the database." defaultValue="" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Robert\\Desktop\\GitHub\\cs419\\Corvallis\ Reuse\ and\ Recycle\ API\\Corvallis\ Reuse\ and\ Recycle\ API\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='LocalMySqlServer']/@connectionString" />
+  </parameter>
+</parameters>

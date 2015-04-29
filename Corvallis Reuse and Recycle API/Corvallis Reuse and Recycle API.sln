@@ -7,6 +7,26 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvallis Reuse Recycle API
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvallis Reuse and Recycle Mobile App", "Corvallis Reuse and Recycle Mobile App\Corvallis Reuse and Recycle Mobile App.csproj", "{AF0A1F1F-248F-402D-A52C-E256EDFAD4AB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D9E69D5A-DC5F-463D-AFC7-7B6AF04E7E4B}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvallis Reuse and Recycle API", "Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API.csproj", "{9BAB986D-05D3-4603-865E-E3773037FD1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{277159C7-A5C9-4FCE-B97F-06693188764C}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{6843CB89-6788-4C44-878F-9BE25BDECAB0}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\CorvallisReuseandRecycleAPI-WAWS-dev.json = PublishScripts\Configurations\CorvallisReuseandRecycleAPI-WAWS-dev.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,8 +73,21 @@ Global
 		{AF0A1F1F-248F-402D-A52C-E256EDFAD4AB}.Release|x86.ActiveCfg = Release|x86
 		{AF0A1F1F-248F-402D-A52C-E256EDFAD4AB}.Release|x86.Build.0 = Release|x86
 		{AF0A1F1F-248F-402D-A52C-E256EDFAD4AB}.Release|x86.Deploy.0 = Release|x86
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Release|x64.ActiveCfg = Release|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6843CB89-6788-4C44-878F-9BE25BDECAB0} = {277159C7-A5C9-4FCE-B97F-06693188764C}
 	EndGlobalSection
 EndGlobal
