@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvallis Reuse Recycle API", "Corvallis Reuse Recycle API\Corvallis Reuse Recycle API.csproj", "{FBB81DF9-5B5E-4390-B4BC-96E8022E9545}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvallis Reuse and Recycle Mobile App", "Corvallis Reuse and Recycle Mobile App\Corvallis Reuse and Recycle Mobile App.csproj", "{AF0A1F1F-248F-402D-A52C-E256EDFAD4AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D9E69D5A-DC5F-463D-AFC7-7B6AF04E7E4B}"
@@ -39,16 +37,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FBB81DF9-5B5E-4390-B4BC-96E8022E9545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBB81DF9-5B5E-4390-B4BC-96E8022E9545}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBB81DF9-5B5E-4390-B4BC-96E8022E9545}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{FBB81DF9-5B5E-4390-B4BC-96E8022E9545}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{FBB81DF9-5B5E-4390-B4BC-96E8022E9545}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{FBB81DF9-5B5E-4390-B4BC-96E8022E9545}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBB81DF9-5B5E-4390-B4BC-96E8022E9545}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FBB81DF9-5B5E-4390-B4BC-96E8022E9545}.Release|ARM.ActiveCfg = Release|Any CPU
-		{FBB81DF9-5B5E-4390-B4BC-96E8022E9545}.Release|x64.ActiveCfg = Release|Any CPU
-		{FBB81DF9-5B5E-4390-B4BC-96E8022E9545}.Release|x86.ActiveCfg = Release|Any CPU
 		{AF0A1F1F-248F-402D-A52C-E256EDFAD4AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AF0A1F1F-248F-402D-A52C-E256EDFAD4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF0A1F1F-248F-402D-A52C-E256EDFAD4AB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU

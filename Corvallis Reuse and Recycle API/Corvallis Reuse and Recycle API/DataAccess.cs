@@ -28,7 +28,7 @@ namespace Corvallis_Reuse_and_Recycle_API
             List<string> output = new List<string>();
             try
             {
-                using (var client = new SshClient("flip1.engr.oregonstate.edu", "ketyr", "!Cop5665"))
+                using (var client = new SshClient("flip1.engr.oregonstate.edu", "ketyr", "[password]"))
                 {
 
                     var port = new ForwardedPortLocal(3306, IPAddress.Loopback.ToString(), 3306);
@@ -57,7 +57,7 @@ namespace Corvallis_Reuse_and_Recycle_API
                 output.Add(ex.ToString());
             }/*
             
-            PasswordConnectionInfo connectionInfo = new PasswordConnectionInfo("flip1.engr.oregonstate.edu", "ketyr", "!Cop5665");
+            PasswordConnectionInfo connectionInfo = new PasswordConnectionInfo("flip1.engr.oregonstate.edu", "ketyr", "[password]");
             connectionInfo.Timeout = TimeSpan.FromSeconds(30);
 
             using (var client = new SshClient(connectionInfo))
