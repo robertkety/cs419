@@ -26,182 +26,58 @@ namespace Corvallis_Reuse_and_Recycle_API
 {
     internal class DataAccess
     {
-        internal static IEnumerable<Categories> GetCategories()
+        internal static IEnumerable<T> GetTable<T>(string tableName) where T : TableEntity, new()
         {
-            List<Categories> results = new List<Categories>();
-
+            List<T> results = new List<T>();
+             
             CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
             CloudTableClient tableClient = connectionString.CreateCloudTableClient();
-            CloudTable table = tableClient.GetTableReference("Categories");
+            CloudTable table = tableClient.GetTableReference(tableName);
 
-            TableQuery<Categories> query = new TableQuery<Categories>();
-
-            foreach (Categories entity in table.ExecuteQuery(query))
+            TableQuery<T> query = new TableQuery<T>();
+            foreach (T entity in table.ExecuteQuery(query))
             {
-                results.Add(new Categories(
-                        entity.PartitionKey.ToString(),
-                        entity.RowKey.ToString()
-                        ));
+                results.Add(entity);
             }
 
             return results.ToArray();
         }
 
-        internal static IEnumerable<Items> GetItems()
+        internal static IEnumerable<TElement> GetFKReference<TKey, TElement>(string lookupTableName, string derivativeTableName, string id) where TKey : TableEntity, new() where TElement : TableEntity, new()
         {
-            List<Items> results = new List<Items>();
-
-            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
-            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
-            CloudTable table = tableClient.GetTableReference("Items");
-
-            TableQuery<Items> query = new TableQuery<Items>();
-
-            foreach (Items entity in table.ExecuteQuery(query))
-            {
-                results.Add(new Items(
-                        entity.PartitionKey.ToString(),
-                        entity.RowKey.ToString()
-                        ));
-            }
-
-            return results.ToArray();
-        }
-
-        internal static IEnumerable<Organizations> GetOrganizations()
-        {
-            List<Organizations> results = new List<Organizations>();
-
-            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
-            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
-            CloudTable table = tableClient.GetTableReference("Organizations");
-
-            TableQuery<Organizations> query = new TableQuery<Organizations>();
-
-            foreach (Organizations entity in table.ExecuteQuery(query))
-            {
-                results.Add(new Organizations(
-                        entity.PartitionKey.ToString(),
-                        entity.RowKey.ToString(),
-                        entity.Phone.ToString(),
-                        entity.AddressLine1.ToString(),
-                        entity.AddressLine2.ToString(),
-                        entity.AddressLine3.ToString(),
-                        entity.ZipCode.ToString(),
-                        entity.Website.ToString(),
-                        entity.Hours.ToString(),
-                        entity.Notes.ToString()
-                        ));
-            }
-
-            return results.ToArray();
-        }
-
-        internal static IEnumerable<Items> GetCategoryItems(string categoryId)
-        {
-            List<Items> result = new List<Items>();
+            List<TElement> result = new List<TElement>();
             List<string> joinResult = new List<string>();
 
             CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
             CloudTableClient tableClient = connectionString.CreateCloudTableClient();
-            
-            // Fetch Item GUIDs for that Category
-            CloudTable joinTable = tableClient.GetTableReference("CategoryItem");
-            TableQuery<CategoryItem> joinQuery = new TableQuery<CategoryItem>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, categoryId));
-            foreach (CategoryItem entity in joinTable.ExecuteQuery(joinQuery))
+
+            // Fetch derivative GUIDs for that lookups primary key
+            CloudTable joinTable = tableClient.GetTableReference(lookupTableName);
+            TableQuery<TKey> joinQuery = new TableQuery<TKey>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, id));
+            foreach (TKey entity in joinTable.ExecuteQuery(joinQuery))
                 joinResult.Add(entity.RowKey.ToString());
 
-            // Fetch Item details from list of Item GUIDs
-            CloudTable table = tableClient.GetTableReference("Items");
+            // Fetch derivative details from list of derivative GUIDs
+            CloudTable table = tableClient.GetTableReference(derivativeTableName);
             foreach (string item in joinResult)
             {
-                TableQuery<Items> query = new TableQuery<Items>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, item));
-                Items firstItem = table.ExecuteQuery(query).First();
-                result.Add(new Items(
-                    firstItem.PartitionKey.ToString(),
-                    firstItem.RowKey.ToString()
-                ));                
+                TableQuery<TElement> query = new TableQuery<TElement>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, item));
+                TElement firstItem = table.ExecuteQuery(query).First();
+                result.Add(firstItem);
             }
 
-            // This will be a List of Items from the category id parameter
+            // This will be a List of derivative elements corresponding to the id parameter via the lookup table
             return result.ToArray();
         }
-
-        internal static IEnumerable<Organizations> GetItemOrganizations(string itemId)
-        {
-            List<Organizations> result = new List<Organizations>();
-            List<KeyValuePair<string, int>> joinResult = new List<KeyValuePair<string, int>>();
-
-            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
-            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
-
-            // Fetch Organization GUIDs for that Item
-            CloudTable joinTable = tableClient.GetTableReference("ItemOrganization");
-            TableQuery<ItemOrganization> joinQuery = new TableQuery<ItemOrganization>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, itemId));
-            foreach (ItemOrganization entity in joinTable.ExecuteQuery(joinQuery))
-                joinResult.Add(new KeyValuePair<string, int>(entity.RowKey.ToString(), entity.Offering));
-
-            // Fetch Organization details from list of Organization GUIDs and apply Offering for that Item to Organization Entity
-            CloudTable table = tableClient.GetTableReference("Organizations");
-            foreach (KeyValuePair<string, int> organization in joinResult)
-            {
-                TableQuery<Organizations> query = new TableQuery<Organizations>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, organization.Key));
-                Organizations firstItem = table.ExecuteQuery(query).First();
-                result.Add(new Organizations(
-                        firstItem.PartitionKey.ToString(),
-                        firstItem.RowKey.ToString(),
-                        firstItem.Phone.ToString(),
-                        firstItem.AddressLine1.ToString(),
-                        firstItem.AddressLine2.ToString(),
-                        firstItem.AddressLine3.ToString(),
-                        firstItem.ZipCode.ToString(),
-                        firstItem.Website.ToString(),
-                        firstItem.Hours.ToString(),
-                        firstItem.Notes.ToString()
-                ));
-                result.Last<Organizations>().Offering = organization.Value;
-            }
-
-            // This will be a List of Organizations from the item id parameter
-            return result.ToArray();
-        }
-
-        internal static bool AddItem(Items items)
+        
+        internal static bool AddToTable(ITableEntity tableEntity, string storageTableName)
         {
             CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
             CloudTableClient tableClient = connectionString.CreateCloudTableClient();
-            CloudTable table = tableClient.GetTableReference("Items");
+            CloudTable table = tableClient.GetTableReference(storageTableName);
 
-            if ((items != null) && (items.PartitionKey.ToString() != "") && (items.RowKey.ToString() != ""))
-                table.Execute(TableOperation.Insert(items));
-            else
-                return false;
-
-            return true;
-        }
-
-        internal static bool AddCategory(Categories categories)
-        {
-            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
-            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
-            CloudTable table = tableClient.GetTableReference("Categories");
-
-            if ((categories != null) && (categories.PartitionKey.ToString() != "") && (categories.RowKey.ToString() != ""))
-                table.Execute(TableOperation.Insert(categories));
-            else
-                return false;
-
-            return true;
-        }
-
-        internal static bool AddCategoryItem(CategoryItem categoryItem)
-        {
-            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
-            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
-            CloudTable table = tableClient.GetTableReference("CategoryItem");
-
-            if ((categoryItem != null) && (categoryItem.PartitionKey.ToString() != "") && (categoryItem.RowKey.ToString() != ""))
-                table.Execute(TableOperation.Insert(categoryItem));
+            if ((tableEntity != null) && (tableEntity.PartitionKey.ToString() != "") && (tableEntity.RowKey.ToString() != ""))
+                table.Execute(TableOperation.Insert(tableEntity));
             else
                 return false;
 

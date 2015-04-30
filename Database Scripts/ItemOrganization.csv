@@ -1,4 +1,4 @@
-Offering:int,PartitionKey,RowKey
+Offering:int,RowKey,PartitionKey
 1,0d419530-edf9-11e4-afb2-0050569f8012,0d4ed2ea-edf9-11e4-afb2-0050569f8012
 1,0d419530-edf9-11e4-afb2-0050569f8012,0d4ed39e-edf9-11e4-afb2-0050569f8012
 1,0d419530-edf9-11e4-afb2-0050569f8012,0d4ed45c-edf9-11e4-afb2-0050569f8012

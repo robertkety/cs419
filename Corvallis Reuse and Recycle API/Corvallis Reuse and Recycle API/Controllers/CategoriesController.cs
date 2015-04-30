@@ -10,13 +10,13 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         // GET: api/Categories
         public IEnumerable<Categories> Get()
         {
-            return DataAccess.GetCategories();
+            return DataAccess.GetTable<Categories>("Categories");
         }
 
         // GET: api/Categories/5
         public IEnumerable<Items> Get([FromUri]string id)
         {
-            return DataAccess.GetCategoryItems(id);
+            return DataAccess.GetFKReference<CategoryItem, Items>("CategoryItem", "Items", id);
         }
         
         // POST: api/Categories
@@ -24,10 +24,10 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         public void Post([FromUri]string name, [FromUri]string[] items = null)
         {
             string NewCategoryGuid = new Guid().ToString();
-            DataAccess.AddCategory(new Categories(new Guid().ToString(), name));
+            DataAccess.AddToTable(new Categories(new Guid().ToString(), name), "Category");
             if (items != null)
                 foreach (string item in items)
-                    DataAccess.AddCategoryItem(new CategoryItem(NewCategoryGuid, item));
+                    DataAccess.AddToTable(new CategoryItem(NewCategoryGuid, item), "CategoryItem");            
         }
         /*
         // PUT: api/Categories/5

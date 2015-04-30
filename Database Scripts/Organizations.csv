@@ -1,85 +1,85 @@
 PartitionKey,RowKey,Phone,AddressLine1,AddressLine2,AddressLine3,ZipCode,Website,Hours,Notes
-0d419530-edf9-11e4-afb2-0050569f8012,Albany-Corvallis ReUseIt,NULL,NULL,NULL,NULL,NULL,groups.yahoo.com,NULL,Free items
-0d41c870-edf9-11e4-afb2-0050569f8012,Arc Thrift Store,5417549011,928 NW Beca Ave,NULL,NULL,97330,www.arcbenton.org,NULL,NULL
-0d41ec4c-edf9-11e4-afb2-0050569f8012,Arc Thrift Store,5419293946,936 Main St.,NULL,NULL,97370,www.arcbenton.org,NULL,NULL
-0d420f7e-edf9-11e4-afb2-0050569f8012,Beekman Place Antique Mall,5417538250,601 SW Western Blvd,NULL,NULL,97333,NULL,NULL,NULL
-0d4233aa-edf9-11e4-afb2-0050569f8012,Benton County Extension - 4-H  Activities,5417666750,1849 NW 9th St,NULL,NULL,97330,NULL,NULL,NULL
-0d425952-edf9-11e4-afb2-0050569f8012,Benton County Master Gardeners,5417666750,1849 NW 9th St,NULL,NULL,97330,NULL,NULL,NULL
-0d428832-edf9-11e4-afb2-0050569f8012,Book Bin,5417520040,215 SW 4th St,NULL,NULL,97333,www.bookbin.com,NULL,NULL
-0d42aa92-edf9-11e4-afb2-0050569f8012,Browsers' Bookstore,5417581121,121 NW 4th St.,NULL,NULL,97330,www.browsersbookstore.com,NULL,NULL
-0d42c6a8-edf9-11e4-afb2-0050569f8012,Boys & Girls Club of Corvallis,5417571909,1112 NW Circle Blvd,NULL,NULL,97330,NULL,NULL,NULL
-0d42f678-edf9-11e4-afb2-0050569f8012,CARDV (Center Against Rape-Domestic Violence),5417580219,NULL,NULL,NULL,NULL,NULL,NULL,NULL
-0d4318a6-edf9-11e4-afb2-0050569f8012,Career Closet for Women,5417524214,942 NW 9th,Ste. A,NULL,97330,NULL,NULL,Address is for drop off location
-0d433e62-edf9-11e4-afb2-0050569f8012,CASA - Voices for Children,5417535838,129 NW 4th St,NULL,NULL,97330,NULL,NULL,NULL
-0d4360c2-edf9-11e4-afb2-0050569f8012,Children's Farm Home,5417571852,4455 NE Hwy 20,NULL,NULL,97330,NULL,NULL,NULL
-0d4381d8-edf9-11e4-afb2-0050569f8012,Chintimini Wildlife Rehabilitation Ctr,5417455324,311 Lewisburg Rd,NULL,NULL,97330,NULL,NULL,NULL
-0d43a03c-edf9-11e4-afb2-0050569f8012,Community Outreach Homeless Shelter,5417583000,865 NW Reiman Ave,NULL,NULL,97330,NULL,NULL,NULL
-0d43c742-edf9-11e4-afb2-0050569f8012,Corvallis Environmental Center,5417539211,214 SW Monroe Ave,NULL,NULL,97333,NULL,NULL,NULL
-0d43f122-edf9-11e4-afb2-0050569f8012,Corvallis Bicycle Collective,5412246885,33900 SE Roche Ln,Unit B,NULL,97333,www.corvallisbikes.org/,NULL,NULL
-0d44156c-edf9-11e4-afb2-0050569f8012,Corvallis Furniture,5412864658,1810 SW 3rd St,NULL,NULL,97333,www.corvallisfurniture.com/,NULL,NULL
-0d442e8a-edf9-11e4-afb2-0050569f8012,Cosmic Chameleon,5417529001,138 SW 2nd St,NULL,NULL,97333,NULL,NULL,NULL
-0d444780-edf9-11e4-afb2-0050569f8012,Craigslist,NULL,NULL,NULL,NULL,NULL,corvallis.craigslist.org,NULL,NULL
-0d44656c-edf9-11e4-afb2-0050569f8012,Freecycle,NULL,NULL,NULL,NULL,NULL,freecycle.org,NULL,NULL
-0d448736-edf9-11e4-afb2-0050569f8012,First Alternative Co-op Recycling Center,5417533115,1007 SE 3rd St,NULL,NULL,97333,NULL,NULL,NULL
-0d44a9dc-edf9-11e4-afb2-0050569f8012,First Alternative Co-op Store,5414523115,2855 NW Grant Ave,NULL,NULL,97330,www.firstalt.coop,NULL,NULL
-0d44cce6-edf9-11e4-afb2-0050569f8012,First Alternative Co-op Store,5417533115,1007 SE 3rd St,NULL,NULL,97333,www.firstalt.coop,NULL,NULL
-0d44effa-edf9-11e4-afb2-0050569f8012,Furniture Exchange,5418330183,210 NW 2nd St,NULL,NULL,97330,www.furnitureexchange-usa.com/,NULL,NULL
-0d450e86-edf9-11e4-afb2-0050569f8012,Furniture Share,5417549511,155 SE Lilly Ave,NULL,NULL,97333,NULL,NULL,Formerly Benton FS
-0d452ef2-edf9-11e4-afb2-0050569f8012,Goodwill Industries,5417528278,1325 NW 9th St,NULL,NULL,97330,NULL,NULL,NULL
-0d454b94-edf9-11e4-afb2-0050569f8012,Grace Center for Adult Day Services,5417548417,980 NW Spruce Ave,NULL,NULL,97330,NULL,NULL,NULL
-0d456926-edf9-11e4-afb2-0050569f8012,Habitat for Humanity ReStore,5417526637,4840 SW Philomath Blvd,NULL,NULL,97333,NULL,NULL,NULL
-0d458b18-edf9-11e4-afb2-0050569f8012,Happy Trails Records,5417529032,100 SW 3rd St,NULL,NULL,97333,NULL,NULL,NULL
-0d45acba-edf9-11e4-afb2-0050569f8012,Heartland Humane Society,5417579000,398 SW Twin Oaks Cir,NULL,NULL,97333,www.heartlandhumane.org,NULL,NULL
-0d45cc86-edf9-11e4-afb2-0050569f8012,Heartland Humane Society Thrift Shop,5417570573,411 SW 3rd St,NULL,NULL,97333,www.heartlandhumane.org,NULL,NULL
-0d45f486-edf9-11e4-afb2-0050569f8012,Home Grown Gardens,5417582137,4845 SE 3rd St,NULL,NULL,97333,www.homegrowngardens.biz,NULL,NULL
-0d4612d6-edf9-11e4-afb2-0050569f8012,Home Life Inc.,5417539015,2068 NW Fillmore Ave,NULL,NULL,97330,NULL,NULL,For the developly disabled
-0d4636d0-edf9-11e4-afb2-0050569f8012,Jackson Street Youth Shelter,5417542404,555 NW Jackson St,NULL,NULL,97330,NULL,NULL,NULL
-0d465962-edf9-11e4-afb2-0050569f8012,Linn Benton Food Share,5417521010,545 SW 2nd St,NULL,NULL,97333,NULL,NULL,Lg food donations
-0d467c4e-edf9-11e4-afb2-0050569f8012,Lions Club,5417580222,1400 NW 9th St,NULL,NULL,97330,NULL,NULL,Box inside Elks Lodge
-0d469d32-edf9-11e4-afb2-0050569f8012,Love INC,5417578111,2330 NW Professional Dr,NULL,NULL,97330,NULL,NULL,For low income citizens
-0d46bd80-edf9-11e4-afb2-0050569f8012,Mario Pastega House,5417684650,3505 NW Samaritan Dr,NULL,NULL,97330,NULL,NULL,Good samaritan patient family housing
-0d46da54-edf9-11e4-afb2-0050569f8012,Mary's River Gleaners,5414979019,NULL,NULL,NULL,NULL,NULL,NULL,For low income citizens
-0d46fb7e-edf9-11e4-afb2-0050569f8012,Mia Bella in the Little Red House,5412318105,114 NW 15th St,NULL,NULL,97330,NULL,NULL,NULL
-0d471be0-edf9-11e4-afb2-0050569f8012,Midway Farms,5417406141,6980 NW Hwy 20,NULL,NULL,97321,www.midwayfarmsoregon.com/,NULL,NULL
-0d473df0-edf9-11e4-afb2-0050569f8012,Mother Goose Resale,5417536903,260 NW 1st St,NULL,NULL,97330,NULL,NULL,NULL
-0d475f74-edf9-11e4-afb2-0050569f8012,Neighbor to Neighbor,5419296614,1123 Main St,NULL,NULL,97370,NULL,NULL,Food pantry
-0d478242-edf9-11e4-afb2-0050569f8012,Osborn Aquatic Center,5417667946,1940 NW Highland Dr,NULL,NULL,97330,NULL,NULL,NULL
-0d479f2a-edf9-11e4-afb2-0050569f8012,OSU Emergency Food Pantry,5417373747,233 Snell Hall,SW Jefferson Way,NULL,97331,NULL,NULL,NULL
-0d47ba6e-edf9-11e4-afb2-0050569f8012,OSU Folk Club Thrift Shop,NULL,144 NW 2nd St,NULL,NULL,97330,NULL,NULL,NULL
-0d47e9f8-edf9-11e4-afb2-0050569f8012,OSU Organic Growers Club,5419795833,NULL,NULL,NULL,NULL,NULL,NULL,OSU Crop & Soil Science Department
-0d480956-edf9-11e4-afb2-0050569f8012,Pak Mail,5417548411,2397 NW Kings Blvd,NULL,NULL,97330,pakmail.com,NULL,Timberhill Shopping Center
-0d482526-edf9-11e4-afb2-0050569f8012,Parent Enhancement Program,5417588292,421 NW 4th St,NULL,NULL,97330,NULL,NULL,NULL
-0d484ba0-edf9-11e4-afb2-0050569f8012,Philomath Community Garden,5419293524,NULL,NULL,NULL,NULL,NULL,NULL,Contact Chris Shonnard
-0d486ab8-edf9-11e4-afb2-0050569f8012,Philomath Community Services,5419292499,360 S 9th St,NULL,NULL,97370,NULL,NULL,Food & kids stuff
-0d4885e8-edf9-11e4-afb2-0050569f8012,Play It Again Sports,5417547529,1422 NW 9th St,NULL,NULL,97330,NULL,NULL,NULL
-0d48a190-edf9-11e4-afb2-0050569f8012,Presbyterian Piecemakers,5417537516,NULL,NULL,NULL,NULL,NULL,NULL,Cotton quilts
-0d48bb3a-edf9-11e4-afb2-0050569f8012,Public Library Corvallis, Friends of,5417666928,645 NW Monroe Ave,NULL,NULL,97330,NULL,NULL,NULL
-0d48d9c6-edf9-11e4-afb2-0050569f8012,Quilts From Caring Hands,5417588161,NULL,NULL,NULL,NULL,NULL,NULL,Cotton quilts
-0d48fc8a-edf9-11e4-afb2-0050569f8012,Rapid Refill Ink,5417588444,254 SW Madison Ave,NULL,NULL,97333,www.rapidinkandtoner.com,NULL,NULL
-0d491a1c-edf9-11e4-afb2-0050569f8012,Reâ€¢volve,5417541154,103 SW 2nd St,NULL,NULL,97333,www.revolveresale.com/,NULL,Women's resale boutique
-0d492d72-edf9-11e4-afb2-0050569f8012,Round-About Boutique,5412301482,264 SW Madison Ave,NULL,NULL,97333,NULL,NULL,NULL
-0d494bea-edf9-11e4-afb2-0050569f8012,Schools--Public, Private, Charter,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL
-0d496d46-edf9-11e4-afb2-0050569f8012,Second Glance,5417538011,312 SW 3rd St,NULL,NULL,97333,www.glanceagain.com,NULL,NULL
-0d498c18-edf9-11e4-afb2-0050569f8012,Second Glance Annex,5417589099,214 SW Jefferson Ave,NULL,NULL,97333,www.glanceagain.com,NULL,NULL
-0d49af5e-edf9-11e4-afb2-0050569f8012,Second Glance Alley,5417534069,312 SW Jefferson Ave,NULL,NULL,97333,www.glanceagain.com,NULL,NULL
-0d49cdc2-edf9-11e4-afb2-0050569f8012,Senior Center of Corvallis,5417666959,2601 NW Tyler Ave,NULL,NULL,97330,NULL,NULL,NULL
-0d49f2d4-edf9-11e4-afb2-0050569f8012,South Corvallis Food Bank,5417534263,1798 SW 3rd St,NULL,NULL,97333,NULL,NULL,NULL
-0d4a173c-edf9-11e4-afb2-0050569f8012,Stone Soup,5417571988,501 NW 25th St,NULL,NULL,97330,NULL,NULL,St Mary's Church
-0d4a3532-edf9-11e4-afb2-0050569f8012,St Vincent de Paul Thrift-Pantry,5417571988,501 NW 25th St,NULL,NULL,97330,NULL,NULL,Next to St Mary's Church
-0d4a553a-edf9-11e4-afb2-0050569f8012,The UPS Store,5417521830,5060 SW Philomath Blvd,NULL,NULL,97333,NULL,NULL,NULL
-0d4a7556-edf9-11e4-afb2-0050569f8012,The UPS Store,5417520056,922 NW Circle Blvd,#160,NULL,97330,NULL,NULL,NULL
-0d4a97f2-edf9-11e4-afb2-0050569f8012,Vina Moses,5417531420,968 NW Garfield Ave,NULL,NULL,97330,NULL,NULL,For low income citizens
-0d4abb56-edf9-11e4-afb2-0050569f8012,Book Binding,5417579861,108 SW 3rd St,NULL,NULL,97333,http://www.cornerstoneassociates.com/bj-bookbinding-about-us.html,NULL,Rebind and restore books
-0d4ae3b0-edf9-11e4-afb2-0050569f8012,Cell Phone Sick Bay,5412301785,252 SW Madison Ave,Suite 10,NULL,97333,NULL,NULL,Cell phones and tablets
-0d4b07e6-edf9-11e4-afb2-0050569f8012,Geeks 'N' Nerds,5417530018,950 Southeast Geary St,Suite 110,NULL,97333,http://www.computergeeksnnerds.com/,NULL,Repair computers of all kinds and cell phone repair. In home repair available
-0d4b2898-edf9-11e4-afb2-0050569f8012,Specialty Sewing By Leslie,5417584556,225 SW Madison Ave,NULL,NULL,97333,http://www.specialtysewing.com/Leslie_Seamstress/Welcome.html,NULL,Alterations and custom work
-0d4b4ab2-edf9-11e4-afb2-0050569f8012,Corvallis Technical,5417047009,966 NW Circle Blvd,NULL,NULL,97330,http://www.corvallistechnical.com/,NULL,Repair computers and laptops
-0d4b7046-edf9-11e4-afb2-0050569f8012,Bellevue Computers,5417573487,1865 NW 9th St,NULL,NULL,97330,http://www.bellevuepc.com/,NULL,Repair computers and laptops
-0d4b92a6-edf9-11e4-afb2-0050569f8012,OSU Repair Fair,5417375398,Oregon State University Property Services Building,644 SW 13th St,NULL,97333,http://fa.oregonstate.edu/surplus,NULL,Occurs twice per quarter in the evenings. Small appliances, Bicycles, Clothing, Computers (hardware and software) Electronics (small items only) Housewares (furniture, ceramics, lamps, etc.)
-0d4bb40c-edf9-11e4-afb2-0050569f8012,P.K Furniture Repair & Refinishing,5412301727,5270 NW Hwy 99,NULL,NULL,97330,http://www.pkfurniturerefinishing.net/,NULL,Complete Restoration, Complete Refinishing, Modifications, Custom Color Matching, Furniture Stripping,ChairÂ Press Caning, Repairs
-0d4bd694-edf9-11e4-afb2-0050569f8012,Furniture Restoration Center,5419296681,1321 Main St,NULL,NULL,97370,http://restorationsupplies.com/,NULL,Restores all typers of furniture and has hardware for doing it yourself
-0d4bfd18-edf9-11e4-afb2-0050569f8012,Power Equipment,5417578075,713 NE Circle Blvd,NULL,NULL,97330,https://corvallispowerequipment.stihldealer.net/,NULL,Lawn and garden equipment, chain saws (Stihl, Honda, Shindiawh), hand held equipment.
-0d4c23ec-edf9-11e4-afb2-0050569f8012,Robnett's,5417535531,400 SW 2nd St,NULL,NULL,97333,http://ww3.truevalue.com/robnetts/Home.aspx,NULL,Adjustment and sharpening
-0d4c46ba-edf9-11e4-afb2-0050569f8012,Footwise,5417570875,301 SW Madison Ave,#100,NULL,97333,http://footwise.com/,NULL,Resoles berkenstock
-0d4c6776-edf9-11e4-afb2-0050569f8012,Sedlack,5417521498,225 SW 2nd St,NULL,NULL,97333,http://www.sedlaksshoes.net/,NULL,Full resoles, elastic and velcros, sewing and patching, leather patches, zippers, half soles and heels.
-0d4ca2a4-edf9-11e4-afb2-0050569f8012,Foam Man,5417549378,2511 NW 9th St,NULL,NULL,97330,http://www.thefoammancorvallis.com/,NULL,Replacement foam cusions for chairs and couches; upholstery
+0d419530-edf9-11e4-afb2-0050569f8012,Albany-Corvallis ReUseIt,"","","","","",groups.yahoo.com,"",Free items
+0d41c870-edf9-11e4-afb2-0050569f8012,Arc Thrift Store,5417549011,928 NW Beca Ave,"","",97330,www.arcbenton.org,"",""
+0d41ec4c-edf9-11e4-afb2-0050569f8012,Arc Thrift Store,5419293946,936 Main St.,"","",97370,www.arcbenton.org,"",""
+0d420f7e-edf9-11e4-afb2-0050569f8012,Beekman Place Antique Mall,5417538250,601 SW Western Blvd,"","",97333,"","",""
+0d4233aa-edf9-11e4-afb2-0050569f8012,Benton County Extension - 4-H  Activities,5417666750,1849 NW 9th St,"","",97330,"","",""
+0d425952-edf9-11e4-afb2-0050569f8012,Benton County Master Gardeners,5417666750,1849 NW 9th St,"","",97330,"","",""
+0d428832-edf9-11e4-afb2-0050569f8012,Book Bin,5417520040,215 SW 4th St,"","",97333,www.bookbin.com,"",""
+0d42aa92-edf9-11e4-afb2-0050569f8012,Browsers' Bookstore,5417581121,121 NW 4th St.,"","",97330,www.browsersbookstore.com,"",""
+0d42c6a8-edf9-11e4-afb2-0050569f8012,Boys & Girls Club of Corvallis,5417571909,1112 NW Circle Blvd,"","",97330,"","",""
+0d42f678-edf9-11e4-afb2-0050569f8012,CARDV (Center Against Rape-Domestic Violence),5417580219,"","","","","","",""
+0d4318a6-edf9-11e4-afb2-0050569f8012,Career Closet for Women,5417524214,942 NW 9th,Ste. A,"",97330,"","",Address is for drop off location
+0d433e62-edf9-11e4-afb2-0050569f8012,CASA - Voices for Children,5417535838,129 NW 4th St,"","",97330,"","",""
+0d4360c2-edf9-11e4-afb2-0050569f8012,Children's Farm Home,5417571852,4455 NE Hwy 20,"","",97330,"","",""
+0d4381d8-edf9-11e4-afb2-0050569f8012,Chintimini Wildlife Rehabilitation Ctr,5417455324,311 Lewisburg Rd,"","",97330,"","",""
+0d43a03c-edf9-11e4-afb2-0050569f8012,Community Outreach Homeless Shelter,5417583000,865 NW Reiman Ave,"","",97330,"","",""
+0d43c742-edf9-11e4-afb2-0050569f8012,Corvallis Environmental Center,5417539211,214 SW Monroe Ave,"","",97333,"","",""
+0d43f122-edf9-11e4-afb2-0050569f8012,Corvallis Bicycle Collective,5412246885,33900 SE Roche Ln,Unit B,"",97333,www.corvallisbikes.org/,"",""
+0d44156c-edf9-11e4-afb2-0050569f8012,Corvallis Furniture,5412864658,1810 SW 3rd St,"","",97333,www.corvallisfurniture.com/,"",""
+0d442e8a-edf9-11e4-afb2-0050569f8012,Cosmic Chameleon,5417529001,138 SW 2nd St,"","",97333,"","",""
+0d444780-edf9-11e4-afb2-0050569f8012,Craigslist,"","","","","",corvallis.craigslist.org,"",""
+0d44656c-edf9-11e4-afb2-0050569f8012,Freecycle,"","","","","",freecycle.org,"",""
+0d448736-edf9-11e4-afb2-0050569f8012,First Alternative Co-op Recycling Center,5417533115,1007 SE 3rd St,"","",97333,"","",""
+0d44a9dc-edf9-11e4-afb2-0050569f8012,First Alternative Co-op Store,5414523115,2855 NW Grant Ave,"","",97330,www.firstalt.coop,"",""
+0d44cce6-edf9-11e4-afb2-0050569f8012,First Alternative Co-op Store,5417533115,1007 SE 3rd St,"","",97333,www.firstalt.coop,"",""
+0d44effa-edf9-11e4-afb2-0050569f8012,Furniture Exchange,5418330183,210 NW 2nd St,"","",97330,www.furnitureexchange-usa.com/,"",""
+0d450e86-edf9-11e4-afb2-0050569f8012,Furniture Share,5417549511,155 SE Lilly Ave,"","",97333,"","",Formerly Benton FS
+0d452ef2-edf9-11e4-afb2-0050569f8012,Goodwill Industries,5417528278,1325 NW 9th St,"","",97330,"","",""
+0d454b94-edf9-11e4-afb2-0050569f8012,Grace Center for Adult Day Services,5417548417,980 NW Spruce Ave,"","",97330,"","",""
+0d456926-edf9-11e4-afb2-0050569f8012,Habitat for Humanity ReStore,5417526637,4840 SW Philomath Blvd,"","",97333,"","",""
+0d458b18-edf9-11e4-afb2-0050569f8012,Happy Trails Records,5417529032,100 SW 3rd St,"","",97333,"","",""
+0d45acba-edf9-11e4-afb2-0050569f8012,Heartland Humane Society,5417579000,398 SW Twin Oaks Cir,"","",97333,www.heartlandhumane.org,"",""
+0d45cc86-edf9-11e4-afb2-0050569f8012,Heartland Humane Society Thrift Shop,5417570573,411 SW 3rd St,"","",97333,www.heartlandhumane.org,"",""
+0d45f486-edf9-11e4-afb2-0050569f8012,Home Grown Gardens,5417582137,4845 SE 3rd St,"","",97333,www.homegrowngardens.biz,"",""
+0d4612d6-edf9-11e4-afb2-0050569f8012,Home Life Inc.,5417539015,2068 NW Fillmore Ave,"","",97330,"","",For the developly disabled
+0d4636d0-edf9-11e4-afb2-0050569f8012,Jackson Street Youth Shelter,5417542404,555 NW Jackson St,"","",97330,"","",""
+0d465962-edf9-11e4-afb2-0050569f8012,Linn Benton Food Share,5417521010,545 SW 2nd St,"","",97333,"","",Lg food donations
+0d467c4e-edf9-11e4-afb2-0050569f8012,Lions Club,5417580222,1400 NW 9th St,"","",97330,"","",Box inside Elks Lodge
+0d469d32-edf9-11e4-afb2-0050569f8012,Love INC,5417578111,2330 NW Professional Dr,"","",97330,"","",For low income citizens
+0d46bd80-edf9-11e4-afb2-0050569f8012,Mario Pastega House,5417684650,3505 NW Samaritan Dr,"","",97330,"","",Good samaritan patient family housing
+0d46da54-edf9-11e4-afb2-0050569f8012,Mary's River Gleaners,5414979019,"","","","","","",For low income citizens
+0d46fb7e-edf9-11e4-afb2-0050569f8012,Mia Bella in the Little Red House,5412318105,114 NW 15th St,"","",97330,"","",""
+0d471be0-edf9-11e4-afb2-0050569f8012,Midway Farms,5417406141,6980 NW Hwy 20,"","",97321,www.midwayfarmsoregon.com/,"",""
+0d473df0-edf9-11e4-afb2-0050569f8012,Mother Goose Resale,5417536903,260 NW 1st St,"","",97330,"","",""
+0d475f74-edf9-11e4-afb2-0050569f8012,Neighbor to Neighbor,5419296614,1123 Main St,"","",97370,"","",Food pantry
+0d478242-edf9-11e4-afb2-0050569f8012,Osborn Aquatic Center,5417667946,1940 NW Highland Dr,"","",97330,"","",""
+0d479f2a-edf9-11e4-afb2-0050569f8012,OSU Emergency Food Pantry,5417373747,233 Snell Hall,SW Jefferson Way,"",97331,"","",""
+0d47ba6e-edf9-11e4-afb2-0050569f8012,OSU Folk Club Thrift Shop,"",144 NW 2nd St,"","",97330,"","",""
+0d47e9f8-edf9-11e4-afb2-0050569f8012,OSU Organic Growers Club,5419795833,"","","","","","",OSU Crop & Soil Science Department
+0d480956-edf9-11e4-afb2-0050569f8012,Pak Mail,5417548411,2397 NW Kings Blvd,"","",97330,pakmail.com,"",Timberhill Shopping Center
+0d482526-edf9-11e4-afb2-0050569f8012,Parent Enhancement Program,5417588292,421 NW 4th St,"","",97330,"","",""
+0d484ba0-edf9-11e4-afb2-0050569f8012,Philomath Community Garden,5419293524,"","","","","","",Contact Chris Shonnard
+0d486ab8-edf9-11e4-afb2-0050569f8012,Philomath Community Services,5419292499,360 S 9th St,"","",97370,"","",Food & kids stuff
+0d4885e8-edf9-11e4-afb2-0050569f8012,Play It Again Sports,5417547529,1422 NW 9th St,"","",97330,"","",""
+0d48a190-edf9-11e4-afb2-0050569f8012,Presbyterian Piecemakers,5417537516,"","","","","","",Cotton quilts
+0d48bb3a-edf9-11e4-afb2-0050569f8012,Public Library Corvallis, Friends of,5417666928,645 NW Monroe Ave,"","",97330,"","",""
+0d48d9c6-edf9-11e4-afb2-0050569f8012,Quilts From Caring Hands,5417588161,"","","","","","",Cotton quilts
+0d48fc8a-edf9-11e4-afb2-0050569f8012,Rapid Refill Ink,5417588444,254 SW Madison Ave,"","",97333,www.rapidinkandtoner.com,"",""
+0d491a1c-edf9-11e4-afb2-0050569f8012,Reâ€¢volve,5417541154,103 SW 2nd St,"","",97333,www.revolveresale.com/,"",Women's resale boutique
+0d492d72-edf9-11e4-afb2-0050569f8012,Round-About Boutique,5412301482,264 SW Madison Ave,"","",97333,"","",""
+0d494bea-edf9-11e4-afb2-0050569f8012,Schools--Public, Private, Charter,"","","","","","","",""
+0d496d46-edf9-11e4-afb2-0050569f8012,Second Glance,5417538011,312 SW 3rd St,"","",97333,www.glanceagain.com,"",""
+0d498c18-edf9-11e4-afb2-0050569f8012,Second Glance Annex,5417589099,214 SW Jefferson Ave,"","",97333,www.glanceagain.com,"",""
+0d49af5e-edf9-11e4-afb2-0050569f8012,Second Glance Alley,5417534069,312 SW Jefferson Ave,"","",97333,www.glanceagain.com,"",""
+0d49cdc2-edf9-11e4-afb2-0050569f8012,Senior Center of Corvallis,5417666959,2601 NW Tyler Ave,"","",97330,"","",""
+0d49f2d4-edf9-11e4-afb2-0050569f8012,South Corvallis Food Bank,5417534263,1798 SW 3rd St,"","",97333,"","",""
+0d4a173c-edf9-11e4-afb2-0050569f8012,Stone Soup,5417571988,501 NW 25th St,"","",97330,"","",St Mary's Church
+0d4a3532-edf9-11e4-afb2-0050569f8012,St Vincent de Paul Thrift-Pantry,5417571988,501 NW 25th St,"","",97330,"","",Next to St Mary's Church
+0d4a553a-edf9-11e4-afb2-0050569f8012,The UPS Store,5417521830,5060 SW Philomath Blvd,"","",97333,"","",""
+0d4a7556-edf9-11e4-afb2-0050569f8012,The UPS Store,5417520056,922 NW Circle Blvd,#160,"",97330,"","",""
+0d4a97f2-edf9-11e4-afb2-0050569f8012,Vina Moses,5417531420,968 NW Garfield Ave,"","",97330,"","",For low income citizens
+0d4abb56-edf9-11e4-afb2-0050569f8012,Book Binding,5417579861,108 SW 3rd St,"","",97333,http://www.cornerstoneassociates.com/bj-bookbinding-about-us.html,"",Rebind and restore books
+0d4ae3b0-edf9-11e4-afb2-0050569f8012,Cell Phone Sick Bay,5412301785,252 SW Madison Ave,Suite 10,"",97333,"","",Cell phones and tablets
+0d4b07e6-edf9-11e4-afb2-0050569f8012,Geeks 'N' Nerds,5417530018,950 Southeast Geary St,Suite 110,"",97333,http://www.computergeeksnnerds.com/,"",Repair computers of all kinds and cell phone repair. In home repair available
+0d4b2898-edf9-11e4-afb2-0050569f8012,Specialty Sewing By Leslie,5417584556,225 SW Madison Ave,"","",97333,http://www.specialtysewing.com/Leslie_Seamstress/Welcome.html,"",Alterations and custom work
+0d4b4ab2-edf9-11e4-afb2-0050569f8012,Corvallis Technical,5417047009,966 NW Circle Blvd,"","",97330,http://www.corvallistechnical.com/,"",Repair computers and laptops
+0d4b7046-edf9-11e4-afb2-0050569f8012,Bellevue Computers,5417573487,1865 NW 9th St,"","",97330,http://www.bellevuepc.com/,"",Repair computers and laptops
+0d4b92a6-edf9-11e4-afb2-0050569f8012,OSU Repair Fair,5417375398,Oregon State University Property Services Building,644 SW 13th St,"",97333,http://fa.oregonstate.edu/surplus,"",Occurs twice per quarter in the evenings. Small appliances, Bicycles, Clothing, Computers (hardware and software) Electronics (small items only) Housewares (furniture, ceramics, lamps, etc.)
+0d4bb40c-edf9-11e4-afb2-0050569f8012,P.K Furniture Repair & Refinishing,5412301727,5270 NW Hwy 99,"","",97330,http://www.pkfurniturerefinishing.net/,"",Complete Restoration, Complete Refinishing, Modifications, Custom Color Matching, Furniture Stripping,ChairÂ Press Caning, Repairs
+0d4bd694-edf9-11e4-afb2-0050569f8012,Furniture Restoration Center,5419296681,1321 Main St,"","",97370,http://restorationsupplies.com/,"",Restores all typers of furniture and has hardware for doing it yourself
+0d4bfd18-edf9-11e4-afb2-0050569f8012,Power Equipment,5417578075,713 NE Circle Blvd,"","",97330,https://corvallispowerequipment.stihldealer.net/,"",Lawn and garden equipment, chain saws (Stihl, Honda, Shindiawh), hand held equipment.
+0d4c23ec-edf9-11e4-afb2-0050569f8012,Robnett's,5417535531,400 SW 2nd St,"","",97333,http://ww3.truevalue.com/robnetts/Home.aspx,"",Adjustment and sharpening
+0d4c46ba-edf9-11e4-afb2-0050569f8012,Footwise,5417570875,301 SW Madison Ave,#100,"",97333,http://footwise.com/,"",Resoles berkenstock
+0d4c6776-edf9-11e4-afb2-0050569f8012,Sedlack,5417521498,225 SW 2nd St,"","",97333,http://www.sedlaksshoes.net/,"",Full resoles, elastic and velcros, sewing and patching, leather patches, zippers, half soles and heels.
+0d4ca2a4-edf9-11e4-afb2-0050569f8012,Foam Man,5417549378,2511 NW 9th St,"","",97330,http://www.thefoammancorvallis.com/,"",Replacement foam cusions for chairs and couches; upholstery
