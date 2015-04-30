@@ -243,6 +243,7 @@
     <Compile Include="Entities\ItemOrganization.cs" />
     <Compile Include="Entities\Items.cs" />
     <Compile Include="Entities\Organizations.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

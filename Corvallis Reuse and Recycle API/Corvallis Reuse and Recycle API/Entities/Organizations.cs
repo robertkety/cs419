@@ -10,27 +10,29 @@ namespace Corvallis_Reuse_and_Recycle_API.Entities
     {
         public Organizations() { }
 
-        public Organizations(string id, string name, string phone, string address1, string address2, string address3, string zipcode, string website, string hours, string notes)
+        public Organizations(string id, string name, string phone, string address1, string address2, string address3, string zipcode, string website, string hours, string notes, int offering = -1)
         {
             this.PartitionKey = id;
             this.RowKey = name;
-            _phone = phone;
-            _address1 = address1;
-            _address2 = address2;
-            _address3 = address3;
-            _zipcode = zipcode;
-            _website = website;
-            _hours = hours;
-            _notes = notes;
+            Phone = phone;
+            AddressLine1 = address1;
+            AddressLine2 = address2;
+            AddressLine3 = address3;
+            ZipCode = zipcode;
+            Website = website;
+            Hours = hours;
+            Notes = notes;
+            Offering = offering;
         }
-
-        public string _phone { get; set; }
-        public string _address1 { get; set; }
-        public string _address2 { get; set; }
-        public string _address3 { get; set; }
-        public string _zipcode { get; set; }
-        public string _website { get; set; }
-        public string _hours  { get; set; }
-        public string _notes { get; set; }
+        
+        public string Phone { get; set; }
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
+        public string AddressLine3 { get; set; }
+        public string ZipCode { get; set; }
+        public string Website { get; set; }
+        public string Hours { get; set; }
+        public string Notes { get; set; }
+        public int Offering { get; set; }
     }
 }

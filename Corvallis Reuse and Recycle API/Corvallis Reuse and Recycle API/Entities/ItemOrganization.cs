@@ -10,10 +10,20 @@ namespace Corvallis_Reuse_and_Recycle_API.Entities
     {
         public ItemOrganization() { }
 
-        public ItemOrganization(string itemId, string organizationId)
+        public ItemOrganization(string itemId, string organizationId, int offering)
         {
             this.PartitionKey = itemId;
             this.RowKey = organizationId;
+            Offering = offering;
         }
+        /*
+        public ItemOrganization(string itemId, string organizationId, Enums.offering offering)
+        {
+            this.PartitionKey = itemId;
+            this.RowKey = organizationId;
+            Offering = (int) offering;
+        }*/
+
+        public int Offering { get; set; } 
     }
 }

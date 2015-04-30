@@ -17,463 +17,195 @@ using MySql.Data.Types;
 using Renci.SshNet;
 using Renci.SshNet.Common;
 using System.Net;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage.Table;
+using Corvallis_Reuse_and_Recycle_API.Entities;
 
 namespace Corvallis_Reuse_and_Recycle_API
 {
-    public class DataAccess
+    internal class DataAccess
     {
-        public static List<string> GetCategories()
+        internal static IEnumerable<Categories> GetCategories()
         {
-            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySQLDBConnection"].ConnectionString);
-            List<string> output = new List<string>();
-            try
+            List<Categories> results = new List<Categories>();
+
+            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+            CloudTable table = tableClient.GetTableReference("Categories");
+
+            TableQuery<Categories> query = new TableQuery<Categories>();
+
+            foreach (Categories entity in table.ExecuteQuery(query))
             {
-                using (var client = new SshClient("flip1.engr.oregonstate.edu", "ketyr", "[password]"))
-                {
-
-                    var port = new ForwardedPortLocal(3306, IPAddress.Loopback.ToString(), 3306);
-                    client.AddForwardedPort(port);
-                    client.Connect();
-
-                    var connection = conn;   //new MySqlConnection("server=localhost;database=[database];uid=ubuntu;");
-                    MySqlCommand command = connection.CreateCommand();
-                    MySqlDataReader Reader;
-                    command.CommandText = "select * from Category";
-                    connection.Open();
-                    Reader = command.ExecuteReader();
-                    while (Reader.Read())
-                    {
-                        string thisrow = "";
-                        for (int i = 0; i < Reader.FieldCount; i++)
-                            thisrow += Reader.GetValue(i).ToString() + ",";
-                        output.Add(thisrow);
-                    }
-                    connection.Close();
-                    client.Disconnect();
-                }
+                results.Add(new Categories(
+                        entity.PartitionKey.ToString(),
+                        entity.RowKey.ToString()
+                        ));
             }
-            catch (Exception ex)
+
+            return results.ToArray();
+        }
+
+        internal static IEnumerable<Items> GetItems()
+        {
+            List<Items> results = new List<Items>();
+
+            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+            CloudTable table = tableClient.GetTableReference("Items");
+
+            TableQuery<Items> query = new TableQuery<Items>();
+
+            foreach (Items entity in table.ExecuteQuery(query))
             {
-                output.Add(ex.ToString());
-            }/*
+                results.Add(new Items(
+                        entity.PartitionKey.ToString(),
+                        entity.RowKey.ToString()
+                        ));
+            }
+
+            return results.ToArray();
+        }
+
+        internal static IEnumerable<Organizations> GetOrganizations()
+        {
+            List<Organizations> results = new List<Organizations>();
+
+            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+            CloudTable table = tableClient.GetTableReference("Organizations");
+
+            TableQuery<Organizations> query = new TableQuery<Organizations>();
+
+            foreach (Organizations entity in table.ExecuteQuery(query))
+            {
+                results.Add(new Organizations(
+                        entity.PartitionKey.ToString(),
+                        entity.RowKey.ToString(),
+                        entity.Phone.ToString(),
+                        entity.AddressLine1.ToString(),
+                        entity.AddressLine2.ToString(),
+                        entity.AddressLine3.ToString(),
+                        entity.ZipCode.ToString(),
+                        entity.Website.ToString(),
+                        entity.Hours.ToString(),
+                        entity.Notes.ToString()
+                        ));
+            }
+
+            return results.ToArray();
+        }
+
+        internal static IEnumerable<Items> GetCategoryItems(string categoryId)
+        {
+            List<Items> result = new List<Items>();
+            List<string> joinResult = new List<string>();
+
+            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
             
-            PasswordConnectionInfo connectionInfo = new PasswordConnectionInfo("flip1.engr.oregonstate.edu", "ketyr", "[password]");
-            connectionInfo.Timeout = TimeSpan.FromSeconds(30);
+            // Fetch Item GUIDs for that Category
+            CloudTable joinTable = tableClient.GetTableReference("CategoryItem");
+            TableQuery<CategoryItem> joinQuery = new TableQuery<CategoryItem>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, categoryId));
+            foreach (CategoryItem entity in joinTable.ExecuteQuery(joinQuery))
+                joinResult.Add(entity.RowKey.ToString());
 
-            using (var client = new SshClient(connectionInfo))
+            // Fetch Item details from list of Item GUIDs
+            CloudTable table = tableClient.GetTableReference("Items");
+            foreach (string item in joinResult)
             {
-                try
-                {
-                    output.Add("Trying SSH connection...");
-                    client.Connect();
-                    if (client.IsConnected)
-                    {
-                        Debug.WriteLine("SSH connection is active: {0}", client.ConnectionInfo.ToString());
-                    }
-                    else
-                    {
-                        output.Add(String.Format("SSH connection has failed: {0}", client.ConnectionInfo.ToString()));
-                    }
-
-                    output.Add(String.Format("\r\nTrying port forwarding..."));
-                    var portFwld = new ForwardedPortLocal(Convert.ToUInt32(4479), IPAddress.Loopback.ToString(), Convert.ToUInt32(3306));
-                    client.AddForwardedPort(portFwld);
-                    portFwld.Start();
-                    if (portFwld.IsStarted)
-                    {
-                        output.Add(String.Format("Port forwarded: {0}", portFwld.ToString()));
-                    }
-                    else
-                    {
-                       output.Add(String.Format("Port forwarding has failed."));
-                    }
-                    
-                }
-                catch (SshException e)
-                {
-                    output.Add(String.Format("SSH client connection error: {0}", e.Message));
-                }
-                catch (System.Net.Sockets.SocketException e)
-                {
-                    output.Add(String.Format("Socket connection error: {0}", e.Message));
-                }
-
-                try
-                {
-                    //Debug.WriteLine("\r\nTrying database connection...");
-                    DBConnect dbConnect = new DBConnect("mysql.eecs.oregonstate.edu", "cs419-g2", "cs419-g2", "GtjpTvRTeqUE429E", "4479");
-
-                    var ct = dbConnect.Count("Category");
-                    output.Add(ct.ToString());
-
-                    //conn.Open();
-                    //Debug.WriteLine("MySQL version : {0}", conn.ServerVersion);
-                    //output.Add(conn.ServerVersion);
-
-                }
-                catch (MySqlException ex)
-                {
-                    Debug.WriteLine(ex);
-                    //Console.WriteLine("Error: {0}", ex.ToString());
-                    output.Add(ex.ToString());
-                }
-                catch (Exception ex)
-                {
-                    output.Add(ex.ToString());
-                }
-                finally
-                {
-                    if (conn != null)
-                    {
-                        conn.Close();
-                    }
-                }
+                TableQuery<Items> query = new TableQuery<Items>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, item));
+                Items firstItem = table.ExecuteQuery(query).First();
+                result.Add(new Items(
+                    firstItem.PartitionKey.ToString(),
+                    firstItem.RowKey.ToString()
+                ));                
             }
-            */
-            
-            return output;
+
+            // This will be a List of Items from the category id parameter
+            return result.ToArray();
         }
 
-        
-		public static void Main (string[] args)
+        internal static IEnumerable<Organizations> GetItemOrganizations(string itemId)
         {
-            
-        }
-    }
+            List<Organizations> result = new List<Organizations>();
+            List<KeyValuePair<string, int>> joinResult = new List<KeyValuePair<string, int>>();
 
-    // MySQL DB class
-    class DBConnect
-    {
-        private MySqlConnection connection;
+            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
 
-        private string server;
-        public string Server
-        {
-            get
-            {
-                return this.server;
-            }
-            set
-            {
-                this.server = value;
-            }
-        }
+            // Fetch Organization GUIDs for that Item
+            CloudTable joinTable = tableClient.GetTableReference("ItemOrganization");
+            TableQuery<ItemOrganization> joinQuery = new TableQuery<ItemOrganization>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, itemId));
+            foreach (ItemOrganization entity in joinTable.ExecuteQuery(joinQuery))
+                joinResult.Add(new KeyValuePair<string, int>(entity.RowKey.ToString(), entity.Offering));
 
-        private string database;
-        public string Database
-        {
-            get
+            // Fetch Organization details from list of Organization GUIDs and apply Offering for that Item to Organization Entity
+            CloudTable table = tableClient.GetTableReference("Organizations");
+            foreach (KeyValuePair<string, int> organization in joinResult)
             {
-                return this.database;
+                TableQuery<Organizations> query = new TableQuery<Organizations>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, organization.Key));
+                Organizations firstItem = table.ExecuteQuery(query).First();
+                result.Add(new Organizations(
+                        firstItem.PartitionKey.ToString(),
+                        firstItem.RowKey.ToString(),
+                        firstItem.Phone.ToString(),
+                        firstItem.AddressLine1.ToString(),
+                        firstItem.AddressLine2.ToString(),
+                        firstItem.AddressLine3.ToString(),
+                        firstItem.ZipCode.ToString(),
+                        firstItem.Website.ToString(),
+                        firstItem.Hours.ToString(),
+                        firstItem.Notes.ToString()
+                ));
+                result.Last<Organizations>().Offering = organization.Value;
             }
-            set
-            {
-                this.database = value;
-            }
-        }
 
-        private string uid;
-        public string Uid
-        {
-            get
-            {
-                return this.server;
-            }
-            set
-            {
-                this.server = value;
-            }
+            // This will be a List of Organizations from the item id parameter
+            return result.ToArray();
         }
 
-        private string password;
-        public string Password
+        internal static bool AddItem(Items items)
         {
-            get
-            {
-                return this.password;
-            }
-            set
-            {
-                this.password = value;
-            }
-        }
+            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+            CloudTable table = tableClient.GetTableReference("Items");
 
-        private string port;
-        public string Port
-        {
-            get
-            {
-                return this.port;
-            }
-            set
-            {
-                this.port = value;
-            }
-        }
-
-        //Constructor
-        public DBConnect(string server, string database, string uid, string password, string port = "3306")
-        {
-            this.server = server;
-
-            this.database = database;
-            this.uid = uid;
-            this.password = password;
-            this.port = port;
-
-            Initialize();
-        }
-
-        //Initialize values
-        private void Initialize()
-        {
-            string connectionString;
-            connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
-            connection = new MySqlConnection(connectionString);
-        }
-
-
-        //open connection to database
-        private bool OpenConnection()
-        {
-            try
-            {
-                connection.Open();
-                Debug.WriteLine("MySQL connected.");
-                return true;
-            }
-            catch (MySqlException ex)
-            {
-                //When handling errors, you can your application's response based on the error number.
-                //The two most common error numbers when connecting are as follows:
-                //0: Cannot connect to server.
-                //1045: Invalid user name and/or password.
-                switch (ex.Number)
-                {
-                    case 0:
-                    Debug.WriteLine("Cannot connect to server.  Contact administrator");
-                    break;
-
-                    case 1045:
-                    Debug.WriteLine("Invalid username/password, please try again");
-                    break;
-
-                    default:
-                    Debug.WriteLine("Unhandled exception: {0}.", ex.Message);
-                    break;
-
-                }
+            if ((items != null) && (items.PartitionKey.ToString() != "") && (items.RowKey.ToString() != ""))
+                table.Execute(TableOperation.Insert(items));
+            else
                 return false;
-            }
+
+            return true;
         }
 
-        //Close connection
-        private bool CloseConnection()
+        internal static bool AddCategory(Categories categories)
         {
-            try
-            {
-                connection.Close();
-                return true;
-            }
-            catch (MySqlException ex)
-            {
-                Debug.WriteLine(ex.Message);
+            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+            CloudTable table = tableClient.GetTableReference("Categories");
+
+            if ((categories != null) && (categories.PartitionKey.ToString() != "") && (categories.RowKey.ToString() != ""))
+                table.Execute(TableOperation.Insert(categories));
+            else
                 return false;
-            }
+
+            return true;
         }
 
-        //Insert statement
-        public void Insert()
+        internal static bool AddCategoryItem(CategoryItem categoryItem)
         {
-            string query = "INSERT INTO tableinfo (name, age) VALUES('John Smith', '33')";
+            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+            CloudTable table = tableClient.GetTableReference("CategoryItem");
 
-            //open connection
-            if (this.OpenConnection() == true)
-            {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+            if ((categoryItem != null) && (categoryItem.PartitionKey.ToString() != "") && (categoryItem.RowKey.ToString() != ""))
+                table.Execute(TableOperation.Insert(categoryItem));
+            else
+                return false;
 
-                //Execute command
-                cmd.ExecuteNonQuery();
-
-                //close connection
-                this.CloseConnection();
-            }
-        }
-
-        //Update statement
-        public void Update(string tableName, List<KeyValuePair<string, string>> setArgs, List<KeyValuePair<string, string>> whereArgs)
-        {
-            string query = "UPDATE tableinfo SET name='Joe', age='22' WHERE name='John Smith'";
-
-            //Open connection
-            if (this.OpenConnection() == true)
-            {
-                //create mysql command
-                MySqlCommand cmd = new MySqlCommand();
-                //Assign the query using CommandText
-                cmd.CommandText = query;
-                //Assign the connection using Connection
-                cmd.Connection = connection;
-
-                //Execute query
-                cmd.ExecuteNonQuery();
-
-                //close connection
-                this.CloseConnection();
-            }
-        }
-
-        //Delete statement
-        public void Delete(string tableName, List<KeyValuePair<string, string>> whereArgs)
-        {
-            string query = "DELETE FROM tableinfo WHERE name='John Smith'";
-
-            if (this.OpenConnection() == true)
-            {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
-                this.CloseConnection();
-            }
-        }
-
-        //Select statement
-        public List<string> Select(string queryString)
-        {
-            string query = queryString;
-
-            //Create a list to store the result
-            List<string> list = new List<string>();
-
-            //Open connection
-            if (this.OpenConnection() == true)
-            {
-                //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                //Create a data reader and Execute the command
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                //Read the data and store them in the list
-                int fieldCOunt = dataReader.FieldCount;
-                while (dataReader.Read())
-                {
-                    for (int i = 0; i < fieldCOunt; i++) {
-                        list.Add(dataReader.GetValue(i).ToString());
-                    }
-                }
-
-                //close Data Reader
-                dataReader.Close();
-
-                //close Connection
-                this.CloseConnection();
-
-                //return list to be displayed
-                return list;
-            }
-
-            return list;
-
-        }
-
-        //Count statement
-        public int Count(string tableName)
-        {
-            string query = "SELECT Count(*) FROM " + tableName;
-            int Count = -1;
-
-            //Open Connection
-            if (this.OpenConnection() == true)
-            {
-                //Create Mysql Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                //ExecuteScalar will return one value
-                Count = int.Parse(cmd.ExecuteScalar()+"");
-
-                //close Connection
-                this.CloseConnection();
-
-                return Count;
-            }
-
-            return Count;
-
-        }
-
-        //Backup
-        public void Backup()
-        {
-            try
-            {
-                DateTime Time = DateTime.Now;
-                int year = Time.Year;
-                int month = Time.Month;
-                int day = Time.Day;
-                int hour = Time.Hour;
-                int minute = Time.Minute;
-                int second = Time.Second;
-                int millisecond = Time.Millisecond;
-
-                //Save file to C:\ with the current date as a filename
-                string path;
-                path = "C:\\" + year + "-" + month + "-" + day + "-" + hour + "-" + minute + "-" + second + "-" + millisecond + ".sql";
-                StreamWriter file = new StreamWriter(path);
-
-
-                ProcessStartInfo psi = new ProcessStartInfo();
-                psi.FileName = "mysqldump";
-                psi.RedirectStandardInput = false;
-                psi.RedirectStandardOutput = true;
-                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}", uid, password, server, database);
-                psi.UseShellExecute = false;
-
-                Process process = Process.Start(psi);
-
-                string output;
-                output = process.StandardOutput.ReadToEnd();
-                file.WriteLine(output);
-                process.WaitForExit();
-                file.Close();
-                process.Close();
-            }
-            catch (IOException e)
-            {
-                Debug.WriteLine("Error {0}, unable to backup!", e.Message);
-            }
-        }
-
-        //Restore
-        public void Restore()
-        {
-            try
-            {
-                //Read file from C:\
-                string path;
-                path = "C:\\MySqlBackup.sql";
-                StreamReader file = new StreamReader(path);
-                string input = file.ReadToEnd();
-                file.Close();
-
-
-                ProcessStartInfo psi = new ProcessStartInfo();
-                psi.FileName = "mysql";
-                psi.RedirectStandardInput = true;
-                psi.RedirectStandardOutput = false;
-                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}", uid, password, server, database);
-                psi.UseShellExecute = false;
-
-
-                Process process = Process.Start(psi);
-                process.StandardInput.WriteLine(input);
-                process.StandardInput.Close();
-                process.WaitForExit();
-                process.Close();
-            }
-            catch (IOException e)
-            {
-                Debug.WriteLine("Error {0}, unable to Restore!", e.Message);
-            }
+            return true;
         }
     }
 }

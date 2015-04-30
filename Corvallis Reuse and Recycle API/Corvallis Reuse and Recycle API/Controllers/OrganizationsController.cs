@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Corvallis_Reuse_and_Recycle_API.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,30 +11,29 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
     public class OrganizationsController : ApiController
     {
         // GET: api/Organizations
-        public IEnumerable<string> Get()
+        public IEnumerable<Organizations> Get()
         {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Organizations/5
-        public string Get(int id)
-        {
-            return "value";
+            return DataAccess.GetOrganizations();
         }
 
         // POST: api/Organizations
-        public void Post([FromBody]string value)
+        //[Authorize]
+        public void Post([FromUri]string name, [FromUri]string phone = null, [FromUri]string AddressLine1 = null, [FromUri]string AddressLine2 = null, [FromUri]string AddressLine3 = null, [FromUri]string ZipCode = null, [FromUri]string Website = null, [FromUri]string Hours = null, [FromUri]string Notes = null)
         {
+            //nulls?
         }
-
+        /*
         // PUT: api/Organizations/5
-        public void Put(int id, [FromBody]string value)
+        //[Authorize]
+        public void Put([FromUri]int id, [FromUri]string value)
         {
         }
 
         // DELETE: api/Organizations/5
-        public void Delete(int id)
+        //[Authorize]
+        public void Delete([FromUri]int id)
         {
         }
+        */
     }
 }
