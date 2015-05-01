@@ -1,0 +1,54 @@
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\CRRD Web Interface.dll.config
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\CRRD Web Interface.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\CRRD Web Interface.pdb
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Antlr3.Runtime.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\AspNet.ScriptManager.bootstrap.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\AspNet.ScriptManager.jQuery.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\EntityFramework.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\EntityFramework.SqlServer.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.AspNet.Identity.Core.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.Cookies.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.Facebook.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.Google.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.OAuth.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.Twitter.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.ScriptManager.WebForms.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Web.Infrastructure.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Newtonsoft.Json.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Owin.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\System.Net.Http.Formatting.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\System.Web.Optimization.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\System.Web.Providers.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\WebGrease.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\System.Net.Http.Formatting.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\System.Web.Optimization.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Antlr3.Runtime.pdb
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Newtonsoft.Json.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\EntityFramework.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\EntityFramework.SqlServer.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.AspNet.Identity.Core.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\System.Web.Providers.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.Facebook.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.Cookies.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.Google.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.Twitter.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\bin\Microsoft.Owin.Security.OAuth.xml
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\obj\Release\Corvallis Reuse and Recycle Web Interface.csprojResolveAssemblyReference.cache
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\obj\Release\CRRD Web Interface.dll
+C:\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle Web Interface\obj\Release\CRRD Web Interface.pdb

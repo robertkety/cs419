@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="cs419-testportal" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\College\ Course\ Work\ \(Orgeon\)\\CS_419\\Demos\\Web\ Interface\\CRRD\ Web\ Interface\\CRRD\ Web\ Interface\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^E:\\College\ Course\ Work\ \(Orgeon\)\\CS_419\\Demos\\Web\ Interface\\CRRD\ Web\ Interface\\CRRD\ Web\ Interface\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=&quot;|DataDirectory|\aspnet-CRRD Web Interface-20150429110827.mdf&quot;;Initial Catalog=&quot;aspnet-CRRD Web Interface-20150429110827&quot;;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="E:\\College\ Course\ Work\ \(Orgeon\)\\CS_419\\Demos\\Web\ Interface\\CRRD\ Web\ Interface\\CRRD\ Web\ Interface\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>
