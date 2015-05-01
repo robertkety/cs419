@@ -26,11 +26,12 @@ namespace Corvallis_Reuse_and_Recycle_API
 {
     internal class DataAccess
     {
+        internal static CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
+
         internal static IEnumerable<T> GetTable<T>(string tableName) where T : TableEntity, new()
         {
             List<T> results = new List<T>();
              
-            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
             CloudTableClient tableClient = connectionString.CreateCloudTableClient();
             CloudTable table = tableClient.GetTableReference(tableName);
 
@@ -43,12 +44,34 @@ namespace Corvallis_Reuse_and_Recycle_API
             return results.ToArray();
         }
 
+        /* Gets a specific row (requires primary key AND row key) */
+        internal static T GetRow<T>(string tableName, string primaryKey, string rowKey) where T : TableEntity, new()
+        {
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+
+            CloudTable table = tableClient.GetTableReference(tableName);
+            TableOperation retrieveOperation = TableOperation.Retrieve<T>(primaryKey, rowKey);
+
+            TableResult retrievedResult = table.Execute(retrieveOperation);
+
+            return (T) retrievedResult.Result;
+        }
+
+        /* Gets first row returned from query of primary key on target storage table (tableName) */
+        internal static T GetFirstRow<T>(string tableName, string primaryKey) where T : TableEntity, new()
+        {
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+
+            CloudTable table = tableClient.GetTableReference(tableName);
+            TableQuery<T> query = new TableQuery<T>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, primaryKey));
+            return table.ExecuteQuery(query).First();
+        }
+
         internal static IEnumerable<TElement> GetFKReference<TKey, TElement>(string lookupTableName, string derivativeTableName, string id) where TKey : TableEntity, new() where TElement : TableEntity, new()
         {
             List<TElement> result = new List<TElement>();
             List<string> joinResult = new List<string>();
 
-            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
             CloudTableClient tableClient = connectionString.CreateCloudTableClient();
 
             // Fetch derivative GUIDs for that lookups primary key
@@ -70,9 +93,8 @@ namespace Corvallis_Reuse_and_Recycle_API
             return result.ToArray();
         }
         
-        internal static bool AddToTable(ITableEntity tableEntity, string storageTableName)
+        internal static bool AddToTable<T>(T tableEntity, string storageTableName) where T : TableEntity, new()
         {
-            CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
             CloudTableClient tableClient = connectionString.CreateCloudTableClient();
             CloudTable table = tableClient.GetTableReference(storageTableName);
 
@@ -83,5 +105,7 @@ namespace Corvallis_Reuse_and_Recycle_API
 
             return true;
         }
+
+
     }
 }
