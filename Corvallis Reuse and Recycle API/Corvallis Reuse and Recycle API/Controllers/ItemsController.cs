@@ -11,39 +11,71 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
     public class ItemsController : ApiController
     {
         // GET: api/Items
+        /// <summary>
+        /// Returns a list of all items in the Items table
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Items> Get()
         {
             return DataAccess.GetTable<Items>("Items");
         }
 
         // GET: api/Items/5
-        public IEnumerable<Organizations> Get([FromUri]string id)
+        /// <summary>
+        /// Returns a list of organization objects for the target Item id
+        /// </summary>
+        /// <param name="Id">Id of the target item</param>
+        /// <returns></returns>
+        public IEnumerable<Organizations> Get([FromUri]string Id)
         {
-            return DataAccess.GetFKReference<ItemOrganization, Organizations>("ItemOrganization", "Organizations", id);
+            return DataAccess.GetFKReferenceByPartitionKey<ItemOrganization, Organizations>("ItemOrganization", "Organizations", Id);
         }
         
         // POST: api/Items
         //[Authorize]
-        public void Post([FromUri]string name, [FromUri]string[] categories = null)
+        /// <summary>
+        /// Creates a new Item with the target name and associates it with the corresponding list of category ids
+        /// </summary>
+        /// <param name="Name">The name of the new Item</param>
+        /// <param name="Categories">A list of category ids to be associated with the target item</param>
+        public void Post([FromUri]string Name, [FromUri]string[] Categories = null)
         {
+            if (Name == null)
+                Name = ""; 
             string NewItemGuid = new Guid().ToString();
-            DataAccess.AddToTable(new Items(NewItemGuid, name), "Items");
-            if (categories != null)
-                foreach (string category in categories)
-                    DataAccess.AddToTable(new CategoryItem(category, NewItemGuid), "CategoryItem");            
+            DataAccess.AddRow("Items", new Items(NewItemGuid, Name));
+            if (Categories != null)
+                foreach (string category in Categories)
+                    DataAccess.AddRow("CategoryItem", new CategoryItem(category, NewItemGuid));            
         }
-        /*
+        
         // PUT: api/Items/5
         //[Authorize]
-        public void Put([FromUri]int id, [FromUri]string value)
+        /// <summary>
+        /// Updates the name of the target item.  Old name is required for an efficient storage table query
+        /// </summary>
+        /// <param name="Id">Id of the target item</param>
+        /// <param name="OldName">Exising name for target item</param>
+        /// <param name="NewName">New name for target item</param>
+        public void Put([FromUri]string Id, [FromUri]string OldName, [FromUri]string NewName = "")
         {
+            if (OldName == null)
+                OldName = ""; 
+            DataAccess.UpsertRow<Items>("Items", Id, OldName, new Items(Id, NewName));
         }
-
+        
         // DELETE: api/Items/5
         //[Authorize]
-        public void Delete([FromUri]int id)
+        /// <summary>
+        /// Deletes the target item from the Items table
+        /// </summary>
+        /// <param name="Id">Id for the target item</param>
+        /// <param name="Name">Name of the target item</param>
+        public void Delete([FromUri]string Id, [FromUri]string Name)
         {
-        }
-        */
+            if (Name == null)
+                Name = ""; 
+            DataAccess.DeleteRow<Items>("Items", Id, Name);
+        }  
     }
 }

@@ -28,10 +28,11 @@ namespace Corvallis_Reuse_and_Recycle_API
     {
         internal static CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
 
-        internal static IEnumerable<T> GetTable<T>(string tableName) where T : TableEntity, new()
+        internal static IEnumerable<T> GetTable<T>(string tableName) 
+            where T : TableEntity, new()
         {
             List<T> results = new List<T>();
-             
+
             CloudTableClient tableClient = connectionString.CreateCloudTableClient();
             CloudTable table = tableClient.GetTableReference(tableName);
 
@@ -45,67 +46,159 @@ namespace Corvallis_Reuse_and_Recycle_API
         }
 
         /* Gets a specific row (requires primary key AND row key) */
-        internal static T GetRow<T>(string tableName, string primaryKey, string rowKey) where T : TableEntity, new()
+        internal static T GetRow<T>(string tableName, string partitionKey, string rowKey) 
+            where T : TableEntity, new()
         {
             CloudTableClient tableClient = connectionString.CreateCloudTableClient();
 
             CloudTable table = tableClient.GetTableReference(tableName);
-            TableOperation retrieveOperation = TableOperation.Retrieve<T>(primaryKey, rowKey);
+            TableOperation retrieveOperation = TableOperation.Retrieve<T>(partitionKey, rowKey);
 
             TableResult retrievedResult = table.Execute(retrieveOperation);
 
-            return (T) retrievedResult.Result;
+            return (T)retrievedResult.Result;
         }
 
         /* Gets first row returned from query of primary key on target storage table (tableName) */
-        internal static T GetFirstRow<T>(string tableName, string primaryKey) where T : TableEntity, new()
+        internal static T GetFirstRow<T>(string tableName, string partitionKey) 
+            where T : TableEntity, new()
         {
             CloudTableClient tableClient = connectionString.CreateCloudTableClient();
 
             CloudTable table = tableClient.GetTableReference(tableName);
-            TableQuery<T> query = new TableQuery<T>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, primaryKey));
+            TableQuery<T> query = new TableQuery<T>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey));
             return table.ExecuteQuery(query).First();
         }
 
-        internal static IEnumerable<TElement> GetFKReference<TKey, TElement>(string lookupTableName, string derivativeTableName, string id) where TKey : TableEntity, new() where TElement : TableEntity, new()
+        /* Gets all rows returned from query of primary key on target storage table (tableName) */
+        internal static IEnumerable<T> GetAllRows<T>(string tableName, string partitionKey)
+            where T : TableEntity, new()
         {
-            List<TElement> result = new List<TElement>();
-            List<string> joinResult = new List<string>();
-
             CloudTableClient tableClient = connectionString.CreateCloudTableClient();
 
-            // Fetch derivative GUIDs for that lookups primary key
-            CloudTable joinTable = tableClient.GetTableReference(lookupTableName);
-            TableQuery<TKey> joinQuery = new TableQuery<TKey>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, id));
-            foreach (TKey entity in joinTable.ExecuteQuery(joinQuery))
-                joinResult.Add(entity.RowKey.ToString());
+            CloudTable table = tableClient.GetTableReference(tableName);
+            TableQuery<T> query = new TableQuery<T>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey));
+            return table.ExecuteQuery(query);
+        }
 
-            // Fetch derivative details from list of derivative GUIDs
-            CloudTable table = tableClient.GetTableReference(derivativeTableName);
-            foreach (string item in joinResult)
-            {
-                TableQuery<TElement> query = new TableQuery<TElement>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, item));
-                TElement firstItem = table.ExecuteQuery(query).First();
-                result.Add(firstItem);
-            }
+        internal static IEnumerable<T1> GetFKReferenceByPartitionKey<T, T1>(string lookupTableName, string derivativeTableName, string id)
+            where T : TableEntity, new()
+            where T1 : TableEntity, new()
+        {
+            // Fetch derivative GUIDs for that lookups partition key
+            IEnumerable<T> joinResult = GetAllRows<T>(lookupTableName, id);//new List<string>();
+
+            List<T1> result = new List<T1>();
+            foreach (T item in joinResult)
+                result.Add(GetFirstRow<T1>(derivativeTableName, item.RowKey.ToString()));
 
             // This will be a List of derivative elements corresponding to the id parameter via the lookup table
             return result.ToArray();
         }
-        
-        internal static bool AddToTable<T>(T tableEntity, string storageTableName) where T : TableEntity, new()
+
+        internal static IEnumerable<T1> GetFKReferenceByRowKey<T, T1>(string lookupTableName, string derivativeTableName, string id)
+            where T : TableEntity, new()
+            where T1 : TableEntity, new()
+        {
+            // Fetch derivative GUIDs for that lookups row key
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+
+            CloudTable table = tableClient.GetTableReference(lookupTableName);
+            TableQuery<T> query = new TableQuery<T>().Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, id));
+            IEnumerable<T> joinResult = table.ExecuteQuery(query);
+
+            List<T1> result = new List<T1>();
+            foreach (T organization in joinResult)
+                result.Add(GetFirstRow<T1>(derivativeTableName, organization.PartitionKey.ToString()));
+
+            // This will be a List of derivative elements corresponding to the id parameter via the lookup table
+            return result.ToArray();
+        }
+
+        internal static bool AddRow<T>(string tableName, T newEntity) 
+            where T : TableEntity, new()
         {
             CloudTableClient tableClient = connectionString.CreateCloudTableClient();
-            CloudTable table = tableClient.GetTableReference(storageTableName);
+            CloudTable table = tableClient.GetTableReference(tableName);
 
-            if ((tableEntity != null) && (tableEntity.PartitionKey.ToString() != "") && (tableEntity.RowKey.ToString() != ""))
-                table.Execute(TableOperation.Insert(tableEntity));
+            if ((newEntity != null) && (newEntity.PartitionKey.ToString() != "") && (newEntity.RowKey.ToString() != ""))
+                table.Execute(TableOperation.Insert(newEntity));
             else
                 return false;
 
             return true;
         }
 
+        internal static bool UpsertRow<T>(string tableName, string partitionKey, string rowKey, T modifiedEntity) 
+            where T : TableEntity, new()
+        {
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
 
+            CloudTable table = tableClient.GetTableReference(tableName);
+            TableOperation retrieveOperation = TableOperation.Retrieve<T>(partitionKey, rowKey);
+
+            TableResult retrievedResult = table.Execute(retrieveOperation);
+            T tableEntity = (T)retrievedResult.Result;
+
+            if ((modifiedEntity.PartitionKey != null) && (modifiedEntity.RowKey != null))
+            {
+                if ((tableEntity != null) && (tableEntity.RowKey != modifiedEntity.RowKey))
+                    DeleteRow<T>(tableName, partitionKey, rowKey);
+                
+
+                TableOperation UpsertOperation = TableOperation.InsertOrReplace(tableEntity);
+                table.Execute(UpsertOperation);
+            }
+            else             
+                return false;            
+
+            return true;
+        }
+        
+        internal static bool DeleteRow<T>(string tableName, string partitionKey, string rowKey) 
+            where T : TableEntity, new()
+        {
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+
+            CloudTable table = tableClient.GetTableReference(tableName);
+            TableOperation retrieveOperation = TableOperation.Retrieve<T>(partitionKey, rowKey);
+
+            TableResult retrievedResult = table.Execute(retrieveOperation);
+            T tableEntity = (T)retrievedResult.Result;
+
+            if (tableEntity != null)
+            {
+                TableOperation deleteOperation = TableOperation.Delete(tableEntity);
+                table.Execute(deleteOperation);
+            }
+            else
+                return false;
+
+            return true;
+        }
+
+        internal static bool DeleteAllRowsWithId<T>(string tableName, string partitionKey)
+            where T : TableEntity, new()
+        {
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+
+            CloudTable table = tableClient.GetTableReference(tableName);
+            IEnumerable<T> Rows = GetAllRows<T>(tableName, partitionKey);
+            
+            try
+            {
+                foreach (T Row in Rows)
+                {
+                    TableOperation deleteOperation = TableOperation.Delete(Row);
+                    table.Execute(deleteOperation);
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
