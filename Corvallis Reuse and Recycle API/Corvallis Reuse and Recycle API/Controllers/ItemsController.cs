@@ -28,7 +28,18 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// <returns></returns>
         public IEnumerable<Organizations> Get([FromUri]string Id)
         {
-            return DataAccess.GetFKReferenceByPartitionKey<ItemOrganization, Organizations>("ItemOrganization", "Organizations", Id);
+            List<Organizations> result = new List<Organizations>();
+
+            IEnumerable<ItemOrganization> OrganizationOfferings = DataAccess.GetAllRows<ItemOrganization>("ItemOrganization", Id);
+            foreach (ItemOrganization row in OrganizationOfferings)
+            {
+                Organizations organization = DataAccess.GetFirstRow<Organizations>("Organizations", row.RowKey);
+                organization.Offering = row.Offering;
+                result.Add(organization);
+            }
+
+            return result.ToArray();
+            //return DataAccess.GetFKReferenceByPartitionKey<ItemOrganization, Organizations>("ItemOrganization", "Organizations", Id);
         }
         
         // POST: api/Items

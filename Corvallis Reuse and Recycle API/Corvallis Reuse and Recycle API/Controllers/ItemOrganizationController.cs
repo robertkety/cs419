@@ -10,18 +10,33 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
 {
     public class ItemOrganizationController : ApiController
     {
-        /*
-         * // GET: api/ItemOrganization/5
+        // GET: api/ItemOrganization/5
         /// <summary>
         /// Gets a List of Organizations objects assigned to the target Item
         /// </summary>
         /// <param name="ItemId">The Id of the target Item</param>
+        /// <param name="Offering">Include accurate offering data</param>
         /// <returns></returns>
         //[Authorize]
-        public IEnumerable<Organizations> Get([FromUri]string ItemId)
+        public IEnumerable<Organizations> Get([FromUri]string ItemId, [FromUri]bool Offering)
         {
-            return DataAccess.GetFKReferenceByPartitionKey<ItemOrganization, Organizations>("ItemOrganization", "Organizations", ItemId);
-        }*/
+            List<Organizations> result = new List<Organizations>();
+
+            if (Offering)
+            {
+                IEnumerable<ItemOrganization> OrganizationOfferings = DataAccess.GetAllRows<ItemOrganization>("ItemOrganization", ItemId);
+                foreach (ItemOrganization row in OrganizationOfferings)
+                {
+                    Organizations organization = DataAccess.GetFirstRow<Organizations>("Organizations", row.RowKey);
+                    organization.Offering = row.Offering;
+                    result.Add(organization);
+                }
+            }
+            else
+                return DataAccess.GetFKReferenceByPartitionKey<ItemOrganization, Organizations>("ItemOrganization", "Organizations", ItemId);
+
+            return result.ToArray();
+        }
 
         // GET: api/ItemOrganization/5
         /// <summary>

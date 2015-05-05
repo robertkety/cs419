@@ -545,6 +545,14 @@
             </summary>
             <param name="Id">The Id of the target Category</param>
         </member>
+        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemOrganizationController.Get(System.String,System.Boolean)">
+            <summary>
+            Gets a List of Organizations objects assigned to the target Item
+            </summary>
+            <param name="ItemId">The Id of the target Item</param>
+            <param name="Offering">Include accurate offering data</param>
+            <returns></returns>
+        </member>
         <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemOrganizationController.Get(System.String)">
             <summary>
             Gets a List of Items objects assigned to the target Organization
@@ -612,13 +620,13 @@
         </member>
         <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.OrganizationsController.Get">
             <summary>
-            Returns a list of all Organization objects in the Organizations table
+            Returns a list of all Organization objects in the Organizations table. (Do not use this call to retrieve Offering data - use ItemOrganization)
             </summary>
             <returns></returns>
         </member>
         <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.OrganizationsController.Post(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
-            Creates a new organization with the following parameter information
+            Creates a new organization with the following parameter information. (Do not use this call to create Offering data - use ItemOrganization)
             </summary>
             <param name="Name">Name of the organization (No '/', '\', '#', or '?' characters - See http://stackoverflow.com/a/11515366) </param>
             <param name="Phone">Numerical representation of the phone number (No '(', ')', or '-')</param>
@@ -632,7 +640,7 @@
         </member>
         <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.OrganizationsController.Put(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
-            Replaces the target organization with following parameter information
+            Replaces the target organization with following parameter information. (Do not use this call to update Offering data - use ItemOrganization)
             </summary>
             <param name="Id">Id of the target organization</param>
             <param name="OldName">Old name of the organization (No '/', '\', '#', or '?' characters - See http://stackoverflow.com/a/11515366) </param>
@@ -652,6 +660,42 @@
             </summary>
             <param name="Id"></param>
             <param name="Name"></param>
+        </member>
+        <member name="F:Corvallis_Reuse_and_Recycle_API.Site_Mobile.HeadContent">
+            <summary>
+            HeadContent control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Corvallis_Reuse_and_Recycle_API.Site_Mobile.form1">
+            <summary>
+            form1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Corvallis_Reuse_and_Recycle_API.Site_Mobile.FeaturedContent">
+            <summary>
+            FeaturedContent control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Corvallis_Reuse_and_Recycle_API.Site_Mobile.MainContent">
+            <summary>
+            MainContent control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
         </member>
     </members>
 </doc>

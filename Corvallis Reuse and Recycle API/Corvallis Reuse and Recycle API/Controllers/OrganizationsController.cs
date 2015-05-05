@@ -13,7 +13,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
     {
         // GET: api/Organizations
         /// <summary>
-        /// Returns a list of all Organization objects in the Organizations table
+        /// Returns a list of all Organization objects in the Organizations table. (Do not use this call to retrieve Offering data - use ItemOrganization)
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Organizations> Get()
@@ -24,7 +24,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         // POST: api/Organizations
         //[Authorize]
         /// <summary>
-        /// Creates a new organization with the following parameter information
+        /// Creates a new organization with the following parameter information. (Do not use this call to create Offering data - use ItemOrganization)
         /// </summary>
         /// <param name="Name">Name of the organization (No '/', '\', '#', or '?' characters - See http://stackoverflow.com/a/11515366) </param>
         /// <param name="Phone">Numerical representation of the phone number (No '(', ')', or '-')</param>
@@ -45,7 +45,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         // PUT: api/Organizations/5
         //[Authorize]
         /// <summary>
-        /// Replaces the target organization with following parameter information
+        /// Replaces the target organization with following parameter information. (Do not use this call to update Offering data - use ItemOrganization)
         /// </summary>
         /// <param name="Id">Id of the target organization</param>
         /// <param name="OldName">Old name of the organization (No '/', '\', '#', or '?' characters - See http://stackoverflow.com/a/11515366) </param>
