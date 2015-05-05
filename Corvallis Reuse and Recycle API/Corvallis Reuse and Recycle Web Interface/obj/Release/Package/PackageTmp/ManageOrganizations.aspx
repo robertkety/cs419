@@ -9,13 +9,20 @@
         <h3>Organization Info</h3>
         <asp:GridView ID="GridViewOrganizationInfo" runat="server" AutoGenerateColumns="False" OnRowEditing="GridViewOrganizationInfo_RowEditing" 
             OnRowCancelingEdit="GridViewOrganizationInfo_RowCancelingEdit" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True"
-             AllowSorting="True" OnPageIndexChanged="GridViewOrganizationInfo_PageIndexChanged" OnPageIndexChanging="GridViewOrganizationInfo_PageIndexChanging">
+             OnPageIndexChanged="GridViewOrganizationInfo_PageIndexChanged" OnPageIndexChanging="GridViewOrganizationInfo_PageIndexChanging" ShowFooter="true">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:BoundField DataField="OrganizationName" HeaderText="Name" >
-                <ControlStyle Width="100%" />
-                <HeaderStyle Width="10%" />
-                </asp:BoundField>
+                <asp:TemplateField HeaderText="Category Name">
+                    <ItemTemplate>
+                        <%# Eval("OrganizationName") %>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="TextBoxSearch" runat="server"></asp:TextBox>
+                        <asp:Button ID="ButtonSearch" runat="server" Text="Search" OnClick="ButtonSearch_Click"/>
+                    </FooterTemplate>
+                    <FooterStyle HorizontalAlign="Left" />
+                    <HeaderStyle Width="30%" />
+                </asp:TemplateField>
                 <asp:BoundField DataField="OrganizationPhone" HeaderText="Phone" >
                 <ControlStyle Width="100%" />
                 <HeaderStyle Width="10%" />

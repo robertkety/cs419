@@ -28,6 +28,12 @@
             <li>
                 <asp:HyperLink ID="HyperLinkManageItems" runat="server" NavigateUrl="~/ManageItems.aspx">Manage Items</asp:HyperLink>
             </li>
+            <li>
+                <asp:HyperLink ID="HyperLinkManageReusables" runat="server" NavigateUrl="~/ManageReusableOrganizations.aspx">Manage Reusable/Organization Combinations</asp:HyperLink>
+            </li>
+            <li>
+                <asp:HyperLink ID="HyperLinkManageRepairables" runat="server" NavigateUrl="~/ManageRepairables.aspx">Manage Repairable/Organization Combinations</asp:HyperLink>
+            </li>
         </ul>
     </asp:Panel>
 </asp:Content>

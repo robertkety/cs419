@@ -7,63 +7,72 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CRRD_Web_Interface.Account {
+namespace CRRD_Web_Interface {
     
     
-    public partial class Login {
+    public partial class ManageReusableOrganizations {
         
         /// <summary>
-        /// ErrorMessage control.
+        /// LabelInstruction control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
+        protected global::System.Web.UI.WebControls.Label LabelInstruction;
         
         /// <summary>
-        /// FailureText control.
+        /// DropDownListReusableItems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal FailureText;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListReusableItems;
         
         /// <summary>
-        /// Email control.
+        /// PanelErrorMessages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Email;
+        protected global::System.Web.UI.WebControls.Panel PanelErrorMessages;
         
         /// <summary>
-        /// Password control.
+        /// LabelErrorMessageConnection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Password;
+        protected global::System.Web.UI.WebControls.Label LabelErrorMessageConnection;
         
         /// <summary>
-        /// RememberMe control.
+        /// PanelReusableOrganization control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox RememberMe;
+        protected global::System.Web.UI.WebControls.Panel PanelReusableOrganization;
         
         /// <summary>
-        /// OpenAuthLogin control.
+        /// GridViewReusableOrganizations control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CRRD_Web_Interface.Account.OpenAuthProviders OpenAuthLogin;
+        protected global::System.Web.UI.WebControls.GridView GridViewReusableOrganizations;
+        
+        /// <summary>
+        /// LinkButtonAddReusable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButtonAddReusable;
     }
 }

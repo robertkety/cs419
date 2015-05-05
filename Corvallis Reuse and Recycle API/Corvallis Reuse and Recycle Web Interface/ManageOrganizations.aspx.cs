@@ -16,42 +16,22 @@ namespace CRRD_Web_Interface
 {
     public partial class ManageOrganizations : System.Web.UI.Page
     {
-        protected string SortExpression
-        {
-            get
-            {
-                return ViewState["SortExpression"] as string;
-            }
-            set
-            {
-                ViewState["SortExpression"] = value;
-            }
-        }
+        protected string SearchString = String.Empty;
+        protected bool Authenticated = false;   // Flag to prevent the rest of the page being rendered when user is not authenitcated
 
-        protected SortDirection SortDirection
+        protected async Task Page_Load(object sender, EventArgs e)
         {
-            get
+            if (!User.Identity.IsAuthenticated)
             {
-                object o = ViewState["SortDirection"];
-
-                if(o == null)
-                {
-                    return SortDirection.Ascending;
-                }
-                else
-                {
-                    return SortDirection.Descending;
-                }
+                Response.Redirect("~/Account/Login", false);
+                Context.ApplicationInstance.CompleteRequest();  // Most complete thread to avoid thread exit exception
             }
-            set
+            else
             {
-                ViewState["SortDirection"] = value;
+                Authenticated = true;
             }
-        }
 
-        protected async void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
+            if (!IsPostBack && Authenticated == true)
             {
                 var client = new HttpClient();
                 client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
@@ -118,7 +98,6 @@ namespace CRRD_Web_Interface
             {
                 Organization[] organizations = await response.Content.ReadAsAsync<Organization[]>();
                 DataTable dt = new DataTable();
-                bool sortAscending = this.SortDirection == SortDirection.Ascending ? true : false;
                 dt.Columns.Add("OrganizationName");
                 dt.Columns.Add("OrganizationPhone");
                 dt.Columns.Add("OrganizationAddressLine1");
@@ -145,41 +124,31 @@ namespace CRRD_Web_Interface
                 }
 
                 DataView dv = dt.DefaultView;
-                switch(this.SortExpression)
+                dv.Sort = "OrganizationName ASC";
+                DataTable sorted_dt = dv.ToTable();
+
+                if (SearchString != "")
                 {
-                    case "OrganizationName":
-                        dv.Sort = "OrganizationName ASC";
-                        break;
-                    case "OrganizationPhone":
-                        dv.Sort = "OrganizationPhone ASC";
-                        break;
-                    case "OrganizationAddressLine1":
-                        dv.Sort = "OrganizationAddressLine1 ASC";
-                        break;
-                    case "OrganizationAddressLine2":
-                        dv.Sort = "OrganizationAddressLine2 ASC";
-                        break;
-                    case "OrganizationAddressLine3":
-                        dv.Sort = "OrganizationAddressLine3 ASC";
-                        break;
-                    case "OrganizationZipCode":
-                        dv.Sort = "OrganizationZipCode ASC";
-                        break;
-                    case "OrganizationWebsite":
-                        dv.Sort = "OrganizationWebsite ASC";
-                        break;
-                    case "OrganizationHours":
-                        dv.Sort = "OrganizationHours ASC";
-                        break;
-                    case "OrganizationNotes":
-                        dv.Sort = "OrganizationNotes ASC";
-                        break;
-                    default:
-                        dv.Sort = "OrganizationName ASC";
-                        break;
+                   DataRow[] FilteredRows = sorted_dt.Select("OrganizationName like '%" + SearchString + "%'");
+                   DataTable filtered_dt = new DataTable();
+                   filtered_dt = sorted_dt.Clone();
+
+                    if(FilteredRows.Count() == 0)
+                    {
+                        GridViewOrganizationInfo.DataSource = sorted_dt;
+                        GridViewOrganizationInfo.DataBind();
+                        return true;
+                    }
+
+                   foreach(DataRow row in FilteredRows)
+                   {
+                       filtered_dt.Rows.Add(row.ItemArray);
+                   }
+                   GridViewOrganizationInfo.DataSource = filtered_dt;
+                   GridViewOrganizationInfo.DataBind();
+                   return true;
                 }
 
-                DataTable sorted_dt = dv.ToTable();
                 GridViewOrganizationInfo.DataSource = sorted_dt;
                 GridViewOrganizationInfo.DataBind();
 
@@ -223,21 +192,11 @@ namespace CRRD_Web_Interface
             await BindData();
         }
 
-        protected void GridViewOrganizationInfo_Sorting(object sender, GridViewSortEventArgs e)
+        protected async void ButtonSearch_Click(object sender, EventArgs e)
         {
-            if(this.SortExpression == e.SortExpression)
-            {
-                this.SortDirection = this.SortDirection == SortDirection.Ascending ? SortDirection.Descending : SortDirection.Ascending;
-            }
-            else
-            {
-                this.SortDirection = SortDirection.Ascending;
-            }
-
-            this.SortExpression = e.SortExpression;
-
-            GridViewOrganizationInfo.EditIndex = -1;
-            GridViewOrganizationInfo.SelectedIndex = -1;
+            TextBox Search = GridViewOrganizationInfo.FooterRow.FindControl("TextBoxSearch") as TextBox;
+            SearchString = Search.Text;
+            await BindData();
         }
     }
 }

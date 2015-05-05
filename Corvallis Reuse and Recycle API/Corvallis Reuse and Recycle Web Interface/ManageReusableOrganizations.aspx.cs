@@ -14,7 +14,7 @@ using System.Data;
 // Sorting data table: http://stackoverflow.com/questions/9107916/sorting-rows-in-a-data-table
 namespace CRRD_Web_Interface
 {
-    public partial class ManageCategories : System.Web.UI.Page
+    public partial class ManageReusableOrganizations : System.Web.UI.Page
     {
         protected string SearchString = String.Empty;
         protected bool Authenticated = false;   // Flag to prevent the rest of the page being rendered when user is not authenitcated
@@ -38,35 +38,27 @@ namespace CRRD_Web_Interface
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = await client.GetAsync("api/categories");
+                HttpResponseMessage response = await client.GetAsync("api/items");
                 if (response.IsSuccessStatusCode)
                 {
-                    Category[] categories = await response.Content.ReadAsAsync<Category[]>();
+                    Item[] items = await response.Content.ReadAsAsync<Item[]>();
                     DataTable dt = new DataTable();
-                    dt.Columns.Add("CategoryName");
+                    dt.Columns.Add("ItemName");
 
-                    foreach (Category category in categories)
+                    foreach (Item item in items)
                     {
                         var dr = dt.NewRow();
-                        dr["CategoryName"] = category.RowKey;
+                        dr["ItemName"] = item.RowKey;
                         dt.Rows.Add(dr);
+
+                        DropDownListReusableItems.Items.Add(new ListItem(item.RowKey, item.PartitionKey));
+                        PanelErrorMessages.Visible = false;
                     }
-
-                    // Convert to dataview to sort categories, then convert back to table
-                    DataView dv = dt.DefaultView;
-                    dv.Sort = "CategoryName ASC";
-                    DataTable dt_sorted = dv.ToTable();
-
-                    GridViewCategoryInfo.DataSource = dt_sorted;
-                    GridViewCategoryInfo.DataBind();
-
-                    PanelErrorMessages.Visible = false;
-                    PanelCategoryInfo.Visible = true;
                 }
                 else
                 {
                     PanelErrorMessages.Visible = true;
-                    PanelCategoryInfo.Visible = false;
+                    PanelReusableOrganization.Visible = false;
                 }
             }
         }
@@ -78,34 +70,39 @@ namespace CRRD_Web_Interface
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = await client.GetAsync("api/categories");
+            HttpResponseMessage response = await client.GetAsync("api/ItemOrganization?ItemId=" + DropDownListReusableItems.SelectedValue + "&Offering=true");
             if (response.IsSuccessStatusCode)
             {
-                Category[] categories = await response.Content.ReadAsAsync<Category[]>();
+                Organization[] organizations = await response.Content.ReadAsAsync<Organization[]>();
                 DataTable dt = new DataTable();
-                dt.Columns.Add("CategoryName");
+                dt.Columns.Add("OrganizationName");
+                dt.Columns.Add("OrganizationAddressLine1");
 
-                foreach (Category category in categories)
+                foreach (Organization organization in organizations)
                 {
-                    var dr = dt.NewRow();
-                    dr["CategoryName"] = category.RowKey;
-                    dt.Rows.Add(dr);
+                    if (organization.Offering == 1 || organization.Offering == 3)
+                    {
+                        var dr = dt.NewRow();
+                        dr["OrganizationName"] = organization.RowKey;
+                        dr["OrganizationAddressLine1"] = organization.AddressLine1;
+                        dt.Rows.Add(dr);
+                    }
                 }
 
                 DataView dv = dt.DefaultView;
-                dv.Sort = "CategoryName ASC";
+                dv.Sort = "OrganizationName ASC";
                 DataTable sorted_dt = dv.ToTable();
 
                 if (SearchString != "")
                 {
-                    DataRow[] FilteredRows = sorted_dt.Select("CategoryName like '%" + SearchString + "%'");
+                    DataRow[] FilteredRows = sorted_dt.Select("OrganizationName like '%" + SearchString + "%'");
                     DataTable filtered_dt = new DataTable();
                     filtered_dt = sorted_dt.Clone();
 
                     if (FilteredRows.Count() == 0)
                     {
-                        GridViewCategoryInfo.DataSource = sorted_dt;
-                        GridViewCategoryInfo.DataBind();
+                        GridViewReusableOrganizations.DataSource = sorted_dt;
+                        GridViewReusableOrganizations.DataBind();
                         return true;
                     }
 
@@ -113,13 +110,14 @@ namespace CRRD_Web_Interface
                     {
                         filtered_dt.Rows.Add(row.ItemArray);
                     }
-                    GridViewCategoryInfo.DataSource = filtered_dt;
-                    GridViewCategoryInfo.DataBind();
+
+                    GridViewReusableOrganizations.DataSource = filtered_dt;
+                    GridViewReusableOrganizations.DataBind();
                     return true;
                 }
 
-                GridViewCategoryInfo.DataSource = sorted_dt;
-                GridViewCategoryInfo.DataBind();
+                GridViewReusableOrganizations.DataSource = sorted_dt;
+                GridViewReusableOrganizations.DataBind();
 
                 return true;
             }
@@ -127,45 +125,51 @@ namespace CRRD_Web_Interface
             return false;
         }
 
-        protected async void GridViewCategoryInfo_RowEditing(object sender, GridViewEditEventArgs e)
+        protected async void DropDownListReusableItems_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GridViewCategoryInfo.EditIndex = e.NewEditIndex;
-            bool status = await BindData();
+            if (DropDownListReusableItems.SelectedValue == "-1")
+            {
+                return;
+            }
 
+            bool status = await BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
+                PanelReusableOrganization.Visible = false;
             }
-        }
-
-        protected async void GridViewCategoryInfo_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            GridViewCategoryInfo.EditIndex = -1;
-            bool status = await BindData();
-
-            if (status == false)
+            else
             {
-                PanelErrorMessages.Visible = true;
+                PanelReusableOrganization.Visible = true;
             }
         }
 
-        protected void GridViewCategoryInfo_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void GridViewReusableOrganizations_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridViewCategoryInfo.PageIndex = e.NewPageIndex;
-            GridViewCategoryInfo.EditIndex = -1;
-            GridViewCategoryInfo.SelectedIndex = -1;
+            GridViewReusableOrganizations.PageIndex = e.NewPageIndex;
+            GridViewReusableOrganizations.EditIndex = -1;
+            GridViewReusableOrganizations.SelectedIndex = -1;
         }
 
-        protected async void GridViewCategoryInfo_PageIndexChanged(object sender, EventArgs e)
+        protected async void GridViewReusableOrganizations_PageIndexChanged(object sender, EventArgs e)
         {
             await BindData();
         }
 
         protected async void ButtonSearch_Click(object sender, EventArgs e)
         {
-            TextBox Search = GridViewCategoryInfo.FooterRow.FindControl("TextBoxSearch") as TextBox;
+            TextBox Search = GridViewReusableOrganizations.FooterRow.FindControl("TextBoxSearch") as TextBox;
             SearchString = Search.Text;
-            await BindData();
+            bool status = await BindData();
+            if (status == false)
+            {
+                PanelErrorMessages.Visible = true;
+                PanelReusableOrganization.Visible = false;
+            }
+            else
+            {
+                PanelReusableOrganization.Visible = true;
+            }
         }
     }
 }

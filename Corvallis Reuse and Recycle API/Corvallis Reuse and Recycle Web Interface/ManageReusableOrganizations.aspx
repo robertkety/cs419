@@ -1,20 +1,23 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="ManageItems.aspx.cs" Inherits="CRRD_Web_Interface.ManageItems" Async="true"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageReusableOrganizations.aspx.cs" MasterPageFile="~/Site.Master" Inherits="CRRD_Web_Interface.ManageReusableOrganizations" async="true"%>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Manage Items</h2>
+    <h2>Manage Reusable Item/Organization Combinations</h2>
+    <asp:Label ID="LabelInstruction" runat="server" Text="Begin by selecting an item:"></asp:Label>
+    <asp:DropDownList ID="DropDownListReusableItems" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListReusableItems_SelectedIndexChanged">
+        <asp:ListItem Value="-1">&lt;Select an Item&gt;</asp:ListItem>
+    </asp:DropDownList>
     <asp:Panel ID="PanelErrorMessages" runat="server" Visible="false">
         <asp:Label ID="LabelErrorMessageConnection" runat="server" Text="Unable to connect with database, please try again later."></asp:Label>
     </asp:Panel>
-    <asp:Panel ID="PanelItemInfo" runat="server" Visible="false">
-        <h3>Items</h3>
-        <asp:GridView ID="GridViewItemInfo" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" 
-            OnRowEditing="GridViewItemInfo_RowEditing" OnRowCancelingEdit="GridViewItemInfo_RowCancelingEdit" AllowPaging="True" 
-            OnPageIndexChanged="GridViewItemInfo_PageIndexChanged" OnPageIndexChanging="GridViewItemInfo_PageIndexChanging" ShowFooter="true">
+    <asp:Panel ID="PanelReusableOrganization" runat="server" Visible="false">
+        <asp:GridView ID="GridViewReusableOrganizations" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False"
+            AllowPaging="True" OnPageIndexChanged="GridViewReusableOrganizations_PageIndexChanged" 
+            OnPageIndexChanging="GridViewReusableOrganizations_PageIndexChanging" ShowFooter="True">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:TemplateField HeaderText="Item Name">
+                <asp:TemplateField HeaderText="Organization Name">
                     <ItemTemplate>
-                        <%# Eval("ItemName") %>
+                        <%# Eval("OrganizationName") %>
                     </ItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="TextBoxSearch" runat="server"></asp:TextBox>
@@ -23,10 +26,10 @@
                     <FooterStyle HorizontalAlign="Left" />
                     <HeaderStyle Width="20%" />
                 </asp:TemplateField>
-                <asp:CommandField ShowEditButton="True" >
+                <asp:BoundField DataField="OrganizationAddressLine1" HeaderText="Address 1" >
                 <ControlStyle Width="100%" />
-                <HeaderStyle Width="5%" />
-                </asp:CommandField>
+                <HeaderStyle Width="20%" />
+                </asp:BoundField>
                 <asp:CommandField ShowDeleteButton="True" >
                 <ControlStyle Width="100%" />
                 <HeaderStyle Width="5%" />
@@ -44,7 +47,7 @@
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
         <div>
-            <asp:LinkButton ID="LinkButtonAddItem" runat="server">+ Add a New Item</asp:LinkButton>
+            <asp:LinkButton ID="LinkButtonAddReusable" runat="server">+ Add a New Item/Organization Combination</asp:LinkButton>
         </div>
     </asp:Panel>
 </asp:Content>

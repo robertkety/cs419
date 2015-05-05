@@ -8,13 +8,21 @@
     <asp:Panel ID="PanelCategoryInfo" runat="server" Visible="false">
         <h3>Categories</h3>
         <asp:GridView ID="GridViewCategoryInfo" runat="server" AutoGenerateColumns="False" OnRowEditing="GridViewCategoryInfo_RowEditing"
-             OnRowCancelingEdit="GridViewCategoryInfo_RowCancelingEdit" AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanged="GridViewOrganizationInfo_PageIndexChanged" OnPageIndexChanging="GridViewOrganizationInfo_PageIndexChanging">
+            OnRowCancelingEdit="GridViewCategoryInfo_RowCancelingEdit" AllowPaging="True" CellPadding="4" ForeColor="#333333" GridLines="None" 
+            OnPageIndexChanged="GridViewCategoryInfo_PageIndexChanged" OnPageIndexChanging="GridViewCategoryInfo_PageIndexChanging" ShowFooter="true">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:BoundField DataField="CategoryName" HeaderText="Name" >
-                <ControlStyle Width="100%" />
-                <HeaderStyle Width="40%" />
-                </asp:BoundField>
+                <asp:TemplateField HeaderText="Category Name">
+                    <ItemTemplate>
+                        <%# Eval("CategoryName") %>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="TextBoxSearch" runat="server"></asp:TextBox>
+                        <asp:Button ID="ButtonSearch" runat="server" Text="Search" OnClick="ButtonSearch_Click"/>
+                    </FooterTemplate>
+                    <FooterStyle HorizontalAlign="Left" />
+                    <HeaderStyle Width="20%" />
+                </asp:TemplateField>
                 <asp:CommandField ShowEditButton="True">
                 <ControlStyle Width="100%" />
                 <HeaderStyle Width="5%" />
