@@ -16,7 +16,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// </summary>
         /// <param name="Id">The Id of the target Category</param>
         /// <returns></returns>
-        //[Authorize]
+        [Authorize]
         public IEnumerable<Items> Get([FromUri]string Id)
         {
             return DataAccess.GetFKReferenceByPartitionKey<CategoryItem, Items>("CategoryItem", "Items", Id);
@@ -28,7 +28,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// </summary>
         /// <param name="Id">The Id of the target Category</param>
         /// <param name="Items">An array of the target Items belonging to the target Category</param>
-        //[Authorize]
+        [Authorize]
         public void Post([FromUri]string Id, [FromUri]string[] Items = null)
         {
             if (Id == null)
@@ -46,7 +46,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// </summary>
         /// <param name="Name">The Name for the new Category</param>
         /// <param name="Items">An array of the target Items belonging to the new Category</param>
-        //[Authorize]
+        [Authorize]
         public void Post([FromUri]string Name, [FromUri]string[] Items = null)
         {
             string NewCategoryGuid = new Guid().ToString();
@@ -69,7 +69,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// <param name="OldName">The existing name of that Category</param>
         /// <param name="NewName">The new name for target category (or existing name if no change necessary)</param>
         /// <param name="Items">An array of the target Items belonging to the target Category</param>
-        //[Authorize]
+        [Authorize]
         public void Put([FromUri]string Id, [FromUri]string OldName, [FromUri]string NewName = "", [FromUri]string[] Items = null)
         {
             if (OldName == null)
@@ -90,7 +90,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// Deletes all relational rows belonging to target Category Id in the CategoryItem table
         /// </summary>
         /// <param name="Id">The Id of the target Category</param>
-        //[Authorize]
+        [Authorize]
         public void Delete([FromUri] string Id)
         {
             DataAccess.DeleteAllRowsWithId<CategoryItem>("CategoryItem", Id);

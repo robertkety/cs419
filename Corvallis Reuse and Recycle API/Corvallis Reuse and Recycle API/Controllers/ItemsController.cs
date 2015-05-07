@@ -43,7 +43,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         }
         
         // POST: api/Items
-        //[Authorize]
+        [Authorize]
         /// <summary>
         /// Creates a new Item with the target name and associates it with the corresponding list of category ids
         /// </summary>
@@ -61,7 +61,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         }
         
         // PUT: api/Items/5
-        //[Authorize]
+        [Authorize]
         /// <summary>
         /// Updates the name of the target item.  Old name is required for an efficient storage table query
         /// </summary>
@@ -76,7 +76,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         }
         
         // DELETE: api/Items/5
-        //[Authorize]
+        [Authorize]
         /// <summary>
         /// Deletes the target item from the Items table
         /// </summary>

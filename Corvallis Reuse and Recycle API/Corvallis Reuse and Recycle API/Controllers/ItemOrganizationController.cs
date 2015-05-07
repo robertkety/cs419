@@ -17,7 +17,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// <param name="ItemId">The Id of the target Item</param>
         /// <param name="Offering">Include accurate offering data</param>
         /// <returns></returns>
-        //[Authorize]
+        [Authorize]
         public IEnumerable<Organizations> Get([FromUri]string ItemId, [FromUri]bool Offering)
         {
             List<Organizations> result = new List<Organizations>();
@@ -44,7 +44,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// </summary>
         /// <param name="OrganizationId">The Id of the target Organization</param>
         /// <returns></returns>
-        //[Authorize]
+        [Authorize]
         public IEnumerable<Organizations> Get([FromUri]string OrganizationId)
         {
             return DataAccess.GetFKReferenceByRowKey<ItemOrganization, Organizations>("ItemOrganization", "Items", OrganizationId);
@@ -57,7 +57,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// <param name="ItemId">The Id of the target Item</param>
         /// <param name="OrganizationId">The Id of the target Organizaiton</param>
         /// <param name="Offering">The integer offering for the item at that location (0: none, 1: reuse, 2: recycle, 3: both)</param>
-        //[Authorize]
+        [Authorize]
         public void Post([FromUri]string ItemId, [FromUri]string OrganizationId = null, [FromUri]int Offering = 0)
         {
             if (ItemId == null)
@@ -78,7 +78,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// <param name="ItemId">Id for target Item</param>
         /// <param name="OrganizationId">If for target Organization</param>
         /// <param name="Offering">The integer offering for the item at that location (0: none, 1: reuse, 2: recycle, 3: both)</param>
-        //[Authorize]
+        [Authorize]
         public void Put([FromUri]string ItemId, [FromUri]string OrganizationId = null, [FromUri] int Offering = 0)
         {
             if ((ItemId != null) && (ItemId != ""))
@@ -96,7 +96,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// </summary>
         /// <param name="ItemId">Id for target Item</param>
         /// <param name="OrganizationId">If for target Organization</param>
-        //[Authorize]
+        [Authorize]
         public void Delete([FromUri] string ItemId, [FromUri] string OrganizationId)
         {
             DataAccess.DeleteRow<ItemOrganization>("ItemOrganization", ItemId, OrganizationId);

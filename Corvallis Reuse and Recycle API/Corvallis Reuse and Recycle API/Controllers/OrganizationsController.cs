@@ -22,7 +22,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         }
 
         // POST: api/Organizations
-        //[Authorize]
+        [Authorize]
         /// <summary>
         /// Creates a new organization with the following parameter information. (Do not use this call to create Offering data - use ItemOrganization)
         /// </summary>
@@ -43,7 +43,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         }
         
         // PUT: api/Organizations/5
-        //[Authorize]
+        [Authorize]
         /// <summary>
         /// Replaces the target organization with following parameter information. (Do not use this call to update Offering data - use ItemOrganization)
         /// </summary>
@@ -66,7 +66,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         }
         
         // DELETE: api/Organizations/5
-        //[Authorize]
+        [Authorize]
         /// <summary>
         /// Deletes the target organization from the Organizations table
         /// </summary>
