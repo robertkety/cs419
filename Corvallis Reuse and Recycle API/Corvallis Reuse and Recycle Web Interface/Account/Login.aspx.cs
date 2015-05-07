@@ -10,12 +10,20 @@ namespace CRRD_Web_Interface.Account
 {
     public partial class Login : Page
     {
+        public static string returnUrl = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            var url = HttpContext.Current.Request.Url;
+            
             // Enable this once you have account confirmation enabled for password reset functionality
             //ForgotPasswordHyperLink.NavigateUrl = "Forgot";
             OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
-            var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+            returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+            
+            /*if (returnUrl == null)
+                returnUrl = url.Scheme + @"://" + url.Authority + @"/Default";*/
+                
         }
 
         protected void LogIn(object sender, EventArgs e)
@@ -29,7 +37,11 @@ namespace CRRD_Web_Interface.Account
                 // This doen't count login failures towards account lockout
                 // To enable password failures to trigger lockout, change to shouldLockout: true
                 var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
-
+                
+                // This will send the same login info to the Web API for a parallel authentication (Ideally, we'll have both pointed to the same Azure SQL DB)
+                Entities.Login newlogin = new Entities.Login(Email.Text, Password.Text);
+                result &= DataAccess.PostLogin(newlogin);
+                
                 switch (result)
                 {
                     case SignInStatus.Success:

@@ -17,7 +17,7 @@ namespace CRRD_Web_Interface
         public static string token = "";
 
         /* Thanks! https://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn439314.aspx */
-        private static async Task<dynamic> getDataFromService(string url)
+        private static dynamic getDataFromService(string url)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace CRRD_Web_Interface
                 if (token != null)
                     request.Headers["Authorization"] = "Bearer " + token;
 
-                var response = await request.GetResponseAsync().ConfigureAwait(false);
+                var response = request.GetResponse();
                 var stream = response.GetResponseStream();
 
                 var streamReader = new StreamReader(stream);
@@ -62,7 +62,7 @@ namespace CRRD_Web_Interface
         }
         
         /* Thanks! https://msdn.microsoft.com/en-us/library/debx8sh9%28v=vs.110%29.aspx */
-        private static async Task<dynamic> postDataToService(string url, char[] charArray)
+        private static dynamic postDataToService(string url, char[] charArray)
         {
             try
             {
@@ -73,11 +73,11 @@ namespace CRRD_Web_Interface
 
                 request.Method = "POST";
                 request.ContentType = "application/x-www-form-urlencoded";
-                using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
+                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
                     streamWriter.Write(charArray, 0, charArray.Length);
                 }
-                var response = await request.GetResponseAsync().ConfigureAwait(false);
+                var response = request.GetResponse();
                 var stream = response.GetResponseStream();
 
                 var streamReader = new StreamReader(stream);
@@ -113,7 +113,7 @@ namespace CRRD_Web_Interface
         }
 
         /* Thanks! https://msdn.microsoft.com/en-us/library/debx8sh9%28v=vs.110%29.aspx*/
-        private static async Task<dynamic> putDataToService(string url, char[] charArray)
+        private static dynamic putDataToService(string url, char[] charArray)
         {
             try
             {
@@ -124,11 +124,11 @@ namespace CRRD_Web_Interface
 
                 request.Method = "PUT";
                 request.ContentType = "application/x-www-form-urlencoded";
-                using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
+                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
                     streamWriter.Write(charArray, 0, charArray.Length);
                 }
-                var response = await request.GetResponseAsync().ConfigureAwait(false);
+                var response = request.GetResponse();
                 var stream = response.GetResponseStream();
 
                 var streamReader = new StreamReader(stream);
@@ -164,7 +164,7 @@ namespace CRRD_Web_Interface
         }
 
         /* Thanks! https://msdn.microsoft.com/en-us/library/debx8sh9%28v=vs.110%29.aspx*/
-        private static async Task<dynamic> deleteDataToService(string url, char[] charArray)
+        private static dynamic deleteDataToService(string url, char[] charArray)
         {
             try
             {
@@ -175,11 +175,11 @@ namespace CRRD_Web_Interface
 
                 request.Method = "DELETE";
                 request.ContentType = "application/x-www-form-urlencoded";
-                using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
+                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
                     streamWriter.Write(charArray, 0, charArray.Length);
                 }
-                var response = await request.GetResponseAsync().ConfigureAwait(false);
+                var response = request.GetResponse();
                 var stream = response.GetResponseStream();
 
                 var streamReader = new StreamReader(stream);
@@ -214,12 +214,12 @@ namespace CRRD_Web_Interface
             }
         }
 
-        public static async Task<SignInStatus> PostLogin(Entities.Login login)
+        public static SignInStatus PostLogin(Entities.Login login)
         {
             string path = "Token";
             string payload = "Email=" + login.username + "&Password=" + login.password + "&ConfirmPassword=" + login.password + "&grant_type=password" + "&UserName=" + login.username;
 
-            dynamic confirmation = await postDataToService(url + path, (payload).ToCharArray()).ConfigureAwait(false);
+            dynamic confirmation = postDataToService(url + path, (payload).ToCharArray());
 
             try
             {
