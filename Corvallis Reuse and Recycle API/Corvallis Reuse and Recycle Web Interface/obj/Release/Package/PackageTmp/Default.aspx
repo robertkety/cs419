@@ -14,7 +14,7 @@
                 <asp:HyperLink ID="HyperLinkManageAccount" runat="server" NavigateUrl="~/Account/Manage.aspx">Manage Account</asp:HyperLink>
             </li>
             <li>
-                <asp:HyperLink ID="HyperLinkManageUsers" runat="server">Manage Users</asp:HyperLink>
+                <asp:HyperLink ID="HyperLinkManageUsers" runat="server" NavigateUrl="~/ManageUsers.aspx">Manage Users</asp:HyperLink>
             </li>
         </ul>
         <h3>Table Managemenet</h3>
@@ -27,6 +27,9 @@
             </li>
             <li>
                 <asp:HyperLink ID="HyperLinkManageItems" runat="server" NavigateUrl="~/ManageItems.aspx">Manage Items</asp:HyperLink>
+            </li>
+            <li>
+                <asp:HyperLink ID="HyperLinkManageCategoryItems" runat="server" NavigateUrl="~/ManageCategoryItems">Manage Category/Item Relationships</asp:HyperLink>
             </li>
             <li>
                 <asp:HyperLink ID="HyperLinkManageReusables" runat="server" NavigateUrl="~/ManageReusableOrganizations.aspx">Manage Reusable/Organization Combinations</asp:HyperLink>

@@ -36,7 +36,6 @@ namespace CRRD_Web_Interface.Account
         protected void Page_Load()
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-
             LiteralEmail.Text = User.Identity.Name;
 
             HasPhoneNumber = String.IsNullOrEmpty(manager.GetPhoneNumber(User.Identity.GetUserId()));

@@ -40,6 +40,15 @@ namespace CRRD_Web_Interface {
         protected global::System.Web.UI.WebControls.Panel PanelCategoryInfo;
         
         /// <summary>
+        /// LiteralErrorMessageGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralErrorMessageGridView;
+        
+        /// <summary>
         /// GridViewCategoryInfo control.
         /// </summary>
         /// <remarks>
@@ -56,5 +65,41 @@ namespace CRRD_Web_Interface {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButtonAddCategory;
+        
+        /// <summary>
+        /// PanelAddCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelAddCategory;
+        
+        /// <summary>
+        /// LiteralErrorMessageAddCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralErrorMessageAddCategory;
+        
+        /// <summary>
+        /// TextBoxCategoryName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxCategoryName;
+        
+        /// <summary>
+        /// ButtonAddCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAddCategory;
     }
 }

@@ -2,6 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Manage Repairable Item/Organization Combinations</h2>
+    <p class="text-danger">
+        <asp:Literal runat="server" ID="LiteralErrorMessageGridView" />
+    </p>
     <asp:Label ID="LabelInstruction" runat="server" Text="Begin by selecting an item:"></asp:Label>
     <asp:DropDownList ID="DropDownListRepairableItems" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListRepairableItems_SelectedIndexChanged">
         <asp:ListItem Value="-1">&lt;Select an Item&gt;</asp:ListItem>
@@ -12,9 +15,14 @@
      <asp:Panel ID="PanelRepairableOrganization" runat="server" Visible="false">
         <asp:GridView ID="GridViewRepairableOrganizations" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False"
             AllowPaging="True" OnPageIndexChanged="GridViewRepairableOrganizations_PageIndexChanged" 
-            OnPageIndexChanging="GridViewRepairableOrganizations_PageIndexChanging" ShowFooter="True">
+            OnPageIndexChanging="GridViewRepairableOrganizations_PageIndexChanging" ShowFooter="True" OnRowDeleting="GridViewOrganizationInfo_RowDeleting">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
+                <asp:TemplateField HeaderText="Organization ID" Visible="false">
+                    <ItemTemplate>
+                        <%# Eval("OrganizationID") %>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Organization Name">
                     <ItemTemplate>
                         <%# Eval("OrganizationName") %>
@@ -47,7 +55,26 @@
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
         <div>
-            <asp:LinkButton ID="LinkButtonAddRepairable" runat="server">+ Add a New Item/Organization Combination</asp:LinkButton>
+            <asp:LinkButton ID="LinkButtonAddRepairable" runat="server" OnClick="LinkButtonAddRepairable_Click">+ Add a New Item/Organization Combination</asp:LinkButton>
         </div>
+        <asp:Panel ID="PanelAddRepairable" runat="server" Visible="false">
+            <div class="form-horizontal">
+                <h4>Create a New Repairable Relationship</h4>
+                <p class="text-danger">
+                    <asp:Literal runat="server" ID="LiteralErrorMessageAddRepairable" />
+                </p>
+                <div class="form-group">
+                    <asp:Label runat="server" AssociatedControlID="DropDownListAddRepairableOrganization" CssClass="col-md-2 control-label">Organization</asp:Label>
+                    <div class="col-md-10">
+                        <asp:DropDownList ID="DropDownListAddRepairableOrganization" runat="server"></asp:DropDownList>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <asp:Button runat="server" ID="ButtonAddRelationship" OnClick="ButtonAddRelationship_Click" Text="Add Relationship" CssClass="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </asp:Panel>
     </asp:Panel>
 </asp:Content>

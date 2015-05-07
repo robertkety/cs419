@@ -2,6 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Manage Reusable Item/Organization Combinations</h2>
+     <p class="text-danger">
+        <asp:Literal runat="server" ID="LiteralErrorMessageGridView" />
+    </p>
     <asp:Label ID="LabelInstruction" runat="server" Text="Begin by selecting an item:"></asp:Label>
     <asp:DropDownList ID="DropDownListReusableItems" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListReusableItems_SelectedIndexChanged">
         <asp:ListItem Value="-1">&lt;Select an Item&gt;</asp:ListItem>
@@ -12,9 +15,14 @@
     <asp:Panel ID="PanelReusableOrganization" runat="server" Visible="false">
         <asp:GridView ID="GridViewReusableOrganizations" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False"
             AllowPaging="True" OnPageIndexChanged="GridViewReusableOrganizations_PageIndexChanged" 
-            OnPageIndexChanging="GridViewReusableOrganizations_PageIndexChanging" ShowFooter="True">
+            OnPageIndexChanging="GridViewReusableOrganizations_PageIndexChanging" ShowFooter="True" OnRowDeleting="GridViewOrganizationInfo_RowDeleting">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
+                <asp:TemplateField HeaderText="Organization ID" Visible="false">
+                    <ItemTemplate>
+                        <%# Eval("OrganizationID") %>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Organization Name">
                     <ItemTemplate>
                         <%# Eval("OrganizationName") %>
@@ -47,7 +55,26 @@
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
         <div>
-            <asp:LinkButton ID="LinkButtonAddReusable" runat="server">+ Add a New Item/Organization Combination</asp:LinkButton>
+            <asp:LinkButton ID="LinkButtonAddReusable" runat="server" OnClick="LinkButtonAddReusable_Click">+ Add a New Item/Organization Combination</asp:LinkButton>
         </div>
+        <asp:Panel ID="PanelAddReusable" runat="server" Visible="false">
+            <div class="form-horizontal">
+                <h4>Create a New Reusable Relationship</h4>
+                <p class="text-danger">
+                    <asp:Literal runat="server" ID="LiteralErrorMessageAddOrganization" />
+                </p>
+                <div class="form-group">
+                    <asp:Label runat="server" AssociatedControlID="DropDownListAddReusableOrganization" CssClass="col-md-2 control-label">Organization</asp:Label>
+                    <div class="col-md-10">
+                        <asp:DropDownList ID="DropDownListAddReusableOrganization" runat="server"></asp:DropDownList>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <asp:Button runat="server" ID="ButtonAddRelationship" OnClick="ButtonAddRelationship_Click" Text="Add Relationship" CssClass="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </asp:Panel>
     </asp:Panel>
 </asp:Content>

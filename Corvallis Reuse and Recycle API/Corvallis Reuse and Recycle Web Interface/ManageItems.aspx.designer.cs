@@ -40,6 +40,15 @@ namespace CRRD_Web_Interface {
         protected global::System.Web.UI.WebControls.Panel PanelItemInfo;
         
         /// <summary>
+        /// LiteralErrorMessageGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralErrorMessageGridView;
+        
+        /// <summary>
         /// GridViewItemInfo control.
         /// </summary>
         /// <remarks>
@@ -56,5 +65,41 @@ namespace CRRD_Web_Interface {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButtonAddItem;
+        
+        /// <summary>
+        /// PanelAddItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelAddItem;
+        
+        /// <summary>
+        /// LiteralErrorMessageAddItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralErrorMessageAddItem;
+        
+        /// <summary>
+        /// TextBoxItemName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxItemName;
+        
+        /// <summary>
+        /// ButtonAddItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAddItem;
     }
 }
