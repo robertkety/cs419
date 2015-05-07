@@ -13,6 +13,15 @@ namespace CRRD_Web_Interface {
     public partial class ManageRepairables {
         
         /// <summary>
+        /// LiteralErrorMessageGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralErrorMessageGridView;
+        
+        /// <summary>
         /// LabelInstruction control.
         /// </summary>
         /// <remarks>
@@ -74,5 +83,41 @@ namespace CRRD_Web_Interface {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButtonAddRepairable;
+        
+        /// <summary>
+        /// PanelAddRepairable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelAddRepairable;
+        
+        /// <summary>
+        /// LiteralErrorMessageAddRepairable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralErrorMessageAddRepairable;
+        
+        /// <summary>
+        /// DropDownListAddRepairableOrganization control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListAddRepairableOrganization;
+        
+        /// <summary>
+        /// ButtonAddRelationship control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAddRelationship;
     }
 }

@@ -43,11 +43,13 @@ namespace CRRD_Web_Interface
                 {
                     Item[] items = await response.Content.ReadAsAsync<Item[]>();
                     DataTable dt = new DataTable();
+                    dt.Columns.Add("ItemID");
                     dt.Columns.Add("ItemName");
 
                     foreach (Item item in items)
                     {
                         var dr = dt.NewRow();
+                        dr["ItemID"] = item.PartitionKey;
                         dr["ItemName"] = item.RowKey;
                         dt.Rows.Add(dr);
                     }
@@ -82,11 +84,13 @@ namespace CRRD_Web_Interface
             {
                 Item[] items = await response.Content.ReadAsAsync<Item[]>();
                 DataTable dt = new DataTable();
+                dt.Columns.Add("ItemID");
                 dt.Columns.Add("ItemName");
 
                 foreach (Item item in items)
                 {
                     var dr = dt.NewRow();
+                    dr["ItemID"] = item.PartitionKey;
                     dr["ItemName"] = item.RowKey;
                     dt.Rows.Add(dr);
                 }
@@ -165,6 +169,102 @@ namespace CRRD_Web_Interface
             TextBox Search = GridViewItemInfo.FooterRow.FindControl("TextBoxSearch") as TextBox;
             SearchStringItems = Search.Text;
             await BindItemData();
+        }
+
+        protected void LinkButtonAddItem_Click(object sender, EventArgs e)
+        {
+            if (PanelAddItem.Visible == true)
+            {
+                LinkButtonAddItem.Text = "+ Add a New Item";
+                PanelAddItem.Visible = false;
+            }
+            else
+            {
+                LinkButtonAddItem.Text = "- Add a New Item";
+                PanelAddItem.Visible = true;
+            }
+        }
+
+        protected async void ButtonAddItem_Click(object sender, EventArgs e)
+        {
+            if (TextBoxItemName.Text == "")
+            {
+                LiteralErrorMessageAddItem.Text = "The item name field is required.";
+                return;
+            }
+
+            var client = new HttpClient();
+            StringContent ContentString = new StringContent("");
+            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.PostAsync("api/items?Name=" + TextBoxItemName.Text, ContentString);
+            if (response.IsSuccessStatusCode)
+            {
+                Response.Redirect((Page.Request.Url.ToString()), false);
+            }
+            else
+            {
+                LiteralErrorMessageAddItem.Text = response.StatusCode.ToString();
+            }
+        }
+
+        protected async void GridViewItemInfo_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            // Get edit text box value before call to data bind
+            TextBox EditTextBox = GridViewItemInfo.Rows[e.RowIndex].FindControl("TextBoxEditItemName") as TextBox;
+            string NewName = EditTextBox.Text;
+
+            await BindItemData();   // Must bind data to grid to get datasource
+            DataTable dt = (DataTable)GridViewItemInfo.DataSource;  // Accessing the cell's value in the grid view always returned null, so datatable was used
+            string ItemID = dt.Rows[e.RowIndex][0] as String;
+            string OldName = dt.Rows[e.RowIndex][1] as String;
+
+            if (NewName == "")
+            {
+                LiteralErrorMessageGridView.Text = "The item name field is required.";
+                return;
+            }
+
+            var client = new HttpClient();
+            StringContent ContentString = new StringContent("");
+            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.PutAsync("api/items/" + ItemID + "?OldName=" + OldName + "&Name=" + NewName, ContentString);
+            if (response.IsSuccessStatusCode)
+            {
+                Response.Redirect((Page.Request.Url.ToString()), false);
+            }
+            else
+            {
+                LiteralErrorMessageGridView.Text = response.StatusCode.ToString();
+            }
+        }
+
+        protected async void GridViewItemInfo_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            await BindItemData();   // Must bind data to grid to get datasource
+            DataTable dt = (DataTable)GridViewItemInfo.DataSource;  // Accessing the cell's value in the grid view always returned null, so datatable was used
+            string ItemID = dt.Rows[e.RowIndex][0] as String;
+            string ItemName = dt.Rows[e.RowIndex][1] as String;
+
+            var client = new HttpClient();
+            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.DeleteAsync("api/items/" + ItemID + "?Name=" + ItemName);
+            if (response.IsSuccessStatusCode)
+            {
+                Response.Redirect((Page.Request.Url.ToString()), false);
+            }
+            else
+            {
+                LiteralErrorMessageGridView.Text = response.StatusCode.ToString();
+            }
         }
     }
 }

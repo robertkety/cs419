@@ -173,10 +173,12 @@
     <Content Include="DataSource\XMLOrganizations.xml" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="ManageCategories.aspx" />
+    <Content Include="ManageCategoryItems.aspx" />
     <Content Include="ManageItems.aspx" />
     <Content Include="ManageOrganizations.aspx" />
     <Content Include="ManageRepairables.aspx" />
     <Content Include="ManageReusableOrganizations.aspx" />
+    <Content Include="ManageUsers.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -357,6 +359,13 @@
     <Compile Include="ManageCategories.aspx.designer.cs">
       <DependentUpon>ManageCategories.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ManageCategoryItems.aspx.cs">
+      <DependentUpon>ManageCategoryItems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageCategoryItems.aspx.designer.cs">
+      <DependentUpon>ManageCategoryItems.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManageItems.aspx.cs">
       <DependentUpon>ManageItems.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -384,6 +393,13 @@
     </Compile>
     <Compile Include="ManageReusableOrganizations.aspx.designer.cs">
       <DependentUpon>ManageReusableOrganizations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />

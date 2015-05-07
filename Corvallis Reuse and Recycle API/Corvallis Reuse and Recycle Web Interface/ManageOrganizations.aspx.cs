@@ -43,6 +43,7 @@ namespace CRRD_Web_Interface
                 {
                     Organization[] organizations = await response.Content.ReadAsAsync<Organization[]>();
                     DataTable dt = new DataTable();
+                    dt.Columns.Add("OrganizationID");
                     dt.Columns.Add("OrganizationName");
                     dt.Columns.Add("OrganizationPhone");
                     dt.Columns.Add("OrganizationAddressLine1");
@@ -56,6 +57,7 @@ namespace CRRD_Web_Interface
                     foreach (Organization organization in organizations)
                     {
                         var dr = dt.NewRow();
+                        dr["OrganizationID"] = organization.PartitionKey;
                         dr["OrganizationName"] = organization.RowKey;
                         dr["OrganizationPhone"] = organization.Phone;
                         dr["OrganizationAddressLine1"] = organization.AddressLine1;
@@ -98,6 +100,7 @@ namespace CRRD_Web_Interface
             {
                 Organization[] organizations = await response.Content.ReadAsAsync<Organization[]>();
                 DataTable dt = new DataTable();
+                dt.Columns.Add("OrganizationID");
                 dt.Columns.Add("OrganizationName");
                 dt.Columns.Add("OrganizationPhone");
                 dt.Columns.Add("OrganizationAddressLine1");
@@ -111,6 +114,7 @@ namespace CRRD_Web_Interface
                 foreach (Organization organization in organizations)
                 {
                     var dr = dt.NewRow();
+                    dr["OrganizationID"] = organization.PartitionKey;
                     dr["OrganizationName"] = organization.RowKey;
                     dr["OrganizationPhone"] = organization.Phone;
                     dr["OrganizationAddressLine1"] = organization.AddressLine1;
@@ -197,6 +201,165 @@ namespace CRRD_Web_Interface
             TextBox Search = GridViewOrganizationInfo.FooterRow.FindControl("TextBoxSearch") as TextBox;
             SearchString = Search.Text;
             await BindData();
+        }
+
+        protected void LinkButtonAddOrganization_Click(object sender, EventArgs e)
+        {
+            if (PanelAddOrganization.Visible == true)
+            {
+                LinkButtonAddOrganization.Text = "+ Add a New Organization";
+                PanelAddOrganization.Visible = false;
+            }
+            else
+            {
+                LinkButtonAddOrganization.Text = "- Add a New Organization";
+                PanelAddOrganization.Visible = true;
+            }
+        }
+
+        protected async void ButtonAddOrganization_Click(object sender, EventArgs e)
+        {
+            int PhoneNumberNumeric = 0;
+            string PhoneNumberString = TextBoxPhone.Text;
+
+            if (TextBoxName.Text == "")
+            {
+                LiteralErrorMessageAddOrganization.Text = "The organization name field is required.";
+                return;
+            }
+            else if(ContainsSpecialCharacters(TextBoxName.Text))
+            {
+                LiteralErrorMessageAddOrganization.Text = "The organization name cannot contain special characters (/, \\, #, ?)";
+            }
+            else if(!int.TryParse(PhoneNumberString, out PhoneNumberNumeric))
+            {
+                LiteralErrorMessageAddOrganization.Text = "The phone number cannot contain non-numeric characters";
+            }
+
+            String QueryString = "?Name=" + TextBoxName.Text;
+            QueryString += "&Phone=" + TextBoxPhone.Text;
+            QueryString += "&Address1=" + TextBoxAddress1.Text;
+            QueryString += "&Address2=" + TextBoxAddress2.Text;
+            QueryString += "&Address3=" + TextBoxAddress3.Text;
+            QueryString += "&ZipCode=" + TextBoxZipCode.Text;
+            QueryString += "&Website=" + TextBoxWebsite.Text;
+            QueryString += "&Hours=" + TextBoxHours.Text;
+            QueryString += "&Notes=" + TextBoxNotes.Text;
+
+            var client = new HttpClient();
+            StringContent ContentString = new StringContent("");
+            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.PostAsync("api/organizations" + QueryString, ContentString);
+            if (response.IsSuccessStatusCode)
+            {
+                Response.Redirect((Page.Request.Url.ToString()), false);
+            }
+            else
+            {
+                LiteralErrorMessageAddOrganization.Text = response.StatusCode.ToString();
+            }
+        }
+
+        protected async void GridViewOrganizationInfo_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            // Get edit text box values before call to data bind
+            TextBox EditTextBox = GridViewOrganizationInfo.Rows[e.RowIndex].FindControl("TextBoxEditOrganizationName") as TextBox;
+            string NewName = EditTextBox.Text;
+            string Phone = ((TextBox)(GridViewOrganizationInfo.Rows[e.RowIndex].Cells[2].Controls[0])).Text;
+            string Address1 = ((TextBox)(GridViewOrganizationInfo.Rows[e.RowIndex].Cells[3].Controls[0])).Text;
+            string Address2 = ((TextBox)(GridViewOrganizationInfo.Rows[e.RowIndex].Cells[4].Controls[0])).Text;
+            string Address3 = ((TextBox)(GridViewOrganizationInfo.Rows[e.RowIndex].Cells[5].Controls[0])).Text;
+            string ZipCode = ((TextBox)(GridViewOrganizationInfo.Rows[e.RowIndex].Cells[6].Controls[0])).Text;
+            string Website = ((TextBox)(GridViewOrganizationInfo.Rows[e.RowIndex].Cells[7].Controls[0])).Text;
+            string Hours = ((TextBox)(GridViewOrganizationInfo.Rows[e.RowIndex].Cells[8].Controls[0])).Text;
+            string Notes = ((TextBox)(GridViewOrganizationInfo.Rows[e.RowIndex].Cells[9].Controls[0])).Text;
+
+            await BindData();   // Must bind data to grid to get datasource
+            DataTable dt = (DataTable)GridViewOrganizationInfo.DataSource;  // Accessing the cell's value in the grid view always returned null, so datatable was used
+            string OrganizationID = dt.Rows[e.RowIndex][0] as String;
+            string OldName = dt.Rows[e.RowIndex][1] as String;
+
+            string QueryString = OrganizationID;
+            QueryString += "?OldName=" + OldName;
+            QueryString += "&NewName=" + NewName;
+            QueryString += "&Phone=" + Phone;
+            QueryString += "&Address1=" + Address1;
+            QueryString += "&Address2=" + Address2;
+            QueryString += "&Address3=" + Address3;
+            QueryString += "&ZipCode=" + ZipCode;
+            QueryString += "&Website=" + Website;
+            QueryString += "&Hours=" + Hours;
+            QueryString += "&Notes=" + Notes;
+
+            if (NewName == "")
+            {
+                LiteralErrorMessageGridView.Text = "The organization name field is required.";
+                return;
+            }
+
+            var client = new HttpClient();
+            StringContent ContentString = new StringContent("");
+            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.PutAsync("api/organizations/" + QueryString, ContentString);
+            if (response.IsSuccessStatusCode)
+            {
+                Response.Redirect((Page.Request.Url.ToString()), false);
+            }
+            else
+            {
+                LiteralErrorMessageGridView.Text = response.StatusCode.ToString();
+            }
+        }
+
+        protected async void GridViewOrganizationInfo_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            await BindData();   // Must bind data to grid to get datasource
+            DataTable dt = (DataTable)GridViewOrganizationInfo.DataSource;  // Accessing the cell's value in the grid view always returned null, so datatable was used
+            string OrganizationID = dt.Rows[e.RowIndex][0] as String;
+            string OrganizationName = dt.Rows[e.RowIndex][1] as String;
+
+            var client = new HttpClient();
+            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.DeleteAsync("api/organizations/" + OrganizationID + "?Name=" + OrganizationName);
+            if (response.IsSuccessStatusCode)
+            {
+                Response.Redirect((Page.Request.Url.ToString()), false);
+            }
+            else
+            {
+                LiteralErrorMessageGridView.Text = response.StatusCode.ToString();
+            }
+        }
+
+        protected bool ContainsSpecialCharacters(string Text)
+        {
+            if(Text.Contains("/"))
+            {
+                return true;
+            }
+            else if(Text.Contains("\\"))
+            {
+                return true;
+            }
+            else if(Text.Contains("#"))
+            {
+                return true;
+            }
+            else if(Text.Contains("?"))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
