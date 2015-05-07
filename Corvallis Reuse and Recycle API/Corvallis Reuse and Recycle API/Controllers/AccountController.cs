@@ -219,8 +219,8 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
 
             return Ok();
         }
-
-        // GET api/Account/ExternalLogin
+        
+        /*// GET api/Account/ExternalLogin
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
@@ -317,9 +317,10 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
 
             return logins;
         }
-
+        */
+        
         // POST api/Account/Register
-        [AllowAnonymous]
+        [Authorize]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
@@ -340,7 +341,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
             return Ok();
         }
 
-        // POST api/Account/RegisterExternal
+        /*// POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("RegisterExternal")]
@@ -372,6 +373,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
             }
             return Ok();
         }
+        */
 
         protected override void Dispose(bool disposing)
         {
