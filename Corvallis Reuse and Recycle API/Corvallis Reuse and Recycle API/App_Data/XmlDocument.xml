@@ -494,28 +494,6 @@
             <param name="Id">Id of target Category</param>
             <returns></returns>
         </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.CategoriesController.Post(System.String,System.String[])">
-            <summary>
-            Creates a new category in the Categories table with the specified name and associates it with the corresponding list of item ids.
-            </summary>
-            <param name="Name">Name of the new Category</param>
-            <param name="Items">A list of item ids to be associated with the target category</param>
-        </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.CategoriesController.Put(System.String,System.String,System.String)">
-            <summary>
-            Updates the name of the target category.  Old name is required for an efficient storage table query
-            </summary>
-            <param name="Id">Id of the target category</param>
-            <param name="OldName">Exising name for target category</param>
-            <param name="NewName">New name for target category</param>
-        </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.CategoriesController.Delete(System.String,System.String)">
-            <summary>
-            Deletes the target category
-            </summary>
-            <param name="Id">Id of the target category</param>
-            <param name="Name">Name of the target category</param>
-        </member>
         <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.CategoryItemController.Get(System.String)">
             <summary>
             Gets a List of Items objects assigned to the target Category
@@ -596,70 +574,11 @@
             <param name="Id">Id of the target item</param>
             <returns></returns>
         </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemsController.Post(System.String,System.String[])">
-            <summary>
-            Creates a new Item with the target name and associates it with the corresponding list of category ids
-            </summary>
-            <param name="Name">The name of the new Item</param>
-            <param name="Categories">A list of category ids to be associated with the target item</param>
-        </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemsController.Put(System.String,System.String,System.String)">
-            <summary>
-            Updates the name of the target item.  Old name is required for an efficient storage table query
-            </summary>
-            <param name="Id">Id of the target item</param>
-            <param name="OldName">Exising name for target item</param>
-            <param name="NewName">New name for target item</param>
-        </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemsController.Delete(System.String,System.String)">
-            <summary>
-            Deletes the target item from the Items table
-            </summary>
-            <param name="Id">Id for the target item</param>
-            <param name="Name">Name of the target item</param>
-        </member>
         <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.OrganizationsController.Get">
             <summary>
             Returns a list of all Organization objects in the Organizations table. (Do not use this call to retrieve Offering data - use ItemOrganization)
             </summary>
             <returns></returns>
-        </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.OrganizationsController.Post(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
-            <summary>
-            Creates a new organization with the following parameter information. (Do not use this call to create Offering data - use ItemOrganization)
-            </summary>
-            <param name="Name">Name of the organization (No '/', '\', '#', or '?' characters - See http://stackoverflow.com/a/11515366) </param>
-            <param name="Phone">Numerical representation of the phone number (No '(', ')', or '-')</param>
-            <param name="AddressLine1">First line of the street address</param>
-            <param name="AddressLine2">Second line of the street address</param>
-            <param name="AddressLine3">Third line of the street address</param>
-            <param name="ZipCode">Zipcode of the address</param>
-            <param name="Website">Website for the organization</param>
-            <param name="Hours">Hours of operation for the organization</param>
-            <param name="Notes">Any notes for the organization</param>
-        </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.OrganizationsController.Put(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
-            <summary>
-            Replaces the target organization with following parameter information. (Do not use this call to update Offering data - use ItemOrganization)
-            </summary>
-            <param name="Id">Id of the target organization</param>
-            <param name="OldName">Old name of the organization (No '/', '\', '#', or '?' characters - See http://stackoverflow.com/a/11515366) </param>
-            <param name="NewName">New name of the organization (No '/', '\', '#', or '?' characters - See http://stackoverflow.com/a/11515366) </param>
-            <param name="Phone">Numerical representation of the phone number (No '(', ')', or '-')</param>
-            <param name="AddressLine1">First line of the street address</param>
-            <param name="AddressLine2">Second line of the street address</param>
-            <param name="AddressLine3">Third line of the street address</param>
-            <param name="ZipCode">Zipcode of the address</param>
-            <param name="Website">Website for the organization</param>
-            <param name="Hours">Hours of operation for the organization</param>
-            <param name="Notes">Any notes for the organization</param>
-        </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.OrganizationsController.Delete(System.String,System.String)">
-            <summary>
-            Deletes the target organization from the Organizations table
-            </summary>
-            <param name="Id"></param>
-            <param name="Name"></param>
         </member>
         <member name="F:Corvallis_Reuse_and_Recycle_API.Site_Mobile.HeadContent">
             <summary>

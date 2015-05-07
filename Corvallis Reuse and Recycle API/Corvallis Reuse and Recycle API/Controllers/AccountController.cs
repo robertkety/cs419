@@ -110,7 +110,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
                 LocalLoginProvider = LocalLoginProvider,
                 Email = user.UserName,
                 Logins = logins,
-                ExternalLoginProviders = GetExternalLogins(returnUrl, generateState)
+                //ExternalLoginProviders = GetExternalLogins(returnUrl, generateState)
             };
         }
 
