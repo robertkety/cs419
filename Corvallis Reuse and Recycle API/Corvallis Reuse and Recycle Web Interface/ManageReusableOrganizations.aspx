@@ -64,6 +64,12 @@
                     <asp:Literal runat="server" ID="LiteralErrorMessageAddOrganization" />
                 </p>
                 <div class="form-group">
+                    <asp:Label runat="server" AssociatedControlID="DropDownListItem" CssClass="col-md-2 control-label">Item</asp:Label>
+                    <div class="col-md-10">
+                        <asp:DropDownList ID="DropDownListItem" runat="server"></asp:DropDownList>
+                    </div>
+                </div>
+                <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="DropDownListAddReusableOrganization" CssClass="col-md-2 control-label">Organization</asp:Label>
                     <div class="col-md-10">
                         <asp:DropDownList ID="DropDownListAddReusableOrganization" runat="server"></asp:DropDownList>

@@ -41,17 +41,14 @@ namespace CRRD_Web_Interface
                 HttpResponseMessage response = await client.GetAsync("api/items");
                 if (response.IsSuccessStatusCode)
                 {
-                    Item[] items = await response.Content.ReadAsAsync<Item[]>();
-                    DataTable dt = new DataTable();
-                    dt.Columns.Add("ItemName");
+                    // How to sort list of objects: http://stackoverflow.com/questions/1301822/how-to-sort-an-array-of-object-by-a-specific-field-in-c
+                    List<Item> items = await response.Content.ReadAsAsync<List<Item>>();
+                    items.Sort(new Comparison<Item>((x, y) => string.Compare(x.RowKey, y.RowKey)));
 
                     foreach (Item item in items)
                     {
-                        var dr = dt.NewRow();
-                        dr["ItemName"] = item.RowKey;
-                        dt.Rows.Add(dr);
-
                         DropDownListRepairableItems.Items.Add(new ListItem(item.RowKey, item.PartitionKey));
+                        DropDownListItem.Items.Add(new ListItem(item.RowKey, item.PartitionKey));
                         PanelErrorMessages.Visible = false;
                     }
                 }
@@ -73,7 +70,7 @@ namespace CRRD_Web_Interface
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = await client.GetAsync("api/ItemOrganization?ItemId=" + DropDownListRepairableItems.SelectedValue + "&Offering=true");
+            HttpResponseMessage response = await client.GetAsync("api/Items/" + DropDownListRepairableItems.SelectedValue);
             if (response.IsSuccessStatusCode)
             {
                 Organization[] organizations = await response.Content.ReadAsAsync<Organization[]>();
@@ -126,7 +123,6 @@ namespace CRRD_Web_Interface
 
                 return true;
             }
-
             return false;
         }
 
@@ -140,6 +136,8 @@ namespace CRRD_Web_Interface
                 return;
             }
 
+            StoreSearchTerm();
+
             bool status = await BindData();
             if (status == false)
             {
@@ -149,6 +147,7 @@ namespace CRRD_Web_Interface
             else
             {
                 PanelRepairableOrganization.Visible = true;
+                RestoreSearchTerm();
             }
         }
 
@@ -167,7 +166,17 @@ namespace CRRD_Web_Interface
          */
         protected async void GridViewRepairableOrganizations_PageIndexChanged(object sender, EventArgs e)
         {
-            await BindData();
+            StoreSearchTerm();
+
+            bool status = await BindData();
+            if (status == false)
+            {
+                PanelErrorMessages.Visible = true;
+            }
+            else
+            {
+                RestoreSearchTerm();
+            }
         }
 
         /*
@@ -209,11 +218,13 @@ namespace CRRD_Web_Interface
                 HttpResponseMessage response = await client.GetAsync("api/organizations/");
                 if (response.IsSuccessStatusCode)
                 {
-                    Organization[] organizations = await response.Content.ReadAsAsync<Organization[]>();
+                    // How to sort list of objects: http://stackoverflow.com/questions/1301822/how-to-sort-an-array-of-object-by-a-specific-field-in-c
+                    List<Organization> organizations = await response.Content.ReadAsAsync<List<Organization>>();
+                    organizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.RowKey, y.RowKey)));
 
                     foreach (Organization organization in organizations)
                     {
-                        DropDownListAddRepairableOrganization.Items.Add(new ListItem(organization.RowKey, organization.PartitionKey));
+                        DropDownListAddRepairableOrganization.Items.Add(new ListItem(organization.RowKey + " (" + organization.AddressLine1 + ")", organization.PartitionKey));
                     }
                 }
 
@@ -227,17 +238,19 @@ namespace CRRD_Web_Interface
         */
         protected async void ButtonAddRelationship_Click(object sender, EventArgs e)
         {
-            string ItemID = DropDownListRepairableItems.SelectedValue;
+            string ItemID = DropDownListItem.SelectedValue;
             string OrganizationID = DropDownListAddRepairableOrganization.SelectedValue;
             int Offering = 0;
 
-            if (ItemID == "" || ItemID == "-1")
+            if (ItemID == "")
             {
                 LiteralErrorMessageAddRepairable.Text = "Item must be slected from drop-down list.";
+                return;
             }
             if (OrganizationID == "")
             {
                 LiteralErrorMessageAddRepairable.Text = "Organization must be selected from drop-down list.";
+                return;
             }
 
             var client = new HttpClient();
@@ -265,30 +278,17 @@ namespace CRRD_Web_Interface
                 LiteralErrorMessageGridView.Text = response.StatusCode.ToString();
             }
 
+            // Build Parameter
+            string Parameter = "http://cs419.azurewebsites.net/api/itemorganization?ItemId=" + ItemID + "&OrganizationId=" + OrganizationID + "&Offering=";
+
             // Post if offering is 0, put if offering is 1 (reusable), error if repairable relationship already exists
             if (Offering == 0)
             {
-                response = await client.PostAsync("api/itemorganization?ItemId=" + ItemID + "&OrganizationId=" + OrganizationID + "&Offering=" + "2", ContentString);
-                if (response.IsSuccessStatusCode)
-                {
-                    Response.Redirect((Page.Request.Url.ToString()), false);
-                }
-                else
-                {
-                    LiteralErrorMessageGridView.Text = response.StatusCode.ToString();
-                }
+                DataAccess.postDataToService(Parameter + "2", new char[1]);
             }
             else if (Offering == 1)
             {
-                response = await client.PutAsync("api/itemorganization?ItemId=" + ItemID + "&OrganizationId=" + OrganizationID + "&Offering=" + "3", ContentString);
-                if (response.IsSuccessStatusCode)
-                {
-                    Response.Redirect((Page.Request.Url.ToString()), false);
-                }
-                else
-                {
-                    LiteralErrorMessageGridView.Text = response.StatusCode.ToString();
-                }
+                DataAccess.putDataToService(Parameter + "3", new char[1]);
             }
             else
             {
@@ -334,30 +334,37 @@ namespace CRRD_Web_Interface
                 return;
             }
 
+            // Build Parameter
+            string Parameter = "http://cs419.azurewebsites.net/api/itemorganization?ItemId=" + ItemId + "&OrganizationId=" + OrganizationId + "&Offering=";
+
             // If reusable relationship exists, PUT with offering of 1, else PUT with offering of 0
             if (Offering == 3)
             {
-                response = await client.PutAsync("api/ItemOrganization?ItemId=" + ItemId + "&OrganizationId=" + OrganizationId + "&Offering=" + "1", ContentString);
-                if (response.IsSuccessStatusCode)
-                {
-                    Response.Redirect((Page.Request.Url.ToString()), false);
-                }
-                else
-                {
-                    LiteralErrorMessageGridView.Text = response.StatusCode.ToString();
-                }
+                DataAccess.putDataToService(Parameter + "1", new char[1]);
             }
             else
             {
-                response = await client.PutAsync("api/ItemOrganization?ItemId=" + ItemId + "&OrganizationId=" + OrganizationId + "&Offering=" + "0", ContentString);
-                if (response.IsSuccessStatusCode)
-                {
-                    Response.Redirect((Page.Request.Url.ToString()), false);
-                }
-                else
-                {
-                    LiteralErrorMessageGridView.Text = response.StatusCode.ToString();
-                }
+                DataAccess.putDataToService(Parameter + "0", new char[1]);
+            }
+        }
+
+        protected void StoreSearchTerm()
+        {
+            // Retrieve the search box text for upcomming data bind
+            if (GridViewRepairableOrganizations.Rows.Count > 0)
+            {
+                TextBox Search = GridViewRepairableOrganizations.FooterRow.FindControl("TextBoxSearch") as TextBox;
+                SearchString = Search.Text;
+            }
+        }
+
+        protected void RestoreSearchTerm()
+        {
+            // Repopulate search box with search string
+            if (GridViewRepairableOrganizations.Rows.Count > 0)
+            {
+                TextBox Search = GridViewRepairableOrganizations.FooterRow.FindControl("TextBoxSearch") as TextBox;
+                Search.Text = SearchString;
             }
         }
     }

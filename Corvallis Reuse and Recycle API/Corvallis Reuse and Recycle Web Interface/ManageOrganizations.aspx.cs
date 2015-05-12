@@ -215,7 +215,7 @@ namespace CRRD_Web_Interface
             }
         }
 
-        protected async void ButtonAddOrganization_Click(object sender, EventArgs e)
+        protected void ButtonAddOrganization_Click(object sender, EventArgs e)
         {
             long PhoneNumberNumeric;
             string PhoneNumberString = TextBoxPhone.Text;
@@ -231,10 +231,13 @@ namespace CRRD_Web_Interface
                 LiteralErrorMessageAddOrganization.Text = "The organization name cannot contain special characters (/, \\, #, ?)";
                 return;
             }
-            else if(!Int64.TryParse(PhoneNumberString, out PhoneNumberNumeric))
+            else if (PhoneNumberString != "")
             {
-                LiteralErrorMessageAddOrganization.Text = "The phone number cannot contain non-numeric characters";
-                return;
+                if (!Int64.TryParse(PhoneNumberString, out PhoneNumberNumeric))
+                {
+                    LiteralErrorMessageAddOrganization.Text = "The phone number cannot contain non-numeric characters";
+                    return;
+                }
             }
 
             // Build query
@@ -317,7 +320,7 @@ namespace CRRD_Web_Interface
           
             RestoreSearchTerm();
 
-            // Cancel row edit
+            // Cancel row edit (cancelling will call bind and show the updated data)
             GridViewOrganizationInfo_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(e.RowIndex));
         }
 
@@ -327,11 +330,13 @@ namespace CRRD_Web_Interface
 
             await BindData();   // Must bind data to grid to get datasource
             DataTable dt = (DataTable)GridViewOrganizationInfo.DataSource;  // Accessing the cell's value in the grid view always returned null, so datatable was used
-            string OrganizationID = dt.Rows[e.RowIndex][0] as String;
-            string OrganizationName = dt.Rows[e.RowIndex][1] as String;
+            string OrganizationID = dt.Rows[(10 * GridViewOrganizationInfo.PageIndex) + e.RowIndex][0] as String;
+            string OrganizationName = dt.Rows[(10 * GridViewOrganizationInfo.PageIndex) + e.RowIndex][1] as String;
 
-            DataAccess.deleteDataToService("api/organizations/" + OrganizationID + "?Name=" + OrganizationName, new char[1]);
+            // Attempt DELETE
+            DataAccess.deleteDataToService("http://cs419.azurewebsites.net/api/Organizations/" + OrganizationID + "?Name=" + OrganizationName, new char[1]);
 
+            await BindData();
             RestoreSearchTerm();
         }
 

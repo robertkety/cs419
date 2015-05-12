@@ -39,12 +39,16 @@ namespace CRRD_Web_Interface
                 HttpResponseMessage response = await client.GetAsync("api/categories");
                 if (response.IsSuccessStatusCode)
                 {
-                    Category[] categories = await response.Content.ReadAsAsync<Category[]>();
+                    // How to sort list of objects: http://stackoverflow.com/questions/1301822/how-to-sort-an-array-of-object-by-a-specific-field-in-c
+                    List<Category> categories = await response.Content.ReadAsAsync<List<Category>>();
+                    categories.Sort(new Comparison<Category>((x, y) => string.Compare(x.RowKey, y.RowKey)));
                     foreach (Category category in categories)
                     {
                         DropDownListCategories.Items.Add(new ListItem(category.RowKey, category.PartitionKey));
-                        PanelErrorMessages.Visible = false;
+                        DropDownListCategory.Items.Add(new ListItem(category.RowKey, category.PartitionKey));
                     }
+
+                    PanelErrorMessages.Visible = false;
                 }
                 else
                 {
@@ -158,7 +162,18 @@ namespace CRRD_Web_Interface
          */
         protected async void GridViewCategoryItems_PageIndexChanged(object sender, EventArgs e)
         {
-            await BindData();
+            StoreSearchTerm();
+            LiteralErrorMessageGridView.Text = "";
+
+            bool status = await BindData();
+            if (status == false)
+            {
+                PanelErrorMessages.Visible = true;
+            }
+            else
+            {
+                RestoreSearchTerm();
+            }
         }
 
         /*
@@ -166,8 +181,8 @@ namespace CRRD_Web_Interface
          */
         protected async void ButtonSearch_Click(object sender, EventArgs e)
         {
-            TextBox Search = GridViewCategoryItems.FooterRow.FindControl("TextBoxSearch") as TextBox;
-            SearchString = Search.Text;
+            StoreSearchTerm();
+
             bool status = await BindData();
             if (status == false)
             {
@@ -177,6 +192,7 @@ namespace CRRD_Web_Interface
             else
             {
                 PanelCategoryItems.Visible = true;
+                PanelErrorMessages.Visible = false;
             }
         }
 
@@ -197,11 +213,13 @@ namespace CRRD_Web_Interface
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+                // Get Items
                 HttpResponseMessage response = await client.GetAsync("api/items/");
                 if (response.IsSuccessStatusCode)
                 {
-                    Item[] items = await response.Content.ReadAsAsync<Item[]>();
-
+                    // How to sort list of objects: http://stackoverflow.com/questions/1301822/how-to-sort-an-array-of-object-by-a-specific-field-in-c
+                    List<Item> items = await response.Content.ReadAsAsync<List<Item>>();
+                    items.Sort(new Comparison<Item>((x, y) => string.Compare(x.RowKey, y.RowKey)));
                     foreach (Item item in items)
                     {
                         DropDownListItem.Items.Add(new ListItem(item.RowKey, item.PartitionKey));
@@ -216,44 +234,51 @@ namespace CRRD_Web_Interface
         /*
         * Usage: Add relationship between category and item
         */
-        protected async void ButtonAddRelationship_Click(object sender, EventArgs e)
+        protected void ButtonAddRelationship_Click(object sender, EventArgs e)
         {
             string ItemID = DropDownListItem.SelectedValue;
-            string CategoryID = DropDownListItem.SelectedValue;
+            string CategoryID = DropDownListCategory.SelectedValue;
 
-            if (CategoryID == "" || CategoryID == "-1")
+            if (CategoryID == "")
             {
                 LiteralErrorMessageAddRelationship.Text = "Category must be slected from drop-down list.";
+                return;
             }
             if (ItemID == "")
             {
                 LiteralErrorMessageAddRelationship.Text = "Item must be selected from drop-down list.";
+                return;
             }
 
-            var client = new HttpClient();
-            StringContent ContentString = new StringContent("");
-            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            // Build parameter string
+            string ParameterString = CategoryID + "&items=[" + ItemID + "]";
 
             // NEED TO CHECK IF RELATIONSHIP EXISTS? 
-            HttpResponseMessage response = await client.PostAsync("api/categoryitem?id=" + CategoryID + "&items=[" + ItemID + "]", ContentString);
-            if (response.IsSuccessStatusCode)
-            {
-                Response.Redirect((Page.Request.Url.ToString()), false);
-            }
-            else
-            {
-                LiteralErrorMessageGridView.Text = response.StatusCode.ToString();
-            }
+            // Attempt POST
+            var result = DataAccess.postDataToService("http://cs419.azurewebsites.net/api/CategoryItem/" + ParameterString, new char[1]);
+            Response.Redirect((Page.Request.Url.ToString()), false);
         }
 
         /*
          * Usage: Delete relationship from table
         */
-        protected async void GridViewCategoryItems_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void GridViewCategoryItems_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            // API does not appear to support this feature, need to ask about it.
+        }
 
+        protected void StoreSearchTerm()
+        {
+            // Retrieve the search box text for upcomming data bind
+            TextBox Search = GridViewCategoryItems.FooterRow.FindControl("TextBoxSearch") as TextBox;
+            SearchString = Search.Text;
+        }
+
+        protected void RestoreSearchTerm()
+        {
+            // Repopulate search box with search string
+            TextBox Search = GridViewCategoryItems.FooterRow.FindControl("TextBoxSearch") as TextBox;
+            Search.Text = SearchString;
         }
     }
 }

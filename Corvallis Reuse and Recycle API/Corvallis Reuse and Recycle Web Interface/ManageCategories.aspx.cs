@@ -33,35 +33,9 @@ namespace CRRD_Web_Interface
 
             if (!IsPostBack && Authenticated == true)
             {
-                var client = new HttpClient();
-                client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                HttpResponseMessage response = await client.GetAsync("api/categories");
-                if (response.IsSuccessStatusCode)
+                bool status = await BindData();
+                if (status == true)
                 {
-                    Category[] categories = await response.Content.ReadAsAsync<Category[]>();
-                    DataTable dt = new DataTable();
-                    dt.Columns.Add("CategoryID");
-                    dt.Columns.Add("CategoryName");
-
-                    foreach (Category category in categories)
-                    {
-                        var dr = dt.NewRow();
-                        dr["CategoryID"] = category.PartitionKey;
-                        dr["CategoryName"] = category.RowKey;
-                        dt.Rows.Add(dr);
-                    }
-
-                    // Convert to dataview to sort categories, then convert back to table
-                    DataView dv = dt.DefaultView;
-                    dv.Sort = "CategoryName ASC";
-                    DataTable dt_sorted = dv.ToTable();
-
-                    GridViewCategoryInfo.DataSource = dt_sorted;
-                    GridViewCategoryInfo.DataBind();
-
                     PanelErrorMessages.Visible = false;
                     PanelCategoryInfo.Visible = true;
                 }
@@ -134,22 +108,38 @@ namespace CRRD_Web_Interface
         protected async void GridViewCategoryInfo_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridViewCategoryInfo.EditIndex = e.NewEditIndex;
-            bool status = await BindData();
+            StoreSearchTerm();
 
+            bool status = await BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
+            }
+            else
+            {
+                // Populates the edit box with the old category name
+                DataTable dt = (DataTable)GridViewCategoryInfo.DataSource;
+                TextBox TextBoxEditCategoryName = GridViewCategoryInfo.Rows[e.NewEditIndex].FindControl("TextBoxEditCategoryName") as TextBox;
+                TextBoxEditCategoryName.Text = dt.Rows[(10 * GridViewCategoryInfo.PageIndex) + e.NewEditIndex][1].ToString();
+
+                RestoreSearchTerm();
             }
         }
 
         protected async void GridViewCategoryInfo_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridViewCategoryInfo.EditIndex = -1;
-            bool status = await BindData();
+            LiteralErrorMessageGridView.Text = "";
+            StoreSearchTerm();
 
+            bool status = await BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
+            }
+            else
+            {
+                RestoreSearchTerm();
             }
         }
 
@@ -162,22 +152,45 @@ namespace CRRD_Web_Interface
 
         protected async void GridViewCategoryInfo_PageIndexChanged(object sender, EventArgs e)
         {
-            await BindData();
+            StoreSearchTerm();
+            LiteralErrorMessageGridView.Text = "";
+
+            bool status = await BindData();
+            if (status == false)
+            {
+                PanelErrorMessages.Visible = true;
+            }
+            else
+            {
+                RestoreSearchTerm();
+            }
         }
 
         protected async void ButtonSearch_Click(object sender, EventArgs e)
         {
-            TextBox Search = GridViewCategoryInfo.FooterRow.FindControl("TextBoxSearch") as TextBox;
-            SearchString = Search.Text;
-            await BindData();
+            StoreSearchTerm();
+            GridViewCategoryInfo_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(0));
+
+            bool status = await BindData();
+            if (status == false)
+            {
+                PanelErrorMessages.Visible = true;
+            }
+            else
+            {
+                RestoreSearchTerm();
+            }
         }
 
         protected void LinkButtonAddCategory_Click(object sender, EventArgs e)
         {
+            GridViewCategoryInfo_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(0));
+
             if (PanelAddCategory.Visible == true)
             {
                 LinkButtonAddCategory.Text = "+ Add a New Category";
                 PanelAddCategory.Visible = false;
+                ClearAddCategoryInput();
             }
             else
             {
@@ -186,86 +199,89 @@ namespace CRRD_Web_Interface
             }
         }
 
-        protected async void ButtonAddCategory_Click(object sender, EventArgs e)
+        protected void ButtonAddCategory_Click(object sender, EventArgs e)
         {
+            // Validate input
             if(TextBoxCategoryName.Text == "")
             {
                 LiteralErrorMessageAddCategory.Text = "The category name field is required.";
                 return;
             }
 
-            var client = new HttpClient();
-            StringContent queryString = new StringContent("");
-            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            HttpResponseMessage response = await client.PostAsync("api/categories?Name=" + TextBoxCategoryName.Text, queryString);
-            if (response.IsSuccessStatusCode)
-            {
-                Response.Redirect((Page.Request.Url.ToString()), false);
-            }
-            else
-            {
-                LiteralErrorMessageAddCategory.Text = response.StatusCode.ToString();
-            }
+            // Attempt POST
+            var result = DataAccess.postDataToService("http://cs419.azurewebsites.net/api/Categories/?Name=" + TextBoxCategoryName.Text, new char[1]);
+            ClearAddCategoryInput();
+            Response.Redirect((Page.Request.Url.ToString()), false);
         }
 
         protected async void GridViewCategoryInfo_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            StoreSearchTerm();
+
             // Get edit text box value before call to data bind
             TextBox EditTextBox = GridViewCategoryInfo.Rows[e.RowIndex].FindControl("TextBoxEditCategoryName") as TextBox;
             string NewName = EditTextBox.Text;
 
-            await BindData();   // Must bind data to grid to get datasource
+            // Must bind data to grid to get category ID
+            await BindData();   
             DataTable dt = (DataTable)GridViewCategoryInfo.DataSource;  // Accessing the cell's value in the grid view always returned null, so datatable was used
-            string CategoryID = dt.Rows[e.RowIndex][0] as String;
-            string OldName = dt.Rows[e.RowIndex][1] as String;
+            string CategoryID = dt.Rows[(10 * GridViewCategoryInfo.PageIndex) + e.RowIndex][0] as String;
+            string OldName = dt.Rows[(10 * GridViewCategoryInfo.PageIndex) + e.RowIndex][1] as String;
 
+            // Validate input
             if(NewName == "")
             {
                 LiteralErrorMessageGridView.Text = "The category name field is required.";
+                RestoreSearchTerm();
+                GridViewCategoryInfo_RowEditing(sender, new GridViewEditEventArgs(e.RowIndex));
                 return;
             }
 
-            var client = new HttpClient();
-            StringContent ContentString = new StringContent("");
-            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            // Build Query
+            string QueryString = CategoryID + "?OldName=" + OldName + "&NewName=" + NewName;
 
-            HttpResponseMessage response = await client.PutAsync("api/categories/" + CategoryID + "?OldName=" + OldName + "&Name=" + NewName, ContentString);
-            if (response.IsSuccessStatusCode)
-            {
-                Response.Redirect((Page.Request.Url.ToString()), false);
-            }
-            else
-            {
-                LiteralErrorMessageGridView.Text = response.StatusCode.ToString();
-            }
+            // Attempt PUT
+            var result = DataAccess.putDataToService("http://cs419.azurewebsites.net/api/Categories/" + QueryString, new char[1]);
+            RestoreSearchTerm();
+
+            // Cancel row edit (cancelling will call bind and show the updated data)
+            GridViewCategoryInfo_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(e.RowIndex));
         }
 
         protected async void GridViewCategoryInfo_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            StoreSearchTerm();
+
             await BindData();   // Must bind data to grid to get datasource
             DataTable dt = (DataTable)GridViewCategoryInfo.DataSource;  // Accessing the cell's value in the grid view always returned null, so datatable was used
-            string CategoryID = dt.Rows[e.RowIndex][0] as String;
-            string CategoryName = dt.Rows[e.RowIndex][1] as String;
+            string CategoryID = dt.Rows[(10 * GridViewCategoryInfo.PageIndex) + e.RowIndex][0] as String;
+            string CategoryName = dt.Rows[(10 * GridViewCategoryInfo.PageIndex) + e.RowIndex][1] as String;
 
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            // Attempt DELETE
+            DataAccess.deleteDataToService("http://cs419.azurewebsites.net/api/Categories/" + CategoryID + "?Name=" + CategoryName, new char[1]);
 
-            HttpResponseMessage response = await client.DeleteAsync("api/categories/" + CategoryID + "?Name=" + CategoryName);
-            if (response.IsSuccessStatusCode)
-            {
-                Response.Redirect((Page.Request.Url.ToString()), false);
-            }
-            else
-            {
-                LiteralErrorMessageGridView.Text = response.StatusCode.ToString();
-            }
+            await BindData();
+            RestoreSearchTerm();
+        }
+
+        protected void StoreSearchTerm()
+        {
+            // Retrieve the search box text for upcomming data bind
+            TextBox Search = GridViewCategoryInfo.FooterRow.FindControl("TextBoxSearch") as TextBox;
+            SearchString = Search.Text;
+        }
+
+        protected void RestoreSearchTerm()
+        {
+            // Repopulate search box with search string
+            TextBox Search = GridViewCategoryInfo.FooterRow.FindControl("TextBoxSearch") as TextBox;
+            Search.Text = SearchString;
+        }
+
+        protected void ClearAddCategoryInput()
+        {
+            TextBoxCategoryName.Text = "";
+            LiteralErrorMessageAddCategory.Text = "";
         }
     }
 }

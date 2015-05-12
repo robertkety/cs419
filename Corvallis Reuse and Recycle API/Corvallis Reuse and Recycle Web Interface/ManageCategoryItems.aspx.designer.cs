@@ -103,6 +103,15 @@ namespace CRRD_Web_Interface {
         protected global::System.Web.UI.WebControls.Literal LiteralErrorMessageAddRelationship;
         
         /// <summary>
+        /// DropDownListCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListCategory;
+        
+        /// <summary>
         /// DropDownListItem control.
         /// </summary>
         /// <remarks>
