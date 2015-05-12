@@ -5,7 +5,7 @@
             Publisher="CN=Robert"
             Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="73b7f49b-47d3-4187-9292-fa94763540b0" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="5ba5ed5a-74fe-4360-a824-20e54679ef3f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Corvallis Reuse and Recycle Mobile Application</DisplayName>

@@ -13,6 +13,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Devices.Geolocation;
+using Windows.UI.Xaml.Controls.Maps;
+using Windows.Services.Maps;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -21,20 +24,26 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class OrganizationsView : Page
+    public sealed partial class OrganizationsListView : Page
     {
-        public OrganizationsView()
+        public static List<Organization> organizations;
+
+        public OrganizationsListView()
         {
             this.InitializeComponent();
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            string name = e.Parameter as string;
-            List<Organization> organizations = await DataAccess.GetItemOrganization(name);
+            if (e.Parameter != null)
+            {
+                string name = e.Parameter as string;
+                organizations = await DataAccess.GetItemOrganization(name);
+            }
 
             if (organizations.Count > 0)
             {
+                // Load Organizations in List Format
                 foreach (Organization organization in organizations)
                 {
                     Button button = new Button();
@@ -57,7 +66,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                 textBlock.Margin = new Thickness(50, 0, 10, 10);
                 textBlock.HorizontalAlignment = HorizontalAlignment.Stretch;
                 textBlock.VerticalAlignment = VerticalAlignment.Stretch;
-                ListOrganizations.Children.Add(textBlock);
+                Organizations.Children.Add(textBlock);
             }
         }
 
@@ -72,7 +81,31 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
 
         internal void ToggleMaps(object sender, RoutedEventArgs e)
         {
-            //ToggleMapView
+            if (OrgList.Visibility == Visibility.Visible)
+            {
+                OrgList.Visibility = Visibility.Collapsed;
+                OrgMap.Visibility = Visibility.Visible; 
+                
+                MapControl map = new MapControl();
+                map.Name = "Map";
+                map.MapServiceToken = MapService.ServiceToken;
+                map.BorderThickness = new Thickness(1);
+                map.MaxHeight = map.MinHeight = 500f;
+                map.Center = new Geopoint(new BasicGeoposition() { Latitude = 44.567, Longitude = -123.279 });
+                map.ZoomLevel = 12;
+                map.LandmarksVisible = true;
+
+                OrgMap.Children.Add(map);
+
+                ToggleButton.Content = "List View";
+            }
+            else
+            {
+                OrgMap.Children.Clear();
+                OrgMap.Visibility = Visibility.Collapsed;
+                OrgList.Visibility = Visibility.Visible;
+                ToggleButton.Content = "Map View";
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Corvallis_Reuse_and_Recycle_Mobile_Application.Entities
 {
-    class CityStateZip
+    public class CityStateZip
     {
         public CityStateZip(string json)
         {

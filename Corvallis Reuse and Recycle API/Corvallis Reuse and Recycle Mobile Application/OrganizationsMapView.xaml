@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsMapView"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Corvallis_Reuse_and_Recycle_Mobile_Application"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <TextBlock x:Name="AppName" Margin="0,0,0,0" TextWrapping="Wrap" Text="Corvallis Reuse and Repair Directory" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center" />
+        <StackPanel Visibility="Collapsed" Margin="0,36,0,0">
+            <!--<Grid x:Name="ListOrganizations" VerticalAlignment="Top"></Grid>-->
+            <Maps:MapControl x:Name="OrgMap" MapServiceToken="{StaticResource MapServiceTokenString}" BorderThickness="1" MinHeight="500" MaxHeight="500" />
+            <Button x:Name="ToggleButton" Click="ToggleMaps" HorizontalAlignment="Center" Content="List View" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="22" Width="300"></Button>            
+        </StackPanel>
+    </Grid>
+</Page>

@@ -105,8 +105,11 @@
     <Compile Include="OrganizationDetail.xaml.cs">
       <DependentUpon>OrganizationDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OrganizationsView.xaml.cs">
-      <DependentUpon>OrganizationsView.xaml</DependentUpon>
+    <Compile Include="OrganizationsMapView.xaml.cs">
+      <DependentUpon>OrganizationsMapView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrganizationsListView.xaml.cs">
+      <DependentUpon>OrganizationsListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -140,7 +143,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OrganizationsView.xaml">
+    <Page Include="OrganizationsMapView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrganizationsListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

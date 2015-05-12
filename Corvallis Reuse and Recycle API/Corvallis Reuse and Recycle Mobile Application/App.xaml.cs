@@ -2,6 +2,7 @@
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Phone.UI.Input;
+using Windows.Services.Maps;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
@@ -58,6 +59,8 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+
+            MapService.ServiceToken = Application.Current.Resources["MapServiceTokenString"].ToString(); 
 
             Frame rootFrame = Window.Current.Content as Frame;
 

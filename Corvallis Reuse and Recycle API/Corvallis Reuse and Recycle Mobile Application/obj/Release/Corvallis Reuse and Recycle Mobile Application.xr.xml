@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
   <Roots.RootTypes>
-    <RootType FullName="Windows.UI.Xaml.Application" />
+    <RootType FullName="Windows.UI.Xaml.Application">
+      <RootProperty Name="Resources" />
+    </RootType>
+    <RootType FullName="System.String" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Background" />
       <RootProperty Name="Content" />
@@ -22,6 +25,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Margin" />
       <RootProperty Name="Children" />
+      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="BorderThickness" />
@@ -52,6 +56,23 @@
     <RootType FullName="Corvallis_Reuse_and_Recycle_Mobile_Application.CategoriesView" />
     <RootType FullName="Corvallis_Reuse_and_Recycle_Mobile_Application.ItemsView" />
     <RootType FullName="Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationDetail" />
-    <RootType FullName="Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsView" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
+      <RootProperty Name="MapServiceToken" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="MinHeight" />
+      <RootProperty Name="MaxHeight" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Button">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Width" />
+      <RootEvent Name="Click" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.StaticResourceExtension" />
+    <RootType FullName="Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsMapView" />
+    <RootType FullName="Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsListView" />
   </Roots.RootTypes>
 </Roots>
