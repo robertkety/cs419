@@ -523,19 +523,6 @@
             </summary>
             <param name="Id">The Id of the target Category</param>
         </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemOrganizationController.Get">
-            <summary>
-            Returns a list of all items in the Items table
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemOrganizationController.Get(System.String)">
-            <summary>
-            Gets a List of Items objects assigned to the target Organization
-            </summary>
-            <param name="Id">The Id of the target Organization</param>
-            <returns></returns>
-        </member>
         <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemOrganizationController.Get(System.String,System.Boolean)">
             <summary>
             Gets a List of Organizations objects assigned to the target Item

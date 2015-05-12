@@ -15,10 +15,10 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// Returns a list of all items in the Items table
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<ItemOrganization> Get()
-        {
-            return DataAccess.GetTable<ItemOrganization>("ItemOrganization");
-        }
+        //public IEnumerable<ItemOrganization> Get()
+        //{
+        //    return DataAccess.GetTable<ItemOrganization>("ItemOrganization");
+        //}
 
         // GET: api/ItemOrganization/5
         /// <summary>
@@ -27,10 +27,10 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// <param name="Id">The Id of the target Organization</param>
         /// <returns></returns>
         //[Authorize]
-        public IEnumerable<Items> Get([FromUri]string Id)
-        {
-            return DataAccess.GetFKReferenceByRowKey<ItemOrganization, Items>("ItemOrganization", "Items", Id);
-        }
+        //public IEnumerable<Items> Get([FromUri]string Id)
+        //{
+        //    return DataAccess.GetFKReferenceByRowKey<ItemOrganization, Items>("ItemOrganization", "Items", Id);
+        //}
 
         // GET: api/ItemOrganization/5
         /// <summary>
