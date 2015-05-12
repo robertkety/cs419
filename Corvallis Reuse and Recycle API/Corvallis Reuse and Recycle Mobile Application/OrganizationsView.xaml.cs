@@ -51,7 +51,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
             else
             {
                 TextBlock textBlock = new TextBlock();
-                textBlock.Text = "Sorry, no items available";
+                textBlock.Text = "Sorry, no organizations available";
                 textBlock.FontSize = 48;
                 textBlock.TextWrapping = TextWrapping.WrapWholeWords;
                 textBlock.Margin = new Thickness(50, 0, 10, 10);

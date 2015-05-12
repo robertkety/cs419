@@ -10,6 +10,28 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
 {
     public class ItemOrganizationController : ApiController
     {
+        // GET: api/Items
+        /// <summary>
+        /// Returns a list of all items in the Items table
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ItemOrganization> Get()
+        {
+            return DataAccess.GetTable<ItemOrganization>("ItemOrganization");
+        }
+
+        // GET: api/ItemOrganization/5
+        /// <summary>
+        /// Gets a List of Items objects assigned to the target Organization
+        /// </summary>
+        /// <param name="Id">The Id of the target Organization</param>
+        /// <returns></returns>
+        //[Authorize]
+        public IEnumerable<Items> Get([FromUri]string Id)
+        {
+            return DataAccess.GetFKReferenceByRowKey<ItemOrganization, Items>("ItemOrganization", "Items", Id);
+        }
+
         // GET: api/ItemOrganization/5
         /// <summary>
         /// Gets a List of Organizations objects assigned to the target Item
@@ -17,7 +39,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// <param name="ItemId">The Id of the target Item</param>
         /// <param name="Offering">Include accurate offering data</param>
         /// <returns></returns>
-        [Authorize]
+        //[Authorize]
         public IEnumerable<Organizations> Get([FromUri]string ItemId, [FromUri]bool Offering)
         {
             List<Organizations> result = new List<Organizations>();
@@ -36,18 +58,6 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
                 return DataAccess.GetFKReferenceByPartitionKey<ItemOrganization, Organizations>("ItemOrganization", "Organizations", ItemId);
 
             return result.ToArray();
-        }
-
-        // GET: api/ItemOrganization/5
-        /// <summary>
-        /// Gets a List of Items objects assigned to the target Organization
-        /// </summary>
-        /// <param name="OrganizationId">The Id of the target Organization</param>
-        /// <returns></returns>
-        [Authorize]
-        public IEnumerable<Organizations> Get([FromUri]string OrganizationId)
-        {
-            return DataAccess.GetFKReferenceByRowKey<ItemOrganization, Organizations>("ItemOrganization", "Items", OrganizationId);
         }
 
         // POST: api/ItemOrganization

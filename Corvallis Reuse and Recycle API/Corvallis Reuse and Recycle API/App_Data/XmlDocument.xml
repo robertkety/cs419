@@ -523,19 +523,25 @@
             </summary>
             <param name="Id">The Id of the target Category</param>
         </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemOrganizationController.Get(System.String,System.Boolean)">
+        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemOrganizationController.Get">
             <summary>
-            Gets a List of Organizations objects assigned to the target Item
+            Returns a list of all items in the Items table
             </summary>
-            <param name="ItemId">The Id of the target Item</param>
-            <param name="Offering">Include accurate offering data</param>
             <returns></returns>
         </member>
         <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemOrganizationController.Get(System.String)">
             <summary>
             Gets a List of Items objects assigned to the target Organization
             </summary>
-            <param name="OrganizationId">The Id of the target Organization</param>
+            <param name="Id">The Id of the target Organization</param>
+            <returns></returns>
+        </member>
+        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemOrganizationController.Get(System.String,System.Boolean)">
+            <summary>
+            Gets a List of Organizations objects assigned to the target Item
+            </summary>
+            <param name="ItemId">The Id of the target Item</param>
+            <param name="Offering">Include accurate offering data</param>
             <returns></returns>
         </member>
         <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemOrganizationController.Post(System.String,System.String,System.Int32)">
@@ -578,6 +584,13 @@
             <summary>
             Returns a list of all Organization objects in the Organizations table. (Do not use this call to retrieve Offering data - use ItemOrganization)
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.OrganizationsController.Get(System.String)">
+            <summary>
+            Returns details of target Organization
+            </summary>
+            <param name="Id">Id of target Organization</param>
             <returns></returns>
         </member>
         <member name="F:Corvallis_Reuse_and_Recycle_API.Site_Mobile.HeadContent">

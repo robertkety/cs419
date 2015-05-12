@@ -21,6 +21,20 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
             return DataAccess.GetTable<Organizations>("Organizations");
         }
 
+        // GET: api/Organizations/5
+        /// <summary>
+        /// Returns details of target Organization
+        /// </summary>
+        /// <param name="Id">Id of target Organization</param>
+        /// <returns></returns>
+        public IEnumerable<Organizations> Get([FromUri]string Id)
+        {
+            List<Organizations> result = new List<Organizations>();
+            result.Add(DataAccess.GetFirstRow<Organizations>("Organizations", Id));
+            
+            return result.ToArray();
+        }
+
         // POST: api/Organizations
         [Authorize]
         /// <summary>

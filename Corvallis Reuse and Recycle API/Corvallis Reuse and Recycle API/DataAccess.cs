@@ -54,9 +54,16 @@ namespace Corvallis_Reuse_and_Recycle_API
             CloudTable table = tableClient.GetTableReference(tableName);
             TableOperation retrieveOperation = TableOperation.Retrieve<T>(partitionKey, rowKey);
 
-            TableResult retrievedResult = table.Execute(retrieveOperation);
-
-            return (T)retrievedResult.Result;
+            try
+            {
+                TableResult retrievedResult = table.Execute(retrieveOperation);
+                return (T)retrievedResult.Result;
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /* Gets first row returned from query of primary key on target storage table (tableName) */
@@ -67,7 +74,14 @@ namespace Corvallis_Reuse_and_Recycle_API
 
             CloudTable table = tableClient.GetTableReference(tableName);
             TableQuery<T> query = new TableQuery<T>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey));
-            return table.ExecuteQuery(query).First();
+            try
+            {
+                return table.ExecuteQuery(query).First();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         /* Gets all rows returned from query of primary key on target storage table (tableName) */
@@ -78,7 +92,11 @@ namespace Corvallis_Reuse_and_Recycle_API
 
             CloudTable table = tableClient.GetTableReference(tableName);
             TableQuery<T> query = new TableQuery<T>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey));
-            return table.ExecuteQuery(query);
+            try
+            {
+                return table.ExecuteQuery(query);
+            }
+            catch { return null; }
         }
 
         internal static IEnumerable<T1> GetFKReferenceByPartitionKey<T, T1>(string lookupTableName, string derivativeTableName, string id)
@@ -105,7 +123,13 @@ namespace Corvallis_Reuse_and_Recycle_API
 
             CloudTable table = tableClient.GetTableReference(lookupTableName);
             TableQuery<T> query = new TableQuery<T>().Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, id));
-            IEnumerable<T> joinResult = table.ExecuteQuery(query);
+
+            IEnumerable<T> joinResult = null;
+            try
+            {
+                joinResult = table.ExecuteQuery(query);
+            }
+            catch { joinResult = null; }
 
             List<T1> result = new List<T1>();
             foreach (T organization in joinResult)
