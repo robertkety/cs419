@@ -17,7 +17,7 @@ namespace CRRD_Web_Interface
         public static string token = "";
 
         /* Thanks! https://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn439314.aspx */
-        private static dynamic getDataFromService(string url)
+        internal static dynamic getDataFromService(string url)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace CRRD_Web_Interface
         }
         
         /* Thanks! https://msdn.microsoft.com/en-us/library/debx8sh9%28v=vs.110%29.aspx */
-        private static dynamic postDataToService(string url, char[] charArray)
+        internal static dynamic postDataToService(string url, char[] charArray)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace CRRD_Web_Interface
         }
 
         /* Thanks! https://msdn.microsoft.com/en-us/library/debx8sh9%28v=vs.110%29.aspx*/
-        private static dynamic putDataToService(string url, char[] charArray)
+        internal static dynamic putDataToService(string url, char[] charArray)
         {
             try
             {
@@ -164,7 +164,7 @@ namespace CRRD_Web_Interface
         }
 
         /* Thanks! https://msdn.microsoft.com/en-us/library/debx8sh9%28v=vs.110%29.aspx*/
-        private static dynamic deleteDataToService(string url, char[] charArray)
+        internal static dynamic deleteDataToService(string url, char[] charArray)
         {
             try
             {

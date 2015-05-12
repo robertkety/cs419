@@ -4,7 +4,7 @@
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\cs419\\Corvallis\ Reuse\ and\ Recycle\ API\\Corvallis\ Reuse\ and\ Recycle\ Web\ Interface\\obj\\Release\\Package\\PackageTmp$" />
     <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\cs419\\Corvallis\ Reuse\ and\ Recycle\ API\\Corvallis\ Reuse\ and\ Recycle\ Web\ Interface\\obj\\Release\\Package\\PackageTmp$" />
   </parameter>
-  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=fordr-db.database.windows.net;Initial Catalog=fordr-cs419_db;Persist Security Info=True;User ID=ryford;Password=ChemicalPlant1700" tags="">
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=tcp:la26ssszzi.database.windows.net,1433;Initial Catalog=cs419_db;User Id=cs419admin@la26ssszzi;Password=1Password;" tags="">
     <parameterEntry kind="XmlFile" scope="C:\\cs419\\Corvallis\ Reuse\ and\ Recycle\ API\\Corvallis\ Reuse\ and\ Recycle\ Web\ Interface\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
 </parameters>

@@ -21,12 +21,12 @@
                         <%# Eval("OrganizationID") %>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Category Name">
+                <asp:TemplateField HeaderText="Organization Name">
                     <ItemTemplate>
                         <%# Eval("OrganizationName") %>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxEditOrganizationName" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxEditOrganizationName" Width="100%" runat="server"></asp:TextBox>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="TextBoxSearch" runat="server"></asp:TextBox>
@@ -135,7 +135,7 @@
                 <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="TextBoxWebsite" CssClass="col-md-2 control-label">Website</asp:Label>
                     <div class="col-md-10">
-                        <asp:TextBox runat="server" ID="TextBoxWebsite" CssClass="form-control" TextMode="Email" />
+                        <asp:TextBox runat="server" ID="TextBoxWebsite" CssClass="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
