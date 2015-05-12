@@ -65,8 +65,9 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
         {
             Button _button = (Button)sender;
             string OrganizationId = _button.Tag.ToString();
+            string OrganizationName = _button.Content.ToString();
 
-            //Frame.Navigate(typeof(OrganizationsView), OrganizationId);
+            Frame.Navigate(typeof(OrganizationDetail), OrganizationId);
         }
 
         internal void ToggleMaps(object sender, RoutedEventArgs e)

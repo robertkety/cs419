@@ -17,6 +17,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
     public sealed partial class App : Application
     {
         private TransitionCollection transitions;
+        internal string BingAPIKey = "AhDUhG_EO9Ylmhz3xAJPlzxAYZ2d4_o9ROKUZ8fQBHwc2XeDhSGEH-JktTXkVJxr";
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -28,6 +29,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
             this.Suspending += this.OnSuspending;
             SuspensionManager.KnownTypes.Add(typeof(CategoriesView));
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            
         }
 
         /* Thanks! http://stackoverflow.com/questions/24335925/windows-phone-8-1-universal-app-terminates-on-navigating-back-from-second-page*/

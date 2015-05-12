@@ -95,11 +95,15 @@
       <DependentUpon>CategoriesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\CityStateZip.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Organization.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="ItemsView.xaml.cs">
       <DependentUpon>ItemsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrganizationDetail.xaml.cs">
+      <DependentUpon>OrganizationDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrganizationsView.xaml.cs">
       <DependentUpon>OrganizationsView.xaml</DependentUpon>
@@ -129,6 +133,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ItemsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrganizationDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

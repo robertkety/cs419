@@ -124,19 +124,21 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application.Corvallis_Reuse_and_Rec
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[5];
+            _typeNameTable = new string[6];
             _typeNameTable[0] = "Corvallis_Reuse_and_Recycle_Mobile_Application.CategoriesView";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
             _typeNameTable[3] = "Corvallis_Reuse_and_Recycle_Mobile_Application.ItemsView";
-            _typeNameTable[4] = "Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsView";
+            _typeNameTable[4] = "Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationDetail";
+            _typeNameTable[5] = "Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsView";
 
-            _typeTable = new global::System.Type[5];
+            _typeTable = new global::System.Type[6];
             _typeTable[0] = typeof(global::Corvallis_Reuse_and_Recycle_Mobile_Application.CategoriesView);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
             _typeTable[3] = typeof(global::Corvallis_Reuse_and_Recycle_Mobile_Application.ItemsView);
-            _typeTable[4] = typeof(global::Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsView);
+            _typeTable[4] = typeof(global::Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationDetail);
+            _typeTable[5] = typeof(global::Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsView);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -173,7 +175,8 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application.Corvallis_Reuse_and_Rec
 
         private object Activate_0_CategoriesView() { return new global::Corvallis_Reuse_and_Recycle_Mobile_Application.CategoriesView(); }
         private object Activate_3_ItemsView() { return new global::Corvallis_Reuse_and_Recycle_Mobile_Application.ItemsView(); }
-        private object Activate_4_OrganizationsView() { return new global::Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsView(); }
+        private object Activate_4_OrganizationDetail() { return new global::Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationDetail(); }
+        private object Activate_5_OrganizationsView() { return new global::Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsView(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -207,9 +210,16 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application.Corvallis_Reuse_and_Rec
                 xamlType = userType;
                 break;
 
-            case 4:   //  Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsView
+            case 4:   //  Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationDetail
                 userType = new global::Corvallis_Reuse_and_Recycle_Mobile_Application.Corvallis_Reuse_and_Recycle_Mobile_Application_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_4_OrganizationsView;
+                userType.Activator = Activate_4_OrganizationDetail;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 5:   //  Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsView
+                userType = new global::Corvallis_Reuse_and_Recycle_Mobile_Application.Corvallis_Reuse_and_Recycle_Mobile_Application_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_5_OrganizationsView;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
