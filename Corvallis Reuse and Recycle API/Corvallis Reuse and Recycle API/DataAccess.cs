@@ -99,6 +99,20 @@ namespace Corvallis_Reuse_and_Recycle_API
             catch { return null; }
         }
 
+        internal static IEnumerable<T> GetAllRowsByRowKey<T>(string tableName, string rowKey)
+             where T : TableEntity, new()
+        {
+            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+
+            CloudTable table = tableClient.GetTableReference(tableName);
+            TableQuery<T> query = new TableQuery<T>().Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, rowKey));
+            try
+            {
+                return table.ExecuteQuery(query);
+            }
+            catch { return null; }
+        }
+
         internal static IEnumerable<T1> GetFKReferenceByPartitionKey<T, T1>(string lookupTableName, string derivativeTableName, string id)
             where T : TableEntity, new()
             where T1 : TableEntity, new()

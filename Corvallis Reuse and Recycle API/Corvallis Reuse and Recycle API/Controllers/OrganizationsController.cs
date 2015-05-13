@@ -91,6 +91,9 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
             if (Name == null)
                 Name = ""; 
             DataAccess.DeleteRow<Organizations>("Organizations", Id, Name);
+            var OrganizationItemRows = DataAccess.GetAllRowsByRowKey<ItemOrganization>("ItemOrganization", Id);
+            foreach (var row in OrganizationItemRows)
+                DataAccess.DeleteRow<ItemOrganization>("ItemOrganization", row.PartitionKey, row.RowKey);
         }
     }
 }

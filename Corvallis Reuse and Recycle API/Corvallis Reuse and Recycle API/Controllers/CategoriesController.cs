@@ -75,6 +75,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
             if (Name == null)
                 Name = ""; 
             DataAccess.DeleteRow<Categories>("Categories", Id, Name);
+            DataAccess.DeleteAllRowsWithId<CategoryItem>("CategoryItem", Id);
         }        
     }
 }
