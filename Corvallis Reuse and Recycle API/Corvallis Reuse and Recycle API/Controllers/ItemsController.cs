@@ -52,8 +52,8 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         public void Post([FromUri]string Name, [FromUri]string[] Categories = null)
         {
             if (Name == null)
-                Name = ""; 
-            string NewItemGuid = new Guid().ToString();
+                Name = "";
+            string NewItemGuid = Guid.NewGuid().ToString();
             DataAccess.AddRow("Items", new Items(NewItemGuid, Name));
             if (Categories != null)
                 foreach (string category in Categories)

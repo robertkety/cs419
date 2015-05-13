@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Corvallis_Reuse_and_Recycle_Mobile_Application.Entities
 {
-    class Category
+    public class Category
     {
         public Category(string json)
         {

@@ -53,7 +53,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         {
             if (Name == null)
                 Name = "";
-            DataAccess.AddRow("Organizations", new Organizations(new Guid().ToString(), Name, Phone, AddressLine1, AddressLine2, AddressLine3, ZipCode, HttpUtility.HtmlEncode(Website), Hours, Notes, -1));
+            DataAccess.AddRow("Organizations", new Organizations(Guid.NewGuid().ToString(), Name, Phone, AddressLine1, AddressLine2, AddressLine3, ZipCode, HttpUtility.HtmlEncode(Website), Hours, Notes, -1));
         }
         
         // PUT: api/Organizations/5

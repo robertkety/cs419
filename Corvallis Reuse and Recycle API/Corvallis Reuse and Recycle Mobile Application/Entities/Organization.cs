@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Corvallis_Reuse_and_Recycle_Mobile_Application.Entities
 {
-    class Organization
+    public class Organization
     {
         public Organization(string json)
         {

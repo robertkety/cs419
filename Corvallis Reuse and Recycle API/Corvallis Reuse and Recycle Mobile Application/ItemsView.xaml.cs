@@ -68,7 +68,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
             Button _button = (Button)sender;
             string ItemId = _button.Tag.ToString();
 
-            Frame.Navigate(typeof(OrganizationsView), ItemId);
+            Frame.Navigate(typeof(OrganizationsListView), ItemId);
         }
     }
 }

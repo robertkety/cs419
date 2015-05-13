@@ -110,7 +110,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
             string path = "api/categories";
             List<Category> CategoryList = new List<Category>();
 
-            dynamic categories = await getDataFromService(url + path).ConfigureAwait(false);
+            dynamic categories = await getDataFromUnsecuredService(url + path).ConfigureAwait(false);
 
             if (categories == null)
                 return null;
@@ -126,7 +126,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
             string path = "api/categories/" + categoryId;
             List<Item> ItemsList = new List<Item>();
 
-            dynamic items = await getDataFromService(url + path).ConfigureAwait(false);
+            dynamic items = await getDataFromUnsecuredService(url + path).ConfigureAwait(false);
 
             if (items == null)
                 return null;
@@ -142,7 +142,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
             string path = "api/Items/" + itemId;
             List<Organization> OrganizationsList = new List<Organization>();
 
-            dynamic organizations = await getDataFromService(url + path).ConfigureAwait(false);
+            dynamic organizations = await getDataFromUnsecuredService(url + path).ConfigureAwait(false);
 
             if (organizations == null)
                 return null;
@@ -157,7 +157,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
         internal static async Task<Organization> GetOrganization(string organizationId){
             string path = "api/organizations/";
             List<Organization> OrganizationList = new List<Organization>();
-            dynamic organizations = await getDataFromService(url + path + organizationId).ConfigureAwait(false);
+            dynamic organizations = await getDataFromUnsecuredService(url + path + organizationId).ConfigureAwait(false);
 
             if (organizations == null)
                 return null;
