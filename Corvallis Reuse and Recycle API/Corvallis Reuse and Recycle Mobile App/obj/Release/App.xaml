@@ -1,8 +1,0 @@
-﻿<Application
-    x:Class="Corvallis_Reuse_and_Recycle_Mobile_App.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Corvallis_Reuse_and_Recycle_Mobile_App">
-
-</Application>
-

@@ -112,3 +112,5 @@ C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis R
 C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API\bin\ru\System.Spatial.resources.dll
 C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API\bin\Microsoft.AspNet.FriendlyUrls.xml

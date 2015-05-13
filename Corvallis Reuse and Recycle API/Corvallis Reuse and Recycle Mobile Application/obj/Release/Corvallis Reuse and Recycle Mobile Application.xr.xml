@@ -56,12 +56,6 @@
     <RootType FullName="Corvallis_Reuse_and_Recycle_Mobile_Application.CategoriesView" />
     <RootType FullName="Corvallis_Reuse_and_Recycle_Mobile_Application.ItemsView" />
     <RootType FullName="Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationDetail" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
-      <RootProperty Name="MapServiceToken" />
-      <RootProperty Name="BorderThickness" />
-      <RootProperty Name="MinHeight" />
-      <RootProperty Name="MaxHeight" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Content" />
@@ -71,8 +65,6 @@
       <RootProperty Name="Width" />
       <RootEvent Name="Click" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.StaticResourceExtension" />
-    <RootType FullName="Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsMapView" />
     <RootType FullName="Corvallis_Reuse_and_Recycle_Mobile_Application.OrganizationsListView" />
   </Roots.RootTypes>
 </Roots>

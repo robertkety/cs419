@@ -16,6 +16,9 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Devices.Geolocation;
 using Windows.UI.Xaml.Controls.Maps;
 using Windows.Services.Maps;
+using System.Threading.Tasks;
+using System.Diagnostics;
+using Windows.Storage.Streams;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -27,10 +30,40 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
     public sealed partial class OrganizationsListView : Page
     {
         public static List<Organization> organizations;
+        public static MapControl map = new MapControl();
+                    
+        public static Geopoint Location(double Latitude, double Longitude)
+        {
+            BasicGeoposition result = new BasicGeoposition();
+            result.Latitude = Latitude;
+            result.Longitude = Longitude;
+            try
+            {
+                return new Geopoint(result);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+            return null;
+        }
+
+        public static Geopoint Corvallis = Location(44.5674383, -123.2783545);
 
         public OrganizationsListView()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            OrgMap.Children.Clear();
+            Organizations.Children.Clear();
+            map = new MapControl();
+            OrgMap.Visibility = Visibility.Collapsed;
+            OrgList.Visibility = Visibility.Visible;
+            ToggleButton.Content = "Map View";
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -79,33 +112,106 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
             Frame.Navigate(typeof(OrganizationDetail), OrganizationId);
         }
 
-        internal void ToggleMaps(object sender, RoutedEventArgs e)
+        internal async void ToggleMaps(object sender, RoutedEventArgs e)
         {
-            if (OrgList.Visibility == Visibility.Visible)
+            try
             {
-                OrgList.Visibility = Visibility.Collapsed;
-                OrgMap.Visibility = Visibility.Visible; 
-                
-                MapControl map = new MapControl();
-                map.Name = "Map";
-                map.MapServiceToken = MapService.ServiceToken;
-                map.BorderThickness = new Thickness(1);
-                map.MaxHeight = map.MinHeight = 500f;
-                map.Center = new Geopoint(new BasicGeoposition() { Latitude = 44.567, Longitude = -123.279 });
-                map.ZoomLevel = 12;
-                map.LandmarksVisible = true;
+                if (OrgList.Visibility == Visibility.Visible)
+                {
+                    OrgList.Visibility = Visibility.Collapsed;
+                    OrgMap.Visibility = Visibility.Visible;
 
-                OrgMap.Children.Add(map);
+                    if (map.Name != "Map")
+                    {
+                        map.Name = "Map";
+                        map.MapServiceToken = MapService.ServiceToken;
+                        map.BorderThickness = new Thickness(1);
+                        map.MaxHeight = map.MinHeight = 500f;
+                        map.Center = Corvallis;
+                        map.ZoomLevel = 12;
+                        map.LandmarksVisible = false;
 
-                ToggleButton.Content = "List View";
+                        ToggleButton.Content = "List View";
+
+                        foreach (Organization org in organizations)
+                        {
+                            string locationString = await GetLocation(org);
+                            MapIcon icon = new MapIcon();
+
+                            icon.Location = await GetGeopoint(locationString);
+                            icon.NormalizedAnchorPoint = new Point(0.5, 1.0);
+                            icon.Title = org.Name;
+                            icon.Image = GetImage(org);
+                            icon.ZIndex = 100;
+
+                            map.MapElements.Add(icon);
+                        }
+                    }
+
+                    OrgMap.Children.Add(map);
+                }
+                else
+                {
+                    OrgMap.Children.Clear();
+                    OrgMap.Visibility = Visibility.Collapsed;
+                    OrgList.Visibility = Visibility.Visible;
+                    ToggleButton.Content = "Map View";
+                }
             }
-            else
+            catch (Exception ex) { Debug.WriteLine(ex); }
+        }
+
+        private async Task<Geopoint> GetGeopoint(string LocationName)
+        {
+            try
             {
-                OrgMap.Children.Clear();
-                OrgMap.Visibility = Visibility.Collapsed;
-                OrgList.Visibility = Visibility.Visible;
-                ToggleButton.Content = "Map View";
+                MapLocationFinderResult result = await MapLocationFinder.FindLocationsAsync(LocationName, Corvallis, 1);
+                if (result.Status == MapLocationFinderStatus.Success)
+                    return result.Locations.FirstOrDefault().Point;
             }
+            catch (Exception ex)
+            {
+                if (LocationName == "")
+                    Debug.WriteLine("Empty String Street Address");
+                else
+                    Debug.WriteLine(ex);
+            }
+            
+            return Corvallis;
+        }
+
+        private async Task<string> GetLocation(Organization org)
+        {
+            string locationString = "";
+
+            if (org.AddressLine1 != "")
+                locationString += org.AddressLine1 + "\n";
+            if (org.AddressLine2 != "")
+                locationString += org.AddressLine1 + "\n";
+            if (org.AddressLine3 != "")
+                locationString += org.AddressLine1 + "\n";
+            if (org.ZipCode != "")
+                locationString += await DataAccess.GetCityState(org.ZipCode);
+
+            return locationString;
+        }
+
+        private IRandomAccessStreamReference GetImage(Organization org)
+        {
+            switch ((Enums.offering)org.Offering)
+            {
+                case (Enums.offering.reuse):
+                    return RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/map-pin-green-hi.png"));
+                    //return RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/icon_map_small.gif"));
+                case (Enums.offering.recycle):
+                    return RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/map-pin-blue-hi.png"));
+                case (Enums.offering.both):
+                    return RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/map-pin-purple-hi.png"));
+                default:
+                    break;
+            }
+
+            return null;
         }
     }
 }
