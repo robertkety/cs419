@@ -63,7 +63,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                 OrgMap.Children.Clear();
                 Organizations.Children.Clear();
                 map = new MapControl();
-                OrgMap.Visibility = Visibility.Collapsed;
+                OrgMap.Visibility = Legend.Visibility = Visibility.Collapsed;
                 OrgList.Visibility = Visibility.Visible;
                 ToggleButton.Content = "Map View";            
         }
@@ -156,7 +156,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                 if (OrgList.Visibility == Visibility.Visible)
                 {
                     OrgList.Visibility = Visibility.Collapsed;
-                    OrgMap.Visibility = Visibility.Visible;
+                    OrgMap.Visibility = Legend.Visibility = Visibility.Visible;
 
                     ToggleButton.Content = "List View";
 
@@ -165,7 +165,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                 else
                 {
                     OrgMap.Children.Clear();
-                    OrgMap.Visibility = Visibility.Collapsed;
+                    OrgMap.Visibility = Legend.Visibility = Visibility.Collapsed;
                     OrgList.Visibility = Visibility.Visible;
                     ToggleButton.Content = "Map View";
                 }

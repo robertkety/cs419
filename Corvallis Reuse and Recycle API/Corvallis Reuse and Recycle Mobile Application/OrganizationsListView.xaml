@@ -23,8 +23,30 @@
                     <StackPanel x:Name="Organizations"/>
                 </ScrollViewer>
             </StackPanel>
-            <StackPanel x:Name="OrgMap" Visibility="Collapsed"/>
-            <Button x:Name="ToggleButton" Click="ToggleMaps" HorizontalAlignment="Center" Content="Map View" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="22" Width="300"/>
+            <StackPanel x:Name="OrgMap" Visibility="Collapsed" />
+            <Button x:Name="ToggleButton" Click="ToggleMaps" HorizontalAlignment="Center" Content="Map View" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="22" Width="300"/>
+            <StackPanel x:Name="Legend" Visibility="Collapsed">
+                <Grid Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="ms-appx:///Assets/map-pin-green-hi.png" MaxHeight="32" MinWidth="20" Width="20" />
+                    <Image Grid.Column="1" Source="ms-appx:///Assets/map-pin-blue-hi.png" MaxHeight="32" MinWidth="20" Width="20" />
+                    <Image Grid.Column="2" Source="ms-appx:///Assets/map-pin-purple-hi.png" MaxHeight="32" MinWidth="20" Width="20" />
+                </Grid>
+                <Grid Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Reuse" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Recycle" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="2" Text="Both" HorizontalAlignment="Center"/>
+                </Grid>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>
