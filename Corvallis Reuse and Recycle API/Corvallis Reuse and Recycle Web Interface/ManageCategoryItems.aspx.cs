@@ -31,6 +31,8 @@ namespace CRRD_Web_Interface
 
             if (!IsPostBack && Authenticated == true)
             {
+                Session["SearchEnabled"] = false; 
+
                 var client = new HttpClient();
                 client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
                 client.DefaultRequestHeaders.Accept.Clear();
@@ -45,7 +47,6 @@ namespace CRRD_Web_Interface
                     foreach (Category category in categories)
                     {
                         DropDownListCategories.Items.Add(new ListItem(category.RowKey, category.PartitionKey));
-                        DropDownListCategory.Items.Add(new ListItem(category.RowKey, category.PartitionKey));
                     }
 
                     PanelErrorMessages.Visible = false;
@@ -68,59 +69,105 @@ namespace CRRD_Web_Interface
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = await client.GetAsync("api/categories/" + DropDownListCategories.SelectedValue);
+            // Get all items
+            List<Item> items;
+            HttpResponseMessage response = await client.GetAsync("api/items/");
             if (response.IsSuccessStatusCode)
             {
-                Item[] items = await response.Content.ReadAsAsync<Item[]>();
-                DataTable dt = new DataTable();
-                dt.Columns.Add("ItemID");
-                dt.Columns.Add("ItemName");
+                items = await response.Content.ReadAsAsync<List<Item>>();
+                items.Sort(new Comparison<Item>((x, y) => string.Compare(x.RowKey, y.RowKey)));
+            }
+            else
+            {
+                return false;
+            }
 
-                foreach (Item item in items)
+            // Get items that are members of selected category
+            List<Item>categoryItems;
+            response = await client.GetAsync("api/categories/" + DropDownListCategories.SelectedValue);
+            if (response.IsSuccessStatusCode)
+            {
+                categoryItems = await response.Content.ReadAsAsync<List<Item>>();
+                categoryItems.Sort(new Comparison<Item>((x, y) => string.Compare(x.RowKey, y.RowKey)));
+            }
+            else
+            {
+                return false;
+            }
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ItemID");
+            dt.Columns.Add("ItemName");
+            dt.Columns.Add("Member");
+
+            // Add all items to data table
+            Item categoryItem = categoryItems.FirstOrDefault();
+            int index = 1;
+            foreach (Item item in items)
+            {
+                var dr = dt.NewRow();
+                dr["ItemID"] = item.PartitionKey;
+                dr["ItemName"] = item.RowKey;
+
+                if(categoryItem.PartitionKey == item.PartitionKey)
                 {
-                    var dr = dt.NewRow();
-                    dr["ItemID"] = item.PartitionKey;
-                    dr["ItemName"] = item.RowKey;
-                    dt.Rows.Add(dr);
+                    dr["Member"] = true;
+                    
+                    if(index < categoryItems.Count)
+                    {
+                        categoryItem = categoryItems[index];
+                        index++;
+                    }
+                }
+                else
+                {
+                    dr["Member"] = false;
                 }
 
-                DataView dv = dt.DefaultView;
-                dv.Sort = "ItemName ASC";
-                DataTable sorted_dt = dv.ToTable();
+                dt.Rows.Add(dr);
+            }
 
-                // Special instructions if search operation is underway
-                if (SearchString != "")
+            DataView dv = dt.DefaultView;
+            dv.Sort = "ItemName ASC";
+            DataTable sorted_dt = dv.ToTable();
+
+            // See if search is enabled
+            bool SearchEnabled = false;
+            try
+            {
+                SearchEnabled = (bool)Session["SearchEnabled"];
+            }
+            catch (Exception ex) { }
+
+            if (SearchEnabled)
+            {
+                DataRow[] FilteredRows = sorted_dt.Select("ItemName like '%" + SearchString + "%'");
+                DataTable filtered_dt = new DataTable();
+                filtered_dt = sorted_dt.Clone();
+
+                // If search result is 0, return full table
+                if (FilteredRows.Count() == 0)
                 {
-                    DataRow[] FilteredRows = sorted_dt.Select("ItemName like '%" + SearchString + "%'");
-                    DataTable filtered_dt = new DataTable();
-                    filtered_dt = sorted_dt.Clone();
-
-                    // If search result is 0, return full table
-                    if (FilteredRows.Count() == 0)
-                    {
-                        GridViewCategoryItems.DataSource = sorted_dt;
-                        GridViewCategoryItems.DataBind();
-                        return true;
-                    }
-
-                    foreach (DataRow row in FilteredRows)
-                    {
-                        filtered_dt.Rows.Add(row.ItemArray);
-                    }
-
-                    GridViewCategoryItems.DataSource = filtered_dt;
+                    GridViewCategoryItems.DataSource = sorted_dt;
                     GridViewCategoryItems.DataBind();
                     return true;
                 }
 
-                // Else return full sorted table
-                GridViewCategoryItems.DataSource = sorted_dt;
-                GridViewCategoryItems.DataBind();
+                foreach (DataRow row in FilteredRows)
+                {
+                    filtered_dt.Rows.Add(row.ItemArray);
+                }
 
+                GridViewCategoryItems.DataSource = filtered_dt;
+                GridViewCategoryItems.DataBind();
                 return true;
             }
 
-            return false;
+            // Else return full sorted table
+            GridViewCategoryItems.DataSource = sorted_dt;
+            GridViewCategoryItems.DataBind();
+
+            return true;
         }
 
         /*
@@ -182,6 +229,7 @@ namespace CRRD_Web_Interface
         protected async void ButtonSearch_Click(object sender, EventArgs e)
         {
             StoreSearchTerm();
+            SetSearchStatus();
 
             bool status = await BindData();
             if (status == false)
@@ -193,70 +241,8 @@ namespace CRRD_Web_Interface
             {
                 PanelCategoryItems.Visible = true;
                 PanelErrorMessages.Visible = false;
+                RestoreSearchTerm();
             }
-        }
-
-        /*
-         * Usage: Make relationship creation panel visible/not visible
-         */
-        protected async void LinkButtonAddRelationship_Click(object sender, EventArgs e)
-        {
-            if (PanelAddRelationship.Visible == true)
-            {
-                LinkButtonAddRelationship.Text = "+ Add a New Item/Category Relationship";
-                PanelAddRelationship.Visible = false;
-            }
-            else
-            {
-                var client = new HttpClient();
-                client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                // Get Items
-                HttpResponseMessage response = await client.GetAsync("api/items/");
-                if (response.IsSuccessStatusCode)
-                {
-                    // How to sort list of objects: http://stackoverflow.com/questions/1301822/how-to-sort-an-array-of-object-by-a-specific-field-in-c
-                    List<Item> items = await response.Content.ReadAsAsync<List<Item>>();
-                    items.Sort(new Comparison<Item>((x, y) => string.Compare(x.RowKey, y.RowKey)));
-                    foreach (Item item in items)
-                    {
-                        DropDownListItem.Items.Add(new ListItem(item.RowKey, item.PartitionKey));
-                    }
-                }
-
-                LinkButtonAddRelationship.Text = "- Add a New Item/Category Relationship";
-                PanelAddRelationship.Visible = true;
-            }
-        }
-
-        /*
-        * Usage: Add relationship between category and item
-        */
-        protected void ButtonAddRelationship_Click(object sender, EventArgs e)
-        {
-            string ItemID = DropDownListItem.SelectedValue;
-            string CategoryID = DropDownListCategory.SelectedValue;
-
-            if (CategoryID == "")
-            {
-                LiteralErrorMessageAddRelationship.Text = "Category must be slected from drop-down list.";
-                return;
-            }
-            if (ItemID == "")
-            {
-                LiteralErrorMessageAddRelationship.Text = "Item must be selected from drop-down list.";
-                return;
-            }
-
-            // Build parameter string
-            string ParameterString = CategoryID + "&items=[" + ItemID + "]";
-
-            // NEED TO CHECK IF RELATIONSHIP EXISTS? 
-            // Attempt POST
-            var result = DataAccess.postDataToService("http://cs419.azurewebsites.net/api/CategoryItem/" + ParameterString, new char[1]);
-            Response.Redirect((Page.Request.Url.ToString()), false);
         }
 
         /*
@@ -279,6 +265,78 @@ namespace CRRD_Web_Interface
             // Repopulate search box with search string
             TextBox Search = GridViewCategoryItems.FooterRow.FindControl("TextBoxSearch") as TextBox;
             Search.Text = SearchString;
+        }
+
+        protected async void GridViewCategoryItems_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewCategoryItems.EditIndex = e.NewEditIndex;
+            StoreSearchTerm();
+
+            bool result = false;
+            try
+            {
+                result = await BindData();
+            }
+            catch (Exception ex) { }
+            if (result == false)
+            {
+                PanelErrorMessages.Visible = true;
+                PanelCategoryItems.Visible = false;
+            }
+            else
+            {
+                PanelCategoryItems.Visible = true;
+                PanelErrorMessages.Visible = false;
+                RestoreSearchTerm();
+            }
+        }
+
+        protected async void GridViewCategoryItems_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridViewCategoryItems.EditIndex = -1;
+            StoreSearchTerm();
+
+            bool result = false;
+            try
+            {
+                result = await BindData();
+            }
+            catch (Exception ex) { }
+            if (result == false)
+            {
+                PanelErrorMessages.Visible = true;
+                PanelCategoryItems.Visible = false;
+            }
+            else
+            {
+                PanelCategoryItems.Visible = true;
+                PanelErrorMessages.Visible = false;
+                RestoreSearchTerm();
+            }
+        }
+
+        protected void GridViewCategoryItems_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            // Cancel row edit (cancelling will call bind and show the updated data)
+            RestoreSearchTerm();
+            GridViewCategoryItems_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(e.RowIndex));
+        }
+
+        protected void SetSearchStatus()
+        {
+            try
+            {
+                TextBox Search = GridViewCategoryItems.FooterRow.FindControl("TextBoxSearch") as TextBox;
+                if (Search.Text == "")
+                {
+                    Session["SearchEnabled"] = false;
+                }
+                else
+                {
+                    Session["SearchEnabled"] = true;
+                }
+            }
+            catch (Exception ex) { }
         }
     }
 }

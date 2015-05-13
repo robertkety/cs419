@@ -14,7 +14,7 @@
     </asp:Panel>
     <asp:Panel ID="PanelCategoryItems" runat="server" Visible="false">
         <asp:GridView ID="GridViewCategoryItems" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False"
-            AllowPaging="True" OnPageIndexChanged="GridViewCategoryItems_PageIndexChanged" OnPageIndexChanging="GridViewCategoryItems_PageIndexChanging" ShowFooter="True">
+            AllowPaging="True" OnPageIndexChanged="GridViewCategoryItems_PageIndexChanged" OnPageIndexChanging="GridViewCategoryItems_PageIndexChanging" ShowFooter="True" OnRowCancelingEdit="GridViewCategoryItems_RowCancelingEdit" OnRowEditing="GridViewCategoryItems_RowEditing" OnRowUpdating="GridViewCategoryItems_RowUpdating">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:TemplateField HeaderText="Item ID" Visible="false">
@@ -33,10 +33,8 @@
                     <FooterStyle HorizontalAlign="Left" />
                     <HeaderStyle Width="20%" />
                 </asp:TemplateField>
-                <asp:CommandField ShowDeleteButton="True" >
-                <ControlStyle Width="100%" />
-                <HeaderStyle Width="5%" />
-                </asp:CommandField>
+                <asp:CheckBoxField DataField="Member" HeaderText="Category Member"/>
+                <asp:CommandField ShowEditButton="True" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -49,33 +47,5 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-        <div>
-            <asp:LinkButton ID="LinkButtonAddRelationship" runat="server" OnClick="LinkButtonAddRelationship_Click">+ Add a New Item/Category Relationship</asp:LinkButton>
-        </div>
-        <asp:Panel ID="PanelAddRelationship" runat="server" Visible="false">
-            <div class="form-horizontal">
-                <h4>Create a New Category/Item Relationship</h4>
-                <p class="text-danger">
-                    <asp:Literal runat="server" ID="LiteralErrorMessageAddRelationship" />
-                </p>
-                <div class="form-group">
-                    <asp:Label runat="server" AssociatedControlID="DropDownListCategory" CssClass="col-md-2 control-label">Category</asp:Label>
-                    <div class="col-md-10">
-                        <asp:DropDownList ID="DropDownListCategory" runat="server"></asp:DropDownList>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <asp:Label runat="server" AssociatedControlID="DropDownListItem" CssClass="col-md-2 control-label">Item</asp:Label>
-                    <div class="col-md-10">
-                        <asp:DropDownList ID="DropDownListItem" runat="server"></asp:DropDownList>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <asp:Button runat="server" ID="ButtonAddRelationship" OnClick="ButtonAddRelationship_Click" Text="Add Relationship" CssClass="btn btn-default" />
-                    </div>
-                </div>
-            </div>
-        </asp:Panel>
     </asp:Panel>
 </asp:Content>
