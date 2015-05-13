@@ -74,6 +74,14 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                 organizations = await DataAccess.GetItemOrganization(name);
             }
 
+            map.Name = "Map";
+            map.MapServiceToken = MapService.ServiceToken;
+            map.BorderThickness = new Thickness(1);
+            map.MaxHeight = map.MinHeight = 500f;
+            map.Center = Corvallis;
+            map.ZoomLevel = 12;
+            map.LandmarksVisible = false;
+
             if (organizations.Count > 0)
             {
                 // Load Organizations in List Format
@@ -88,6 +96,17 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                     button.VerticalAlignment = VerticalAlignment.Stretch;
                     button.Click += new RoutedEventHandler(ClickOrganization);
                     Organizations.Children.Add(button);
+
+                    string locationString = await GetLocation(organization);
+                    MapIcon icon = new MapIcon();
+
+                    icon.Location = await GetGeopoint(locationString);
+                    icon.NormalizedAnchorPoint = new Point(0.5, 1.0);
+                    icon.Title = organization.Name;
+                    icon.Image = GetImage(organization);
+                    icon.ZIndex = 100;
+
+                    map.MapElements.Add(icon);
                 }
             }
             else
@@ -112,7 +131,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
             Frame.Navigate(typeof(OrganizationDetail), OrganizationId);
         }
 
-        internal async void ToggleMaps(object sender, RoutedEventArgs e)
+        internal void ToggleMaps(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -121,32 +140,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                     OrgList.Visibility = Visibility.Collapsed;
                     OrgMap.Visibility = Visibility.Visible;
 
-                    if (map.Name != "Map")
-                    {
-                        map.Name = "Map";
-                        map.MapServiceToken = MapService.ServiceToken;
-                        map.BorderThickness = new Thickness(1);
-                        map.MaxHeight = map.MinHeight = 500f;
-                        map.Center = Corvallis;
-                        map.ZoomLevel = 12;
-                        map.LandmarksVisible = false;
-
-                        ToggleButton.Content = "List View";
-
-                        foreach (Organization org in organizations)
-                        {
-                            string locationString = await GetLocation(org);
-                            MapIcon icon = new MapIcon();
-
-                            icon.Location = await GetGeopoint(locationString);
-                            icon.NormalizedAnchorPoint = new Point(0.5, 1.0);
-                            icon.Title = org.Name;
-                            icon.Image = GetImage(org);
-                            icon.ZIndex = 100;
-
-                            map.MapElements.Add(icon);
-                        }
-                    }
+                    ToggleButton.Content = "List View";
 
                     OrgMap.Children.Add(map);
                 }
