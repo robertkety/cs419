@@ -33,6 +33,7 @@ namespace CRRD_Web_Interface
 
             if (!IsPostBack && Authenticated == true)
             {
+                Session["SearchEnabled"] = false;   // Prevents text in search box from filtering results unless search is requested
                 bool status = await BindData();
                 if(status == true)
                 {
@@ -75,14 +76,21 @@ namespace CRRD_Web_Interface
                     var dr = dt.NewRow();
                     dr["OrganizationID"] = organization.PartitionKey;
                     dr["OrganizationName"] = organization.RowKey;
-                    dr["OrganizationPhone"] = organization.Phone;
+                    if(organization.Phone != null && organization.Phone != "")
+                    {
+                        dr["OrganizationPhone"] = organization.Phone;
+                    }
+                    else
+                    {
+                        dr["OrganizationPhone"] = "Private";
+                    }
                     dr["OrganizationAddressLine1"] = organization.AddressLine1;
                     dr["OrganizationAddressLine2"] = organization.AddressLine2;
                     dr["OrganizationAddressLine3"] = organization.AddressLine3;
                     dr["OrganizationZipCode"] = organization.ZipCode;
                     dr["OrganizationWebsite"] = organization.Website;
                     dr["OrganizationHours"] = organization.Hours;
-                    dr["OrganizationNotes"] = organization.Hours;
+                    dr["OrganizationNotes"] = organization.Notes;
                     dt.Rows.Add(dr);
                 }
 
@@ -90,7 +98,15 @@ namespace CRRD_Web_Interface
                 dv.Sort = "OrganizationName ASC";
                 DataTable sorted_dt = dv.ToTable();
 
-                if (SearchString != "")
+                // See if search is enabled
+                bool SearchEnabled = false;
+                try
+                {
+                    SearchEnabled = (bool)Session["SearchEnabled"];
+                }
+                catch (Exception ex) { }
+
+                if (SearchEnabled)
                 {
                    DataRow[] FilteredRows = sorted_dt.Select("OrganizationName like '%" + SearchString + "%'");
                    DataTable filtered_dt = new DataTable();
@@ -170,7 +186,7 @@ namespace CRRD_Web_Interface
         {
             StoreSearchTerm();
             LiteralErrorMessageGridView.Text = "";
-
+            RestoreSearchTerm();
             bool status = await BindData();
             if (status == false)
             {
@@ -185,6 +201,8 @@ namespace CRRD_Web_Interface
         protected async void ButtonSearch_Click(object sender, EventArgs e)
         {
             StoreSearchTerm();
+            SetSearchStatus();
+
             GridViewOrganizationInfo_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(0));
 
             bool status = await BindData();
@@ -307,13 +325,17 @@ namespace CRRD_Web_Interface
                 GridViewOrganizationInfo_RowEditing(sender, new GridViewEditEventArgs(e.RowIndex));
                 return;
             }
-            else if(!Int64.TryParse(Phone, out PhoneNumeric))
+            else if(Phone != "" && Phone != "Private")
             {
-                LiteralErrorMessageGridView.Text = "The phone number cannot contain non-numeric characters";
-                RestoreSearchTerm();
-                GridViewOrganizationInfo_RowEditing(sender, new GridViewEditEventArgs(e.RowIndex));
-                return;
+                if(!Int64.TryParse(Phone, out PhoneNumeric))
+                {
+                    LiteralErrorMessageGridView.Text = "The phone number cannot contain non-numeric characters";
+                    RestoreSearchTerm();
+                    GridViewOrganizationInfo_RowEditing(sender, new GridViewEditEventArgs(e.RowIndex));
+                    return;
+                }
             }
+
 
             // Atempt PUT
             var result = DataAccess.putDataToService("http://cs419.azurewebsites.net/api/Organizations/" + QueryString, new char[1]);
@@ -388,6 +410,19 @@ namespace CRRD_Web_Interface
             TextBoxHours.Text = "";
             TextBoxNotes.Text = "";
             LiteralErrorMessageAddOrganization.Text = "";
+        }
+
+        protected void SetSearchStatus()
+        {
+            TextBox Search = GridViewOrganizationInfo.FooterRow.FindControl("TextBoxSearch") as TextBox;
+            if(Search.Text == "")
+            {
+                Session["SearchEnabled"] = false;
+            }
+            else
+            {
+                Session["SearchEnabled"] = true;
+            }
         }
     }
 }

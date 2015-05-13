@@ -175,6 +175,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="ManageCategories.aspx" />
     <Content Include="ManageCategoryItems.aspx" />
+    <Content Include="ManageItemOrganization.aspx" />
     <Content Include="ManageItems.aspx" />
     <Content Include="ManageOrganizations.aspx" />
     <Content Include="ManageRepairables.aspx" />
@@ -368,6 +369,13 @@
     </Compile>
     <Compile Include="ManageCategoryItems.aspx.designer.cs">
       <DependentUpon>ManageCategoryItems.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageItemOrganization.aspx.cs">
+      <DependentUpon>ManageItemOrganization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageItemOrganization.aspx.designer.cs">
+      <DependentUpon>ManageItemOrganization.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManageItems.aspx.cs">
       <DependentUpon>ManageItems.aspx</DependentUpon>

@@ -33,6 +33,7 @@ namespace CRRD_Web_Interface
 
             if (!IsPostBack && Authenticated == true)
             {
+                Session["SearchEnabled"] = false;   // Prevents text in search box from filtering results unless search is requested
                 bool status = await BindData();
                 if (status == true)
                 {
@@ -74,7 +75,15 @@ namespace CRRD_Web_Interface
                 dv.Sort = "CategoryName ASC";
                 DataTable sorted_dt = dv.ToTable();
 
-                if (SearchString != "")
+                // See if search is enabled
+                bool SearchEnabled = false;
+                try
+                {
+                    SearchEnabled = (bool)Session["SearchEnabled"];
+                }
+                catch (Exception ex) { }
+
+                if (SearchEnabled)
                 {
                     DataRow[] FilteredRows = sorted_dt.Select("CategoryName like '%" + SearchString + "%'");
                     DataTable filtered_dt = new DataTable();
@@ -282,6 +291,19 @@ namespace CRRD_Web_Interface
         {
             TextBoxCategoryName.Text = "";
             LiteralErrorMessageAddCategory.Text = "";
+        }
+
+        protected void SetSearchStatus()
+        {
+            TextBox Search = GridViewCategoryInfo.FooterRow.FindControl("TextBoxSearch") as TextBox;
+            if (Search.Text == "")
+            {
+                Session["SearchEnabled"] = false;
+            }
+            else
+            {
+                Session["SearchEnabled"] = true;
+            }
         }
     }
 }

@@ -32,10 +32,7 @@
                 <asp:HyperLink ID="HyperLinkManageCategoryItems" runat="server" NavigateUrl="~/ManageCategoryItems">Manage Category/Item Relationships</asp:HyperLink>
             </li>
             <li>
-                <asp:HyperLink ID="HyperLinkManageReusables" runat="server" NavigateUrl="~/ManageReusableOrganizations.aspx">Manage Reusable/Organization Combinations</asp:HyperLink>
-            </li>
-            <li>
-                <asp:HyperLink ID="HyperLinkManageRepairables" runat="server" NavigateUrl="~/ManageRepairables.aspx">Manage Repairable/Organization Combinations</asp:HyperLink>
+                <asp:HyperLink ID="HyperLinkManageItemOrganization" runat="server" NavigateUrl="~/ManageItemOrganization.aspx">Manage Item/Organization Relationships</asp:HyperLink>
             </li>
         </ul>
     </asp:Panel>
