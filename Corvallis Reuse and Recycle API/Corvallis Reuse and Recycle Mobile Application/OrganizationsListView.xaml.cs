@@ -19,6 +19,7 @@ using Windows.Services.Maps;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Windows.Storage.Streams;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -31,6 +32,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
     {
         public static List<Organization> organizations;
         public static MapControl map = new MapControl();
+        public static string OrgContext = "";
                     
         public static Geopoint Location(double Latitude, double Longitude)
         {
@@ -58,19 +60,20 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            OrgMap.Children.Clear();
-            Organizations.Children.Clear();
-            map = new MapControl();
-            OrgMap.Visibility = Visibility.Collapsed;
-            OrgList.Visibility = Visibility.Visible;
-            ToggleButton.Content = "Map View";
+                OrgMap.Children.Clear();
+                Organizations.Children.Clear();
+                map = new MapControl();
+                OrgMap.Visibility = Visibility.Collapsed;
+                OrgList.Visibility = Visibility.Visible;
+                ToggleButton.Content = "Map View";            
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (e.Parameter != null)
+            if ((string)e.Parameter != OrgContext)
             {
                 string name = e.Parameter as string;
+                OrgContext = name;
                 organizations = await DataAccess.GetItemOrganization(name);
             }
 
@@ -98,15 +101,29 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                     Organizations.Children.Add(button);
 
                     string locationString = await GetLocation(organization);
-                    MapIcon icon = new MapIcon();
 
-                    icon.Location = await GetGeopoint(locationString);
-                    icon.NormalizedAnchorPoint = new Point(0.5, 1.0);
-                    icon.Title = organization.Name;
-                    icon.Image = GetImage(organization);
-                    icon.ZIndex = 100;
+                    // This added simple icons.  I've deprecated this in lieu of adding ImageButtons
+                    //MapIcon icon = new MapIcon();
 
-                    map.MapElements.Add(icon);
+                    //icon.Location = await GetGeopoint(locationString);
+                    //icon.NormalizedAnchorPoint = new Point(0.5, 1.0);
+                    //icon.Title = organization.Name;
+                    //icon.Image = GetImageReference(organization);
+                    //icon.ZIndex = 100;
+                    
+                    //map.MapElements.Add(icon);
+
+
+                    Button pushpin = new Button();
+                    pushpin.Name = organization.Id;
+                    pushpin.BorderThickness = new Thickness(0);
+                    pushpin.MinWidth = 32f;
+                    pushpin.Tag = organization.Id;
+                    pushpin.Content = new Image { Source = GetImage(organization), MaxHeight = 32f };
+                    pushpin.Click += new RoutedEventHandler(ClickOrganization);
+
+                    map.Children.Add(pushpin);
+                    MapControl.SetLocation(pushpin, await GetGeopoint(locationString));
                 }
             }
             else
@@ -120,6 +137,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                 textBlock.VerticalAlignment = VerticalAlignment.Stretch;
                 Organizations.Children.Add(textBlock);
             }
+
         }
 
         internal void ClickOrganization(object sender, RoutedEventArgs e)
@@ -190,7 +208,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
             return locationString;
         }
 
-        private IRandomAccessStreamReference GetImage(Organization org)
+        private IRandomAccessStreamReference GetImageReference(Organization org)
         {
             switch ((Enums.offering)org.Offering)
             {
@@ -201,6 +219,24 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                     return RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/map-pin-blue-hi.png"));
                 case (Enums.offering.both):
                     return RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/map-pin-purple-hi.png"));
+                default:
+                    break;
+            }
+
+            return null;
+        }
+
+        private BitmapImage GetImage(Organization org)
+        {
+            switch ((Enums.offering)org.Offering)
+            {
+                case (Enums.offering.reuse):
+                    return new BitmapImage(new Uri("ms-appx:///Assets/map-pin-green-hi.png"));
+                    //return RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/icon_map_small.gif"));
+                case (Enums.offering.recycle):
+                    return new BitmapImage(new Uri("ms-appx:///Assets/map-pin-blue-hi.png"));
+                case (Enums.offering.both):
+                    return new BitmapImage(new Uri("ms-appx:///Assets/map-pin-purple-hi.png"));
                 default:
                     break;
             }

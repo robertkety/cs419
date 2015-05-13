@@ -20,13 +20,11 @@
                             <GradientStop Color="White" Offset="1"/>
                         </LinearGradientBrush>
                     </ScrollViewer.BorderBrush>
-                    <StackPanel x:Name="Organizations">
-                    </StackPanel>
-                </ScrollViewer>                        
+                    <StackPanel x:Name="Organizations"/>
+                </ScrollViewer>
             </StackPanel>
-            <StackPanel x:Name="OrgMap" Visibility="Collapsed">                
-            </StackPanel>
-            <Button x:Name="ToggleButton" Click="ToggleMaps" HorizontalAlignment="Center" Content="Map View" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="22" Width="300"></Button>
+            <StackPanel x:Name="OrgMap" Visibility="Collapsed"/>
+            <Button x:Name="ToggleButton" Click="ToggleMaps" HorizontalAlignment="Center" Content="Map View" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="22" Width="300"/>
         </StackPanel>
     </Grid>
 </Page>
