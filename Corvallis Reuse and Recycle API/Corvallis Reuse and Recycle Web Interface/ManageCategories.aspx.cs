@@ -178,6 +178,7 @@ namespace CRRD_Web_Interface
         protected async void ButtonSearch_Click(object sender, EventArgs e)
         {
             StoreSearchTerm();
+            SetSearchStatus();
             GridViewCategoryInfo_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(0));
 
             bool status = await BindData();
@@ -218,7 +219,7 @@ namespace CRRD_Web_Interface
             }
 
             // Attempt POST
-            var result = DataAccess.postDataToService(DataAccess.url + "api/Categories/?Name=" + TextBoxCategoryName.Text, new char[1]);
+            var result = DataAccess.postDataToService(DataAccess.url + "api/Categories/?Name=" + TextBoxCategoryName.Text, ("").ToCharArray());
             ClearAddCategoryInput();
             Response.Redirect((Page.Request.Url.ToString()), false);
         }
@@ -267,7 +268,7 @@ namespace CRRD_Web_Interface
             string CategoryName = dt.Rows[(10 * GridViewCategoryInfo.PageIndex) + e.RowIndex][1] as String;
 
             // Attempt DELETE
-            DataAccess.deleteDataToService(DataAccess.url + "api/Categories/" + CategoryID + "?Name=" + CategoryName, new char[1]);
+            DataAccess.deleteDataToService(DataAccess.url + "api/Categories/" + CategoryID + "?Name=" + CategoryName, ("").ToCharArray());
 
             await BindData();
             RestoreSearchTerm();

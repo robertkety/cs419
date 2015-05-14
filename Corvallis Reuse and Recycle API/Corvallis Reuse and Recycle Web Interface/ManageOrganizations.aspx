@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="ManageOrganizations.aspx.cs" Inherits="CRRD_Web_Interface.ManageOrganizations" Async="true"%>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <script src="Scripts/WebForms/ManageOrganizations.js" type="text/javascript"></script>
     <h2>Manage Organizations</h2>
     <asp:Panel ID="PanelErrorMessages" runat="server" Visible="false">
         <asp:Label ID="LabelErrorMessageConnection" runat="server" Text="Unable to connect with database, please try again later."></asp:Label>

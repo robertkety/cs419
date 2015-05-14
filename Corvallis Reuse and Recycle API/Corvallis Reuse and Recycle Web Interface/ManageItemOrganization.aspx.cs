@@ -119,6 +119,11 @@ namespace CRRD_Web_Interface
             dt.Columns.Add("Repairable");
 
             Organization itemOrganization = itemOrganizations.FirstOrDefault();
+            if(itemOrganization == null)
+            {
+                itemOrganization = new Organization();
+                itemOrganization.PartitionKey = "-1";
+            }
             int index = 0;
             foreach (Organization organization in organizations)
             {
@@ -202,7 +207,7 @@ namespace CRRD_Web_Interface
             return true;
         }
 
-        protected async void DropDownListOrganizations_SelectedIndexChanged(object sender, EventArgs e)
+        protected async void DropDownListItems_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(DropDownListItems.SelectedValue == "-1")
             {
@@ -309,6 +314,8 @@ namespace CRRD_Web_Interface
         {
             StoreSearchTerm();
             SetSearchStatus();
+
+            GridViewItemOrganization_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(0));
 
             bool status = await BindData();
             if (status == false)

@@ -177,6 +177,7 @@ namespace CRRD_Web_Interface
         protected async void ButtonSearch_Click(object sender, EventArgs e)
         {
             StoreSearchTerm();
+            SetSearchStatus();
             GridViewItemInfo_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(0));
 
             bool status = await BindData();
@@ -217,7 +218,7 @@ namespace CRRD_Web_Interface
             }
 
             // Attempt POST
-            var result = DataAccess.postDataToService(DataAccess.url + "api/Items/?Name=" + TextBoxItemName.Text, new char[1]);
+            var result = DataAccess.postDataToService(DataAccess.url + "api/Items/?Name=" + TextBoxItemName.Text, ("").ToCharArray());
             ClearAddItemInput();
             Response.Redirect((Page.Request.Url.ToString()), false);
         }
