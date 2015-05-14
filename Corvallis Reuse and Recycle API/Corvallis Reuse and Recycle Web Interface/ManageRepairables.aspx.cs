@@ -34,7 +34,7 @@ namespace CRRD_Web_Interface
             if (!IsPostBack && Authenticated == true)
             {
                 var client = new HttpClient();
-                client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+                client.BaseAddress = new Uri(DataAccess.url);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -66,7 +66,7 @@ namespace CRRD_Web_Interface
         protected async Task<bool> BindData()
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+            client.BaseAddress = new Uri(DataAccess.url);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -211,7 +211,7 @@ namespace CRRD_Web_Interface
             else
             {
                 var client = new HttpClient();
-                client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+                client.BaseAddress = new Uri(DataAccess.url);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -255,7 +255,7 @@ namespace CRRD_Web_Interface
 
             var client = new HttpClient();
             StringContent ContentString = new StringContent("");
-            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+            client.BaseAddress = new Uri(DataAccess.url);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -279,7 +279,7 @@ namespace CRRD_Web_Interface
             }
 
             // Build Parameter
-            string Parameter = "http://cs419.azurewebsites.net/api/itemorganization?ItemId=" + ItemID + "&OrganizationId=" + OrganizationID + "&Offering=";
+            string Parameter = DataAccess.url + "api/itemorganization?ItemId=" + ItemID + "&OrganizationId=" + OrganizationID + "&Offering=";
 
             // Post if offering is 0, put if offering is 1 (reusable), error if repairable relationship already exists
             if (Offering == 0)
@@ -311,7 +311,7 @@ namespace CRRD_Web_Interface
             // Get the existing offering between the item and organization
             var client = new HttpClient();
             StringContent ContentString = new StringContent("");
-            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+            client.BaseAddress = new Uri(DataAccess.url);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -335,7 +335,7 @@ namespace CRRD_Web_Interface
             }
 
             // Build Parameter
-            string Parameter = "http://cs419.azurewebsites.net/api/itemorganization?ItemId=" + ItemId + "&OrganizationId=" + OrganizationId + "&Offering=";
+            string Parameter = DataAccess.url + "api/itemorganization?ItemId=" + ItemId + "&OrganizationId=" + OrganizationId + "&Offering=";
 
             // If reusable relationship exists, PUT with offering of 1, else PUT with offering of 0
             if (Offering == 3)

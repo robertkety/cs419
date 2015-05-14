@@ -51,7 +51,7 @@ namespace CRRD_Web_Interface
         protected async Task<bool> BindData()
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+            client.BaseAddress = new Uri(DataAccess.url);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -270,7 +270,7 @@ namespace CRRD_Web_Interface
             QueryString += "&Notes=" + TextBoxNotes.Text;
 
             // Attempt POST
-            var result = DataAccess.postDataToService("http://cs419.azurewebsites.net/api/Organizations/" + QueryString, new char[1]);
+            var result = DataAccess.postDataToService(DataAccess.url + "api/Organizations/" + QueryString, new char[1]);
             ClearAddOrganizationInput();
             Response.Redirect((Page.Request.Url.ToString()), false);
         }
@@ -338,7 +338,7 @@ namespace CRRD_Web_Interface
 
 
             // Atempt PUT
-            var result = DataAccess.putDataToService("http://cs419.azurewebsites.net/api/Organizations/" + QueryString, ("").ToCharArray());
+            var result = DataAccess.putDataToService(DataAccess.url + "api/Organizations/" + QueryString, ("").ToCharArray());
           
             RestoreSearchTerm();
 
@@ -356,7 +356,7 @@ namespace CRRD_Web_Interface
             string OrganizationName = dt.Rows[(10 * GridViewOrganizationInfo.PageIndex) + e.RowIndex][1] as String;
 
             // Attempt DELETE
-            DataAccess.deleteDataToService("http://cs419.azurewebsites.net/api/Organizations/" + OrganizationID + "?Name=" + OrganizationName, ("").ToCharArray());
+            DataAccess.deleteDataToService(DataAccess.url + "api/Organizations/" + OrganizationID + "?Name=" + OrganizationName, ("").ToCharArray());
 
             await BindData();
             RestoreSearchTerm();

@@ -51,7 +51,7 @@ namespace CRRD_Web_Interface
         protected async Task<bool> BindData()
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+            client.BaseAddress = new Uri(DataAccess.url);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -218,7 +218,7 @@ namespace CRRD_Web_Interface
             }
 
             // Attempt POST
-            var result = DataAccess.postDataToService("http://cs419.azurewebsites.net/api/Categories/?Name=" + TextBoxCategoryName.Text, new char[1]);
+            var result = DataAccess.postDataToService(DataAccess.url + "api/Categories/?Name=" + TextBoxCategoryName.Text, new char[1]);
             ClearAddCategoryInput();
             Response.Redirect((Page.Request.Url.ToString()), false);
         }
@@ -250,7 +250,7 @@ namespace CRRD_Web_Interface
             string QueryString = CategoryID + "?OldName=" + OldName + "&NewName=" + NewName;
 
             // Attempt PUT
-            var result = DataAccess.putDataToService("http://cs419.azurewebsites.net/api/Categories/" + QueryString, ("").ToCharArray());
+            var result = DataAccess.putDataToService(DataAccess.url + "api/Categories/" + QueryString, ("").ToCharArray());
             RestoreSearchTerm();
 
             // Cancel row edit (cancelling will call bind and show the updated data)
@@ -267,7 +267,7 @@ namespace CRRD_Web_Interface
             string CategoryName = dt.Rows[(10 * GridViewCategoryInfo.PageIndex) + e.RowIndex][1] as String;
 
             // Attempt DELETE
-            DataAccess.deleteDataToService("http://cs419.azurewebsites.net/api/Categories/" + CategoryID + "?Name=" + CategoryName, new char[1]);
+            DataAccess.deleteDataToService(DataAccess.url + "api/Categories/" + CategoryID + "?Name=" + CategoryName, new char[1]);
 
             await BindData();
             RestoreSearchTerm();

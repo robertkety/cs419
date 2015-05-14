@@ -121,8 +121,8 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                     pushpin.Tag = organization.Id;
                     pushpin.Content = new Image { Source = GetImage(organization), MaxHeight = 32f };
                     pushpin.Click += new RoutedEventHandler(ClickOrganization);
-
-                    map.Children.Add(pushpin);
+                    
+                    map.Children.Add(pushpin);                    
                     MapControl.SetLocation(pushpin, await GetGeopoint(locationString));
                 }
             }

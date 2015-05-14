@@ -51,7 +51,7 @@ namespace CRRD_Web_Interface
         protected async Task<bool> BindData()
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri("http://cs419.azurewebsites.net/");
+            client.BaseAddress = new Uri(DataAccess.url);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -217,7 +217,7 @@ namespace CRRD_Web_Interface
             }
 
             // Attempt POST
-            var result = DataAccess.postDataToService("http://cs419.azurewebsites.net/api/Items/?Name=" + TextBoxItemName.Text, new char[1]);
+            var result = DataAccess.postDataToService(DataAccess.url + "api/Items/?Name=" + TextBoxItemName.Text, new char[1]);
             ClearAddItemInput();
             Response.Redirect((Page.Request.Url.ToString()), false);
         }
@@ -251,7 +251,7 @@ namespace CRRD_Web_Interface
             QueryString += "&NewName=" + NewName;
 
             // Atempt PUT
-            var result = DataAccess.putDataToService("http://cs419.azurewebsites.net/api/Items/" + QueryString, ("").ToCharArray());
+            var result = DataAccess.putDataToService(DataAccess.url + "api/Items/" + QueryString, ("").ToCharArray());
 
             RestoreSearchTerm();
 
@@ -269,7 +269,7 @@ namespace CRRD_Web_Interface
             string ItemName = dt.Rows[(10 * GridViewItemInfo.PageIndex) + e.RowIndex][1] as String;
 
             // Attempt DELETE
-            DataAccess.deleteDataToService("http://cs419.azurewebsites.net/api/Items/" + ItemID + "?Name=" + ItemName, ("").ToCharArray());
+            DataAccess.deleteDataToService(DataAccess.url + "api/Items/" + ItemID + "?Name=" + ItemName, ("").ToCharArray());
 
             await BindData();
             RestoreSearchTerm();
