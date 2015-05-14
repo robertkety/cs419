@@ -284,11 +284,11 @@ namespace CRRD_Web_Interface
             // Post if offering is 0, put if offering is 1 (reusable), error if repairable relationship already exists
             if (Offering == 0)
             {
-                DataAccess.postDataToService(Parameter + "2", new char[1]);
+                DataAccess.postDataToService(Parameter + "2", ("").ToCharArray());
             }
             else if (Offering == 1)
             {
-                DataAccess.putDataToService(Parameter + "3", new char[1]);
+                DataAccess.putDataToService(Parameter + "3", ("").ToCharArray());
             }
             else
             {
@@ -340,11 +340,11 @@ namespace CRRD_Web_Interface
             // If reusable relationship exists, PUT with offering of 1, else PUT with offering of 0
             if (Offering == 3)
             {
-                DataAccess.putDataToService(Parameter + "1", new char[1]);
+                DataAccess.putDataToService(Parameter + "1", ("").ToCharArray());
             }
             else
             {
-                DataAccess.putDataToService(Parameter + "0", new char[1]);
+                DataAccess.putDataToService(Parameter + "0", ("").ToCharArray());
             }
         }
 

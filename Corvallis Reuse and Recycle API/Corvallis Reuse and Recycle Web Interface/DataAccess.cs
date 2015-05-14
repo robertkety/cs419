@@ -124,10 +124,12 @@ namespace CRRD_Web_Interface
 
                 request.Method = "PUT";
                 request.ContentType = "application/x-www-form-urlencoded";
+                
                 using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
                     streamWriter.Write(charArray, 0, charArray.Length);
                 }
+                
                 var response = request.GetResponse();
                 var stream = response.GetResponseStream();
 

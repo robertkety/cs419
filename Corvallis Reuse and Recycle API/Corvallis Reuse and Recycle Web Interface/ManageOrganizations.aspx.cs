@@ -338,7 +338,7 @@ namespace CRRD_Web_Interface
 
 
             // Atempt PUT
-            var result = DataAccess.putDataToService("http://cs419.azurewebsites.net/api/Organizations/" + QueryString, new char[1]);
+            var result = DataAccess.putDataToService("http://cs419.azurewebsites.net/api/Organizations/" + QueryString, ("").ToCharArray());
           
             RestoreSearchTerm();
 
@@ -356,7 +356,7 @@ namespace CRRD_Web_Interface
             string OrganizationName = dt.Rows[(10 * GridViewOrganizationInfo.PageIndex) + e.RowIndex][1] as String;
 
             // Attempt DELETE
-            DataAccess.deleteDataToService("http://cs419.azurewebsites.net/api/Organizations/" + OrganizationID + "?Name=" + OrganizationName, new char[1]);
+            DataAccess.deleteDataToService("http://cs419.azurewebsites.net/api/Organizations/" + OrganizationID + "?Name=" + OrganizationName, ("").ToCharArray());
 
             await BindData();
             RestoreSearchTerm();

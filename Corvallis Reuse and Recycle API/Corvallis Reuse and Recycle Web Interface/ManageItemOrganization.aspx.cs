@@ -374,7 +374,7 @@ namespace CRRD_Web_Interface
 
 
             // Atempt PUT
-            var result = DataAccess.putDataToService("http://cs419.azurewebsites.net/api/ItemOrganization" + ParameterString, new char[1]);
+            var result = DataAccess.putDataToService("http://cs419.azurewebsites.net/api/ItemOrganization" + ParameterString, ("").ToCharArray());
 
             // Cancel row edit (cancelling will call bind and show the updated data)
             RestoreSearchTerm();

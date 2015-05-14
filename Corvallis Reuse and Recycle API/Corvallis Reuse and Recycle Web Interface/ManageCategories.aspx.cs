@@ -250,7 +250,7 @@ namespace CRRD_Web_Interface
             string QueryString = CategoryID + "?OldName=" + OldName + "&NewName=" + NewName;
 
             // Attempt PUT
-            var result = DataAccess.putDataToService("http://cs419.azurewebsites.net/api/Categories/" + QueryString, new char[1]);
+            var result = DataAccess.putDataToService("http://cs419.azurewebsites.net/api/Categories/" + QueryString, ("").ToCharArray());
             RestoreSearchTerm();
 
             // Cancel row edit (cancelling will call bind and show the updated data)

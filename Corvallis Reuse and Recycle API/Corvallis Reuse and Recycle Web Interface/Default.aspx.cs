@@ -11,7 +11,7 @@ namespace CRRD_Web_Interface
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!User.Identity.IsAuthenticated)
+            if(!User.Identity.IsAuthenticated || DataAccess.token == "")
             {
                 Response.Redirect("~/Account/Login");
             }
