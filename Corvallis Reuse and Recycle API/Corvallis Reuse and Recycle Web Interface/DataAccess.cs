@@ -13,7 +13,7 @@ namespace CRRD_Web_Interface
 {
     public class DataAccess
     {
-        public static string url = "http://cs419.azurewebsites.net";//"http://localhost/Corvallis%20Reuse%20and%20Recycle%20API/";
+        public static string url = "http://localhost:6744/";//"http://cs419.azurewebsites.net";
         public static string token = "";
 
         /* Thanks! https://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn439314.aspx */

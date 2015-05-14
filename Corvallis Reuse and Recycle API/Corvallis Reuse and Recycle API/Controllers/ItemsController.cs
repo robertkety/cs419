@@ -43,12 +43,12 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         }
         
         // POST: api/Items
-        [Authorize]
         /// <summary>
         /// Creates a new Item with the target name and associates it with the corresponding list of category ids
         /// </summary>
         /// <param name="Name">The name of the new Item</param>
         /// <param name="Categories">A list of category ids to be associated with the target item</param>
+        [Authorize]
         public void Post([FromUri]string Name, [FromUri]string[] Categories = null)
         {
             if (Name == null)
@@ -61,13 +61,13 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         }
         
         // PUT: api/Items/5
-        [Authorize]
         /// <summary>
         /// Updates the name of the target item.  Old name is required for an efficient storage table query
         /// </summary>
         /// <param name="Id">Id of the target item</param>
         /// <param name="OldName">Exising name for target item</param>
         /// <param name="NewName">New name for target item</param>
+        [Authorize]
         public void Put([FromUri]string Id, [FromUri]string OldName, [FromUri]string NewName = "")
         {
             if (OldName == null)
@@ -76,12 +76,12 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         }
         
         // DELETE: api/Items/5
-        [Authorize]
         /// <summary>
         /// Deletes the target item from the Items table
         /// </summary>
         /// <param name="Id">Id for the target item</param>
         /// <param name="Name">Name of the target item</param>
+        [Authorize]
         public void Delete([FromUri]string Id, [FromUri]string Name)
         {
             if (Name == null)

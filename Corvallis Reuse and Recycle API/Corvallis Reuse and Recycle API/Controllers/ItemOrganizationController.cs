@@ -86,16 +86,13 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// Updates offering of Item/Organization row in ItemOrganization table
         /// </summary>
         /// <param name="ItemId">Id for target Item</param>
-        /// <param name="OrganizationId">If for target Organization</param>
+        /// <param name="OrganizationId">Id for target Organization</param>
         /// <param name="Offering">The integer offering for the item at that location (0: none, 1: reuse, 2: recycle, 3: both)</param>
         [Authorize]
-        public void Put([FromUri]string ItemId, [FromUri]string OrganizationId = null, [FromUri] int Offering = 0)
+        public void Put([FromUri]string ItemId, [FromUri]string OrganizationId, [FromUri] int Offering)
         {
-            if ((ItemId != null) && (ItemId != ""))
+            if ((ItemId != null) && (ItemId != "") && (OrganizationId != null) && (OrganizationId != ""))
             {
-                if (OrganizationId != null)
-                    OrganizationId = "";
-
                 DataAccess.UpsertRow<ItemOrganization>("ItemOrganization", ItemId, OrganizationId, new ItemOrganization(ItemId, OrganizationId, Offering));
             }
         }

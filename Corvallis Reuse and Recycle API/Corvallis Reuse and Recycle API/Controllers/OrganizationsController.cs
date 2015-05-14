@@ -36,7 +36,6 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         }
 
         // POST: api/Organizations
-        [Authorize]
         /// <summary>
         /// Creates a new organization with the following parameter information. (Do not use this call to create Offering data - use ItemOrganization)
         /// </summary>
@@ -49,6 +48,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// <param name="Website">Website for the organization</param>
         /// <param name="Hours">Hours of operation for the organization</param>
         /// <param name="Notes">Any notes for the organization</param>
+        [Authorize]
         public void Post([FromUri]string Name, [FromUri]string Phone = "", [FromUri]string AddressLine1 = "", [FromUri]string AddressLine2 = "", [FromUri]string AddressLine3 = "", [FromUri]string ZipCode = "", [FromUri]string Website = "", [FromUri]string Hours = "", [FromUri]string Notes = "")
         {
             if (Name == null)
@@ -57,7 +57,6 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         }
         
         // PUT: api/Organizations/5
-        [Authorize]
         /// <summary>
         /// Replaces the target organization with following parameter information. (Do not use this call to update Offering data - use ItemOrganization)
         /// </summary>
@@ -72,6 +71,7 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// <param name="Website">Website for the organization</param>
         /// <param name="Hours">Hours of operation for the organization</param>
         /// <param name="Notes">Any notes for the organization</param>
+        [Authorize]
         public void Put([FromUri]string Id, [FromUri]string OldName, [FromUri]string NewName = "", [FromUri]string Phone = "", [FromUri]string AddressLine1 = "", [FromUri]string AddressLine2 = "", [FromUri]string AddressLine3 = "", [FromUri]string ZipCode = "", [FromUri]string Website = "", [FromUri]string Hours = "", [FromUri]string Notes = "")
         {
             if (OldName == null)
@@ -80,12 +80,12 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         }
         
         // DELETE: api/Organizations/5
-        [Authorize]
         /// <summary>
         /// Deletes the target organization from the Organizations table
         /// </summary>
         /// <param name="Id"></param>
         /// <param name="Name"></param>
+        [Authorize]
         public void Delete([FromUri]string Id, [FromUri]string Name)
         {
             if (Name == null)
