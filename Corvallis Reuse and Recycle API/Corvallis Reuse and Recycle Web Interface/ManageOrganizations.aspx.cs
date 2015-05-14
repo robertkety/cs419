@@ -139,6 +139,7 @@ namespace CRRD_Web_Interface
 
         protected async void GridViewOrganizationInfo_RowEditing(object sender, GridViewEditEventArgs e)
         {
+
             GridViewOrganizationInfo.EditIndex = e.NewEditIndex;
             StoreSearchTerm();
 
@@ -270,7 +271,7 @@ namespace CRRD_Web_Interface
             QueryString += "&Notes=" + TextBoxNotes.Text;
 
             // Attempt POST
-            var result = DataAccess.postDataToService("http://cs419.azurewebsites.net/api/Organizations/" + QueryString, new char[1]);
+            var result = DataAccess.postDataToService("http://cs419.azurewebsites.net/api/Organizations" + QueryString, new char[1]);
             ClearAddOrganizationInput();
             Response.Redirect((Page.Request.Url.ToString()), false);
         }

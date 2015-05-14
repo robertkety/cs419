@@ -177,6 +177,7 @@ namespace CRRD_Web_Interface
         protected async void ButtonSearch_Click(object sender, EventArgs e)
         {
             StoreSearchTerm();
+            SetSearchStatus();
             GridViewItemInfo_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(0));
 
             bool status = await BindData();

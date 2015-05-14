@@ -102,6 +102,11 @@ namespace CRRD_Web_Interface
 
             // Add all items to data table
             Item categoryItem = categoryItems.FirstOrDefault();
+            if(categoryItem == null)
+            {
+                categoryItem = new Item();
+                categoryItem.PartitionKey = "-1";
+            }
             int index = 1;
             foreach (Item item in items)
             {
