@@ -51,6 +51,8 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                     button.HorizontalAlignment = HorizontalAlignment.Stretch;
                     button.VerticalAlignment = VerticalAlignment.Stretch;
                     button.Click += new RoutedEventHandler(ClickCategory);
+                    // button.BorderThickness = new Thickness(0, 0, 0, 0);
+
                     Categories.Children.Add(button); 
                 }
             }

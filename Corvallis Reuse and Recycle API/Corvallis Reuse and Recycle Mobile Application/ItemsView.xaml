@@ -13,12 +13,14 @@
         <StackPanel Margin="0,36,0,0">
             <Grid x:Name="ListItems" VerticalAlignment="Top"></Grid>
             <ScrollViewer BorderThickness="1" MinHeight="600" MaxHeight="600">
+                <!--
                 <ScrollViewer.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
                         <GradientStop Color="White" Offset="1"/>
                     </LinearGradientBrush>
                 </ScrollViewer.BorderBrush>
+                -->
                 <StackPanel x:Name="Items">
                 </StackPanel>
             </ScrollViewer>

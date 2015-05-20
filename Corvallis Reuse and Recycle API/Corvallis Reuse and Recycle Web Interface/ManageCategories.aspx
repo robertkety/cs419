@@ -18,12 +18,12 @@
             <Columns>
                 <asp:TemplateField HeaderText="Category ID" Visible="false">
                     <ItemTemplate>
-                        <%# Eval("CategoryID") %>
+                        <%# Eval("Id") %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Category Name">
                     <ItemTemplate>
-                        <%# Eval("CategoryName") %>
+                        <%# Eval("Name") %>
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBoxEditCategoryName"  runat="server"></asp:TextBox>

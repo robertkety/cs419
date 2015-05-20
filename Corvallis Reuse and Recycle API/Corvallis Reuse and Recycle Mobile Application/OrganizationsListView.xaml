@@ -14,12 +14,14 @@
         <StackPanel Margin="0,36,0,0">
             <StackPanel x:Name="OrgList" Visibility="Visible">
                 <ScrollViewer BorderThickness="1" MinHeight="500" MaxHeight="500">
+                    <!--
                     <ScrollViewer.BorderBrush>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="Black" Offset="0"/>
                             <GradientStop Color="White" Offset="1"/>
                         </LinearGradientBrush>
                     </ScrollViewer.BorderBrush>
+                    -->
                     <StackPanel x:Name="Organizations"/>
                 </ScrollViewer>
             </StackPanel>
