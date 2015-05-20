@@ -287,7 +287,7 @@ namespace CRRD_Web_Interface
         protected void GridViewCategoryItems_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             StoreSearchTerm();
-            DataTable dt = ((DataView)GridViewCategoryItems.DataSource).Table;
+            DataTable dt = (DataTable)GridViewCategoryItems.DataSource;
             string ItemID = dt.Rows[(10 * GridViewCategoryItems.PageIndex) + e.RowIndex][0] as String;
             string CategoryID = DropDownListCategories.SelectedValue;
             bool Member = ((CheckBox)(GridViewCategoryItems.Rows[e.RowIndex].Cells[3].Controls[0])).Checked;

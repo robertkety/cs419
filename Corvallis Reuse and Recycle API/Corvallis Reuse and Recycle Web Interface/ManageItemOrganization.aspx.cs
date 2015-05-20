@@ -81,21 +81,12 @@ namespace CRRD_Web_Interface
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             // Get organizations
-            List<Organization> organizations;
-            HttpResponseMessage response = await client.GetAsync("api/organizations/");
-            if (response.IsSuccessStatusCode)
-            {
-                organizations = await response.Content.ReadAsAsync<List<Organization>>();
-                organizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.Name, y.Name)));
-            }
-            else
-            {
-                return false;
-            }
+            List<Organization> organizations = DataAccess.Get<Organization>("organizations");
+            organizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.Name, y.Name)));
 
             // Get item organizations
             List<Organization> itemOrganizations;
-            response = await client.GetAsync("api/items/" + DropDownListItems.SelectedValue);
+            var response = await client.GetAsync("api/items/" + DropDownListItems.SelectedValue);
             if (response.IsSuccessStatusCode)
             {
                     itemOrganizations = await response.Content.ReadAsAsync<List<Organization>>();

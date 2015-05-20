@@ -180,7 +180,7 @@ namespace Corvallis_Reuse_and_Recycle_API
 
             if ((modifiedEntity.PartitionKey != null) && (modifiedEntity.RowKey != null))
             {
-                if ((tableEntity != null) && (tableEntity.RowKey == modifiedEntity.RowKey))
+                //if ((tableEntity != null) && (tableEntity.RowKey == modifiedEntity.RowKey))
                     DeleteRow<T>(tableName, partitionKey, rowKey);
                 
 
