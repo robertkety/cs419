@@ -73,7 +73,7 @@ namespace CRRD_Web_Interface
                 categoryItem = new Item();
                 categoryItem.Id = "-1";
             }
-            int index = 1;
+            int index = 0;
             foreach (Item item in items)
             {
                 var dr = dt.NewRow();
@@ -306,16 +306,17 @@ namespace CRRD_Web_Interface
         protected void GridViewCategoryItems_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             StoreSearchTerm();
-            DataTable dt = (DataTable)GridViewCategoryItems.DataSource;
-            string ItemID = dt.Rows[(10 * GridViewCategoryItems.PageIndex) + e.RowIndex][0] as String;
+            //DataTable dt = (DataTable)GridViewCategoryItems.DataSource;
+            string ItemID = ((DataBoundLiteralControl) (GridViewCategoryItems.Rows[(10 * GridViewCategoryItems.PageIndex) + e.RowIndex].Cells[0].Controls[0])).Text.Trim();
             string CategoryID = DropDownListCategories.SelectedValue;
-            bool Member = ((CheckBox)(GridViewCategoryItems.Rows[e.RowIndex].Cells[3].Controls[0])).Checked;
+            bool Member = ((CheckBox)(GridViewCategoryItems.Rows[e.RowIndex].Cells[2].Controls[0])).Checked;
 
-            dynamic response;
-            if (Member)
-                response = DataAccess.putDataToService(DataAccess.url + "api/CategoryItem/" + CategoryID + "?Items%5B%5D=" + ItemID, ("").ToCharArray());
-            else
-                response = DataAccess.deleteDataToService(DataAccess.url + "api/CategoryItem/" + CategoryID + "?Items%5B%5D=" + ItemID, ("").ToCharArray());
+            dynamic response = DataAccess.putDataToService(DataAccess.url + "api/CategoryItem/" + CategoryID + "?Items%5B%5D=" + ItemID + "&CreateRelation=" + Member.ToString(), ("").ToCharArray());
+            
+            //if (Member)
+            //    response = DataAccess.putDataToService(DataAccess.url + "api/CategoryItem/" + CategoryID + "?Items%5B%5D=" + ItemID, ("").ToCharArray());
+            //else
+            //    response = DataAccess.deleteDataToService(DataAccess.url + "api/CategoryItem/" + CategoryID + "?Items%5B%5D=" + ItemID, ("").ToCharArray());
 
             // Cancel row edit (cancelling will call bind and show the updated data)
             RestoreSearchTerm();

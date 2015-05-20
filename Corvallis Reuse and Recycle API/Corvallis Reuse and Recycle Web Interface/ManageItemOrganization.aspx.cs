@@ -75,29 +75,14 @@ namespace CRRD_Web_Interface
 
         protected async Task<bool> BindData()
         {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri(DataAccess.url);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
             // Get organizations
             List<Organization> organizations = DataAccess.Get<Organization>("organizations");
             organizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.Name, y.Name)));
 
             // Get item organizations
-            List<Organization> itemOrganizations;
-            var response = await client.GetAsync("api/items/" + DropDownListItems.SelectedValue);
-            if (response.IsSuccessStatusCode)
-            {
-                    itemOrganizations = await response.Content.ReadAsAsync<List<Organization>>();
-                    itemOrganizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.Name, y.Name)));
-
-            }
-            else
-            {
-                return false;
-            }
-
+            List<Organization> itemOrganizations = DataAccess.Get<Organization>("items/" + DropDownListItems.SelectedValue);
+            itemOrganizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.Name, y.Name)));
+            
             // Build table
             DataTable dt = new DataTable();
             dt.Columns.Add("OrganizationID");

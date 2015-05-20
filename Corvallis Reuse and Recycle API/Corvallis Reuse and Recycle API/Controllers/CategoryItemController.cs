@@ -66,23 +66,21 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         /// Updates the Category Name for the taget Id and replaces all relational rows in CategoryItem table belonging to target Category Id with each of the Item Ids in the Items array
         /// </summary>
         /// <param name="Id">The Id of the target Category</param>
-        /// <param name="OldName">The existing name of that Category</param>
-        /// <param name="NewName">The new name for target category (or existing name if no change necessary)</param>
         /// <param name="Items">An array of the target Items belonging to the target Category</param>
+        /// <param name="CreateRelation">A bool value determining if the list of item ids should be related to the target category id</param>
         [Authorize]
-        public void Put([FromUri]string Id, [FromUri]string OldName, [FromUri]string NewName = "", [FromUri]string[] Items = null)
+        public void Put([FromUri]string Id, [FromUri]string[] Items = null, [FromUri]bool CreateRelation = true)
         {
-            if (OldName == null)
-                OldName = "";
-
-            if(OldName != NewName)
-                DataAccess.UpsertRow("Categories", Id, OldName, new Categories(Id, NewName));
-
-            Delete(Id);
-
             if (Items != null)
                 foreach (string Item in Items)
-                    DataAccess.AddRow("CategoryItem", new CategoryItem(Id, Item));
+                {
+                    List<string> ItemId = new List<string>();
+                    ItemId.Add(Item);
+
+                    Delete(Id, ItemId.ToArray());
+                    if(CreateRelation)
+                        DataAccess.AddRow("CategoryItem", new CategoryItem(Id, Item));
+                }
         }
 
         // DELETE: api/CategoryItem/5
@@ -94,6 +92,20 @@ namespace Corvallis_Reuse_and_Recycle_API.Controllers
         public void Delete([FromUri] string Id)
         {
             DataAccess.DeleteAllRowsWithId<CategoryItem>("CategoryItem", Id);
+        }
+
+        // DELETE: api/CategoryItem/5?Items[]={0}
+        /// <summary>
+        /// Deletes all relational rows belonging to target Category Id and Item Id in the CategoryItem table
+        /// </summary>
+        /// <param name="Id">The Id of the target Category</param>
+        /// <param name="Items">An array of the target Items by Id belonging to the target Category</param>
+        [Authorize]
+        public void Delete([FromUri] string Id, [FromUri]string[] Items = null)
+        {
+            if (Items != null)
+                foreach (string Item in Items)
+                    DataAccess.DeleteRow<CategoryItem>("CategoryItem", Id, Item);
         }
     }
 }
