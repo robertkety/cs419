@@ -30,7 +30,7 @@ namespace CRRD_Web_Interface
                 Authenticated = true;
             }
 
-            if(!IsPostBack && Authenticated == true)
+            if (!IsPostBack && Authenticated == true)
             {
                 Session["SearchEnabled"] = false;
 

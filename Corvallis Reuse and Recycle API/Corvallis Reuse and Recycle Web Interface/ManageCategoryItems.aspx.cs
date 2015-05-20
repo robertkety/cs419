@@ -37,12 +37,14 @@ namespace CRRD_Web_Interface
                 // Get all categories
                 List<Category> categories = DataAccess.Get<Category>("categories");
                 categories.Sort(new Comparison<Category>((x, y) => string.Compare(x.Name, y.Name)));
+                DropDownListCategories.Items.Add(new ListItem("<Select a Category>", "-1"));
                 foreach (Category category in categories)
                 {
                     DropDownListCategories.Items.Add(new ListItem(category.Name, category.Id));
                 }
 
                 PanelErrorMessages.Visible = false;
+                PanelCategoryItems.Visible = true;
             }
         }
 
@@ -151,8 +153,24 @@ namespace CRRD_Web_Interface
             }
 
             // Else attempt to create grid view from selected category
-            bool status = await BindData();
-            if (status == false)
+            //bool status = await BindData();
+            //if (status == false)
+            //{
+            //    PanelErrorMessages.Visible = true;
+            //    PanelCategoryItems.Visible = false;
+            //}
+            //else
+            //{
+            //    PanelCategoryItems.Visible = true;
+            //}
+
+            bool result = false;
+            try
+            {
+                result = await BindData();
+            }
+            catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
+            if (result == false)
             {
                 PanelErrorMessages.Visible = true;
                 PanelCategoryItems.Visible = false;
@@ -160,6 +178,7 @@ namespace CRRD_Web_Interface
             else
             {
                 PanelCategoryItems.Visible = true;
+                PanelErrorMessages.Visible = false;
             }
         }
 

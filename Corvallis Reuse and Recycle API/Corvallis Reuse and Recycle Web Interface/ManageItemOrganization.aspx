@@ -11,7 +11,8 @@
             <asp:Literal runat="server" ID="LiteralErrorMessageGridView" />
         </p>
         <asp:Label ID="LabelInstruction" runat="server" Text="Begin by selecting an Item:" AssociatedControlID="DropDownListItems" CssClass="DropDownListLabel"></asp:Label>
-        <asp:DropDownList ID="DropDownListItems" runat="server" OnSelectedIndexChanged="DropDownListItems_SelectedIndexChanged" AutoPostBack="True" CssClass="DropDownList"></asp:DropDownList>
+        <asp:DropDownList ID="DropDownListItems" runat="server" OnSelectedIndexChanged="DropDownListItems_SelectedIndexChanged" AutoPostBack="True" CssClass="DropDownList">
+        </asp:DropDownList>
         <asp:GridView ID="GridViewItemOrganization" runat="server" AutoGenerateColumns="False" AllowPaging="True" CellPadding="4" ForeColor="#333333" 
             GridLines="None" OnPageIndexChanged="GridViewItemOrganization_PageIndexChanged" OnPageIndexChanging="GridViewItemOrganization_PageIndexChanging"
             ShowFooter="True" OnRowCancelingEdit="GridViewItemOrganization_RowCancelingEdit" OnRowEditing="GridViewItemOrganization_RowEditing" OnRowUpdating="GridViewItemOrganization_RowUpdating">
