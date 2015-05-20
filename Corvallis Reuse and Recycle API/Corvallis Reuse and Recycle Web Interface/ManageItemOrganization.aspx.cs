@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Data;
 using CRRD_Web_Interface.Models;
+using System.Diagnostics;
 
 namespace CRRD_Web_Interface
 {
@@ -31,51 +32,46 @@ namespace CRRD_Web_Interface
 
             if(!IsPostBack && Authenticated == true)
             {
-                Session["SearchEnabled"] = false; 
+                Session["SearchEnabled"] = false;
 
-                bool result = false;
-                try
+                // Get all items
+                List<Item> items = DataAccess.Get<Item>("items");
+                items.Sort(new Comparison<Item>((x, y) => string.Compare(x.Name, y.Name)));
+                DropDownListItems.Items.Add(new ListItem("<Select an Item>", "-1"));
+                foreach (Item item in items)
                 {
-                    result = await LoadItems();
+                    DropDownListItems.Items.Add(new ListItem(item.Name, item.Id));
                 }
-                catch(Exception ex) {}
-                if(result == false)
-                {
-                    PanelErrorMessages.Visible = true;
-                    PanelItemOrganization.Visible = false;
-                }
-                else
-                {
-                    PanelItemOrganization.Visible = true;
-                    PanelErrorMessages.Visible = false;
-                }
+
+                PanelErrorMessages.Visible = false;
+                PanelItemOrganization.Visible = true;
             }   
         }
 
-        protected async Task<bool> LoadItems()
-        {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri(DataAccess.url);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //protected async Task<bool> LoadItems()
+        //{
+        //    var client = new HttpClient();
+        //    client.BaseAddress = new Uri(DataAccess.url);
+        //    client.DefaultRequestHeaders.Accept.Clear();
+        //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = await client.GetAsync("api/items/");
-            if (response.IsSuccessStatusCode)
-            {
-                List<Item> items = await response.Content.ReadAsAsync<List<Item>>();
-                items.Sort(new Comparison<Item>((x, y) => string.Compare(x.RowKey, y.RowKey)));
-                DropDownListItems.Items.Add(new ListItem("<Select an Item>", "-1"));
+        //    HttpResponseMessage response = await client.GetAsync("api/items/");
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        List<Item> items = await response.Content.ReadAsAsync<List<Item>>();
+        //        items.Sort(new Comparison<Item>((x, y) => string.Compare(x.Name, y.Name)));
+        //        DropDownListItems.Items.Add(new ListItem("<Select an Item>", "-1"));
 
-                foreach (Item item in items)
-                {
-                    DropDownListItems.Items.Add(new ListItem(item.RowKey, item.PartitionKey));
-                }
+        //        foreach (Item item in items)
+        //        {
+        //            DropDownListItems.Items.Add(new ListItem(item.Name, item.Id));
+        //        }
 
-                return true;
-            }
+        //        return true;
+        //    }
             
-            return false;
-        }
+        //    return false;
+        //}
 
         protected async Task<bool> BindData()
         {
@@ -90,7 +86,7 @@ namespace CRRD_Web_Interface
             if (response.IsSuccessStatusCode)
             {
                 organizations = await response.Content.ReadAsAsync<List<Organization>>();
-                organizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.RowKey, y.RowKey)));
+                organizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.Name, y.Name)));
             }
             else
             {
@@ -103,7 +99,7 @@ namespace CRRD_Web_Interface
             if (response.IsSuccessStatusCode)
             {
                     itemOrganizations = await response.Content.ReadAsAsync<List<Organization>>();
-                    itemOrganizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.RowKey, y.RowKey)));
+                    itemOrganizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.Name, y.Name)));
 
             }
             else
@@ -122,29 +118,29 @@ namespace CRRD_Web_Interface
             if(itemOrganization == null)
             {
                 itemOrganization = new Organization();
-                itemOrganization.PartitionKey = "-1";
+                itemOrganization.Id = "-1";
             }
             int index = 0;
             foreach (Organization organization in organizations)
             {
                 var dr = dt.NewRow();
 
-                dr["OrganizationID"] = organization.PartitionKey;
-                dr["OrganizationName"] = organization.RowKey + " (" + organization.AddressLine1 + ")";
+                dr["OrganizationID"] = organization.Id;
+                dr["OrganizationName"] = organization.Name + " (" + organization.AddressLine1 + ")";
                 
-                if(organization.PartitionKey == itemOrganization.PartitionKey)
+                if(organization.Id == itemOrganization.Id)
                 {
                     switch (itemOrganization.Offering)
                     {
-                        case 1:
+                        case Enums.offering.reuse:
                             dr["Reusable"] = true;
                             dr["Repairable"] = false;
                             break;
-                        case 2:
+                        case Enums.offering.recycle:
                             dr["Reusable"] = false;
                             dr["Repairable"] = true;
                             break;
-                        case 3:
+                        case Enums.offering.both:
                             dr["Reusable"] = true;
                             dr["Repairable"] = true;
                             break;
@@ -177,7 +173,7 @@ namespace CRRD_Web_Interface
             {
                 SearchEnabled = (bool)Session["SearchEnabled"];
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
 
             if (SearchEnabled)
             {
@@ -219,7 +215,7 @@ namespace CRRD_Web_Interface
             {
                 result = await BindData();
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
             if (result == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -242,7 +238,7 @@ namespace CRRD_Web_Interface
             {
                 result = await BindData();
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
             if (result == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -266,7 +262,7 @@ namespace CRRD_Web_Interface
             {
                 result = await BindData();
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
             if (result == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -296,7 +292,7 @@ namespace CRRD_Web_Interface
             {
                 result = await BindData();
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
             if (result == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -424,7 +420,7 @@ namespace CRRD_Web_Interface
                     Session["SearchEnabled"] = true;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
         }
     }
 }

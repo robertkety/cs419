@@ -9,6 +9,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using CRRD_Web_Interface.Models;
 using System.Data;
+using System.Diagnostics;
 
 // Manual grid view implementation borrowed from: http://aarongoldenthal.com/post/2009/04/19/Manually-Databinding-a-GridView.aspx
 // Sorting data table: http://stackoverflow.com/questions/9107916/sorting-rows-in-a-data-table
@@ -19,7 +20,7 @@ namespace CRRD_Web_Interface
         protected string SearchString = String.Empty;
         protected bool Authenticated = false;   // Flag to prevent the rest of the page being rendered when user is not authenitcated
 
-        protected async void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -34,7 +35,7 @@ namespace CRRD_Web_Interface
             if (!IsPostBack && Authenticated == true)
             {
                 Session["SearchEnabled"] = false;   // Prevents text in search box from filtering results unless search is requested
-                bool status = await BindData();
+                bool status = BindData();
                 if(status == true)
                 {
                     PanelErrorMessages.Visible = false;
@@ -48,102 +49,40 @@ namespace CRRD_Web_Interface
             }
         }
 
-        protected async Task<bool> BindData()
+        protected bool BindData()
         {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri(DataAccess.url);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            List<Organization> organizations = DataAccess.Get<Organization>("organizations");
 
-            HttpResponseMessage response = await client.GetAsync("api/organizations");
-            if (response.IsSuccessStatusCode)
+            DataView dv = (Transforms.ConvertToDataTable<Organization>(organizations)).DefaultView;
+
+            dv.Sort = "Name ASC";
+            DataTable sorted_dt = dv.ToTable();
+
+            try
             {
-                Organization[] organizations = await response.Content.ReadAsAsync<Organization[]>();
-                DataTable dt = new DataTable();
-                dt.Columns.Add("OrganizationID");
-                dt.Columns.Add("OrganizationName");
-                dt.Columns.Add("OrganizationPhone");
-                dt.Columns.Add("OrganizationAddressLine1");
-                dt.Columns.Add("OrganizationAddressLine2");
-                dt.Columns.Add("OrganizationAddressLine3");
-                dt.Columns.Add("OrganizationZipCode");
-                dt.Columns.Add("OrganizationWebsite");
-                dt.Columns.Add("OrganizationHours");
-                dt.Columns.Add("OrganizationNotes");
-
-                foreach (Organization organization in organizations)
+                if ((bool)Session["SearchEnabled"])
                 {
-                    var dr = dt.NewRow();
-                    dr["OrganizationID"] = organization.PartitionKey;
-                    dr["OrganizationName"] = organization.RowKey;
-                    if(organization.Phone != null && organization.Phone != "")
-                    {
-                        dr["OrganizationPhone"] = organization.Phone;
-                    }
-                    else
-                    {
-                        dr["OrganizationPhone"] = "Private";
-                    }
-                    dr["OrganizationAddressLine1"] = organization.AddressLine1;
-                    dr["OrganizationAddressLine2"] = organization.AddressLine2;
-                    dr["OrganizationAddressLine3"] = organization.AddressLine3;
-                    dr["OrganizationZipCode"] = organization.ZipCode;
-                    dr["OrganizationWebsite"] = organization.Website;
-                    dr["OrganizationHours"] = organization.Hours;
-                    dr["OrganizationNotes"] = organization.Notes;
-                    dt.Rows.Add(dr);
+                    GridViewOrganizationInfo.DataSource = Transforms.FilterByName(sorted_dt, SearchString);
+                    GridViewOrganizationInfo.DataBind();
+
+                    return true;
                 }
-
-                DataView dv = dt.DefaultView;
-                dv.Sort = "OrganizationName ASC";
-                DataTable sorted_dt = dv.ToTable();
-
-                // See if search is enabled
-                bool SearchEnabled = false;
-                try
-                {
-                    SearchEnabled = (bool)Session["SearchEnabled"];
-                }
-                catch (Exception ex) { }
-
-                if (SearchEnabled)
-                {
-                   DataRow[] FilteredRows = sorted_dt.Select("OrganizationName like '%" + SearchString + "%'");
-                   DataTable filtered_dt = new DataTable();
-                   filtered_dt = sorted_dt.Clone();
-
-                    if(FilteredRows.Count() == 0)
-                    {
-                        GridViewOrganizationInfo.DataSource = sorted_dt;
-                        GridViewOrganizationInfo.DataBind();
-                        return true;
-                    }
-
-                   foreach(DataRow row in FilteredRows)
-                   {
-                       filtered_dt.Rows.Add(row.ItemArray);
-                   }
-                   GridViewOrganizationInfo.DataSource = filtered_dt;
-                   GridViewOrganizationInfo.DataBind();
-                   return true;
-                }
-
-                GridViewOrganizationInfo.DataSource = sorted_dt;
-                GridViewOrganizationInfo.DataBind();
-
-                return true;
             }
+            catch (Exception ex) { Debug.WriteLine(ex.ToString()); }            
 
-            return false;
+            GridViewOrganizationInfo.DataSource = sorted_dt;
+            GridViewOrganizationInfo.DataBind();
+
+            return true;
         }
 
-        protected async void GridViewOrganizationInfo_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void GridViewOrganizationInfo_RowEditing(object sender, GridViewEditEventArgs e)
         {
 
             GridViewOrganizationInfo.EditIndex = e.NewEditIndex;
             StoreSearchTerm();
 
-            bool status = await BindData();
+            bool status = BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -152,20 +91,20 @@ namespace CRRD_Web_Interface
             {
                 // Populates the edit box with the old organization name
                 DataTable dt = (DataTable)GridViewOrganizationInfo.DataSource;
-                TextBox TextBoxEditOrganization = GridViewOrganizationInfo.Rows[e.NewEditIndex].FindControl("TextBoxEditOrganizationName") as TextBox;
+                TextBox TextBoxEditOrganization = GridViewOrganizationInfo.Rows[e.NewEditIndex].FindControl("TextBoxEditName") as TextBox;
                 TextBoxEditOrganization.Text = dt.Rows[(10 * GridViewOrganizationInfo.PageIndex) + e.NewEditIndex][1].ToString();
 
                 RestoreSearchTerm();
             }
         }
 
-        protected async void GridViewOrganizationInfo_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        protected void GridViewOrganizationInfo_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridViewOrganizationInfo.EditIndex = -1;
             LiteralErrorMessageGridView.Text = "";
             StoreSearchTerm();
 
-            bool status = await BindData();
+            bool status = BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -183,12 +122,12 @@ namespace CRRD_Web_Interface
             GridViewOrganizationInfo.SelectedIndex = -1;
         }
 
-        protected async void GridViewOrganizationInfo_PageIndexChanged(object sender, EventArgs e)
+        protected void GridViewOrganizationInfo_PageIndexChanged(object sender, EventArgs e)
         {
             StoreSearchTerm();
             LiteralErrorMessageGridView.Text = "";
             RestoreSearchTerm();
-            bool status = await BindData();
+            bool status = BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -199,14 +138,14 @@ namespace CRRD_Web_Interface
             }
         }
 
-        protected async void ButtonSearch_Click(object sender, EventArgs e)
+        protected void ButtonSearch_Click(object sender, EventArgs e)
         {
             StoreSearchTerm();
             SetSearchStatus();
 
             GridViewOrganizationInfo_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(0));
 
-            bool status = await BindData();
+            bool status = BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -276,12 +215,12 @@ namespace CRRD_Web_Interface
             Response.Redirect((Page.Request.Url.ToString()), false);
         }
 
-        protected async void GridViewOrganizationInfo_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        protected void GridViewOrganizationInfo_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             StoreSearchTerm();
 
             // Get edit text box values before call to data bind
-            TextBox EditTextBox = GridViewOrganizationInfo.Rows[e.RowIndex].FindControl("TextBoxEditOrganizationName") as TextBox;
+            TextBox EditTextBox = GridViewOrganizationInfo.Rows[e.RowIndex].FindControl("TextBoxEditName") as TextBox;
             string NewName = EditTextBox.Text;
             string Phone = ((TextBox)(GridViewOrganizationInfo.Rows[e.RowIndex].Cells[2].Controls[0])).Text;
             string Address1 = ((TextBox)(GridViewOrganizationInfo.Rows[e.RowIndex].Cells[3].Controls[0])).Text;
@@ -293,7 +232,7 @@ namespace CRRD_Web_Interface
             string Notes = ((TextBox)(GridViewOrganizationInfo.Rows[e.RowIndex].Cells[9].Controls[0])).Text;
 
             // Must bind data to get organization's ID
-            await BindData();
+            BindData();
             DataTable dt = (DataTable)GridViewOrganizationInfo.DataSource;  // Accessing the cell's value in the grid view always returned null, so datatable was used
             string OrganizationID = dt.Rows[(10 * GridViewOrganizationInfo.PageIndex) + e.RowIndex][0] as String;
             string OldName = dt.Rows[(10 * GridViewOrganizationInfo.PageIndex) + e.RowIndex][1] as String;
@@ -347,11 +286,11 @@ namespace CRRD_Web_Interface
             GridViewOrganizationInfo_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(e.RowIndex));
         }
 
-        protected async void GridViewOrganizationInfo_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void GridViewOrganizationInfo_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             StoreSearchTerm();
 
-            await BindData();   // Must bind data to grid to get datasource
+            BindData();   // Must bind data to grid to get datasource
             DataTable dt = (DataTable)GridViewOrganizationInfo.DataSource;  // Accessing the cell's value in the grid view always returned null, so datatable was used
             string OrganizationID = dt.Rows[(10 * GridViewOrganizationInfo.PageIndex) + e.RowIndex][0] as String;
             string OrganizationName = dt.Rows[(10 * GridViewOrganizationInfo.PageIndex) + e.RowIndex][1] as String;
@@ -359,7 +298,7 @@ namespace CRRD_Web_Interface
             // Attempt DELETE
             DataAccess.deleteDataToService(DataAccess.url + "api/Organizations/" + OrganizationID + "?Name=" + OrganizationName, ("").ToCharArray());
 
-            await BindData();
+            BindData();
             RestoreSearchTerm();
         }
 

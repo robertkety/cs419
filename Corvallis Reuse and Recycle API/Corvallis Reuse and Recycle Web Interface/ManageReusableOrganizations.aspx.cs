@@ -43,12 +43,12 @@ namespace CRRD_Web_Interface
                 {
                     // How to sort list of objects: http://stackoverflow.com/questions/1301822/how-to-sort-an-array-of-object-by-a-specific-field-in-c
                     List<Item> items = await response.Content.ReadAsAsync<List<Item>>();
-                    items.Sort(new Comparison<Item>((x, y) => string.Compare(x.RowKey, y.RowKey)));
+                    items.Sort(new Comparison<Item>((x, y) => string.Compare(x.Name, y.Name)));
 
                     foreach (Item item in items)
                     {
-                        DropDownListReusableItems.Items.Add(new ListItem(item.RowKey, item.PartitionKey));
-                        DropDownListItem.Items.Add(new ListItem(item.RowKey, item.PartitionKey));
+                        DropDownListReusableItems.Items.Add(new ListItem(item.Name, item.Id));
+                        DropDownListItem.Items.Add(new ListItem(item.Name, item.Id));
                         PanelErrorMessages.Visible = false;
                     }
                 }
@@ -81,11 +81,11 @@ namespace CRRD_Web_Interface
 
                 foreach (Organization organization in organizations)
                 {
-                    if (organization.Offering == 1 || organization.Offering == 3)
+                    if (organization.Offering == Enums.offering.reuse || organization.Offering == Enums.offering.both)
                     {
                         var dr = dt.NewRow();
-                        dr["OrganizationID"] = organization.PartitionKey;
-                        dr["OrganizationName"] = organization.RowKey;
+                        dr["OrganizationID"] = organization.Id;
+                        dr["OrganizationName"] = organization.Name;
                         dr["OrganizationAddressLine1"] = organization.AddressLine1;
                         dt.Rows.Add(dr);
                     }
@@ -222,11 +222,11 @@ namespace CRRD_Web_Interface
                 {
                     // How to sort list of objects: http://stackoverflow.com/questions/1301822/how-to-sort-an-array-of-object-by-a-specific-field-in-c
                     List<Organization> organizations = await response.Content.ReadAsAsync<List<Organization>>();
-                    organizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.RowKey, y.RowKey)));
+                    organizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.Name, y.Name)));
 
                     foreach (Organization organization in organizations)
                     {
-                        DropDownListAddReusableOrganization.Items.Add(new ListItem(organization.RowKey + " (" + organization.AddressLine1 + ")", organization.PartitionKey));
+                        DropDownListAddReusableOrganization.Items.Add(new ListItem(organization.Name + " (" + organization.AddressLine1 + ")", organization.Id));
                     }
                 }
 
@@ -242,7 +242,7 @@ namespace CRRD_Web_Interface
         {
             string ItemID = DropDownListItem.SelectedValue;
             string OrganizationID = DropDownListAddReusableOrganization.SelectedValue;
-            int Offering = 0;
+            Enums.offering Offering = Enums.offering.none;
 
             if(ItemID == "")
             {
@@ -267,11 +267,11 @@ namespace CRRD_Web_Interface
             {
                 // How to sort list of objects: http://stackoverflow.com/questions/1301822/how-to-sort-an-array-of-object-by-a-specific-field-in-c
                 List<Organization> organizations = await response.Content.ReadAsAsync<List<Organization>>();
-                organizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.RowKey, y.RowKey)));
+                organizations.Sort(new Comparison<Organization>((x, y) => string.Compare(x.Name, y.Name)));
 
                 foreach (Organization organization in organizations)
                 {
-                    if(organization.PartitionKey == OrganizationID)
+                    if(organization.Id == OrganizationID)
                     {
                         Offering = organization.Offering;
                     }
@@ -291,7 +291,7 @@ namespace CRRD_Web_Interface
             {
                 DataAccess.postDataToService(Parameter + "1", ("").ToCharArray());
             }
-            else if(Offering == 2)
+            else if(Offering == Enums.offering.recycle)
             {
                 DataAccess.putDataToService(Parameter + "3", ("").ToCharArray());
             }
@@ -308,7 +308,7 @@ namespace CRRD_Web_Interface
         {
             StoreSearchTerm();
 
-            int Offering = 0;
+            Enums.offering Offering = Enums.offering.none;
             string ItemId = DropDownListReusableItems.SelectedValue;
             await BindData();   // Must bind data to grid to get datasource
             DataTable dt = (DataTable)GridViewReusableOrganizations.DataSource;  // Accessing the cell's value in the grid view always returned null, so datatable was used
@@ -328,7 +328,7 @@ namespace CRRD_Web_Interface
 
                 foreach (Organization organization in organizations)
                 {
-                    if (organization.PartitionKey == OrganizationId)
+                    if (organization.Id == OrganizationId)
                     {
                         Offering = organization.Offering;
                     }
@@ -344,7 +344,7 @@ namespace CRRD_Web_Interface
             string Parameter = DataAccess.url + "api/itemorganization?ItemId=" + ItemId + "&OrganizationId=" + OrganizationId + "&Offering=";
 
             // If repairable relationship exists, PUT with offering of 2, else PUT with offering of 0
-            if (Offering == 3)
+            if (Offering == Enums.offering.both)
             {
                 DataAccess.putDataToService(Parameter + "2", ("").ToCharArray());
             }

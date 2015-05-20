@@ -17,7 +17,7 @@
                 <asp:HyperLink ID="HyperLinkManageUsers" runat="server" NavigateUrl="~/ManageUsers.aspx">Manage Users</asp:HyperLink>
             </li>
         </ul>
-        <h3>Table Managemenet</h3>
+        <h3>Table Management</h3>
         <ul class="LinkList">
             <li>
                 <asp:HyperLink ID="HyperLinkManageOrganizations" runat="server" NavigateUrl="~/ManageOrganizations.aspx">Manage Organizations</asp:HyperLink>

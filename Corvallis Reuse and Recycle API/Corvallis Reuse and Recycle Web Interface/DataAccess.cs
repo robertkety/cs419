@@ -8,12 +8,13 @@ using System.IO;
 using Newtonsoft.Json;
 using Microsoft.CSharp.RuntimeBinder;
 using Microsoft.AspNet.Identity.Owin;
+using CRRD_Web_Interface.Models;
 
 namespace CRRD_Web_Interface
 {
     public class DataAccess
     {
-        public static string url = "http://localhost:6744/";//"http://cs419.azurewebsites.net";
+        public static string url = "http://localhost:6744/";//"http://cs419.azurewebsites.net/";
         public static string token = "";
 
         /* Thanks! https://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn439314.aspx */
@@ -215,6 +216,72 @@ namespace CRRD_Web_Interface
                 }
             }
         }
+
+        internal static List<T> Get<T>(string apiName)
+        {
+            string path = "api/" + apiName;
+            List<T> entityList = new List<T>();
+
+            dynamic entities = getDataFromService(url + path);
+
+            if (entities == null)
+                return null;
+
+            foreach (dynamic entity in entities)
+                entityList.Add((T)Activator.CreateInstance(typeof(T), entity.ToString()));
+
+            return entityList;
+        }
+
+        internal static async Task<List<Item>> GetCategoryItem(string categoryId)
+        {
+            string path = "api/categories/" + categoryId;
+            List<Item> ItemsList = new List<Item>();
+
+            dynamic items = await getDataFromService(url + path).ConfigureAwait(false);
+
+            if (items == null)
+                return null;
+
+            foreach (dynamic item in items)
+                ItemsList.Add(new Item(item.ToString()));
+
+            return ItemsList;
+        }
+
+        internal static async Task<List<Organization>> GetItemOrganization(string itemId)
+        {
+            string path = "api/Items/" + itemId;
+            List<Organization> OrganizationsList = new List<Organization>();
+
+            dynamic organizations = await getDataFromService(url + path).ConfigureAwait(false);
+
+            if (organizations == null)
+                return null;
+
+            foreach (dynamic organization in organizations)
+                OrganizationsList.Add(new Organization(organization.ToString()));
+
+
+            return OrganizationsList;
+        }
+
+        internal static async Task<Organization> GetOrganization(string organizationId)
+        {
+            string path = "api/organizations/";
+            List<Organization> OrganizationList = new List<Organization>();
+            dynamic organizations = await getDataFromService(url + path + organizationId).ConfigureAwait(false);
+
+            if (organizations == null)
+                return null;
+
+            foreach (dynamic organization in organizations)
+                OrganizationList.Add(new Organization(organization.ToString()));
+
+            return OrganizationList.First();
+        }
+
+
 
         public static SignInStatus PostLogin(Entities.Login login)
         {

@@ -15,7 +15,8 @@
     </asp:Panel>
     <asp:Panel ID="PanelCategoryItems" runat="server" Visible="false">
         <asp:GridView ID="GridViewCategoryItems" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False"
-            AllowPaging="True" OnPageIndexChanged="GridViewCategoryItems_PageIndexChanged" OnPageIndexChanging="GridViewCategoryItems_PageIndexChanging" ShowFooter="True" OnRowCancelingEdit="GridViewCategoryItems_RowCancelingEdit" OnRowEditing="GridViewCategoryItems_RowEditing" OnRowUpdating="GridViewCategoryItems_RowUpdating">
+            AllowPaging="True" OnPageIndexChanged="GridViewCategoryItems_PageIndexChanged" OnPageIndexChanging="GridViewCategoryItems_PageIndexChanging" ShowFooter="True" 
+            OnRowCancelingEdit="GridViewCategoryItems_RowCancelingEdit" OnRowEditing="GridViewCategoryItems_RowEditing" OnRowUpdating="GridViewCategoryItems_RowUpdating">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" CssClass="GridView"/>
             <Columns>
                 <asp:TemplateField HeaderText="Item ID" Visible="false" ItemStyle-Width="0%">

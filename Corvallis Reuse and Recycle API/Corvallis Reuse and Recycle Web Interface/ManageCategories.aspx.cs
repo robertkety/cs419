@@ -9,6 +9,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using CRRD_Web_Interface.Models;
 using System.Data;
+using System.Diagnostics;
 
 // Manual grid view implementation borrowed from: http://aarongoldenthal.com/post/2009/04/19/Manually-Databinding-a-GridView.aspx
 // Sorting data table: http://stackoverflow.com/questions/9107916/sorting-rows-in-a-data-table
@@ -50,68 +51,28 @@ namespace CRRD_Web_Interface
 
         protected async Task<bool> BindData()
         {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri(DataAccess.url);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            List<Category> categories = DataAccess.Get<Category>("categories");
 
-            HttpResponseMessage response = await client.GetAsync("api/categories");
-            if (response.IsSuccessStatusCode)
+            DataView dv = (Transforms.ConvertToDataTable<Category>(categories)).DefaultView;
+            dv.Sort = "Name ASC";
+            DataTable sorted_dt = dv.ToTable();
+
+            try
             {
-                Category[] categories = await response.Content.ReadAsAsync<Category[]>();
-                DataTable dt = new DataTable();
-                dt.Columns.Add("CategoryID");
-                dt.Columns.Add("CategoryName");
-
-                foreach (Category category in categories)
+                if ((bool)Session["SearchEnabled"])
                 {
-                    var dr = dt.NewRow();
-                    dr["CategoryID"] = category.PartitionKey;
-                    dr["CategoryName"] = category.RowKey;
-                    dt.Rows.Add(dr);
-                }
-
-                DataView dv = dt.DefaultView;
-                dv.Sort = "CategoryName ASC";
-                DataTable sorted_dt = dv.ToTable();
-
-                // See if search is enabled
-                bool SearchEnabled = false;
-                try
-                {
-                    SearchEnabled = (bool)Session["SearchEnabled"];
-                }
-                catch (Exception ex) { }
-
-                if (SearchEnabled)
-                {
-                    DataRow[] FilteredRows = sorted_dt.Select("CategoryName like '%" + SearchString + "%'");
-                    DataTable filtered_dt = new DataTable();
-                    filtered_dt = sorted_dt.Clone();
-
-                    if (FilteredRows.Count() == 0)
-                    {
-                        GridViewCategoryInfo.DataSource = sorted_dt;
-                        GridViewCategoryInfo.DataBind();
-                        return true;
-                    }
-
-                    foreach (DataRow row in FilteredRows)
-                    {
-                        filtered_dt.Rows.Add(row.ItemArray);
-                    }
-                    GridViewCategoryInfo.DataSource = filtered_dt;
+                    GridViewCategoryInfo.DataSource = Transforms.FilterByName(sorted_dt, SearchString);
                     GridViewCategoryInfo.DataBind();
+
                     return true;
                 }
-
-                GridViewCategoryInfo.DataSource = sorted_dt;
-                GridViewCategoryInfo.DataBind();
-
-                return true;
             }
+            catch (Exception ex) { Debug.WriteLine(ex.ToString()); }            
 
-            return false;
+            GridViewCategoryInfo.DataSource = sorted_dt;
+            GridViewCategoryInfo.DataBind();
+
+            return true;
         }
 
         protected async void GridViewCategoryInfo_RowEditing(object sender, GridViewEditEventArgs e)

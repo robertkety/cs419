@@ -74,7 +74,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Corvallis Resuse and Repair Directory</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Corvallis Reuse and Repair Directory</p>
             </footer>
         </div>
     </form>

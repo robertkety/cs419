@@ -19,15 +19,15 @@
             <Columns>
                 <asp:TemplateField HeaderText="Organization ID" Visible="false">
                     <ItemTemplate>
-                        <%# Eval("OrganizationID") %>
+                        <%# Eval("Id") %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Organization Name">
                     <ItemTemplate>
-                        <%# Eval("OrganizationName") %>
+                        <%# Eval("Name") %>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxEditOrganizationName" Width="100%" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxEditName" Width="100%" runat="server"></asp:TextBox>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="TextBoxSearch" runat="server"></asp:TextBox>
@@ -36,35 +36,35 @@
                     <FooterStyle HorizontalAlign="Left" />
                     <HeaderStyle Width="30%" />
                 </asp:TemplateField>
-                <asp:BoundField DataField="OrganizationPhone" HeaderText="Phone" >
+                <asp:BoundField DataField="Phone" HeaderText="Phone" >
                 <ControlStyle Width="100%" />
                 <HeaderStyle Width="10%" />
                 </asp:BoundField>
-                <asp:BoundField DataField="OrganizationAddressLine1" HeaderText="Address 1" >
+                <asp:BoundField DataField="AddressLine1" HeaderText="Address 1" >
                 <ControlStyle Width="100%" />
                 <HeaderStyle Width="10%" />
                 </asp:BoundField>
-                <asp:BoundField DataField="OrganizationAddressLine2" HeaderText="Address 2" >
+                <asp:BoundField DataField="AddressLine2" HeaderText="Address 2" >
                 <ControlStyle Width="100%" />
                 <HeaderStyle Width="10%" />
                 </asp:BoundField>
-                <asp:BoundField DataField="OrganizationAddressLine3" HeaderText="Address 3" >
+                <asp:BoundField DataField="AddressLine3" HeaderText="Address 3" >
                 <ControlStyle Width="100%" />
                 <HeaderStyle Width="10%" />
                 </asp:BoundField>
-                <asp:BoundField DataField="OrganizationZipCode" HeaderText="Zip Code" >
+                <asp:BoundField DataField="ZipCode" HeaderText="Zip Code" >
                 <ControlStyle Width="100%" />
                 <HeaderStyle Width="10%" />
                 </asp:BoundField>
-                <asp:BoundField DataField="OrganizationWebsite" HeaderText="Website" >
+                <asp:BoundField DataField="Website" HeaderText="Website" >
                 <ControlStyle Width="100%" />
                 <HeaderStyle Width="10%" />
                 </asp:BoundField>
-                <asp:BoundField DataField="OrganizationHours" HeaderText="Hours" >
+                <asp:BoundField DataField="Hours" HeaderText="Hours" >
                 <ControlStyle Width="100%" />
                 <HeaderStyle Width="10%" />
                 </asp:BoundField>
-                <asp:BoundField DataField="OrganizationNotes" HeaderText="Notes" >
+                <asp:BoundField DataField="Notes" HeaderText="Notes" >
                 <ControlStyle Width="100%" />
                 <HeaderStyle Width="10%" />
                 </asp:BoundField>
