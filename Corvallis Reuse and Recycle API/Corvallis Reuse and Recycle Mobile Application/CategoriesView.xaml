@@ -10,17 +10,17 @@
 
     <Grid>
         <TextBlock x:Name="AppName" Margin="0,0,0,0" TextWrapping="Wrap" Text="Corvallis Reuse and Repair Directory" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center" />
-        <StackPanel Margin="0,36,0,0">
+        <StackPanel Margin="4,36,4,0">
             <Grid x:Name="ListCategories" VerticalAlignment="Top"></Grid>
             <ScrollViewer BorderThickness="1" MinHeight="500" MaxHeight="500" Height="499">
-                <!--
+                
                 <ScrollViewer.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="WhiteSmoke" Offset="0"/>
+                        <GradientStop Color="Black" Offset="1"/>
                     </LinearGradientBrush>
                 </ScrollViewer.BorderBrush>
-                -->
+                
                 <StackPanel x:Name="Categories">
                 </StackPanel>
             </ScrollViewer>

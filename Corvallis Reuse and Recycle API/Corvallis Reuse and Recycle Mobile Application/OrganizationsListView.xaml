@@ -11,24 +11,22 @@
 
     <Grid>
         <TextBlock x:Name="AppName" Margin="0,0,0,0" TextWrapping="Wrap" Text="Corvallis Reuse and Repair Directory" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center" />
-        <StackPanel Margin="0,36,0,0">
+        <StackPanel Margin="4,36,4,0">
             <StackPanel x:Name="OrgList" Visibility="Visible">
                 <ScrollViewer BorderThickness="1" MinHeight="500" MaxHeight="500">
-                    <!--
                     <ScrollViewer.BorderBrush>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="Black" Offset="0"/>
-                            <GradientStop Color="White" Offset="1"/>
+                            <GradientStop Color="WhiteSmoke" Offset="0"/>
+                            <GradientStop Color="Black" Offset="1"/>
                         </LinearGradientBrush>
                     </ScrollViewer.BorderBrush>
-                    -->
                     <StackPanel x:Name="Organizations"/>
                 </ScrollViewer>
             </StackPanel>
             <StackPanel x:Name="OrgMap" Visibility="Collapsed" />
             <Button x:Name="ToggleButton" Click="ToggleMaps" HorizontalAlignment="Center" Content="Map View" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="22" Width="300"/>
             <StackPanel x:Name="Legend" Visibility="Collapsed">
-                <Grid Margin="0,5,0,0">
+                <Grid Margin="0,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>

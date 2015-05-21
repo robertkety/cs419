@@ -94,7 +94,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                     button.Content = organization.Name;
                     button.Tag = organization.Id;
                     button.FontSize = 20;
-                    button.Margin = new Thickness(25, 5, 10, 5);
+                    button.Margin = new Thickness(10, 0, 10, 0);
                     button.HorizontalAlignment = HorizontalAlignment.Stretch;
                     button.VerticalAlignment = VerticalAlignment.Stretch;
                     button.Click += new RoutedEventHandler(ClickOrganization);
