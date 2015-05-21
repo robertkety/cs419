@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Threading.Tasks;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Data;
 using CRRD_Web_Interface.Models;
 using System.Diagnostics;
@@ -18,7 +14,7 @@ namespace CRRD_Web_Interface
         protected string SearchString;
         protected bool Authenticated = false;   // Flag to prevent the rest of the page being rendered when user is not authenitcated
 
-        protected async void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -48,32 +44,7 @@ namespace CRRD_Web_Interface
             }   
         }
 
-        //protected async Task<bool> LoadItems()
-        //{
-        //    var client = new HttpClient();
-        //    client.BaseAddress = new Uri(DataAccess.url);
-        //    client.DefaultRequestHeaders.Accept.Clear();
-        //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-        //    HttpResponseMessage response = await client.GetAsync("api/items/");
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        List<Item> items = await response.Content.ReadAsAsync<List<Item>>();
-        //        items.Sort(new Comparison<Item>((x, y) => string.Compare(x.Name, y.Name)));
-        //        DropDownListItems.Items.Add(new ListItem("<Select an Item>", "-1"));
-
-        //        foreach (Item item in items)
-        //        {
-        //            DropDownListItems.Items.Add(new ListItem(item.Name, item.Id));
-        //        }
-
-        //        return true;
-        //    }
-            
-        //    return false;
-        //}
-
-        protected async Task<bool> BindData()
+        protected bool BindData()
         {
             // Get organizations
             List<Organization> organizations = DataAccess.Get<Organization>("organizations");
@@ -179,7 +150,7 @@ namespace CRRD_Web_Interface
             return true;
         }
 
-        protected async void DropDownListItems_SelectedIndexChanged(object sender, EventArgs e)
+        protected void DropDownListItems_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(DropDownListItems.SelectedValue == "-1")
             {
@@ -189,7 +160,7 @@ namespace CRRD_Web_Interface
             bool result = false;
             try
             {
-                result = await BindData();
+                result = BindData();
             }
             catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
             if (result == false)
@@ -204,7 +175,7 @@ namespace CRRD_Web_Interface
             }
         }
 
-        protected async void GridViewItemOrganization_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void GridViewItemOrganization_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridViewItemOrganization.EditIndex = e.NewEditIndex;
             StoreSearchTerm();
@@ -212,7 +183,7 @@ namespace CRRD_Web_Interface
             bool result = false;
             try
             {
-                result = await BindData();
+                result = BindData();
             }
             catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
             if (result == false)
@@ -228,7 +199,7 @@ namespace CRRD_Web_Interface
             }
         }
 
-        protected async void GridViewItemOrganization_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        protected void GridViewItemOrganization_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridViewItemOrganization.EditIndex = -1;
             StoreSearchTerm();
@@ -236,7 +207,7 @@ namespace CRRD_Web_Interface
             bool result = false;
             try
             {
-                result = await BindData();
+                result = BindData();
             }
             catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
             if (result == false)
@@ -259,14 +230,14 @@ namespace CRRD_Web_Interface
             GridViewItemOrganization.SelectedIndex = -1;
         }
 
-        protected async void GridViewItemOrganization_PageIndexChanged(object sender, EventArgs e)
+        protected void GridViewItemOrganization_PageIndexChanged(object sender, EventArgs e)
         {
             StoreSearchTerm();
 
             bool result = false;
             try
             {
-                result = await BindData();
+                result = BindData();
             }
             catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
             if (result == false)
@@ -282,14 +253,14 @@ namespace CRRD_Web_Interface
             }
         }
 
-        protected async void ButtonSearch_Click(object sender, EventArgs e)
+        protected void ButtonSearch_Click(object sender, EventArgs e)
         {
             StoreSearchTerm();
             SetSearchStatus();
 
             GridViewItemOrganization_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(0));
 
-            bool status = await BindData();
+            bool status = BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -300,7 +271,7 @@ namespace CRRD_Web_Interface
             }
         }
 
-        protected async void GridViewItemOrganization_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        protected void GridViewItemOrganization_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             StoreSearchTerm();
 
@@ -312,7 +283,7 @@ namespace CRRD_Web_Interface
             // Must bind data to get organization's ID
             try
             {
-                await BindData();
+                BindData();
             }
             catch (Exception ex) 
             {

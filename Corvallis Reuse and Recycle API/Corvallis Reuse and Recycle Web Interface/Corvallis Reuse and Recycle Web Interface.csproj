@@ -200,8 +200,6 @@
     <Content Include="ManageItemOrganization.aspx" />
     <Content Include="ManageItems.aspx" />
     <Content Include="ManageOrganizations.aspx" />
-    <Content Include="ManageRepairables.aspx" />
-    <Content Include="ManageReusableOrganizations.aspx" />
     <Content Include="ManageUsers.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -414,20 +412,6 @@
     </Compile>
     <Compile Include="ManageOrganizations.aspx.designer.cs">
       <DependentUpon>ManageOrganizations.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ManageRepairables.aspx.cs">
-      <DependentUpon>ManageRepairables.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ManageRepairables.aspx.designer.cs">
-      <DependentUpon>ManageRepairables.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ManageReusableOrganizations.aspx.cs">
-      <DependentUpon>ManageReusableOrganizations.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ManageReusableOrganizations.aspx.designer.cs">
-      <DependentUpon>ManageReusableOrganizations.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManageUsers.aspx.cs">
       <DependentUpon>ManageUsers.aspx</DependentUpon>

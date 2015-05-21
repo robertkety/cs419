@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using CRRD_Web_Interface.Models;
 using System.Data;
@@ -18,7 +15,7 @@ namespace CRRD_Web_Interface
         protected string SearchString = String.Empty;
         protected bool Authenticated = false;   // Flag to prevent the rest of the page being rendered when user is not authenitcated
 
-        protected async void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -51,7 +48,7 @@ namespace CRRD_Web_Interface
         /*
          * Usage: Binds item data to gridview
          */
-        protected async Task<bool> BindData()
+        protected bool BindData()
         {
             // Get all items
             List<Item> items = DataAccess.Get<Item>("items");
@@ -144,7 +141,7 @@ namespace CRRD_Web_Interface
         /*
          * Usage: Loads gridview content based on category drop down list
          */
-        protected async void DropDownListCategories_SelectedIndexChanged(object sender, EventArgs e)
+        protected void DropDownListCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
             // If no selection has been made, return
             if (DropDownListCategories.SelectedValue == "-1")
@@ -152,22 +149,10 @@ namespace CRRD_Web_Interface
                 return;
             }
 
-            // Else attempt to create grid view from selected category
-            //bool status = await BindData();
-            //if (status == false)
-            //{
-            //    PanelErrorMessages.Visible = true;
-            //    PanelCategoryItems.Visible = false;
-            //}
-            //else
-            //{
-            //    PanelCategoryItems.Visible = true;
-            //}
-
             bool result = false;
             try
             {
-                result = await BindData();
+                result = BindData();
             }
             catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
             if (result == false)
@@ -195,12 +180,12 @@ namespace CRRD_Web_Interface
         /*
          * Usage: Implements page indexing for manual gridview
          */
-        protected async void GridViewCategoryItems_PageIndexChanged(object sender, EventArgs e)
+        protected void GridViewCategoryItems_PageIndexChanged(object sender, EventArgs e)
         {
             StoreSearchTerm();
             LiteralErrorMessageGridView.Text = "";
 
-            bool status = await BindData();
+            bool status = BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -214,12 +199,12 @@ namespace CRRD_Web_Interface
         /*
          * Usage: Implements gridview search feature
          */
-        protected async void ButtonSearch_Click(object sender, EventArgs e)
+        protected void ButtonSearch_Click(object sender, EventArgs e)
         {
             StoreSearchTerm();
             SetSearchStatus();
 
-            bool status = await BindData();
+            bool status = BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -255,7 +240,7 @@ namespace CRRD_Web_Interface
             Search.Text = SearchString;
         }
 
-        protected async void GridViewCategoryItems_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void GridViewCategoryItems_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridViewCategoryItems.EditIndex = e.NewEditIndex;
             StoreSearchTerm();
@@ -263,7 +248,7 @@ namespace CRRD_Web_Interface
             bool result = false;
             try
             {
-                result = await BindData();
+                result = BindData();
             }
             catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
             if (result == false)
@@ -279,7 +264,7 @@ namespace CRRD_Web_Interface
             }
         }
 
-        protected async void GridViewCategoryItems_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        protected void GridViewCategoryItems_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridViewCategoryItems.EditIndex = -1;
             StoreSearchTerm();
@@ -287,7 +272,7 @@ namespace CRRD_Web_Interface
             bool result = false;
             try
             {
-                result = await BindData();
+                result = BindData();
             }
             catch (Exception ex) { Debug.WriteLine(ex.ToString()); }
             if (result == false)

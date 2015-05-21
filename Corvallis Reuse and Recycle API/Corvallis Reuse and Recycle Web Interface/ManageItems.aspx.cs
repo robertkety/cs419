@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using CRRD_Web_Interface.Models;
 using System.Data;
@@ -20,7 +16,7 @@ namespace CRRD_Web_Interface
         protected string SearchString = String.Empty;
         protected bool Authenticated = false;   // Flag to prevent the rest of the page being rendered when user is not authenitcated
 
-        protected async void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -35,7 +31,7 @@ namespace CRRD_Web_Interface
             if (!IsPostBack && Authenticated == true)
             {
                 Session["SearchEnabled"] = false;   // Prevents text in search box from filtering results unless search is requested
-                bool status = await BindData();
+                bool status = BindData();
                 if(status == true)
                 {
                     PanelErrorMessages.Visible = false;
@@ -49,7 +45,7 @@ namespace CRRD_Web_Interface
             }
         }
 
-        protected async Task<bool> BindData()
+        protected bool BindData()
         {
             List<Item> items = DataAccess.Get<Item>("items");
 
@@ -76,12 +72,12 @@ namespace CRRD_Web_Interface
             return true;
         }
 
-        protected async void GridViewItemInfo_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void GridViewItemInfo_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridViewItemInfo.EditIndex = e.NewEditIndex;
             StoreSearchTerm();
 
-            bool status = await BindData();
+            bool status = BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -97,13 +93,13 @@ namespace CRRD_Web_Interface
             }
         }
 
-        protected async void GridViewItemInfo_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        protected void GridViewItemInfo_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridViewItemInfo.EditIndex = -1;
             LiteralErrorMessageGridView.Text = "";
             StoreSearchTerm();
 
-            bool status = await BindData();
+            bool status = BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -121,12 +117,12 @@ namespace CRRD_Web_Interface
             GridViewItemInfo.SelectedIndex = -1;
         }
 
-        protected async void GridViewItemInfo_PageIndexChanged(object sender, EventArgs e)
+        protected void GridViewItemInfo_PageIndexChanged(object sender, EventArgs e)
         {
             StoreSearchTerm();
             LiteralErrorMessageGridView.Text = "";
 
-            bool status = await BindData();
+            bool status = BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -137,13 +133,13 @@ namespace CRRD_Web_Interface
             }
         }
 
-        protected async void ButtonSearch_Click(object sender, EventArgs e)
+        protected void ButtonSearch_Click(object sender, EventArgs e)
         {
             StoreSearchTerm();
             SetSearchStatus();
             GridViewItemInfo_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(0));
 
-            bool status = await BindData();
+            bool status = BindData();
             if (status == false)
             {
                 PanelErrorMessages.Visible = true;
@@ -186,7 +182,7 @@ namespace CRRD_Web_Interface
             Response.Redirect((Page.Request.Url.ToString()), false);
         }
 
-        protected async void GridViewItemInfo_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        protected void GridViewItemInfo_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             StoreSearchTerm();
 
@@ -195,7 +191,7 @@ namespace CRRD_Web_Interface
             string NewName = EditTextBox.Text;
 
             // Must bind data to get Item's ID
-            await BindData();   // Must bind data to grid to get datasource
+            BindData();   // Must bind data to grid to get datasource
             DataTable dt = (DataTable)GridViewItemInfo.DataSource;  // Accessing the cell's value in the grid view always returned null, so datatable was used
             string ItemID = dt.Rows[(10 * GridViewItemInfo.PageIndex) + e.RowIndex][0] as String;
             string OldName = dt.Rows[(10 * GridViewItemInfo.PageIndex) + e.RowIndex][1] as String;
@@ -223,11 +219,11 @@ namespace CRRD_Web_Interface
             GridViewItemInfo_RowCancelingEdit(sender, new GridViewCancelEditEventArgs(e.RowIndex));
         }
 
-        protected async void GridViewItemInfo_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void GridViewItemInfo_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             StoreSearchTerm();
 
-            await BindData();   // Must bind data to grid to get datasource
+            BindData();   // Must bind data to grid to get datasource
             DataTable dt = (DataTable)GridViewItemInfo.DataSource;  // Accessing the cell's value in the grid view always returned null, so datatable was used
             string ItemID = dt.Rows[(10 * GridViewItemInfo.PageIndex) + e.RowIndex][0] as String;
             string ItemName = dt.Rows[(10 * GridViewItemInfo.PageIndex) + e.RowIndex][1] as String;
@@ -235,7 +231,7 @@ namespace CRRD_Web_Interface
             // Attempt DELETE
             DataAccess.deleteDataToService(DataAccess.url + "api/Items/" + ItemID + "?Name=" + ItemName, ("").ToCharArray());
 
-            await BindData();
+            BindData();
             RestoreSearchTerm();
         }
 
