@@ -116,6 +116,12 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CSC-OSU-Button.scale-100.png" />
+    <Content Include="Assets\CSC-OSU-Button.scale-140.png" />
+    <Content Include="Assets\CSC-OSU-Button.scale-240.png" />
+    <Content Include="Assets\CSC-OSU-Splash.scale-100.png" />
+    <Content Include="Assets\CSC-OSU-Splash.scale-140.png" />
+    <Content Include="Assets\CSC-OSU-Splash.scale-240.png" />
     <Content Include="Assets\icon_map_small.gif" />
     <Content Include="Assets\Logo.scale-240.png" />
     <Content Include="Assets\map-pin-blue-hi.png" />
