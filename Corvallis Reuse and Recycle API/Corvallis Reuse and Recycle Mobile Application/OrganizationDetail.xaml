@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock x:Name="AppName" Margin="0,0,0,0" TextWrapping="Wrap" Text="Corvallis Reuse and Repair Directory" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center" />
+        <TextBlock x:Name="AppName" Margin="0,0,0,0" TextWrapping="Wrap" Text="Corvallis Reuse and Repair Directory" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="#d67814"/>
         <StackPanel Margin="0,36,0,0">
             <Grid x:Name="OrganizationGrid" VerticalAlignment="Top"></Grid>
             <ScrollViewer BorderThickness="1" MinHeight="600" MaxHeight="600">

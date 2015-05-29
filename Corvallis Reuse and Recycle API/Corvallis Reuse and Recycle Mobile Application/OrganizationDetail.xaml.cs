@@ -61,6 +61,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                 textBlock.Margin = new Thickness(50, 0, 10, 10);
                 textBlock.HorizontalAlignment = HorizontalAlignment.Stretch;
                 textBlock.VerticalAlignment = VerticalAlignment.Stretch;
+                textBlock.Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 80, 119, 39));
                 OrganizationDetails.Children.Add(textBlock);
             }
         }

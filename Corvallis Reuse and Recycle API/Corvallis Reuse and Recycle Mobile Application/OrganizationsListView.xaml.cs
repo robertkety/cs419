@@ -97,6 +97,8 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                     button.Margin = new Thickness(10, 0, 10, 0);
                     button.HorizontalAlignment = HorizontalAlignment.Stretch;
                     button.VerticalAlignment = VerticalAlignment.Stretch;
+                    button.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 214, 120, 20));
+                    button.Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 80, 119, 39));
                     button.Click += new RoutedEventHandler(ClickOrganization);
                     Organizations.Children.Add(button);
 
@@ -121,9 +123,11 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                     pushpin.Tag = organization.Id;
                     pushpin.Content = new Image { Source = GetImage(organization), MaxHeight = 32f };
                     pushpin.Click += new RoutedEventHandler(ClickOrganization);
+                    pushpin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     
                     map.Children.Add(pushpin);                    
                     MapControl.SetLocation(pushpin, await GetGeopoint(locationString));
+                    pushpin.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
             }
             else
@@ -135,6 +139,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                 textBlock.Margin = new Thickness(50, 0, 10, 10);
                 textBlock.HorizontalAlignment = HorizontalAlignment.Stretch;
                 textBlock.VerticalAlignment = VerticalAlignment.Stretch;
+                textBlock.Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 80, 119, 39));
                 Organizations.Children.Add(textBlock);
             }
 
@@ -242,6 +247,11 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
             }
 
             return null;
+        }
+
+        private void AppName_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
