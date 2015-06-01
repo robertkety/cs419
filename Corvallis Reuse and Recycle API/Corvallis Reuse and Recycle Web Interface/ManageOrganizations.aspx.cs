@@ -193,14 +193,37 @@ namespace CRRD_Web_Interface
                 }
             }
 
-            // Build query
+            // Validate website
+            Uri OrgWebsite = null;
+            if(TextBoxWebsite.Text != "")
+            {
+                OrgWebsite = new UriBuilder(TextBoxWebsite.Text).Uri;
+                try
+                {
+                    Uri.TryCreate(OrgWebsite.ToString(), UriKind.Absolute, out OrgWebsite);
+                }
+                catch (Exception ex)
+                {
+                    LiteralErrorMessageAddOrganization.Text = "Website URL is poorly formatted";
+                    return;
+                }
+            }
+   
+            // Build query string
             String QueryString = "?Name=" + TextBoxName.Text;
             QueryString += "&Phone=" + TextBoxPhone.Text;
             QueryString += "&Address1=" + TextBoxAddress1.Text;
             QueryString += "&Address2=" + TextBoxAddress2.Text;
             QueryString += "&Address3=" + TextBoxAddress3.Text;
             QueryString += "&ZipCode=" + TextBoxZipCode.Text;
-            QueryString += "&Website=" + TextBoxWebsite.Text;
+            if(OrgWebsite == null)
+            {
+                QueryString += "&Website=";
+            }
+            else
+            {
+                QueryString += "&Website=" + OrgWebsite.ToString();
+            }
             QueryString += "&Hours=" + TextBoxHours.Text;
             QueryString += "&Notes=" + TextBoxNotes.Text;
 
@@ -232,18 +255,6 @@ namespace CRRD_Web_Interface
             string OrganizationID = dt.Rows[(10 * GridViewOrganizationInfo.PageIndex) + e.RowIndex][0] as String;
             string OldName = dt.Rows[(10 * GridViewOrganizationInfo.PageIndex) + e.RowIndex][1] as String;
 
-            string QueryString = OrganizationID;
-            QueryString += "?OldName=" + OldName;
-            QueryString += "&NewName=" + NewName;
-            QueryString += "&Phone=" + Phone;
-            QueryString += "&AddressLine1=" + Address1;
-            QueryString += "&AddressLine2=" + Address2;
-            QueryString += "&AddressLine3=" + Address3;
-            QueryString += "&ZipCode=" + ZipCode;
-            QueryString += "&Website=" + Website;
-            QueryString += "&Hours=" + Hours;
-            QueryString += "&Notes=" + Notes;
-
             // Check entries against restrictions
             long PhoneNumeric;
             if (NewName == "")
@@ -270,6 +281,42 @@ namespace CRRD_Web_Interface
                     return;
                 }
             }
+
+            // Validate website
+            Uri OrgWebsite = null;
+            if (Website != "")
+            {
+                OrgWebsite = new UriBuilder(Website).Uri;
+                try
+                {
+                    Uri.TryCreate(OrgWebsite.ToString(), UriKind.Absolute, out OrgWebsite);
+                }
+                catch (Exception ex)
+                {
+                    LiteralErrorMessageAddOrganization.Text = "Website URL is poorly formatted";
+                    return;
+                }
+            }
+
+            // Build query string
+            string QueryString = OrganizationID;
+            QueryString += "?OldName=" + OldName;
+            QueryString += "&NewName=" + NewName;
+            QueryString += "&Phone=" + Phone;
+            QueryString += "&AddressLine1=" + Address1;
+            QueryString += "&AddressLine2=" + Address2;
+            QueryString += "&AddressLine3=" + Address3;
+            QueryString += "&ZipCode=" + ZipCode;
+            if(OrgWebsite != null)
+            {
+                QueryString += "&Website=" + OrgWebsite.ToString();
+            }
+            else
+            {
+                QueryString += "&Website=";
+            }
+            QueryString += "&Hours=" + Hours;
+            QueryString += "&Notes=" + Notes;
 
 
             // Atempt PUT
