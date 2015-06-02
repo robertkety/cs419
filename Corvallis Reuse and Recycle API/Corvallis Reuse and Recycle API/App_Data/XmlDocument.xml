@@ -530,20 +530,26 @@
             <param name="Id">The Id of the target Category</param>
             <param name="Items">An array of the target Items belonging to the target Category</param>
         </member>
-        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.CategoryItemController.Put(System.String,System.String,System.String,System.String[])">
+        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.CategoryItemController.Put(System.String,System.String[],System.Boolean)">
             <summary>
             Updates the Category Name for the taget Id and replaces all relational rows in CategoryItem table belonging to target Category Id with each of the Item Ids in the Items array
             </summary>
             <param name="Id">The Id of the target Category</param>
-            <param name="OldName">The existing name of that Category</param>
-            <param name="NewName">The new name for target category (or existing name if no change necessary)</param>
             <param name="Items">An array of the target Items belonging to the target Category</param>
+            <param name="CreateRelation">A bool value determining if the list of item ids should be related to the target category id</param>
         </member>
         <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.CategoryItemController.Delete(System.String)">
             <summary>
             Deletes all relational rows belonging to target Category Id in the CategoryItem table
             </summary>
             <param name="Id">The Id of the target Category</param>
+        </member>
+        <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.CategoryItemController.Delete(System.String,System.String[])">
+            <summary>
+            Deletes all relational rows belonging to target Category Id and Item Id in the CategoryItem table
+            </summary>
+            <param name="Id">The Id of the target Category</param>
+            <param name="Items">An array of the target Items by Id belonging to the target Category</param>
         </member>
         <member name="M:Corvallis_Reuse_and_Recycle_API.Controllers.ItemOrganizationController.Get(System.String,System.Boolean)">
             <summary>
