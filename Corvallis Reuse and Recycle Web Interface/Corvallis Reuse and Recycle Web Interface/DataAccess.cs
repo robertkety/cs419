@@ -8,12 +8,13 @@ using Newtonsoft.Json;
 using Microsoft.CSharp.RuntimeBinder;
 using Microsoft.AspNet.Identity.Owin;
 using CRRD_Web_Interface.Models;
+using System.Configuration;
 
 namespace CRRD_Web_Interface
 {
     public class DataAccess
     {
-        public static string url = "http://localhost:6744/";//"http://cs419.azurewebsites.net/";
+        public static string url = ConfigurationManager.AppSettings["web_api_url"];
         public static string token = "";
 
         /* Thanks! https://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn439314.aspx */
