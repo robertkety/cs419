@@ -35,8 +35,17 @@ Deployment Strategy
 	Save the Destination URL for the Web Management Portal configuration
 	Press Validate Connection
 	Press Publish
+3. Database
+	Go to http://manage.windowsazure.com/
+	On the left-hand column, select SQL Databases
+	Find the database you created in the previous step (eg, cs419webapi_db) and press the right-facing arrow next to the name
+	Under the "Connect to your database" heading, select "Design your SQL database"
+	Enter your username and password
+	At the top of the page, press "New Query"
+	Copy and paste the CRR_db.sql script supplied with your installation package in the blank window
+	Press Run
 	
-3. Web Management Portal
+4. Web Management Portal
 	Must set references in web.config first
 	Everywhere you see "{prefix}", add the unique prefix for you api (eg, cs419).  There should be two, one in appSettings and one in ConnectionStrings
 	Everywhere you see "{servername}", add the unique server name (eg, cs419webapi_db).  There should be two, both on the same line in ConnectionStrings
@@ -55,7 +64,8 @@ Deployment Strategy
 	Press Create
 	Save settings if prompted
 	Press Validate Connection
+	Record the Destination URL, this will be the URL you use to use the Web Management Portal
 	Press Publish
 	
-4. Windows Phone App
+5. Windows Phone App
 	Deploy to store?
