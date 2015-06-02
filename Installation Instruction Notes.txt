@@ -1,0 +1,61 @@
+Deployment Strategy
+1. Azure Storage Account
+	Create Azure account at http://azure.microsoft.com/
+	Once you've registered with a valid subscription, head to http://manage.windowsazure.com/
+	On the left-hand side, select "Storage"
+	In the bottom-left click "+NEW"
+	Click quick create
+	Enter a unique url prefix for your new Storage Account
+	Select your preferred Location and your valid subscription
+	Click Create Storage Account
+	Once your new Storage Account is created, select it
+	On the bottom of your screen, click Manage Access Keys
+	Record your Storage Account Name and Secondary Access Key in a secure location for later use
+	(Note: You can regenerate your access keys from here if they need to be replaced)
+	Run population routine
+	
+2. Web API
+	Modify web.config and find the appSettings element around line 14
+	Where it says: <add key="StorageAccount" value="DefaultEndpointsProtocol=https;AccountName={AccountName};AccountKey={AccessKey}" />
+	Replace "{AccountName}" and "{AccessKey}" with corresponding Storage Account Name and Key from step 1
+	Save
+	Right click Corvallis Reuse and Recycle Web API
+	Click Publish
+	Click Profile
+	Click Microsoft Azure Web Apps
+	Sign-in if necessary
+	Select New
+	Select a unique prefix for your api  (eg, cs419) and save for later use
+	Select an App Service plan or create a new plan
+	For Database server, select "Create new Server"
+	Enter a unique server name "eg, cs419webapi_db" Remeber this for later use
+	Enter a valid username and password, record these in a secure location for later use
+	Press Create
+	Save settings if prompted
+	Save the Destination URL for the Web Management Portal configuration
+	Press Validate Connection
+	Press Publish
+	
+3. Web Management Portal
+	Must set references in web.config first
+	Everywhere you see "{prefix}", add the unique prefix for you api (eg, cs419).  There should be two, one in appSettings and one in ConnectionStrings
+	Everywhere you see "{servername}", add the unique server name (eg, cs419webapi_db).  There should be two, both on the same line in ConnectionStrings
+	Everywhere you see "{username}", add the username you selected for your web api database
+	Everywhere you see "{password}", add the password you selected for your web api database
+	Click Save
+	Right click Corvallis Reuse and Recycle Web Interface
+	Click Publish
+	Click Profile
+	Click Microsoft Azure Web Apps
+	Sign-in if necessary
+	Select New
+	Select a unique prefix for your api  (eg, cs419) and save for later use
+	Select an App Service plan or create a new plan
+	For Database Server, select "No database"
+	Press Create
+	Save settings if prompted
+	Press Validate Connection
+	Press Publish
+	
+4. Windows Phone App
+	Deploy to store?

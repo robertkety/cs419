@@ -12,17 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D9E69D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvallis Reuse and Recycle API", "Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API.csproj", "{9BAB986D-05D3-4603-865E-E3773037FD1A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{277159C7-A5C9-4FCE-B97F-06693188764C}"
-	ProjectSection(SolutionItems) = preProject
-		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
-		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{6843CB89-6788-4C44-878F-9BE25BDECAB0}"
-	ProjectSection(SolutionItems) = preProject
-		PublishScripts\Configurations\CorvallisReuseandRecycleAPI-WAWS-dev.json = PublishScripts\Configurations\CorvallisReuseandRecycleAPI-WAWS-dev.json
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,8 +37,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{6843CB89-6788-4C44-878F-9BE25BDECAB0} = {277159C7-A5C9-4FCE-B97F-06693188764C}
 	EndGlobalSection
 EndGlobal

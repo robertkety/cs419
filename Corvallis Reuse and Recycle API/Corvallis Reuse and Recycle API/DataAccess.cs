@@ -26,20 +26,27 @@ namespace Corvallis_Reuse_and_Recycle_API
 {
     internal class DataAccess
     {
-        internal static CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cs419db"));
+        internal static CloudStorageAccount connectionString = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageAccount"));
 
         internal static IEnumerable<T> GetTable<T>(string tableName) 
             where T : TableEntity, new()
         {
             List<T> results = new List<T>();
-
-            CloudTableClient tableClient = connectionString.CreateCloudTableClient();
-            CloudTable table = tableClient.GetTableReference(tableName);
-
-            TableQuery<T> query = new TableQuery<T>();
-            foreach (T entity in table.ExecuteQuery(query))
+            
+            try
             {
-                results.Add(entity);
+                CloudTableClient tableClient = connectionString.CreateCloudTableClient();
+                CloudTable table = tableClient.GetTableReference(tableName);
+
+                TableQuery<T> query = new TableQuery<T>();
+                foreach (T entity in table.ExecuteQuery(query))
+                {
+                    results.Add(entity);
+                }
+            }
+            catch (Exception ex)
+            {
+                results = null;
             }
 
             return results.ToArray();
