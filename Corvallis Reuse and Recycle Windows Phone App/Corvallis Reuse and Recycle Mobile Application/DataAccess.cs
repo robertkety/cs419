@@ -14,7 +14,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
 {
     public sealed class DataAccess
     {
-        public static string url = "http://cs419.azurewebsites.net/";
+        public static string url = "http://{Web-API Name}.azurewebsites.net";
 
         /* Thanks! https://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn439314.aspx */
         private static async Task<dynamic> getDataFromService(string url)
