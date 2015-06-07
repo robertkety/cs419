@@ -188,7 +188,7 @@ INSERT INTO [dbo].[AspNetUsers]
            ,0
            ,0
            ,NULL
-           ,1
+           ,0
            ,0
            ,'admin@sustainablecorvallis.org')
 GO

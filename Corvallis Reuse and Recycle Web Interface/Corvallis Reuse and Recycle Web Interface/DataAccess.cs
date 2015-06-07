@@ -69,7 +69,7 @@ namespace CRRD_Web_Interface
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
-                if (token != null)
+                if ((token != null) && (token != ""))
                     request.Headers["Authorization"] = "Bearer " + token;
 
                 request.Method = "POST";

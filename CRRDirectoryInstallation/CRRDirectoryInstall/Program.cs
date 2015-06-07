@@ -20,6 +20,8 @@ using System.Data.SqlClient;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 using System.Net;
+using System.Threading.Tasks;
+using Nito.AsyncEx;
 
 namespace CRRDirectoryInstall
 {
@@ -29,7 +31,8 @@ namespace CRRDirectoryInstall
         public static string StorageAccountName = "crr0";
         public static string StorageAccessKey = "";
         public static string WebSpaceName = "";
-        public static string WebAppName = "";
+        public static string WebApiName = "";
+        public static string WebInterfaceName = "";
         public static string ApiPath = "/WebAPI/";
         public static string WebManagementAppPath = "/WebManagementApp/";
         public static string DatabaseName = "";
@@ -61,6 +64,11 @@ namespace CRRDirectoryInstall
 
         static void Main(string[] Args)
         {
+            AsyncContext.Run(() => MainAsync(Args));    //Thanks! http://stackoverflow.com/questions/9208921/async-on-main-method-of-console-app
+        }
+        
+        static async void MainAsync(string[] Args)
+        {
             var Options = new Options();
             if (CommandLine.Parser.Default.ParseArguments(Args, Options))
             {
@@ -75,20 +83,8 @@ namespace CRRDirectoryInstall
                     SubscriptionCloudCredentials Credentials = getCredentials(Options.SubscriptionId);
                     
                     //Storage Account
-                    Console.WriteLine("Connecting to Windows Azure and creating new Azure Storage Account\n(This will take a few minutes)");
-                    StorageAccountName = CreateStorageAccountName(Credentials);
-                    Console.WriteLine("\nRequesting Secondary Key for new Azure Storage Account");
-                    StorageAccessKey = GetStorageAccessKey(Credentials);
-                    Console.WriteLine("Key Retrieved");
-                    Console.WriteLine("\nPopulating Storage Tables");
-                    PopulateStorageAccount(Credentials, path, Verbose);
-
-                    //Web API
-                    Console.WriteLine("\nDeploying Web API");
-                    ConfigureWebAPI();
-                    WebAppName = CreateWebApp(Credentials, StorageAccountName + "-webapi");
-                    DeployWebSite(Credentials, ApiPath, Verbose);
-                    Console.WriteLine("Web API Deployed");
+                    Console.WriteLine("Connecting to Windows Azure and creating new Azure Storage Account\nThis will take a few minutes so I'll create your database while we wait.");
+                    var ResponseTask = CreateStorageAccountName(Credentials);
 
                     //Database
                     Console.WriteLine("\nCreating Database");
@@ -97,17 +93,41 @@ namespace CRRDirectoryInstall
                     Console.WriteLine("\nPopulating Database Schema and Data");
                     PopulateDatabase(Credentials, DatabaseName);
                     Console.WriteLine("Database populated");
-                    
-                    //Web Management Portal
-                    Console.WriteLine("\nDeploying Web Management Portal");
-                    ConfigureWebManagementApp(WebAppName);
-                    WebAppName = CreateWebApp(Credentials, StorageAccountName + "-management");
-                    DeployWebSite(Credentials, WebManagementAppPath, Verbose);
-                    Console.WriteLine("Web Management Portal Deployed");
-                    
+
                     //Add Firewall Rule
                     AddFirewallRule(Credentials);
                     DeleteFirewallRule(Credentials);
+
+                    Console.WriteLine("Still waiting on Azure Storage Account Creation");
+                    if ((await ResponseTask).StatusCode.ToString().Contains("OK"))
+                    {
+                        Console.WriteLine("Storage Account Created: " + StorageAccountName);
+                    }
+                    else
+                    {
+                        throw new CloudException("Storage Account Failed: " + StorageAccountName);
+                    }
+                    Console.WriteLine("\nRequesting Secondary Key for new Azure Storage Account");
+                    StorageAccessKey = GetStorageAccessKey(Credentials);
+                    Console.WriteLine("Key Retrieved");
+                    Console.WriteLine("\nPopulating Storage Tables");
+                    PopulateStorageAccount(Credentials, path, Verbose);
+
+                    //Web API
+                    Console.WriteLine("\nDeploying Web API");
+                    ConfigureApp(ApiPath);
+                    WebApiName = CreateWebApp(Credentials, StorageAccountName + "-webapi");
+                    DeployWebSite(Credentials, ApiPath, WebApiName, Verbose);
+                    Console.WriteLine("Web API Deployed");
+
+                    //Web Management Portal
+                    Console.WriteLine("\nDeploying Web Management Portal");
+                    ConfigureApp(WebManagementAppPath);
+                    WebInterfaceName = CreateWebApp(Credentials, StorageAccountName + "-management");
+                    DeployWebSite(Credentials, WebManagementAppPath, WebInterfaceName, Verbose);
+                    Console.WriteLine("Web Management Portal Deployed");
+                    
+                    
                 }
                 catch (System.IO.IOException ioex)
                 {
@@ -133,33 +153,31 @@ namespace CRRDirectoryInstall
         {
             string WebManagementAppPrefix = StorageAccountName + "-management";
             SqlManagementClient client = new SqlManagementClient(Credentials);
-            
-            string URL = String.Format("{0}.azurewebsites.net", WebManagementAppPrefix);
-            var temp = Dns.GetHostAddresses(URL);
-            string WMPIP = temp.First().ToString();
-                        
-            client.FirewallRules.Create(DBServerName, new FirewallRuleCreateParameters(WebManagementAppPrefix, WMPIP, WMPIP));            
+            string AzureServices = "0.0.0.0";
+
+            client.FirewallRules.Create(DBServerName, new FirewallRuleCreateParameters(WebManagementAppPrefix, AzureServices, AzureServices));            
         }
 
-        private static void ConfigureWebManagementApp(string APIPrefix)
+        private static void ConfigureApp(string Path)
         {
-            string WebConfig = System.IO.Directory.GetCurrentDirectory() + WebManagementAppPath + "Web.Config";
+            string WebConfig = System.IO.Directory.GetCurrentDirectory() + Path + "Web.Config";
             string text = File.ReadAllText(WebConfig);
-            text = text.Replace("{prefix}", APIPrefix);
+            text = text.Replace("{prefix}", WebApiName);
+            text = text.Replace("{sitename}", DatabaseName);
             text = text.Replace("{servername}", DBServerName);
             text = text.Replace("{username}", DBUserName);
             text = text.Replace("{password}", DBPassword);
-            File.WriteAllText(WebConfig, text);
-        }
-
-        private static void ConfigureWebAPI()
-        {
-            string WebConfig = System.IO.Directory.GetCurrentDirectory() + ApiPath + "Web.Config";
-            string text = File.ReadAllText(WebConfig);
             text = text.Replace("{AccountName}", StorageAccountName);
             text = text.Replace("{AccessKey}", StorageAccessKey);
             File.WriteAllText(WebConfig, text);
         }
+
+        //private static void ConfigureWebAPI()
+        //{
+        //    string WebConfig = System.IO.Directory.GetCurrentDirectory() + ApiPath + "Web.Config";
+        //    string text = File.ReadAllText(WebConfig);
+        //    File.WriteAllText(WebConfig, text);
+        //}
 
         private static void DeleteFirewallRule(SubscriptionCloudCredentials Credentials)
         {
@@ -250,10 +268,10 @@ namespace CRRDirectoryInstall
             return ModifiedDBName;
         }
 
-        private static void DeployWebSite(SubscriptionCloudCredentials Credentials, string AppPath, bool Verbose = false)
+        private static void DeployWebSite(SubscriptionCloudCredentials Credentials, string AppPath, string WebSiteName, bool Verbose = false)
         {
             var WebSiteClient = CloudContext.Clients.CreateWebSiteManagementClient(Credentials);
-            var PublishProfile = WebSiteClient.WebSites.GetPublishProfile(WebSpaceName, WebAppName).Where(x => x.PublishMethod == "FTP").First();
+            var PublishProfile = WebSiteClient.WebSites.GetPublishProfile(WebSpaceName, WebSiteName).Where(x => x.PublishMethod == "FTP").First();
 
             using (FtpClient client = new FtpClient())
             {
@@ -263,6 +281,9 @@ namespace CRRDirectoryInstall
                 client.Host = Host;
                 client.Credentials = new System.Net.NetworkCredential(PublishProfile.UserName, PublishProfile.UserPassword);
                 client.DataConnectionType = FtpDataConnectionType.PASV;
+                client.ConnectTimeout = 60000;
+                client.DataConnectionConnectTimeout = 60000;
+                client.SocketKeepAlive = true;
                 client.Connect();
 
                 client.DeleteFile(UploadPath + "/hostingstart.html");
@@ -279,13 +300,12 @@ namespace CRRDirectoryInstall
             string[] files = Directory.GetFiles(dirPath, "*.*");
             string[] subDirs = Directory.GetDirectories(dirPath);
 
-            foreach (string file in files)
+            //foreach (string file in files)
+            Parallel.ForEach(files, file =>
             {
                 bool FileUploaded = false;
                 int TimeOutCount = 0;
-
-                Console.Write(Verbose ? file.Split('\\').Last().Split('/').Last() + "..." : ".");
-                
+                string FileName = file.Split('\\').Last().Split('/').Last();
                 while (!FileUploaded)
                 {
                     try
@@ -306,12 +326,12 @@ namespace CRRDirectoryInstall
                         if (TimeOutCount >= 3)
                             throw new TimeoutException("", tex);
                         FileUploaded = false;
-                        Console.Write(Verbose ? String.Format("Timed out\nReconnecting ({0} of 3)...", (TimeOutCount + 1).ToString()) : ".");
+                        Console.Write(Verbose ? String.Format("{1} upload timed out\nReconnecting ({0} of 3)...", (TimeOutCount + 1).ToString(), FileName) : ".");
                     }
                 }
 
-                Console.Write(Verbose ? "Uploaded\n" : ".");
-            }
+                Console.Write(Verbose ? FileName + "...Uploaded\n" : ".");
+            });
 
             foreach (string subDir in subDirs)
             {
@@ -352,7 +372,7 @@ namespace CRRDirectoryInstall
             }
         }
 
-        private static string CreateStorageAccountName(SubscriptionCloudCredentials Credentials)
+        private static Task<Microsoft.WindowsAzure.OperationStatusResponse> CreateStorageAccountName(SubscriptionCloudCredentials Credentials)
         {
             int i = 0;
             var storageClient = CloudContext.Clients.CreateStorageManagementClient(Credentials);
@@ -373,21 +393,14 @@ namespace CRRDirectoryInstall
                     validStorageName = false;
                 }
             }
-
-            var response = storageClient.StorageAccounts.Create(new StorageAccountCreateParameters()
+            StorageAccountName = storageAccountName;
+            return storageClient.StorageAccounts.CreateAsync(new StorageAccountCreateParameters()
             {
                 Location = LocationNames.WestUS,
                 Name = storageAccountName,
                 Description = "storage account for corvallis reuse and recycle directory",
                 AccountType = "Standard_GRS"
             });
-
-            if (response.StatusCode.ToString().Contains("OK"))
-            {
-                Console.WriteLine("Storage Account Created: " + storageAccountName);
-            }
-
-            return storageAccountName;
         }
 
         public static string CreateWebApp(SubscriptionCloudCredentials Credentials, string SiteName)
