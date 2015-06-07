@@ -230,3 +230,5 @@ C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis R
 C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API\obj\Release\Corvallis Reuse and Recycle API.csprojResolveAssemblyReference.cache
 C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API\obj\Release\Corvallis Reuse and Recycle API.dll
 C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API\obj\Release\Corvallis Reuse and Recycle API.pdb
+C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API\bin\Newtonsoft.Json.dll
+C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API\bin\Newtonsoft.Json.xml
