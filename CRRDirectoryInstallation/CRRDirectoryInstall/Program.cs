@@ -125,9 +125,15 @@ namespace CRRDirectoryInstall
                     ConfigureApp(WebManagementAppPath);
                     WebInterfaceName = CreateWebApp(Credentials, StorageAccountName + "-management");
                     DeployWebSite(Credentials, WebManagementAppPath, WebInterfaceName, Verbose);
-                    Console.WriteLine("Web Management Portal Deployed");
+                    Console.WriteLine("Web Management Portal Deployed\n");
                     
-                    
+                    Console.WriteLine("\nDirectory backbone is deployed.");
+                    Console.WriteLine("To directly access the API and its supporting documentation visit http://{0}.azurewebsites.net/");
+                    Console.WriteLine("The Web Management Portal is now available at http://{0}.azurewebsites.net/");
+                    Console.WriteLine("The default username is \"adminUser\" and the password is \"GoBeavs247\"");
+                    Console.WriteLine("Please login to the Web Management Portal and change the default password as soon as possible.");
+                    Console.WriteLine("\nA Windows Phone application is also available as a user-friendly interface for the API");
+                    Console.WriteLine("Please refer to the system documentation for deployment instructions on the Windows Phone application");
                 }
                 catch (System.IO.IOException ioex)
                 {
@@ -171,13 +177,6 @@ namespace CRRDirectoryInstall
             text = text.Replace("{AccessKey}", StorageAccessKey);
             File.WriteAllText(WebConfig, text);
         }
-
-        //private static void ConfigureWebAPI()
-        //{
-        //    string WebConfig = System.IO.Directory.GetCurrentDirectory() + ApiPath + "Web.Config";
-        //    string text = File.ReadAllText(WebConfig);
-        //    File.WriteAllText(WebConfig, text);
-        //}
 
         private static void DeleteFirewallRule(SubscriptionCloudCredentials Credentials)
         {
