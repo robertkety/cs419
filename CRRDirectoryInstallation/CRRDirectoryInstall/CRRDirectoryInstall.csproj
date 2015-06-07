@@ -113,7 +113,7 @@
       <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -236,11 +236,13 @@
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>md "$(TargetDir)WebAPI"
+    <PreBuildEvent>C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API.sln" /p:DeployOnBuild=true /p:PublishProfile=FileSystem
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "C:\Users\Robert\Desktop\GitHub\cs419\Corvallis Reuse and Recycle Web Interface\Corvallis Reuse and Recycle Web Interface.sln" /p:DeployOnBuild=true /p:PublishProfile=FileSystem
+md "$(TargetDir)WebAPI"
 md "$(TargetDir)WebManagementApp"
 C:\Windows\System32\xcopy.exe "$(ProjectDir)WebAPI" "$(TargetDir)WebAPI" /y
 C:\Windows\System32\xcopy.exe "$(ProjectDir)WebManagementApp" "$(TargetDir)WebManagementApp" /y
-if $(ConfigurationName) == Release C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe C:\Users\Robert\Desktop\GitHub\cs419\CRRDirectoryInstallation\CRRDirectoryInstallation.sln /p:DeployOnBuild=true /p:PublishProfile=FileSystem</PreBuildEvent>
+</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

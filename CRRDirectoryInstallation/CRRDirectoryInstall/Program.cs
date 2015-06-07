@@ -19,13 +19,14 @@ using Microsoft.WindowsAzure.Management.Sql.Models;
 using System.Data.SqlClient;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
+using System.Net;
 
 namespace CRRDirectoryInstall
 {
     class Program
     {
         public static string CertificatePath = "/Certificates/cs419cert.cer";
-        public static string StorageAccountName = "";
+        public static string StorageAccountName = "crr0";
         public static string StorageAccessKey = "";
         public static string WebSpaceName = "";
         public static string WebAppName = "";
@@ -81,15 +82,6 @@ namespace CRRDirectoryInstall
                     Console.WriteLine("Key Retrieved");
                     Console.WriteLine("\nPopulating Storage Tables");
                     PopulateStorageAccount(Credentials, path, Verbose);
-                    
-                    //Database
-                    Console.WriteLine("\nCreating Database");
-                    DatabaseName = CreateDatabase(Credentials, StorageAccountName + "-db");
-                    Console.WriteLine("Database Created");
-                    Console.WriteLine("\nPopulating Database Schema and Data");
-                    PopulateDatabase(Credentials, DatabaseName);
-                    Console.WriteLine("Database populated");
-                    DeleteFirewallRule(Credentials);
 
                     //Web API
                     Console.WriteLine("\nDeploying Web API");
@@ -98,12 +90,24 @@ namespace CRRDirectoryInstall
                     DeployWebSite(Credentials, ApiPath, Verbose);
                     Console.WriteLine("Web API Deployed");
 
+                    //Database
+                    Console.WriteLine("\nCreating Database");
+                    DatabaseName = CreateDatabase(Credentials, StorageAccountName + "-db");
+                    Console.WriteLine("Database Created");
+                    Console.WriteLine("\nPopulating Database Schema and Data");
+                    PopulateDatabase(Credentials, DatabaseName);
+                    Console.WriteLine("Database populated");
+                    
                     //Web Management Portal
                     Console.WriteLine("\nDeploying Web Management Portal");
                     ConfigureWebManagementApp(WebAppName);
                     WebAppName = CreateWebApp(Credentials, StorageAccountName + "-management");
                     DeployWebSite(Credentials, WebManagementAppPath, Verbose);
                     Console.WriteLine("Web Management Portal Deployed");
+                    
+                    //Add Firewall Rule
+                    AddFirewallRule(Credentials);
+                    DeleteFirewallRule(Credentials);
                 }
                 catch (System.IO.IOException ioex)
                 {
@@ -123,6 +127,18 @@ namespace CRRDirectoryInstall
                     Console.ReadLine();
                 }
             }
+        }
+
+        private static void AddFirewallRule(SubscriptionCloudCredentials Credentials)
+        {
+            string WebManagementAppPrefix = StorageAccountName + "-management";
+            SqlManagementClient client = new SqlManagementClient(Credentials);
+            
+            string URL = String.Format("{0}.azurewebsites.net", WebManagementAppPrefix);
+            var temp = Dns.GetHostAddresses(URL);
+            string WMPIP = temp.First().ToString();
+                        
+            client.FirewallRules.Create(DBServerName, new FirewallRuleCreateParameters(WebManagementAppPrefix, WMPIP, WMPIP));            
         }
 
         private static void ConfigureWebManagementApp(string APIPrefix)
@@ -206,6 +222,7 @@ namespace CRRDirectoryInstall
             DBServerName = Server.Name;
             string ExternalIPAddress = new System.Net.WebClient().DownloadString("http://bot.whatismyipaddress.com");
 
+            // Temporary Firewall Rule for installation
             client.FirewallRules.Create(DBServerName, new FirewallRuleCreateParameters(DBRuleName, ExternalIPAddress, ExternalIPAddress));
             
             while (!ValidDatabaseName)
@@ -293,7 +310,7 @@ namespace CRRDirectoryInstall
                     }
                 }
 
-                Console.WriteLine(Verbose ? "Uploaded" : ".");
+                Console.Write(Verbose ? "Uploaded\n" : ".");
             }
 
             foreach (string subDir in subDirs)
