@@ -399,7 +399,7 @@ namespace CRRDirectoryInstall
             {
                 Location = LocationNames.WestUS,
                 Name = storageAccountName,
-                Description = "storage account for corvallis reuse and recycle directory",
+                Description = "storage account for corvallis reuse and repair directory",
                 AccountType = "Standard_GRS"
             });
         }

@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D9E69D5A-DC5F-463D-AFC7-7B6AF04E7E4B}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvallis Reuse and Repair API", "Corvallis Reuse and Repair API\Corvallis Reuse and Repair API.csproj", "{9BAB986D-05D3-4603-865E-E3773037FD1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Release|x64.ActiveCfg = Release|Any CPU
+		{9BAB986D-05D3-4603-865E-E3773037FD1A}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -5,9 +5,9 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRRDirectoryInstall", "CRRDirectoryInstall\CRRDirectoryInstall.csproj", "{42A38859-F12C-444D-A1CF-4DD396226468}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvallis Reuse and Recycle API", "..\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API\Corvallis Reuse and Recycle API.csproj", "{9BAB986D-05D3-4603-865E-E3773037FD1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvallis Reuse and Repair API", "..\Corvallis Reuse and Repair API\Corvallis Reuse and Repair API\Corvallis Reuse and Repair API.csproj", "{9BAB986D-05D3-4603-865E-E3773037FD1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvallis Reuse and Recycle Web Interface", "..\Corvallis Reuse and Recycle Web Interface\Corvallis Reuse and Recycle Web Interface\Corvallis Reuse and Recycle Web Interface.csproj", "{C54F8C3B-2716-4DF0-B5F3-512778261C28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvallis Reuse and Repair Web Interface", "..\Corvallis Reuse and Repair Web Interface\Corvallis Reuse and Repair Web Interface\Corvallis Reuse and Repair Web Interface.csproj", "{C54F8C3B-2716-4DF0-B5F3-512778261C28}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{93B73B9F-FE78-462F-B6C5-CA45B4981CE7}"
 	ProjectSection(SolutionItems) = preProject
