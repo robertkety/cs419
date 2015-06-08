@@ -7,8 +7,8 @@
     <ProjectGuid>{D9EBB33D-4C0E-474E-9809-39F1D708FD24}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Corvallis_Reuse_and_Recycle_Mobile_Application</RootNamespace>
-    <AssemblyName>Corvallis Reuse and Recycle Mobile Application</AssemblyName>
+    <RootNamespace>Corvallis_Reuse_and_Repair_Mobile_Application</RootNamespace>
+    <AssemblyName>Corvallis Reuse and Repair Mobile Application</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>

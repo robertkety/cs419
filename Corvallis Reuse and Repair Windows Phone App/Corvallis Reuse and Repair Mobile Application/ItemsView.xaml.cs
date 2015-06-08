@@ -7,8 +7,6 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation.Peers;
-using Windows.UI.Xaml.Automation.Provider;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
@@ -16,68 +14,64 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace Corvallis_Reuse_and_Recycle_Mobile_Application
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class CategoriesView : Page
+    public sealed partial class ItemsView : Page
     {
-        public CategoriesView()
+        private NavigationHelper navigationHelper;
+        
+        public ItemsView()
         {
-            this.InitializeComponent();
-
-            this.NavigationCacheMode = NavigationCacheMode.Required;
-
-            this.Loaded += PageLoaded;
+            this.InitializeComponent();        
         }
-        internal async void PageLoaded(object sender, RoutedEventArgs e)
-        {
-            List<Category> categories = await DataAccess.GetCategories();
 
-            if (categories.Count > 0)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        { 
+            string name = e.Parameter as string;
+            List<Item> items = await DataAccess.GetCategoryItem(name);
+
+            if (items.Count > 0)
             {
-                
-
-                foreach (Category category in categories)
+                foreach (Item item in items.OrderBy(x => x.Name))
                 {
                     Button button = new Button();
-                    button.Content = category.Name;
-                    button.Tag = category.Id;
+                    button.Content = item.Name;
+                    button.Tag = item.Id;
                     button.FontSize = 20;
                     button.Margin = new Thickness(10, 0, 10, 0);
                     button.HorizontalAlignment = HorizontalAlignment.Stretch;
                     button.VerticalAlignment = VerticalAlignment.Stretch;
                     button.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 214, 120, 20));
                     button.Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 80, 119, 39));
-                    button.Click += new RoutedEventHandler(ClickCategory);
-                    // button.BorderThickness = new Thickness(0, 0, 0, 0);
-
-                    Categories.Children.Add(button); 
+                    button.Click += new RoutedEventHandler(ClickItem);
+                    Items.Children.Add(button);
                 }
             }
             else
             {
                 TextBlock textBlock = new TextBlock();
-                textBlock.Text = "Sorry, no categories available";
+                textBlock.Text = "Sorry, no items available";
                 textBlock.FontSize = 48;
                 textBlock.TextWrapping = TextWrapping.WrapWholeWords;
                 textBlock.Margin = new Thickness(50, 0, 10, 10);
                 textBlock.HorizontalAlignment = HorizontalAlignment.Stretch;
                 textBlock.VerticalAlignment = VerticalAlignment.Stretch;
                 textBlock.Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 80, 119, 39));
-                ListCategories.Children.Add(textBlock);
+                ListItems.Children.Add(textBlock);
             }
         }
 
-        internal void ClickCategory(object sender, RoutedEventArgs e)
+        internal void ClickItem(object sender, RoutedEventArgs e)
         {
             Button _button = (Button)sender;
-            string CategoryId = _button.Tag.ToString();
+            string ItemId = _button.Tag.ToString();
 
-            Frame.Navigate(typeof(ItemsView), CategoryId);
+            Frame.Navigate(typeof(OrganizationsListView), ItemId);
         }
     }
 }

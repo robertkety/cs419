@@ -24,7 +24,7 @@
                 <StackPanel x:Name="Categories">
                 </StackPanel>
             </ScrollViewer>
-            <HyperlinkButton NavigateUri="http://site.republicservices.com/site/corvallis-or/en/documents/corvallisrecycledepot.pdf" HorizontalAlignment="Center" Content="Recycle with Republic Services" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="22" Width="400" Foreground="#FF507727"/>
+            <HyperlinkButton NavigateUri="http://site.republicservices.com/site/corvallis-or/en/documents/corvallisrepairdepot.pdf" HorizontalAlignment="Center" Content="Recycle with Republic Services" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="22" Width="400" Foreground="#FF507727"/>
             <HyperlinkButton NavigateUri="http://site.republicservices.com/site/corvallis-or/en/documents/detailedrecyclingguide.pdf" HorizontalAlignment="Center" Content="Recycle at Home" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="22" Width="400" Foreground="#FF507727"/>
         </StackPanel>
     </Grid>

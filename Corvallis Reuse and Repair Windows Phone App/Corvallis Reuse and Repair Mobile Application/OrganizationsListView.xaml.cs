@@ -88,7 +88,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
             if (organizations.Count > 0)
             {
                 // Load Organizations in List Format
-                foreach (Organization organization in organizations)
+                foreach (Organization organization in organizations.OrderBy(x => x.Name))
                 {
                     Button button = new Button();
                     button.Content = organization.Name;
@@ -220,7 +220,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                 case (Enums.offering.reuse):
                     return RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/map-pin-green-hi.png"));
                     //return RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/icon_map_small.gif"));
-                case (Enums.offering.recycle):
+                case (Enums.offering.repair):
                     return RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/map-pin-blue-hi.png"));
                 case (Enums.offering.both):
                     return RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/map-pin-purple-hi.png"));
@@ -238,7 +238,7 @@ namespace Corvallis_Reuse_and_Recycle_Mobile_Application
                 case (Enums.offering.reuse):
                     return new BitmapImage(new Uri("ms-appx:///Assets/map-pin-green-hi.png"));
                     //return RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/icon_map_small.gif"));
-                case (Enums.offering.recycle):
+                case (Enums.offering.repair):
                     return new BitmapImage(new Uri("ms-appx:///Assets/map-pin-blue-hi.png"));
                 case (Enums.offering.both):
                     return new BitmapImage(new Uri("ms-appx:///Assets/map-pin-purple-hi.png"));
