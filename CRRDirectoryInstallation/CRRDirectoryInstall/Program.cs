@@ -22,6 +22,8 @@ using Microsoft.SqlServer.Management.Smo;
 using System.Net;
 using System.Threading.Tasks;
 using Nito.AsyncEx;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CRRDirectoryInstall
 {
@@ -239,7 +241,7 @@ namespace CRRDirectoryInstall
             var Server = client.Servers.List().Where(x => x.AdministratorUserName == DBUserName).First();
 
             DBServerName = Server.Name;
-            string ExternalIPAddress = new System.Net.WebClient().DownloadString("http://bot.whatismyipaddress.com");
+            string ExternalIPAddress = (string)JObject.Parse(new System.Net.WebClient().DownloadString("https://api.ipify.org?format=json")).SelectToken("ip");
 
             // Temporary Firewall Rule for installation
             client.FirewallRules.Create(DBServerName, new FirewallRuleCreateParameters(DBRuleName, ExternalIPAddress, ExternalIPAddress));
