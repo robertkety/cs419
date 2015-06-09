@@ -29,7 +29,8 @@ namespace CRRDirectoryInstall
 {
     class Program
     {
-        public static string CertificatePath = "/Certificates/cs419cert.cer";
+        public static string CertificateName = "crrdirectory.cer";
+        public static string CertificatePath = "\\Certificates\\";
         public static string StorageAccountName = "crr0";
         public static string StorageAccessKey = "";
         public static string WebSpaceName = "";
@@ -82,7 +83,9 @@ namespace CRRDirectoryInstall
 
                 try
                 {
-                    SubscriptionCloudCredentials Credentials = getCredentials(Options.SubscriptionId);
+                    //RunCommand("CreateCert.exe", Verbose);    //The certificate this creates has to be uploaded to Azure before the program can continue
+                    
+                    SubscriptionCloudCredentials Credentials = GetCredentials(Options.SubscriptionId);
                     
                     //Storage Account
                     Console.WriteLine("Connecting to Windows Azure and creating new Azure Storage Account\nThis will take a few minutes so I'll create your database while we wait.");
@@ -128,7 +131,7 @@ namespace CRRDirectoryInstall
                     WebInterfaceName = CreateWebApp(Credentials, StorageAccountName + "-management");
                     DeployWebSite(Credentials, WebManagementAppPath, WebInterfaceName, Verbose);
                     Console.WriteLine("Web Management Portal Deployed\n");
-                    
+
                     Console.WriteLine("Directory backbone is deployed.\n");
                     Console.WriteLine(String.Format("To directly access the API and its supporting documentation visit:\nhttp://{0}.azurewebsites.net/\n", WebApiName));
                     Console.WriteLine(String.Format("The Web Management Portal is now available at:\nhttp://{0}.azurewebsites.net/", WebInterfaceName));
@@ -350,9 +353,18 @@ namespace CRRDirectoryInstall
             return storageClient.StorageAccounts.GetKeys(StorageAccountName).SecondaryKey.ToString();
         }
 
-        static SubscriptionCloudCredentials getCredentials(string subscriptionId)
+        static SubscriptionCloudCredentials GetCredentials(string subscriptionId)
         {
-            return new CertificateCloudCredentials(subscriptionId, new X509Certificate2(System.IO.Directory.GetCurrentDirectory() + CertificatePath));
+            X509Store Store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+            Store.Open(OpenFlags.ReadOnly);
+            var CertCollection = Store.Certificates;
+            foreach (var Certificate in CertCollection)
+            {
+                if(Certificate.Issuer == "CN=" + CertificateName)
+                    return new CertificateCloudCredentials(subscriptionId, Certificate);
+            }
+
+            throw new Exception("Certificate not found");
         }
 
         /* Runs the Windows command: cmd.exe and arguments */
@@ -361,7 +373,9 @@ namespace CRRDirectoryInstall
             try
             {
                 ProcessStartInfo CommandInfo = new ProcessStartInfo("cmd.exe", "/C \"" + Arguments + "\"");
+#if RELEASE
                 CommandInfo.WindowStyle = ProcessWindowStyle.Hidden;
+#endif
                 CommandInfo.UseShellExecute = false;
                 CommandInfo.RedirectStandardOutput = !Verbose;
 
@@ -392,8 +406,10 @@ namespace CRRDirectoryInstall
                     if(!(validStorageName = availabilityResponse.IsAvailable))
                         storageAccountName = "crr" + (i++).ToString();                    
                 }
-                catch
+                catch(CloudException cex)
                 {
+                    if (cex.ErrorCode == "ForbiddenError")
+                        throw new CloudException("Certificate Error", cex);
                     validStorageName = false;
                 }
             }

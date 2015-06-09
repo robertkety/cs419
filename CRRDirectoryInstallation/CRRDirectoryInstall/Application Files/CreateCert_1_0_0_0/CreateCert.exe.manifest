@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="CreateCert.exe" version="1.0.0.0" publicKeyToken="39563054a41b7b73" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="CreateCert" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="CreateCert.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CreateCert.exe" size="6616">
+      <assemblyIdentity name="CreateCert" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>4R6WssT1gejSUlDIrr8lab4bxOly1rmY84db35Q/Unk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="CreateCert.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=KETYSERVER-PC\Robert" issuerKeyHash="e9063db43e006a69f33ff58d5413e2798bd8f6c8" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>JxSOZbJb78YFLgTCeJxVXLa1IRjPFl9QuczzWOrPV9M=</DigestValue></Reference></SignedInfo><SignatureValue>Xg/ngr67v2LbfmLfLVAObzZcamSN3J28iNfwDn6CxyavcFxNSl6laRQyp/0KIsRMsvTTVbmw+tXfWocEvG0sMSjptesEXBA95KCCynVyfasrOvDMz8rvXObyFGmW6YDZiWC/5Wa97+mV9xBqsV8BBz08G3R0/nCwfZ6+s39hOI0=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>wTL5a0IekSY7qmXs1CRFdh9fNjMNuZjDVMWKhS0KWy3nWpALCjBp3wVPI/px8xorXzfNA0YCjaXRyv6mQaQPhVPfOyvFhJCeRZVSF96SpltEh+wM+WufHAIklY2W6zRqCBOwTuikMvpxNWFOjLT/L6M2k7gTeaWWNORUZX3Dy90=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="d357cfea58f3ccb9505f16cf1821b5b65c559c78c2042e05c6ef5bb2658e1427" Description="" Url=""><as:assemblyIdentity name="CreateCert.exe" version="1.0.0.0" publicKeyToken="39563054a41b7b73" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=KETYSERVER-PC\Robert</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>PFsRO/roa8HUqNbm0aaS4wg0MFx5GmepEZ4CSloMe/E=</DigestValue></Reference></SignedInfo><SignatureValue>U7TZAxVXh0po4Paum4b/5gyvXj9lX6hjBRS0Jh3QqWj4eDnCW2eLHlM2CsKpFs6ioRjOwJqPb4eWQ485nNT8sr5cZ5R8l+/CcDYz+O3z6tFNEkE5ka2May35zwK4IVDf5Bcn5MiFO3z4zgyln45P9CnwQcBY4F2QSYX1iW2iDOk=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>wTL5a0IekSY7qmXs1CRFdh9fNjMNuZjDVMWKhS0KWy3nWpALCjBp3wVPI/px8xorXzfNA0YCjaXRyv6mQaQPhVPfOyvFhJCeRZVSF96SpltEh+wM+WufHAIklY2W6zRqCBOwTuikMvpxNWFOjLT/L6M2k7gTeaWWNORUZX3Dy90=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB6TCCAVKgAwIBAgIQIZSjAEHVupZIUrOJy1z/YzANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDHigASwBFAFQAWQBTAEUAUgBWAEUAUgAtAFAAQwBcAFIAbwBiAGUAcgB0MB4XDTE1MDYwOTIxMDIxNVoXDTE2MDYwOTAzMDIxNVowMzExMC8GA1UEAx4oAEsARQBUAFkAUwBFAFIAVgBFAFIALQBQAEMAXABSAG8AYgBlAHIAdDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAwTL5a0IekSY7qmXs1CRFdh9fNjMNuZjDVMWKhS0KWy3nWpALCjBp3wVPI/px8xorXzfNA0YCjaXRyv6mQaQPhVPfOyvFhJCeRZVSF96SpltEh+wM+WufHAIklY2W6zRqCBOwTuikMvpxNWFOjLT/L6M2k7gTeaWWNORUZX3Dy90CAwEAATANBgkqhkiG9w0BAQsFAAOBgQC52CWrP0S/+/Alyj8IZQ9jVjOiDQwwzIhiLOsiTgP2tVOAoORy/pAGK9q1oYivCuVOrFLZPF7EQI3M2etw34JSpk4AWa63x5tEjMJ4uxCx5P9UZn7RnS8d50ujL1zIARf0+Obgrjq2wlxbC/IYy5E/1iKRmbTXqlBvIkCWuUUkYw==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
