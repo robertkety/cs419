@@ -97,7 +97,7 @@ namespace CRRDirectoryInstall
                     Console.WriteLine("Database populated");
 
                     //Add Firewall Rule
-                    AddFirewallRule(Credentials);
+                    AddFirewallRule(Credentials, StorageAccountName + "-management", "0.0.0.0");
                     DeleteFirewallRule(Credentials);
 
                     Console.WriteLine("Still waiting on Azure Storage Account Creation");
@@ -159,13 +159,14 @@ namespace CRRDirectoryInstall
             }
         }
 
-        private static void AddFirewallRule(SubscriptionCloudCredentials Credentials)
+        private static void AddFirewallRule(SubscriptionCloudCredentials Credentials, string RuleName, string IPv4Address)
         {
-            string WebManagementAppPrefix = StorageAccountName + "-management";
             SqlManagementClient client = new SqlManagementClient(Credentials);
-            string AzureServices = "0.0.0.0";
-
-            client.FirewallRules.Create(DBServerName, new FirewallRuleCreateParameters(WebManagementAppPrefix, AzureServices, AzureServices));            
+            try { client.FirewallRules.Get(DBServerName, RuleName); }
+            catch
+            {
+                client.FirewallRules.Create(DBServerName, new FirewallRuleCreateParameters(RuleName, IPv4Address, IPv4Address));
+            }
         }
 
         private static void ConfigureApp(string Path)
@@ -244,7 +245,7 @@ namespace CRRDirectoryInstall
             string ExternalIPAddress = (string)JObject.Parse(new System.Net.WebClient().DownloadString("https://api.ipify.org?format=json")).SelectToken("ip");
 
             // Temporary Firewall Rule for installation
-            client.FirewallRules.Create(DBServerName, new FirewallRuleCreateParameters(DBRuleName, ExternalIPAddress, ExternalIPAddress));
+            AddFirewallRule(Credentials, DBRuleName, ExternalIPAddress);
             
             while (!ValidDatabaseName)
             {
