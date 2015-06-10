@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using Corvallis_Reuse_and_Repair_API.Models;
+using Corvallis_Reuse_and_Repair_API.Providers;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using Corvallis_Reuse_and_Repair_API.Providers;
-using Corvallis_Reuse_and_Repair_API.Models;
 
 namespace Corvallis_Reuse_and_Repair_API
 {

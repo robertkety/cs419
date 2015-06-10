@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Web.UI.WebControls;
+
 namespace CRRD_Web_Interface.Account {
     
     
@@ -19,7 +21,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder successPanel;
+        protected PlaceHolder successPanel;
         
         /// <summary>
         /// login control.
@@ -28,7 +30,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink login;
+        protected HyperLink login;
         
         /// <summary>
         /// errorPanel control.
@@ -37,7 +39,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder errorPanel;
+        protected PlaceHolder errorPanel;
 
     }
 }

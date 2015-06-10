@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Web.UI.WebControls;
+
 namespace CRRD_Web_Interface.Account {
     
     
@@ -19,7 +21,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder sendcode;
+        protected PlaceHolder sendcode;
         
         /// <summary>
         /// Providers control.
@@ -28,7 +30,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Providers;
+        protected DropDownList Providers;
         
         /// <summary>
         /// ProviderSubmit control.
@@ -37,7 +39,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ProviderSubmit;
+        protected Button ProviderSubmit;
         
         /// <summary>
         /// verifycode control.
@@ -46,7 +48,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder verifycode;
+        protected PlaceHolder verifycode;
         
         /// <summary>
         /// SelectedProvider control.
@@ -55,7 +57,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField SelectedProvider;
+        protected HiddenField SelectedProvider;
         
         /// <summary>
         /// ErrorMessage control.
@@ -64,7 +66,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
+        protected PlaceHolder ErrorMessage;
         
         /// <summary>
         /// FailureText control.
@@ -73,7 +75,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal FailureText;
+        protected Literal FailureText;
         
         /// <summary>
         /// Code control.
@@ -82,7 +84,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Code;
+        protected TextBox Code;
         
         /// <summary>
         /// RememberBrowser control.
@@ -91,7 +93,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox RememberBrowser;
+        protected CheckBox RememberBrowser;
         
         /// <summary>
         /// CodeSubmit control.
@@ -100,6 +102,6 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CodeSubmit;
+        protected Button CodeSubmit;
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace CRRD_Web_Interface.Entities
+﻿namespace CRRD_Web_Interface.Entities
 {
     public class Login
     {

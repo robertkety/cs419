@@ -6,16 +6,12 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
+using Corvallis_Reuse_and_Repair_API.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OAuth;
-using Corvallis_Reuse_and_Repair_API.Models;
-using Corvallis_Reuse_and_Repair_API.Providers;
-using Corvallis_Reuse_and_Repair_API.Results;
 
 namespace Corvallis_Reuse_and_Repair_API.Controllers
 {

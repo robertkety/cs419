@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using Corvallis_Reuse_and_Repair_API.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using Corvallis_Reuse_and_Repair_API.Models;
 
 namespace Corvallis_Reuse_and_Repair_API
 {

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Corvallis_Reuse_and_Repair_API.Areas.HelpPage.ModelDescriptions

@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Web.UI.WebControls;
+
 namespace CRRD_Web_Interface {
     
     
@@ -19,7 +21,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelErrorMessages;
+        protected Panel PanelErrorMessages;
         
         /// <summary>
         /// LiteralDatabaseError control.
@@ -28,7 +30,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralDatabaseError;
+        protected Literal LiteralDatabaseError;
         
         /// <summary>
         /// PanelUserInfo control.
@@ -37,7 +39,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelUserInfo;
+        protected Panel PanelUserInfo;
         
         /// <summary>
         /// LiteralErrorMessageGridView control.
@@ -46,7 +48,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorMessageGridView;
+        protected Literal LiteralErrorMessageGridView;
         
         /// <summary>
         /// GridViewUserInfo control.
@@ -55,7 +57,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewUserInfo;
+        protected GridView GridViewUserInfo;
         
         /// <summary>
         /// LinkButtonAddUser control.
@@ -64,7 +66,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButtonAddUser;
+        protected LinkButton LinkButtonAddUser;
         
         /// <summary>
         /// PanelAddUser control.
@@ -73,7 +75,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelAddUser;
+        protected Panel PanelAddUser;
         
         /// <summary>
         /// LiteralErrorMessageAddUser control.
@@ -82,7 +84,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorMessageAddUser;
+        protected Literal LiteralErrorMessageAddUser;
         
         /// <summary>
         /// Email control.
@@ -91,7 +93,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Email;
+        protected TextBox Email;
         
         /// <summary>
         /// Password control.
@@ -100,7 +102,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Password;
+        protected TextBox Password;
         
         /// <summary>
         /// ConfirmPassword control.
@@ -109,6 +111,6 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
+        protected TextBox ConfirmPassword;
     }
 }

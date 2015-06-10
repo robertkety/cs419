@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using System.IO;
-using Newtonsoft.Json;
-using Microsoft.CSharp.RuntimeBinder;
-using Microsoft.AspNet.Identity.Owin;
+using CRRD_Web_Interface.Entities;
 using CRRD_Web_Interface.Models;
-using System.Configuration;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.CSharp.RuntimeBinder;
+using Newtonsoft.Json;
 
 namespace CRRD_Web_Interface
 {
@@ -283,7 +284,7 @@ namespace CRRD_Web_Interface
 
 
 
-        public static SignInStatus PostLogin(Entities.Login login)
+        public static SignInStatus PostLogin(Login login)
         {
             string path = "Token";
             string payload = "Email=" + login.username + "&Password=" + login.password + "&ConfirmPassword=" + login.password + "&grant_type=password" + "&UserName=" + login.username;

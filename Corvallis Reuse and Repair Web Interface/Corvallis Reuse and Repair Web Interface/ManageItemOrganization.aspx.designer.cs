@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Web.UI.WebControls;
+
 namespace CRRD_Web_Interface {
     
     
@@ -19,7 +21,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelErrorMessages;
+        protected Panel PanelErrorMessages;
         
         /// <summary>
         /// LabelErrorMessageConnection control.
@@ -28,7 +30,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelErrorMessageConnection;
+        protected Label LabelErrorMessageConnection;
         
         /// <summary>
         /// PanelItemOrganization control.
@@ -37,7 +39,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelItemOrganization;
+        protected Panel PanelItemOrganization;
         
         /// <summary>
         /// LiteralErrorMessageGridView control.
@@ -46,7 +48,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorMessageGridView;
+        protected Literal LiteralErrorMessageGridView;
         
         /// <summary>
         /// LabelInstruction control.
@@ -55,7 +57,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelInstruction;
+        protected Label LabelInstruction;
         
         /// <summary>
         /// DropDownListItems control.
@@ -64,7 +66,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListItems;
+        protected DropDownList DropDownListItems;
         
         /// <summary>
         /// GridViewItemOrganization control.
@@ -73,6 +75,6 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewItemOrganization;
+        protected GridView GridViewItemOrganization;
     }
 }

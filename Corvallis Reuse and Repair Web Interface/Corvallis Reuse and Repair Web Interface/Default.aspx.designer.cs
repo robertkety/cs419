@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Web.UI.WebControls;
+
 namespace CRRD_Web_Interface {
     
     
@@ -19,7 +21,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelAnon;
+        protected Panel PanelAnon;
         
         /// <summary>
         /// HyperLinkLogin control.
@@ -28,7 +30,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLinkLogin;
+        protected HyperLink HyperLinkLogin;
         
         /// <summary>
         /// PanelLogged control.
@@ -37,7 +39,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelLogged;
+        protected Panel PanelLogged;
         
         /// <summary>
         /// HyperLinkManageAccount control.
@@ -46,7 +48,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLinkManageAccount;
+        protected HyperLink HyperLinkManageAccount;
         
         /// <summary>
         /// HyperLinkManageUsers control.
@@ -55,7 +57,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLinkManageUsers;
+        protected HyperLink HyperLinkManageUsers;
         
         /// <summary>
         /// HyperLinkManageOrganizations control.
@@ -64,7 +66,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLinkManageOrganizations;
+        protected HyperLink HyperLinkManageOrganizations;
         
         /// <summary>
         /// HyperLinkManageCategories control.
@@ -73,7 +75,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLinkManageCategories;
+        protected HyperLink HyperLinkManageCategories;
         
         /// <summary>
         /// HyperLinkManageItems control.
@@ -82,7 +84,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLinkManageItems;
+        protected HyperLink HyperLinkManageItems;
         
         /// <summary>
         /// HyperLinkManageCategoryItems control.
@@ -91,7 +93,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLinkManageCategoryItems;
+        protected HyperLink HyperLinkManageCategoryItems;
         
         /// <summary>
         /// HyperLinkManageItemOrganization control.
@@ -100,6 +102,6 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLinkManageItemOrganization;
+        protected HyperLink HyperLinkManageItemOrganization;
     }
 }

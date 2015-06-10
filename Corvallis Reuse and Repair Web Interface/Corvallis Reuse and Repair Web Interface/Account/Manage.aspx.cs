@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Web;
+using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace CRRD_Web_Interface.Account
 {
-    public partial class Manage : System.Web.UI.Page
+    public partial class Manage : Page
     {
         protected string SuccessMessage
         {

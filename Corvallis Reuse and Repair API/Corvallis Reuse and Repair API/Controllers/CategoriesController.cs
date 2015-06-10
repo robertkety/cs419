@@ -1,8 +1,7 @@
-﻿using Corvallis_Reuse_and_Repair_API.Entities;
-using Microsoft.WindowsAzure.Storage.Table;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using Corvallis_Reuse_and_Repair_API.Entities;
 
 namespace Corvallis_Reuse_and_Repair_API.Controllers
 {

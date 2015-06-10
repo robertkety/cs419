@@ -1,10 +1,10 @@
 ﻿using System;
+using CRRD_Web_Interface.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using CRRD_Web_Interface.Models;
 
 namespace CRRD_Web_Interface
 {

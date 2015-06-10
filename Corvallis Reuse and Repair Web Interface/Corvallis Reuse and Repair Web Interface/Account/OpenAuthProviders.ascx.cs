@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
 namespace CRRD_Web_Interface.Account
 {
-    public partial class OpenAuthProviders : System.Web.UI.UserControl
+    public partial class OpenAuthProviders : UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {

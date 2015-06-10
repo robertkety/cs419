@@ -1,10 +1,5 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
+﻿using System;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CRRD_Web_Interface.Models
 {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web;
 using System.Web.UI;
+using CRRD_Web_Interface.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using CRRD_Web_Interface.Models;
 
 namespace CRRD_Web_Interface.Account
 {
