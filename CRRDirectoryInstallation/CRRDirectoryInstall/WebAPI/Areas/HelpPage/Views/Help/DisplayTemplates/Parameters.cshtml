@@ -1,5 +1,9 @@
+@using System.Collections.Generic
+@using System.Collections.ObjectModel
+@using System.Web.Http.Description
+@using System.Threading
 @using Corvallis_Reuse_and_Repair_API.Areas.HelpPage.ModelDescriptions
-@model IList<Corvallis_Reuse_and_Repair_API.Areas.HelpPage.ModelDescriptions.ParameterDescription>
+@model IList<ParameterDescription>
 
 @if (Model.Count > 0)
 {

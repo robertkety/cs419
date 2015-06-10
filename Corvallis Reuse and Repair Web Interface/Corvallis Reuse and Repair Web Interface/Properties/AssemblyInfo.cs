@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -7,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("CRRD_Web_Interface")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ryan Ford")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("CRRD_Web_Interface")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]

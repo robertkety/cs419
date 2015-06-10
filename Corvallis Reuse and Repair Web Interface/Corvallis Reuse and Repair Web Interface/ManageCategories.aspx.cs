@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Threading.Tasks;
 using CRRD_Web_Interface.Models;
+using System.Data;
+using System.Diagnostics;
 
 // Manual grid view implementation borrowed from: http://aarongoldenthal.com/post/2009/04/19/Manually-Databinding-a-GridView.aspx
 // Sorting data table: http://stackoverflow.com/questions/9107916/sorting-rows-in-a-data-table
 namespace CRRD_Web_Interface
 {
-    public partial class ManageCategories : Page
+    public partial class ManageCategories : System.Web.UI.Page
     {
         protected string SearchString = String.Empty;
         protected bool Authenticated = false;   // Flag to prevent the rest of the page being rendered when user is not authenitcated

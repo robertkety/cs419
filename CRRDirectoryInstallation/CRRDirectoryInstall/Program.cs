@@ -1,27 +1,29 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.FtpClient;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using CommandLine;
+﻿using CommandLine;
 using CommandLine.Text;
-using Microsoft.SqlServer.Management.Common;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.Models;
-using Microsoft.WindowsAzure.Management.Sql;
-using Microsoft.WindowsAzure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Management.WebSites.Models;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
-using Newtonsoft.Json.Linq;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using Microsoft.Web.Deployment;
+using System.Net.FtpClient;
+using Microsoft.WindowsAzure.Management.Sql;
+using Microsoft.WindowsAzure.Management.Sql.Models;
+using System.Data.SqlClient;
+using Microsoft.SqlServer.Management.Common;
+using Microsoft.SqlServer.Management.Smo;
+using System.Net;
+using System.Threading.Tasks;
 using Nito.AsyncEx;
-using Server = Microsoft.SqlServer.Management.Smo.Server;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CRRDirectoryInstall
 {
@@ -71,9 +73,9 @@ namespace CRRDirectoryInstall
         static async void MainAsync(string[] Args)
         {
             var Options = new Options();
-            if (Parser.Default.ParseArguments(Args, Options))
+            if (CommandLine.Parser.Default.ParseArguments(Args, Options))
             {
-                string path = Directory.GetCurrentDirectory() + "/StorageTables/";
+                string path = System.IO.Directory.GetCurrentDirectory() + "/StorageTables/";
                 bool Verbose = Options.Verbose;
 #if DEBUG
                 Verbose = true;
@@ -140,11 +142,11 @@ namespace CRRDirectoryInstall
                     Console.WriteLine("for the API. Please refer to the system documentation for deployment");
                     Console.WriteLine("instructions on the Windows Phone application");
                 }
-                catch (IOException ioex)
+                catch (System.IO.IOException ioex)
                 {
                     Console.WriteLine("IO Exception: " + ioex.ToString());
                 }
-                catch (StorageException stex)
+                catch (Microsoft.WindowsAzure.Storage.StorageException stex)
                 {
                     Console.WriteLine("Azure Storage Exception: " + stex.ToString());
                 }
@@ -172,7 +174,7 @@ namespace CRRDirectoryInstall
 
         private static void ConfigureApp(string Path)
         {
-            string WebConfig = Directory.GetCurrentDirectory() + Path + "Web.Config";
+            string WebConfig = System.IO.Directory.GetCurrentDirectory() + Path + "Web.Config";
             string text = File.ReadAllText(WebConfig);
             text = text.Replace("{prefix}", WebApiName);
             text = text.Replace("{sitename}", DatabaseName);
@@ -192,7 +194,7 @@ namespace CRRDirectoryInstall
 
         private static void PopulateStorageAccount(SubscriptionCloudCredentials Credentials, string path, bool Verbose = false)
         {
-            foreach (string SourceTable in Directory.GetDirectories(path))
+            foreach (string SourceTable in System.IO.Directory.GetDirectories(path))
             {
                 Console.WriteLine(String.Format("\nCreating {0} table in {1} storage account", SourceTable.Split('/').Last().Split('\\').Last(), StorageAccountName));
                 // Create table in Azure 
@@ -204,11 +206,11 @@ namespace CRRDirectoryInstall
 
                 // Build AzCopy Command and Arguments 
                 Console.WriteLine(String.Format("\nPopulating {0} table", SourceTable));
-                StringBuilder Command = new StringBuilder(Directory.GetCurrentDirectory() + @"\AzCopy\AzCopy.exe");
+                StringBuilder Command = new StringBuilder(System.IO.Directory.GetCurrentDirectory() + @"\AzCopy\AzCopy.exe");
                 Command.Append(" /Source:" + SourceTable);
                 Command.Append(" /Dest:https://" + StorageAccountName + ".table.core.windows.net/" + Table.Name + "/");
                 Command.Append(" /DestKey:" + StorageAccessKey);
-                Command.Append(" /Manifest:\"" + Path.GetFileName(Directory.GetFiles(SourceTable, "*.manifest").First()) + "\"");
+                Command.Append(" /Manifest:\"" + Path.GetFileName(System.IO.Directory.GetFiles(SourceTable, "*.manifest").First()) + "\"");
                 Command.Append(" /EntityOperation:InsertOrReplace /Y");
 
                 // Run AzCopy 
@@ -223,8 +225,8 @@ namespace CRRDirectoryInstall
             string ConnectionString = String.Format("Data Source=tcp:{0}.database.windows.net,1433;Initial Catalog={1};User Id={2}@{0};Password={3};", DBServerName, DatabaseName, DBUserName, DBPassword);
             using (SqlConnection Connection = new SqlConnection(ConnectionString))
             {
-                Server server = new Server(new ServerConnection(Connection));
-                server.ConnectionContext.ExecuteNonQuery(File.ReadAllText(Directory.GetCurrentDirectory() + "\\CRR_db.sql"));
+                Microsoft.SqlServer.Management.Smo.Server server = new Microsoft.SqlServer.Management.Smo.Server(new ServerConnection(Connection));
+                server.ConnectionContext.ExecuteNonQuery(File.ReadAllText(System.IO.Directory.GetCurrentDirectory() + "\\CRR_db.sql"));
                 Connection.Close();
             }
         }
@@ -243,7 +245,7 @@ namespace CRRDirectoryInstall
             var Server = client.Servers.List().Where(x => x.AdministratorUserName == DBUserName).First();
 
             DBServerName = Server.Name;
-            string ExternalIPAddress = (string)JObject.Parse(new WebClient().DownloadString("https://api.ipify.org?format=json")).SelectToken("ip");
+            string ExternalIPAddress = (string)JObject.Parse(new System.Net.WebClient().DownloadString("https://api.ipify.org?format=json")).SelectToken("ip");
 
             // Temporary Firewall Rule for installation
             AddFirewallRule(Credentials, DBRuleName, ExternalIPAddress);
@@ -284,7 +286,7 @@ namespace CRRDirectoryInstall
                 string UploadPath = "/site/wwwroot";
 
                 client.Host = Host;
-                client.Credentials = new NetworkCredential(PublishProfile.UserName, PublishProfile.UserPassword);
+                client.Credentials = new System.Net.NetworkCredential(PublishProfile.UserName, PublishProfile.UserPassword);
                 client.DataConnectionType = FtpDataConnectionType.PASV;
                 client.ConnectTimeout = 60000;
                 client.DataConnectionConnectTimeout = 60000;
@@ -293,7 +295,7 @@ namespace CRRDirectoryInstall
 
                 client.DeleteFile(UploadPath + "/hostingstart.html");
 
-                RecursiveDirectoryUpload(client, Directory.GetCurrentDirectory() + AppPath, UploadPath, Verbose);
+                RecursiveDirectoryUpload(client, System.IO.Directory.GetCurrentDirectory() + AppPath, UploadPath, Verbose);
                 
                 client.Disconnect();
             }
@@ -388,7 +390,7 @@ namespace CRRDirectoryInstall
             }
         }
 
-        private static Task<OperationStatusResponse> CreateStorageAccountName(SubscriptionCloudCredentials Credentials)
+        private static Task<Microsoft.WindowsAzure.OperationStatusResponse> CreateStorageAccountName(SubscriptionCloudCredentials Credentials)
         {
             int i = 0;
             var storageClient = CloudContext.Clients.CreateStorageManagementClient(Credentials);

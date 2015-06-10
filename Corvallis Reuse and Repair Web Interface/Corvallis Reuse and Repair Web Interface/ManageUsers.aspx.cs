@@ -1,16 +1,20 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using CRRD_Web_Interface.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using Owin;
+using CRRD_Web_Interface.Models;
+using System.Data;
 
 namespace CRRD_Web_Interface
 {
-    public partial class ManageUsers : Page
+    public partial class ManageUsers : System.Web.UI.Page
     {
         protected bool Authenticated = false;   // Flag to prevent the rest of the page being rendered when user is not authenitcated
 

@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Web.UI.WebControls;
-
 namespace CRRD_Web_Interface.Account {
     
     
@@ -21,6 +19,6 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected ListView providerDetails;
+        protected global::System.Web.UI.WebControls.ListView providerDetails;
     }
 }

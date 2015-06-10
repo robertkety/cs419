@@ -1,8 +1,10 @@
-﻿using Corvallis_Reuse_and_Repair_API;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(Startup))]
+[assembly: OwinStartup(typeof(Corvallis_Reuse_and_Repair_API.Startup))]
 
 namespace Corvallis_Reuse_and_Repair_API
 {

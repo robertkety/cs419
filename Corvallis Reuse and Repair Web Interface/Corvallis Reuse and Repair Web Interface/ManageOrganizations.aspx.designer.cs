@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Web.UI.WebControls;
-
 namespace CRRD_Web_Interface {
     
     
@@ -21,7 +19,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Panel PanelErrorMessages;
+        protected global::System.Web.UI.WebControls.Panel PanelErrorMessages;
         
         /// <summary>
         /// LabelErrorMessageConnection control.
@@ -30,7 +28,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Label LabelErrorMessageConnection;
+        protected global::System.Web.UI.WebControls.Label LabelErrorMessageConnection;
         
         /// <summary>
         /// PanelOrganizationInfo control.
@@ -39,7 +37,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Panel PanelOrganizationInfo;
+        protected global::System.Web.UI.WebControls.Panel PanelOrganizationInfo;
         
         /// <summary>
         /// LiteralErrorMessageGridView control.
@@ -48,7 +46,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Literal LiteralErrorMessageGridView;
+        protected global::System.Web.UI.WebControls.Literal LiteralErrorMessageGridView;
         
         /// <summary>
         /// GridViewOrganizationInfo control.
@@ -57,7 +55,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected GridView GridViewOrganizationInfo;
+        protected global::System.Web.UI.WebControls.GridView GridViewOrganizationInfo;
         
         /// <summary>
         /// LinkButtonAddOrganization control.
@@ -66,7 +64,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected LinkButton LinkButtonAddOrganization;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButtonAddOrganization;
         
         /// <summary>
         /// PanelAddOrganization control.
@@ -75,7 +73,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Panel PanelAddOrganization;
+        protected global::System.Web.UI.WebControls.Panel PanelAddOrganization;
         
         /// <summary>
         /// LiteralErrorMessageAddOrganization control.
@@ -84,7 +82,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Literal LiteralErrorMessageAddOrganization;
+        protected global::System.Web.UI.WebControls.Literal LiteralErrorMessageAddOrganization;
         
         /// <summary>
         /// TextBoxName control.
@@ -93,7 +91,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox TextBoxName;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxName;
         
         /// <summary>
         /// TextBoxPhone control.
@@ -102,7 +100,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox TextBoxPhone;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxPhone;
         
         /// <summary>
         /// TextBoxAddress1 control.
@@ -111,7 +109,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox TextBoxAddress1;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxAddress1;
         
         /// <summary>
         /// TextBoxAddress2 control.
@@ -120,7 +118,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox TextBoxAddress2;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxAddress2;
         
         /// <summary>
         /// TextBoxAddress3 control.
@@ -129,7 +127,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox TextBoxAddress3;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxAddress3;
         
         /// <summary>
         /// TextBoxZipCode control.
@@ -138,7 +136,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox TextBoxZipCode;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxZipCode;
         
         /// <summary>
         /// TextBoxWebsite control.
@@ -147,7 +145,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox TextBoxWebsite;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxWebsite;
         
         /// <summary>
         /// TextBoxHours control.
@@ -156,7 +154,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox TextBoxHours;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxHours;
         
         /// <summary>
         /// TextBoxNotes control.
@@ -165,7 +163,7 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox TextBoxNotes;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxNotes;
         
         /// <summary>
         /// ButtonAddOrganization control.
@@ -174,6 +172,6 @@ namespace CRRD_Web_Interface {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Button ButtonAddOrganization;
+        protected global::System.Web.UI.WebControls.Button ButtonAddOrganization;
     }
 }

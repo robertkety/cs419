@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Web.UI.WebControls;
-
 namespace CRRD_Web_Interface.Account {
     
     
@@ -21,7 +19,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected PlaceHolder ErrorMessage;
+        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
         
         /// <summary>
         /// FailureText control.
@@ -30,7 +28,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Literal FailureText;
+        protected global::System.Web.UI.WebControls.Literal FailureText;
         
         /// <summary>
         /// Email control.
@@ -39,7 +37,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox Email;
+        protected global::System.Web.UI.WebControls.TextBox Email;
         
         /// <summary>
         /// Password control.
@@ -48,7 +46,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox Password;
+        protected global::System.Web.UI.WebControls.TextBox Password;
         
         /// <summary>
         /// RememberMe control.
@@ -57,7 +55,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected CheckBox RememberMe;
+        protected global::System.Web.UI.WebControls.CheckBox RememberMe;
         
         /// <summary>
         /// OpenAuthLogin control.
@@ -66,6 +64,6 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected OpenAuthProviders OpenAuthLogin;
+        protected global::CRRD_Web_Interface.Account.OpenAuthProviders OpenAuthLogin;
     }
 }

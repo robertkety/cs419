@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Web.UI.WebControls;
-
 namespace CRRD_Web_Interface.Account {
     
     
@@ -21,7 +19,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected PlaceHolder successMessage;
+        protected global::System.Web.UI.WebControls.PlaceHolder successMessage;
         
         /// <summary>
         /// ChangePassword control.
@@ -30,7 +28,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected HyperLink ChangePassword;
+        protected global::System.Web.UI.WebControls.HyperLink ChangePassword;
         
         /// <summary>
         /// CreatePassword control.
@@ -39,7 +37,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected HyperLink CreatePassword;
+        protected global::System.Web.UI.WebControls.HyperLink CreatePassword;
         
         /// <summary>
         /// LiteralEmail control.
@@ -48,6 +46,6 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Literal LiteralEmail;
+        protected global::System.Web.UI.WebControls.Literal LiteralEmail;
     }
 }

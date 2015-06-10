@@ -12,7 +12,7 @@ namespace CreateCert
         
         static void Main(string[] args)
         {
-            string command = "cd " + CertificatePath + " & " + Directory.GetCurrentDirectory() + "\\" + CertificatePath + "\\makecert.exe -sky exchange -r -n \"CN=" + CertificateName + "\" -pe -a sha1 -len 2048 -ss My \"" + CertificateName + "\"";
+            string command = "cd " + CertificatePath + " & " + System.IO.Directory.GetCurrentDirectory() + "\\" + CertificatePath + "\\makecert.exe -sky exchange -r -n \"CN=" + CertificateName + "\" -pe -a sha1 -len 2048 -ss My \"" + CertificateName + "\"";
             RunCommand(command);
         }
 
@@ -30,7 +30,7 @@ namespace CreateCert
                     if (Certificate.Issuer == "CN=" + CertificateName)
                     {
                         CreateNewCert = false;
-                        string NewFile = Directory.GetCurrentDirectory() + "\\" + CertificatePath + "\\" + CertificateName;
+                        string NewFile = System.IO.Directory.GetCurrentDirectory() + "\\" + CertificatePath + "\\" + CertificateName;
                         File.WriteAllBytes(NewFile, Certificate.Export(X509ContentType.Cert));
                     }
                 }

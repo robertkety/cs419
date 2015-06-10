@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace Corvallis_Reuse_and_Repair_API.Models
 {

@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
@@ -7,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Corvallis_Reuse_and_Repair_API")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Robert Kety")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Corvallis_Reuse_and_Repair_API")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]

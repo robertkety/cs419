@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Web.UI.WebControls;
-
 namespace CRRD_Web_Interface.Account {
     
     
@@ -21,7 +19,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected PlaceHolder setPassword;
+        protected global::System.Web.UI.WebControls.PlaceHolder setPassword;
         
         /// <summary>
         /// password control.
@@ -30,7 +28,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox password;
+        protected global::System.Web.UI.WebControls.TextBox password;
         
         /// <summary>
         /// confirmPassword control.
@@ -39,7 +37,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox confirmPassword;
+        protected global::System.Web.UI.WebControls.TextBox confirmPassword;
         
         /// <summary>
         /// changePasswordHolder control.
@@ -48,7 +46,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected PlaceHolder changePasswordHolder;
+        protected global::System.Web.UI.WebControls.PlaceHolder changePasswordHolder;
         
         /// <summary>
         /// CurrentPasswordLabel control.
@@ -57,7 +55,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Label CurrentPasswordLabel;
+        protected global::System.Web.UI.WebControls.Label CurrentPasswordLabel;
         
         /// <summary>
         /// CurrentPassword control.
@@ -66,7 +64,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox CurrentPassword;
+        protected global::System.Web.UI.WebControls.TextBox CurrentPassword;
         
         /// <summary>
         /// NewPasswordLabel control.
@@ -75,7 +73,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Label NewPasswordLabel;
+        protected global::System.Web.UI.WebControls.Label NewPasswordLabel;
         
         /// <summary>
         /// NewPassword control.
@@ -84,7 +82,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox NewPassword;
+        protected global::System.Web.UI.WebControls.TextBox NewPassword;
         
         /// <summary>
         /// ConfirmNewPasswordLabel control.
@@ -93,7 +91,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Label ConfirmNewPasswordLabel;
+        protected global::System.Web.UI.WebControls.Label ConfirmNewPasswordLabel;
         
         /// <summary>
         /// ConfirmNewPassword control.
@@ -102,6 +100,6 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox ConfirmNewPassword;
+        protected global::System.Web.UI.WebControls.TextBox ConfirmNewPassword;
     }
 }

@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
-using CRRD_Web_Interface.Models;
+using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using CRRD_Web_Interface.Models;
 
 namespace CRRD_Web_Interface.Account
 {
-    public partial class TwoFactorAuthenticationSignIn : Page
+    public partial class TwoFactorAuthenticationSignIn : System.Web.UI.Page
     {
         private ApplicationSignInManager signinManager;
         private ApplicationUserManager manager;

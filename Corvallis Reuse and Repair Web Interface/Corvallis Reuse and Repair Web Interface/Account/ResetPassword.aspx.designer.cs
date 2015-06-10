@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Web.UI.WebControls;
-
 namespace CRRD_Web_Interface.Account {
     
     
@@ -21,7 +19,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Literal ErrorMessage;
+        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
         
         /// <summary>
         /// Email control.
@@ -30,7 +28,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox Email;
+        protected global::System.Web.UI.WebControls.TextBox Email;
         
         /// <summary>
         /// Password control.
@@ -39,7 +37,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox Password;
+        protected global::System.Web.UI.WebControls.TextBox Password;
         
         /// <summary>
         /// ConfirmPassword control.
@@ -48,6 +46,6 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox ConfirmPassword;
+        protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
     }
 }

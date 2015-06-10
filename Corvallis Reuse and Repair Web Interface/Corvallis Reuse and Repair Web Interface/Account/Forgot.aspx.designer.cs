@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Web.UI.WebControls;
-
 namespace CRRD_Web_Interface.Account {
     
     
@@ -21,7 +19,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected PlaceHolder loginForm;
+        protected global::System.Web.UI.WebControls.PlaceHolder loginForm;
         
         /// <summary>
         /// ErrorMessage control.
@@ -30,7 +28,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected PlaceHolder ErrorMessage;
+        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
         
         /// <summary>
         /// FailureText control.
@@ -39,7 +37,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Literal FailureText;
+        protected global::System.Web.UI.WebControls.Literal FailureText;
         
         /// <summary>
         /// Email control.
@@ -48,7 +46,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox Email;
+        protected global::System.Web.UI.WebControls.TextBox Email;
         
         /// <summary>
         /// DisplayEmail control.
@@ -57,6 +55,6 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected PlaceHolder DisplayEmail;
+        protected global::System.Web.UI.WebControls.PlaceHolder DisplayEmail;
     }
 }

@@ -1,8 +1,7 @@
-﻿using CRRD_Web_Interface;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(Startup))]
+[assembly: OwinStartupAttribute(typeof(CRRD_Web_Interface.Startup))]
 namespace CRRD_Web_Interface
 {
     public partial class Startup {

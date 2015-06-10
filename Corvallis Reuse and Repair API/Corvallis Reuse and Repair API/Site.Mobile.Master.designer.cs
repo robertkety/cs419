@@ -7,9 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-
 namespace Corvallis_Reuse_and_Repair_API {
     
     
@@ -22,7 +19,7 @@ namespace Corvallis_Reuse_and_Repair_API {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected ContentPlaceHolder HeadContent;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
         
         /// <summary>
         /// form1 control.
@@ -31,7 +28,7 @@ namespace Corvallis_Reuse_and_Repair_API {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
         /// FeaturedContent control.
@@ -40,7 +37,7 @@ namespace Corvallis_Reuse_and_Repair_API {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected ContentPlaceHolder FeaturedContent;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder FeaturedContent;
         
         /// <summary>
         /// MainContent control.
@@ -49,6 +46,6 @@ namespace Corvallis_Reuse_and_Repair_API {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
     }
 }

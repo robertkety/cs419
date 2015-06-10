@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Web.UI.WebControls;
-
 namespace CRRD_Web_Interface.Account {
     
     
@@ -21,7 +19,7 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected Literal ErrorMessage;
+        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
         
         /// <summary>
         /// PhoneNumber control.
@@ -30,6 +28,6 @@ namespace CRRD_Web_Interface.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected TextBox PhoneNumber;
+        protected global::System.Web.UI.WebControls.TextBox PhoneNumber;
     }
 }

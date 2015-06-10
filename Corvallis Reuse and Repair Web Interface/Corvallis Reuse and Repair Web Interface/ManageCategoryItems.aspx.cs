@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Threading.Tasks;
 using CRRD_Web_Interface.Models;
+using System.Data;
+using System.Diagnostics;
 
 namespace CRRD_Web_Interface
 {
-    public partial class ManageCategoryItems : Page
+    public partial class ManageCategoryItems : System.Web.UI.Page
     {
         protected string SearchString = String.Empty;
         protected bool Authenticated = false;   // Flag to prevent the rest of the page being rendered when user is not authenitcated

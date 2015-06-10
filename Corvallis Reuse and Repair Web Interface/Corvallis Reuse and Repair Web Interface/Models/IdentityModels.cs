@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using CRRD_Web_Interface.Models;
+using System.Windows.Forms;
 
 namespace CRRD_Web_Interface.Models
 {

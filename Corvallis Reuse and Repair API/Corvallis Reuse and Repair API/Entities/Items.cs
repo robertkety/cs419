@@ -1,5 +1,9 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
-
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Microsoft.WindowsAzure.Storage.Table;
+    
 namespace Corvallis_Reuse_and_Repair_API.Entities
 {
     public class Items : TableEntity
