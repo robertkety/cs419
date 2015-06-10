@@ -284,9 +284,9 @@ C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "C:\Users\Robert\Deskt
 C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "C:\Users\Robert\Desktop\GitHub\cs419\CreateCert\CreateCert\CreateCert.csproj" /property:Configuration=$(ConfigurationName)
 md "$(TargetDir)WebAPI"
 md "$(TargetDir)WebManagementApp"
-C:\Windows\System32\xcopy.exe "$(ProjectDir)WebAPI" "$(TargetDir)WebAPI" /y
-C:\Windows\System32\xcopy.exe "$(ProjectDir)WebManagementApp" "$(TargetDir)WebManagementApp" /y
-start C:\Windows\System32\xcopy.exe "$(SolutionDir)..\CreateCert\CreateCert\bin\$(ConfigurationName)" "$(TargetDir)" /Y</PreBuildEvent>
+C:\Windows\System32\xcopy.exe "$(ProjectDir)WebAPI" "$(TargetDir)WebAPI" /Y /S
+C:\Windows\System32\xcopy.exe "$(ProjectDir)WebManagementApp" "$(TargetDir)WebManagementApp" /Y /S
+start C:\Windows\System32\xcopy.exe "$(SolutionDir)..\CreateCert\CreateCert\bin\$(ConfigurationName)" "$(TargetDir)" /Y /S</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>
