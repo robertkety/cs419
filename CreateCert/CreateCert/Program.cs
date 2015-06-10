@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
 namespace CreateCert
@@ -27,8 +28,13 @@ namespace CreateCert
                 foreach (var Certificate in CertCollection)
                 {
                     if (Certificate.Issuer == "CN=" + CertificateName)
+                    {
                         CreateNewCert = false;
+                        string NewFile = System.IO.Directory.GetCurrentDirectory() + "\\" + CertificatePath + "\\" + CertificateName;
+                        File.WriteAllBytes(NewFile, Certificate.Export(X509ContentType.Cert));
+                    }
                 }
+                
                 if (CreateNewCert)
                 {
                     ProcessStartInfo CommandInfo = new ProcessStartInfo("cmd.exe", "/C \"" + Arguments + "\"");
