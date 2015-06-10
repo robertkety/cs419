@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CreateCert
 {
@@ -17,19 +18,31 @@ namespace CreateCert
         /* Runs the Windows command: cmd.exe and arguments */
         private static void RunCommand(string Arguments, bool Verbose = false)
         {
+            bool CreateNewCert = true;
             try
             {
-                ProcessStartInfo CommandInfo = new ProcessStartInfo("cmd.exe", "/C \"" + Arguments + "\"");
+                X509Store Store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+                Store.Open(OpenFlags.ReadOnly);
+                var CertCollection = Store.Certificates;
+                foreach (var Certificate in CertCollection)
+                {
+                    if (Certificate.Issuer == "CN=" + CertificateName)
+                        CreateNewCert = false;
+                }
+                if (CreateNewCert)
+                {
+                    ProcessStartInfo CommandInfo = new ProcessStartInfo("cmd.exe", "/C \"" + Arguments + "\"");
 #if RELEASE
                 CommandInfo.WindowStyle = ProcessWindowStyle.Hidden;
 #endif
-                CommandInfo.UseShellExecute = false;
-                CommandInfo.RedirectStandardOutput = !Verbose;
+                    CommandInfo.UseShellExecute = false;
+                    CommandInfo.RedirectStandardOutput = !Verbose;
 
-                Process Executable = new Process();
-                Executable.StartInfo = CommandInfo;
-                Executable.Start();
-                Executable.WaitForExit();
+                    Process Executable = new Process();
+                    Executable.StartInfo = CommandInfo;
+                    Executable.Start();
+                    Executable.WaitForExit();
+                }
             }
             catch (Exception ex)
             {
