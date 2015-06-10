@@ -135,7 +135,7 @@ namespace CRRDirectoryInstall
                     Console.WriteLine("Directory backbone is deployed.\n");
                     Console.WriteLine(String.Format("To directly access the API and its supporting documentation visit:\nhttp://{0}.azurewebsites.net/\n", WebApiName));
                     Console.WriteLine(String.Format("The Web Management Portal is now available at:\nhttp://{0}.azurewebsites.net/", WebInterfaceName));
-                    Console.WriteLine("The default username is \"adminUser\" and the password is \"GoBeavs247\"");
+                    Console.WriteLine("The default username is \"admin@sustainablecorvallis.org\" and the password is \"1Password!\"");
                     Console.WriteLine("Please login to the Web Management Portal and change the default password as");
                     Console.WriteLine("soon as possible.");
                     Console.WriteLine("A Windows Phone application is also available as a user-friendly interface");
