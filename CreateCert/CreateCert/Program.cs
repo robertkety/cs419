@@ -12,7 +12,7 @@ namespace CreateCert
         
         static void Main(string[] args)
         {
-            string command = "cd " + CertificatePath + " & " + System.IO.Directory.GetCurrentDirectory() + "\\" + CertificatePath + "\\makecert.exe -sky exchange -r -n \"CN=" + CertificateName + "\" -pe -a sha1 -len 2048 -ss My \"" + CertificateName + "\"";
+            string command = "cd " + CertificatePath + " & makecert.exe -sky exchange -r -n \"CN=" + CertificateName + "\" -pe -a sha1 -len 2048 -ss My \"" + CertificateName + "\"";
             RunCommand(command);
         }
 
