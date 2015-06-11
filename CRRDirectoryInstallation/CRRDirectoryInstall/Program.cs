@@ -206,8 +206,8 @@ namespace CRRDirectoryInstall
 
                 // Build AzCopy Command and Arguments 
                 Console.WriteLine(String.Format("\nPopulating {0} table", SourceTable));
-                StringBuilder Command = new StringBuilder(System.IO.Directory.GetCurrentDirectory() + @"\AzCopy\AzCopy.exe");
-                Command.Append(" /Source:" + SourceTable);
+                StringBuilder Command = new StringBuilder("cd AzCopy & AzCopy.exe");
+                Command.Append(" /Source:\"" + SourceTable + "\"");
                 Command.Append(" /Dest:https://" + StorageAccountName + ".table.core.windows.net/" + Table.Name + "/");
                 Command.Append(" /DestKey:" + StorageAccessKey);
                 Command.Append(" /Manifest:\"" + Path.GetFileName(System.IO.Directory.GetFiles(SourceTable, "*.manifest").First()) + "\"");
@@ -426,7 +426,7 @@ namespace CRRDirectoryInstall
         public static string CreateWebApp(SubscriptionCloudCredentials Credentials, string SiteName)
         {
             var WebSiteClient = CloudContext.Clients.CreateWebSiteManagementClient(Credentials);
-            var WebSpace = WebSiteClient.WebSpaces.List().First(x => x.GeoRegion == "West US");
+            var WebSpace = WebSiteClient.WebSpaces.List().First(x => x.Name == WebSpaceNames.WestUSWebSpace);
             WebSpaceName = WebSpace.Name;
             var WebHostingPlan = WebSiteClient.WebHostingPlans.List(WebSpaceName).First();
             string WebHostingPlanName = "", ModifiedSiteName = "";

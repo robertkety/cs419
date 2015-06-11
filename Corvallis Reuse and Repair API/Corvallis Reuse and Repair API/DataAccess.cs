@@ -3,19 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Configuration;
-using MySql.Data.MySqlClient;
 using System.Diagnostics;
 using System.Text;
 using System.IO;
 using System.Data;
 using System.Windows.Forms;
-//Add MySql Library
-using MySql.Data.Entity;
-using MySql.Data.Types;
-
-// SSH
-using Renci.SshNet;
-using Renci.SshNet.Common;
 using System.Net;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure;
