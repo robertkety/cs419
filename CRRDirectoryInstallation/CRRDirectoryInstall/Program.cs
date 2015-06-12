@@ -117,7 +117,7 @@ namespace CRRDirectoryInstall
                     Console.WriteLine("Key Retrieved");
                     Console.WriteLine("\nPopulating Storage Tables");
                     PopulateStorageAccount(Credentials, path, Verbose);
-
+                    
                     //Web API
                     Console.WriteLine("\nDeploying Web API");
                     ConfigureApp(ApiPath);
@@ -426,8 +426,18 @@ namespace CRRDirectoryInstall
         public static string CreateWebApp(SubscriptionCloudCredentials Credentials, string SiteName)
         {
             var WebSiteClient = CloudContext.Clients.CreateWebSiteManagementClient(Credentials);
-            var WebSpace = WebSiteClient.WebSpaces.List().First(x => x.Name == WebSpaceNames.WestUSWebSpace);
-            WebSpaceName = WebSpace.Name;
+            /*//var WebSpaces = WebSiteClient.WebSpaces.List();
+            foreach (var ws in WebSpaces)
+            {
+                Console.WriteLine(String.Join(", ", ws.Name, ws.GeoRegion, ws.GeoLocation, ws.AvailabilityState, ws.Plan));
+            }
+            //var WebSpace = WebSpaces.First(x => x.Name.ToString() == WebSpaceNames.WestUSWebSpace.ToString());
+            if (WebSpace == null){  //http://www.scip.be/index.php?Page=ArticlesNET39&Lang=EN
+                Console.WriteLine("WebSpaces Response from Azure: \n" + WebSiteClient.WebSpaces.List().ToString() + "\n\n");
+                throw new Exception (String.Format("No WebSpace for region: {0}", WebSpaceNames.WestUSWebSpace));
+            }*/
+            
+            WebSpaceName = WebSpaceNames.WestUSWebSpace;
             var WebHostingPlan = WebSiteClient.WebHostingPlans.List(WebSpaceName).First();
             string WebHostingPlanName = "", ModifiedSiteName = "";
             int i = 0;
