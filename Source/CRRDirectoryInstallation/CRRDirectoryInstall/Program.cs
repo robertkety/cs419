@@ -24,7 +24,6 @@ using System.Threading.Tasks;
 using Nito.AsyncEx;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Threading;
 
 namespace CRRDirectoryInstall
 {
@@ -91,7 +90,7 @@ namespace CRRDirectoryInstall
                     SubscriptionCloudCredentials Credentials = GetCredentials(Options.SubscriptionId);
                     SubscriptionID = Options.SubscriptionId;
                     //Storage Account
-                    /*Console.WriteLine("Connecting to Windows Azure and creating new Azure Storage Account\nThis will take a few minutes so I'll create your database while we wait.");
+                    Console.WriteLine("Connecting to Windows Azure and creating new Azure Storage Account\nThis will take a few minutes so I'll create your database while we wait.");
                     var ResponseTask = CreateStorageAccountName(Credentials);
 
                     //Database
@@ -121,7 +120,7 @@ namespace CRRDirectoryInstall
                     Console.WriteLine("\nPopulating Storage Tables");
                     PopulateStorageAccount(Credentials, path, Verbose);
                     
-                    //Web API*/
+                    //Web API
                     Console.WriteLine("\nDeploying Web API");
                     ConfigureApp(ApiPath);
                     WebApiName = CreateWebApp(Credentials, StorageAccountName + "-webapi");

@@ -279,9 +279,9 @@
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "C:\Users\Robert Kety\Google Drive\github\cs419\Corvallis Reuse and Repair API\Corvallis Reuse and Repair API.sln" /p:DeployOnBuild=true /p:PublishProfile=FileSystem
-C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "C:\Users\Robert Kety\Google Drive\github\cs419\Corvallis Reuse and Repair Web Interface\Corvallis Reuse and Repair Web Interface.sln" /p:DeployOnBuild=true /p:PublishProfile=FileSystem
-C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "C:\Users\Robert Kety\Google Drive\github\cs419\CreateCert\CreateCert\CreateCert.csproj" /property:Configuration=$(ConfigurationName)
+    <PreBuildEvent>C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "C:\Users\Robert Kety\Google Drive\github\cs419\Source\Corvallis Reuse and Repair API\Corvallis Reuse and Repair API.sln" /p:DeployOnBuild=true /p:PublishProfile=FileSystem
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "C:\Users\Robert Kety\Google Drive\github\cs419\Source\Corvallis Reuse and Repair Web Interface\Corvallis Reuse and Repair Web Interface.sln" /p:DeployOnBuild=true /p:PublishProfile=FileSystem
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "C:\Users\Robert Kety\Google Drive\github\cs419\Source\CreateCert\CreateCert\CreateCert.csproj" /property:Configuration=$(ConfigurationName)
 md "$(TargetDir)WebAPI"
 md "$(TargetDir)WebManagementApp"
 C:\Windows\System32\xcopy.exe "$(ProjectDir)WebAPI" "$(TargetDir)WebAPI" /Y /S
