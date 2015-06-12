@@ -24,6 +24,7 @@ using System.Threading.Tasks;
 using Nito.AsyncEx;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Threading;
 
 namespace CRRDirectoryInstall
 {
@@ -43,6 +44,8 @@ namespace CRRDirectoryInstall
         public static string DBPassword = "GoBeavs247";
         public static string DBServerName = "";
         public static string DBRuleName = "CRRDirectoryInstall";
+        public static X509Certificate2 X509;
+        public static string SubscriptionID = "";
 
         // Thanks to http://commandline.codeplex.com
         class Options
@@ -86,9 +89,9 @@ namespace CRRDirectoryInstall
                     //RunCommand("CreateCert.exe", Verbose);    //The certificate this creates has to be uploaded to Azure before the program can continue
                     
                     SubscriptionCloudCredentials Credentials = GetCredentials(Options.SubscriptionId);
-                    
+                    SubscriptionID = Options.SubscriptionId;
                     //Storage Account
-                    Console.WriteLine("Connecting to Windows Azure and creating new Azure Storage Account\nThis will take a few minutes so I'll create your database while we wait.");
+                    /*Console.WriteLine("Connecting to Windows Azure and creating new Azure Storage Account\nThis will take a few minutes so I'll create your database while we wait.");
                     var ResponseTask = CreateStorageAccountName(Credentials);
 
                     //Database
@@ -118,7 +121,7 @@ namespace CRRDirectoryInstall
                     Console.WriteLine("\nPopulating Storage Tables");
                     PopulateStorageAccount(Credentials, path, Verbose);
                     
-                    //Web API
+                    //Web API*/
                     Console.WriteLine("\nDeploying Web API");
                     ConfigureApp(ApiPath);
                     WebApiName = CreateWebApp(Credentials, StorageAccountName + "-webapi");
@@ -360,8 +363,11 @@ namespace CRRDirectoryInstall
             var CertCollection = Store.Certificates;
             foreach (var Certificate in CertCollection)
             {
-                if(Certificate.Issuer == "CN=" + CertificateName)
-                    return new CertificateCloudCredentials(subscriptionId, Certificate);
+                if (Certificate.Issuer == "CN=" + CertificateName)
+                {
+                    X509 = Certificate; 
+                    return new CertificateCloudCredentials(subscriptionId, Certificate);                    
+                }
             }
 
             throw new Exception("Certificate not found");
@@ -425,35 +431,69 @@ namespace CRRDirectoryInstall
 
         public static string CreateWebApp(SubscriptionCloudCredentials Credentials, string SiteName)
         {
-            var WebSiteClient = CloudContext.Clients.CreateWebSiteManagementClient(Credentials);
-            /*//var WebSpaces = WebSiteClient.WebSpaces.List();
-            foreach (var ws in WebSpaces)
-            {
-                Console.WriteLine(String.Join(", ", ws.Name, ws.GeoRegion, ws.GeoLocation, ws.AvailabilityState, ws.Plan));
-            }
-            //var WebSpace = WebSpaces.First(x => x.Name.ToString() == WebSpaceNames.WestUSWebSpace.ToString());
-            if (WebSpace == null){  //http://www.scip.be/index.php?Page=ArticlesNET39&Lang=EN
-                Console.WriteLine("WebSpaces Response from Azure: \n" + WebSiteClient.WebSpaces.List().ToString() + "\n\n");
-                throw new Exception (String.Format("No WebSpace for region: {0}", WebSpaceNames.WestUSWebSpace));
-            }*/
-            
             WebSpaceName = WebSpaceNames.WestUSWebSpace;
-            var WebHostingPlan = WebSiteClient.WebHostingPlans.List(WebSpaceName).First();
+            var GeoRegion = Microsoft.WindowsAzure.Management.WebSites.Models.GeoRegionNames.WestUS;
+            
             string WebHostingPlanName = "", ModifiedSiteName = "";
             int i = 0;
-            bool ValidWebSiteName = false;
+            var WebSiteClient = CloudContext.Clients.CreateWebSiteManagementClient(Credentials);
+            WebSpacesListResponse.WebSpace WebSpace;
+            
+            ModifiedSiteName = SiteName;
+            while (!(WebSiteClient.WebSites.IsHostnameAvailable(ModifiedSiteName).IsAvailable))
+            {
+                ModifiedSiteName = SiteName + (i++).ToString();
+            }
 
-            if (WebHostingPlan == null)
+            try
+            {
+                WebSpace = WebSiteClient.WebSpaces.List().First(x => x.Name.ToString() == WebSpaceName.ToString());
+            }
+            catch
+            {
+            }
+            finally
+            {
+                WebSiteClient.WebSites.Create(WebSpaceName, new WebSiteCreateParameters()
+                {
+                    Name = ModifiedSiteName,
+                    ServerFarm = WebHostingPlanName,
+                    WebSpace = new WebSiteCreateParameters.WebSpaceDetails(GeoRegion, WebSpaceName, "VirtualDedicatedPlan")
+                });
+            }
+
+            #region OldCode
+            /*try
+            {
+                var WebHostingPlan = WebSiteClient.WebHostingPlans.List(WebSpaceName).First();
+                WebHostingPlanName = WebHostingPlan.Name;
+            }
+            catch
+            {
+                WebHostingPlanName = "Default-West-US";                
+                WebSiteClient.WebHostingPlans.Create(WebSpaceName, new WebHostingPlanCreateParameters() { Name = WebHostingPlanName });
+            }*/
+            
+            /*if (WebHostingPlan == null)
             {
                 WebHostingPlanName = "Default-West-US";
                 WebSiteClient.WebHostingPlans.Create(WebSpaceName, new WebHostingPlanCreateParameters() { Name = WebHostingPlanName });
             }
             else
-                WebHostingPlanName = WebHostingPlan.Name;
+                WebHostingPlanName = WebHostingPlan.Name;*/
 
-            ModifiedSiteName = SiteName;
+            
+            
+            /*ws.WebSiteName = ModifiedSiteName;
+            ws.GeoRegion = "North Central US";// "West US";
+            ws.WebSpace = WebSpaceName;
+            AzureConfig AzConfig = new AzureConfig();
+            AzureConfig.CreateWebSite(ws, X509, SubscriptionID);
+            Microsoft.WindowsAzure.Management.WebSites.Models.WebSiteCreateParameters.WebSpaceDetails*/
 
-            while (!ValidWebSiteName)
+                
+
+            /*while (!ValidWebSiteName)
             {
                 try
                 {
@@ -471,11 +511,17 @@ namespace CRRDirectoryInstall
                     else
                         throw new Exception("", cex);
                 }
-            }
-            
-            WebSiteClient.WebSites.Create(WebSpaceNames.WestUSWebSpace, new WebSiteCreateParameters() { Name = ModifiedSiteName, ServerFarm = WebHostingPlanName });
+            }*/
+            /*
+            WebSiteClient.WebSites.Create(WebSpaceName, new WebSiteCreateParameters() { 
+                Name = ModifiedSiteName, 
+                ServerFarm = WebHostingPlanName,
+                WebSpace = new WebSiteCreateParameters.WebSpaceDetails("East US", WebSpaceName, "VirtualDedicatedPlan") 
+            });*/
+            #endregion
 
             return ModifiedSiteName;
         }
     }
+
 }
