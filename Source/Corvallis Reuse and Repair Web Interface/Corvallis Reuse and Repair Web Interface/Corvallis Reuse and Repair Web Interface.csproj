@@ -211,8 +211,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <None Include="Properties\PublishProfiles\crr0-management %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\crr0-management.pubxml" />
     <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
